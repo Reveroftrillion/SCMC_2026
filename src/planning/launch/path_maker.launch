@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find gps)/launch/gps_to_utm.launch" />
+    <node pkg="planning" type="path_maker.py" name="path_maker" output="screen">
+    </node>
+</launch>

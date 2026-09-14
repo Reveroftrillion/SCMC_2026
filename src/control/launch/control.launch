@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="control" type="control" name="control" output="screen"/>
+</launch>
