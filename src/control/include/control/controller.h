@@ -69,17 +69,21 @@ private:
     bool initialized = false;
     const int END_NUM = 99999999;
 
-    std::vector<EventPlaceInfo> event_place = {
-        EventPlaceInfo(650, EventType::STOP_TRAFFIC),
-        EventPlaceInfo(1440, EventType::STOP_TRAFFIC),
-        EventPlaceInfo(1800, EventType::STOP_TRAFFIC),
-        EventPlaceInfo(3280, EventType::STOP_TRAFFIC),
-        EventPlaceInfo(END_NUM, EventType::STOP_TRAFFIC)
-    };
+//     std::vector<EventPlaceInfo> event_place = {
+//         EventPlaceInfo(650, EventType::STOP_TRAFFIC),
+//         EventPlaceInfo(1440, EventType::STOP_TRAFFIC),
+//         EventPlaceInfo(1800, EventType::STOP_TRAFFIC),
+//         EventPlaceInfo(3280, EventType::STOP_TRAFFIC),
+//         EventPlaceInfo(END_NUM, EventType::STOP_TRAFFIC)
+//     };
 
-    std::vector<EventPlaceInfo>::iterator iter = event_place.begin();
+//     std::vector<EventPlaceInfo>::iterator iter = event_place.begin();
+// };
+        std::vector<EventPlaceInfo> event_place = {
+            EventPlaceInfo(END_NUM, EventType::STOP_TRAFFIC)
+        };
+        std::vector<EventPlaceInfo>::iterator iter = event_place.begin();
 };
-
 class Controller {
 public:
     Controller();

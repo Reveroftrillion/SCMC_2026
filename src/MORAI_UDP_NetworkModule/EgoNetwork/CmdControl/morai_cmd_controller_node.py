@@ -18,7 +18,12 @@ from morai_msgs.msg import GPSMessage
 class MoraiCmdController:
     def __init__(self):
         rospy.init_node('morai_cmd_controller')
-        self.sender = Sender(rospy.get_param('~morai_ip'), rospy.get_param('~port', 9093))
+        self.sender = Sender(
+            rospy.get_param('~morai_ip'),
+            rospy.get_param('~port', 9093),
+            source_ip=rospy.get_param('~bind_ip', '0.0.0.0'),
+            source_port=rospy.get_param('~source_port', 9094),
+        )
         self.enabled = rospy.get_param('~enabled', False)
         self.timeout = float(rospy.get_param('~command_timeout', 0.3))
         self.status_timeout = float(rospy.get_param('~status_timeout', 0.5))

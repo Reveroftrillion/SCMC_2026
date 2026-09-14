@@ -25,7 +25,7 @@ from utils import CubicSpline2D, catesian_to_frenet, make_empty_path
 
 from tf.transformations import quaternion_matrix
 
-PATH_STEP = 0.2             # (m)
+PATH_STEP = 0.5             # (m)
 LOOKAHEAD_DISTANCE = 20    # (m)
 EMPTY_MARKER_ARRAY = MarkerArray()
 

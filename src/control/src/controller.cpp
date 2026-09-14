@@ -167,16 +167,23 @@ bool Controller::isObstacle(){
     return false;
 }
 
-bool Controller::in_merging_zone(){
-    return (g_curr_idx_ >= 2180 && g_curr_idx_ <= 3185) ||
-           (g_curr_idx_ >= 8400 && g_curr_idx_ <= 8915) ||
-           (g_curr_idx_ >= 9540 && g_curr_idx_ <= 9975);
-}
+// bool Controller::in_merging_zone(){
+//     return (g_curr_idx_ >= 2180 && g_curr_idx_ <= 3185) ||
+//            (g_curr_idx_ >= 8400 && g_curr_idx_ <= 8915) ||
+//            (g_curr_idx_ >= 9540 && g_curr_idx_ <= 9975);
+// }
 
-bool Controller::in_static_obstacle_zone(){
-    return (g_curr_idx_ >= 1930 && g_curr_idx_ <= 2200) ||
-           (g_curr_idx_ >= 5410 && g_curr_idx_ <= 6000);
-}
+// bool Controller::in_static_obstacle_zone(){
+//     return (g_curr_idx_ >= 1930 && g_curr_idx_ <= 2200) ||
+//            (g_curr_idx_ >= 5410 && g_curr_idx_ <= 6000);
+// }
+    bool Controller::in_merging_zone(){
+        return false;
+    }
+
+    bool Controller::in_static_obstacle_zone(){
+        return false;
+    }
 
 double Controller::getDistance(const geometry_msgs::Pose& a, const geometry_msgs::Pose& b){
     double dx = a.position.x - b.position.x;

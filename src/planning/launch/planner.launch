@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <launch>
     <node pkg="planning" type="PathPlanner.py" name="PathPlanner" output="screen"/>
     <node pkg="planning" type="StaticObstacleAvoidancePlanner.py" name="StaticObstacleAvoidancePlanner" output="screen"/>
     <node pkg="planning" type="VizPlanner.py" name="VizPlanner" output="screen"/>
+</launch> -->
+<launch>
+    <node pkg="planning" type="PathPlanner.py" name="PathPlanner" output="screen"/>
 </launch>

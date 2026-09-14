@@ -112,13 +112,15 @@ class StaticObstacleAvoidancePlanner:
         """
         self.curr_idx = msg.data
 
+    # def in_static_obstacle_zone(self):
+    #     """
+    #     현재 위치가 정적 장애물 구간인지 확인
+    #     controller.cpp의 in_static_obstacle_zone()과 동일한 로직
+    #     """
+    #     return (self.curr_idx >= 1930 and self.curr_idx <= 2200) or \
+    #            (self.curr_idx >= 5420 and self.curr_idx <= 6000)
     def in_static_obstacle_zone(self):
-        """
-        현재 위치가 정적 장애물 구간인지 확인
-        controller.cpp의 in_static_obstacle_zone()과 동일한 로직
-        """
-        return (self.curr_idx >= 1930 and self.curr_idx <= 2200) or \
-               (self.curr_idx >= 5420 and self.curr_idx <= 6000)
+        return False
 
     def obstacle_callback(self, msg: ObjectInfo):
         """

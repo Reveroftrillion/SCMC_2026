@@ -79,9 +79,14 @@ class Receiver:
 
 
 class Sender:
-    def __init__(self, ip, port):
-        self.ip, self.port = ip, int(port)
+    def __init__(self, ip, port, source_ip='', source_port=None):
+        self.ip = ip
+        self.port = int(port)
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+        if source_port is not None:
+            bind_ip = source_ip if source_ip else '0.0.0.0'
+            self.socket.bind((bind_ip, int(source_port)))
 
     def send(self, data):
         raw = ctypes.string_at(ctypes.addressof(data), ctypes.sizeof(data))
