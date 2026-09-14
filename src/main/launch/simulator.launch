@@ -1,10 +1,32 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="camera" name="yolov8_node" type="traffic_yolo.py" output="screen" />
-    <node pkg="camera" name="lanenet_node" type="lanenet.py" output="screen" />
-    <include file="$(find gps)/launch/gps_to_utm.launch" />
-    <include file="$(find planning)/launch/planner.launch" />
-    <include file="$(find control)/launch/control.launch" />
-    <include file="$(find morai_udp)/launch/morai_udp_nodes.launch" />
-    <include file="$(find lidar_object_detection)/launch/object_detection_crossing.launch" />
+  <arg name="morai_ip" />
+  <arg name="bind_ip" default="0.0.0.0" />
+  <arg name="network_config" default="$(find morai_udp)/config/network.yaml" />
+  <arg name="enable_control" default="false" />
+  <arg name="status_layout_confirmed" default="false" />
+  <arg name="lidar_port" default="2368" />
+  <arg name="lidar_rpm" default="600" />
+  <node pkg="camera" name="yolov8_node" type="traffic_yolo.py" output="screen">
+    <remap from="/image_jpeg/compressed" to="/camera/front/image/compressed" />
+  </node>
+  <node pkg="camera" name="lanenet_node" type="lanenet.py" output="screen">
+    <!-- Shared front image; lane ROI/warp must be calibrated for the fixed camera. -->
+    <remap from="/image_jpeg2/compressed" to="/camera/front/image/compressed" />
+  </node>
+  <include file="$(find gps)/launch/gps_to_utm.launch" />
+  <include file="$(find planning)/launch/planner.launch" />
+  <include file="$(find control)/launch/control.launch" />
+  <include file="$(find morai_udp)/launch/morai_udp_nodes.launch">
+    <arg name="morai_ip" value="$(arg morai_ip)" />
+    <arg name="bind_ip" value="$(arg bind_ip)" />
+    <arg name="network_config" value="$(arg network_config)" />
+    <arg name="enable_control" value="$(arg enable_control)" />
+    <arg name="status_layout_confirmed" value="$(arg status_layout_confirmed)" />
+  </include>
+  <include file="$(find lidar_object_detection)/launch/object_detection_crossing.launch">
+    <arg name="device_ip" value="$(arg morai_ip)" />
+    <arg name="port" value="$(arg lidar_port)" />
+    <arg name="rpm" value="$(arg lidar_rpm)" />
+  </include>
 </launch>

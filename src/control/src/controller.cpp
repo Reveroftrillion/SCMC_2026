@@ -1,4 +1,5 @@
 #include "control/controller.h"
+#include <stdexcept>
 
 #include <tf/transform_datatypes.h>
 #include <std_msgs/Float32.h>
@@ -28,6 +29,13 @@ Controller::Controller(): pid_(P_GAIN, I_GAIN, D_GAIN), nearest_dyna_obs_(std::n
     traffic_sign_status_(""), prev_traffic_sign_1_(""), prev_traffic_sign_2_(""), traffic_sign_stable_count_(0),
     lanenet_angle_(0.0), obstacle_waiting_time(0), use_global_path_(true), is_gps_valid_(true),
     deadlock_timer_(0), is_deadlocked_(false), current_velocity_(0.0){
+    ros::NodeHandle private_nh("~");
+    private_nh.param("max_steering_deg", max_steering_deg_, 40.0);
+    if (!std::isfinite(max_steering_deg_) || max_steering_deg_ <= 0.0) {
+        throw std::invalid_argument("max_steering_deg must be positive");
+    }
+    vehicle_yaw_ = 0.0;
+    pid_.setCurrVelocity(0.0);
     control_pub_ = nh_.advertise<simul_msgs::ControlCmd>("/control_cmd", 1);
     curr_waypoint_pub = nh_.advertise<std_msgs::Int16>("/curr_idx", 1);
 
@@ -584,6 +592,7 @@ void Controller::calcSteer(const nav_msgs::Path::ConstPtr& path){
 
     // Path steering is radians; EgoCtrlCmd expects a normalized wheel command.
     // Lane PID already supplies a normalized command and bypasses calcSteer().
+    steering_ /= max_steering_deg_ * M_PI / 180.0;
     steering_ = std::max(-1.0, std::min(1.0, steering_));
 }
 

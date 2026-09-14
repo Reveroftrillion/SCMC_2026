@@ -1,0 +1,46 @@
+# Sample ports, not a declaration of competition-assigned ports.
+# Set MORAI destinations to the algorithm PC IP, with these receive ports.
+control:
+  max_steering_deg: 40.0
+vehicle_status_publisher:
+  port: 9082
+  timeout: 0.5
+  header: "#MoraiInfo$"  # Candidate general EgoVehicleStatus header, verify on wire.
+morai_cmd_controller:
+  port: 9093
+  send_hz: 50.0
+  command_timeout: 0.3
+  status_timeout: 0.5
+gps_udp:
+  kind: gps
+  port: 1111
+  topic: /gps
+  frame_id: gps
+  timeout: 0.5
+  east_offset: 302595.0
+  north_offset: 4124145.0
+imu_udp:
+  kind: imu
+  port: 1112
+  topic: /imu
+  frame_id: imu
+  timeout: 0.5
+  layout: timestamped_115  # Repository format; legacy_107 must be explicitly selected.
+camera_front_udp:
+  kind: camera
+  port: 9291
+  topic: /camera/front/image/compressed
+  frame_id: camera_front
+  timeout: 0.5
+camera_left_udp:
+  kind: camera
+  port: 9293
+  topic: /camera/left/image/compressed
+  frame_id: camera_left
+  timeout: 0.5
+camera_right_udp:
+  kind: camera
+  port: 9295
+  topic: /camera/right/image/compressed
+  frame_id: camera_right
+  timeout: 0.5

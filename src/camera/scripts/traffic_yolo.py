@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import rospy
+import os
+import rospkg
 from sensor_msgs.msg import Image, CompressedImage
 from std_msgs.msg import String
 from cv_bridge import CvBridge, CvBridgeError
@@ -11,7 +13,7 @@ from ultralytics import YOLO
 
 CONFIDENCE = 0.4
 
-weights_path = '/home/foscar/Desktop/Wooin/Simulator_2025/src/camera/models/1027_40epoch.pt'
+weights_path = os.path.join(rospkg.RosPack().get_path('camera'), 'models', '1027_40epoch.pt')
 model = YOLO(weights_path)
 
 # Force CPU mode to avoid CUDA compatibility issues

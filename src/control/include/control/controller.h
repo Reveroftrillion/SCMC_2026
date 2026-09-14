@@ -131,6 +131,7 @@ private:
     double target_velocity_, nearest_dyna_obs_;
     double accel_, brake_, steering_;
     double vehicle_yaw_;  // Current vehicle yaw from /vehicle_status
+    double max_steering_deg_ = 40.0;
     double lanenet_angle_;  // Steering angle from /lanenet/angle
     bool lanenet_angle_received_;  // Flag to check if lanenet angle is valid
 

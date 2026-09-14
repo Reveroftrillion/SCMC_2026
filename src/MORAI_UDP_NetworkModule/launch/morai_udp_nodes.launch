@@ -1,5 +1,41 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="morai_udp" type="competition_info_node.py" name="vehicle_status_publisher" output="screen"/>
-    <node pkg="morai_udp" type="morai_cmd_controller_node.py" name="morai_cmd_controller" output="screen"/>
+  <arg name="morai_ip" />
+  <arg name="bind_ip" default="0.0.0.0" />
+  <arg name="network_config" default="$(find morai_udp)/config/network.yaml" />
+  <arg name="enable_control" default="false" />
+  <arg name="status_layout_confirmed" default="false" />
+  <arg name="enable_gps" default="true" />
+  <arg name="enable_imu" default="true" />
+  <arg name="enable_cameras" default="true" />
+  <rosparam command="load" file="$(arg network_config)" />
+  <node pkg="morai_udp" type="competition_info_node.py" name="vehicle_status_publisher" output="screen" required="true">
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+    <param name="layout_confirmed" value="$(arg status_layout_confirmed)" />
+  </node>
+  <node pkg="morai_udp" type="morai_cmd_controller_node.py" name="morai_cmd_controller" output="screen" required="true">
+    <param name="morai_ip" value="$(arg morai_ip)" />
+    <param name="enabled" value="$(arg enable_control)" />
+  </node>
+  <node if="$(arg enable_gps)" pkg="morai_udp" type="sensor_udp_node.py" name="gps_udp" output="screen" required="true">
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <node if="$(arg enable_imu)" pkg="morai_udp" type="sensor_udp_node.py" name="imu_udp" output="screen" required="true">
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <node if="$(arg enable_cameras)" pkg="morai_udp" type="sensor_udp_node.py" name="camera_front_udp" output="screen" required="true">
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <node if="$(arg enable_cameras)" pkg="morai_udp" type="sensor_udp_node.py" name="camera_left_udp" output="screen" required="true">
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <node if="$(arg enable_cameras)" pkg="morai_udp" type="sensor_udp_node.py" name="camera_right_udp" output="screen" required="true">
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
 </launch>

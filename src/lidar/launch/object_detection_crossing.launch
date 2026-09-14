@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch"/>
+    <arg name="device_ip" default="" />
+    <arg name="port" default="2368" />
+    <arg name="rpm" default="600" />
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+        <arg name="device_ip" value="$(arg device_ip)" />
+        <arg name="port" value="$(arg port)" />
+        <arg name="rpm" value="$(arg rpm)" />
+    </include>
 	<!-- <node pkg="lidar_object_detection" type="lidar_object_detection_crossing_node" output="screen"  name="object_detection_crossing"/> -->
     <node pkg="lidar_object_detection" type="lidar_object_detection_static_node" output="screen"  name="object_detection_static"/>
     <node pkg="lidar_object_detection" type="lidar_object_detection_car_node" output="screen"  name="object_detection_car"/>
