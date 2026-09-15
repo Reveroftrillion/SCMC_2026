@@ -1,139 +1,112 @@
-SCMC 2026 기본 주행 테스트
+# SCMC 2026
 
-현재 버전은 2026 코스의 global path를 이용해 기본 경로추종 주행을 확인하기 위한 버전입니다.
+2026 대학생 창작 모빌리티 경진대회 기본 주행 테스트용 ROS1 코드입니다.
 
-현재 테스트에서는 정적 장애물 회피, 합류 구간, 신호등 미션 로직을 비활성화한 상태입니다.
-planner.launch에서는 PathPlanner만 실행합니다.
+현재 단계에서는 **2026 global path 기반 한 바퀴 경로추종**을 우선 확인합니다.  
+정적 장애물 회피, 합류 구간, 신호등 미션 로직은 현재 테스트에서 비활성화되어 있습니다.
 
-1. 현재 네트워크 구성
+---
 
-PC IP
+## 현재 테스트 상태
 
-MORAI 실행 PC
+| 항목 | 상태 |
+| --- | --- |
+| MORAI ↔ ROS UDP 통신 | ✅ 확인 |
+| GPS 수신 | ✅ 확인 |
+| IMU 수신 | ✅ 확인 |
+| Ego Vehicle Status 수신 | ✅ 확인 |
+| Global Path 로딩 | ✅ 확인 |
+| Control Path 생성 | ✅ 확인 |
+| Controller `/control_cmd` 생성 | ✅ 확인 |
+| MORAI 제어 명령 송신 | ✅ 연결 |
+| 정적 장애물 회피 | ⏸ 비활성화 |
+| 합류 구간 로직 | ⏸ 비활성화 |
+| 신호등 미션 | ⏸ 비활성화 |
 
-192.168.0.14
+---
 
-ROS 알고리즘 PC
+## 목차
 
-192.168.0.8
+- [네트워크 구성](#네트워크-구성)
+- [처음 실행하는 PC](#처음-실행하는-pc)
+- [기본 주행 실행](#기본-주행-실행)
+- [실제 MORAI 제어 시작](#실제-morai-제어-시작)
+- [전체 데이터 흐름](#전체-데이터-흐름)
+- [문제 발생 시 확인](#문제-발생-시-확인)
+- [현재 비활성화된 기능](#현재-비활성화된-기능)
 
-IP가 변경된 경우 MORAI Network Setting과 실행 명령의 IP를 모두 수정해야 합니다.
+---
 
-주요 UDP 설정
+# 네트워크 구성
 
-항목
+## PC IP
 
-방향
+| 장치 | IP |
+| --- | --- |
+| MORAI 실행 PC | `192.168.0.14` |
+| ROS 알고리즘 PC | `192.168.0.8` |
 
-MORAI Host Port
+> IP가 변경되면 MORAI Network Setting과 실행 명령의 IP를 모두 수정해야 합니다.
 
-ROS PC Destination Port
+## UDP Port
 
-Ego Ctrl Cmd
+| 항목 | 방향 | MORAI Host Port | ROS PC Destination Port |
+| --- | --- | ---: | ---: |
+| Ego Ctrl Cmd | User → Sim | `9093` | `9094` |
+| Collision Data | Sim → User | `9091` | `9092` |
+| Competition Vehicle Status | Sim → User | `9088` | `9099` |
+| Ego Vehicle Status | Sim → User | `9100` | `9111` |
+| Object Info | Sim → User | `7605` | `7505` |
+| GPS | Sim → User | `1110` | `1111` |
+| IMU | Sim → User | `1113` | `1112` |
 
-User -> Sim
+기본 주행 시 MORAI에서 다음 항목을 Connect합니다.
 
-9093
+- Ego Ctrl Cmd
+- Ego Vehicle Status
+- GPS
+- IMU
 
-9094
+MORAI 시뮬레이션은 **Play 상태**로 둡니다.
 
-Collision Data
+---
 
-Sim -> User
+# 처음 실행하는 PC
 
-9091
-
-9092
-
-Competition Vehicle Status
-
-Sim -> User
-
-9088
-
-9099
-
-Ego Vehicle Status
-
-Sim -> User
-
-9100
-
-9111
-
-Object Info
-
-Sim -> User
-
-7605
-
-7505
-
-GPS
-
-Sim -> User
-
-1110
-
-1111
-
-IMU
-
-Sim -> User
-
-1113
-
-1112
-
-기본 주행에 필요한 것은 다음입니다.
-
-Ego Ctrl Cmd
-Ego Vehicle Status
-GPS
-IMU
-
-MORAI에서 각 항목을 Connect하고 시뮬레이션을 Play 상태로 둡니다.
-
-2. 처음 실행하는 PC에서만
-
-프로젝트 폴더로 이동합니다.
-
+```bash
 cd ~/바탕화면/Simulator_2025-main
-
-ROS 환경을 불러옵니다.
-
 source /opt/ros/noetic/setup.bash
-
-devel 폴더가 없다면 빌드합니다.
-
 catkin_make
-
-빌드가 끝난 뒤:
-
 source devel/setup.bash
+```
 
-정상적으로 패키지가 잡히는지 확인합니다.
+패키지 인식 확인:
 
+```bash
 rospack find morai_udp
 rospack find planning
 rospack find control
 rospack find gps
+```
 
-3. 주행 실행 순서
+---
 
-아래 명령은 각각 별도의 터미널에서 실행합니다.
+# 기본 주행 실행
 
-터미널 1: ROS Master
+아래 명령은 **각각 별도의 터미널**에서 실행합니다.
 
+## Terminal 1. ROS Master
+
+```bash
 source /opt/ros/noetic/setup.bash
 roscore
+```
 
-이 터미널은 계속 켜둡니다.
+## Terminal 2. MORAI UDP
 
-터미널 2: MORAI UDP 통신
+처음에는 실제 제어 송신을 끈 상태로 시작합니다.
 
-처음에는 차량 제어를 끈 상태로 실행합니다.
-
+```bash
 cd ~/바탕화면/Simulator_2025-main
 source /opt/ros/noetic/setup.bash
 source devel/setup.bash
@@ -144,104 +117,93 @@ roslaunch morai_udp morai_udp_nodes.launch \
   enable_control:=false \
   status_layout_confirmed:=true \
   enable_cameras:=false
+```
 
-정상적으로 실행되면 GPS, IMU, Vehicle Status 관련 노드가 올라옵니다.
+정상 수신 확인:
 
-확인은 다른 터미널에서:
-
-source /opt/ros/noetic/setup.bash
-source ~/바탕화면/Simulator_2025-main/devel/setup.bash
-
+```bash
 rostopic hz /gps
 rostopic hz /imu
 rostopic hz /vehicle_status
+```
 
-세 토픽 모두 데이터가 들어오는 것을 확인합니다.
+## Terminal 3. GPS → UTM
 
-터미널 3: GPS -> UTM 위치 변환
-
+```bash
 cd ~/바탕화면/Simulator_2025-main
 source /opt/ros/noetic/setup.bash
 source devel/setup.bash
-
 roslaunch gps gps_to_utm.launch
-
-정상 동작 확인:
-
-rostopic echo -n 1 /current_pose
-
-position.x, position.y, orientation 값이 나오면 정상입니다.
-
-터미널 4: Global Path 및 Control Path 생성
-
-cd ~/바탕화면/Simulator_2025-main
-source /opt/ros/noetic/setup.bash
-source devel/setup.bash
-
-roslaunch planning planner.launch
-
-현재 planner.launch는 기본 경로추종 테스트를 위해 PathPlanner만 실행합니다.
+```
 
 확인:
 
-rostopic hz /global_path
+```bash
+rostopic echo -n 1 /current_pose
+```
 
-그리고:
+## Terminal 4. Path Planner
 
-rostopic hz /control_path
-
-둘 다 주기가 출력되면 정상입니다.
-
-현재 global path 파일은:
-
-src/planning/paths/zzinmak.txt
-
-입니다.
-
-현재 2026 경로의 waypoint 간격에 맞춰:
-
-PATH_STEP = 0.5
-
-로 설정되어 있습니다.
-
-터미널 5: Controller 실행
-
+```bash
 cd ~/바탕화면/Simulator_2025-main
 source /opt/ros/noetic/setup.bash
 source devel/setup.bash
+roslaunch planning planner.launch
+```
 
+확인:
+
+```bash
+rostopic hz /global_path
+rostopic hz /control_path
+```
+
+현재 global path:
+
+```text
+src/planning/paths/zzinmak.txt
+```
+
+현재 waypoint 간격:
+
+```python
+PATH_STEP = 0.5
+```
+
+## Terminal 5. Controller
+
+```bash
+cd ~/바탕화면/Simulator_2025-main
+source /opt/ros/noetic/setup.bash
+source devel/setup.bash
 roslaunch control control.launch
+```
 
-제어 명령이 만들어지는지 확인합니다.
+확인:
 
+```bash
 rostopic hz /control_cmd
-
-또는:
-
 rostopic echo /control_cmd
+```
 
-다음 값이 계속 출력되면 정상입니다.
+---
 
-accel
-brake
-steering
+# 실제 MORAI 제어 시작
 
-4. 실제 MORAI 차량 제어 시작
+먼저 아래 토픽이 모두 정상인지 확인합니다.
 
-아래 항목이 모두 정상인지 먼저 확인합니다.
-
+```bash
 rostopic hz /gps
 rostopic hz /vehicle_status
 rostopic hz /current_pose
+rostopic hz /global_path
 rostopic hz /control_path
 rostopic hz /control_cmd
+```
 
-모두 정상일 때만 실제 제어 송신을 시작합니다.
+모두 정상일 때 Terminal 2의 UDP launch를 `Ctrl+C`로 종료한 뒤 다시 실행합니다.
 
-터미널 2에서 실행 중인 morai_udp_nodes.launch를 Ctrl+C로 종료합니다.
-
-그 다음 다시 실행합니다.
-
+```bash
 cd ~/바탕화면/Simulator_2025-main
 source /opt/ros/noetic/setup.bash
 source devel/setup.bash
@@ -252,35 +214,31 @@ roslaunch morai_udp morai_udp_nodes.launch \
   enable_control:=true \
   status_layout_confirmed:=true \
   enable_cameras:=false
+```
 
-다음 로그가 보이면 제어 송신이 활성화된 상태입니다.
+정상 로그:
 
+```text
 UDP control enabled=True, destination=192.168.0.14:9093
+```
 
-이후 MORAI 차량이 /control_cmd에 따라 움직이기 시작합니다.
+## UDP 송신 확인
 
-5. 실제 UDP 제어 송신 확인
-
-차가 움직이지 않는 경우 Ubuntu에서 다음 명령으로 확인합니다.
-
+```bash
 sudo tcpdump -i enp12s0 -nn 'udp dst port 9093'
+```
 
-정상이라면 다음 형태의 패킷이 계속 출력됩니다.
+정상 예시:
 
+```text
 192.168.0.8.9094 > 192.168.0.14.9093
+```
 
-즉:
+---
 
-ROS PC 192.168.0.8:9094
-        ->
-MORAI PC 192.168.0.14:9093
+# 전체 데이터 흐름
 
-형태로 전송되어야 합니다.
-
-6. 전체 데이터 흐름
-
-현재 기본 주행의 전체 구조는 다음과 같습니다.
-
+```text
 MORAI GPS
     |
     v
@@ -292,122 +250,151 @@ MORAI Ego Vehicle Status
 /vehicle_status
 
 /gps + /vehicle_status
-    |
-    v
-gps_to_utm
-    |
-    v
-/current_pose
+        |
+        v
+   gps_to_utm
+        |
+        v
+ /current_pose
 
 zzinmak.txt
     |
     v
 /global_path
+    |
+    +----------------+
+                     |
+/current_pose -------+
+                     |
+                     v
+                PathPlanner
+                     |
+                     v
+              /control_path
+                     |
+                     v
+                Controller
+                     |
+                     v
+               /control_cmd
+                     |
+                     v
+         morai_cmd_controller
+                     |
+                     v
+          UDP 9094 → 9093
+                     |
+                     v
+                MORAI 차량
+```
 
-/current_pose + /global_path
-    |
-    v
-PathPlanner
-    |
-    v
-/control_path
+---
 
-/control_path + /current_pose + /vehicle_status
-    |
-    v
-Controller
-    |
-    v
-/control_cmd
+# 문제 발생 시 확인
 
-/control_cmd
-    |
-    v
-morai_cmd_controller
-    |
-    v
-UDP 9094 -> 9093
-    |
-    v
-MORAI 차량
+1. GPS
 
-7. 문제 발생 시 확인 순서
-
-차량이 움직이지 않으면 아래 순서대로 확인합니다.
-
+```bash
 rostopic hz /gps
+```
 
-↓
+2. Vehicle Status
 
+```bash
 rostopic hz /vehicle_status
+```
 
-↓
+3. Current Pose
 
+```bash
 rostopic hz /current_pose
+```
 
-↓
+4. Global Path
 
+```bash
 rostopic hz /global_path
+```
 
-↓
+5. Control Path
 
+```bash
 rostopic hz /control_path
+```
 
-↓
+6. Control Command
 
+```bash
 rostopic hz /control_cmd
+```
 
-↓
+7. 실제 UDP 송신
 
+```bash
 sudo tcpdump -i enp12s0 -nn 'udp dst port 9093'
+```
 
-어느 단계부터 데이터가 나오지 않는지 확인하면 문제 위치를 찾을 수 있습니다.
+어느 단계부터 데이터가 끊기는지 확인하면 문제 위치를 좁힐 수 있습니다.
 
-8. 현재 비활성화된 기능
+---
 
-현재 버전은 기본 경로추종 확인용입니다.
+# 현재 비활성화된 기능
 
-현재 비활성화된 기능:
+현재 버전은 **한 바퀴 기본 경로추종 확인용**입니다.
 
-정적 장애물 회피
-합류 구간 제어
-신호등 정지 로직
-VizPlanner
+- 정적 장애물 회피
+- 합류 구간 제어
+- 신호등 정지 로직
+- VizPlanner
 
-StaticObstacleAvoidancePlanner는 현재 2026 global path에서 CubicSpline2D 생성 시 다음 오류가 발생하므로 기본 주행 테스트에서는 실행하지 않습니다.
+`StaticObstacleAvoidancePlanner`는 2026 global path에서 현재 다음 오류가 발생합니다.
 
-x must be strictly increasing sequence
+```text
+CubicSpline2D 생성 실패: x must be strictly increasing sequence.
+```
 
-따라서 현재 planner.launch에서는 PathPlanner만 실행합니다.
+따라서 현재 `planner.launch`에서는 `StaticObstacleAvoidancePlanner`를 실행하지 않습니다.
 
-9. 중복 노드 실행 주의
+---
 
-morai_cmd_controller를 별도의 rosrun으로 중복 실행하지 마십시오.
+# 주의사항
 
-morai_udp_nodes.launch에서 이미 같은 이름의 노드를 실행하므로 중복 실행하면:
+## morai_cmd_controller 중복 실행 금지
 
+`morai_udp_nodes.launch` 내부에서 이미 `morai_cmd_controller`가 실행됩니다.
+
+별도의 `rosrun`으로 동일 노드를 다시 실행하면:
+
+```text
 new node registered with same name
+```
 
-오류가 발생하고 UDP launch 전체가 종료될 수 있습니다.
+오류가 발생할 수 있습니다.
 
-10. 주행 중 즉시 정지
+## 주행 중 즉시 정지
 
-문제가 발생하면 제어를 송신 중인 morai_udp_nodes.launch 터미널에서:
+문제가 발생하면 UDP launch 터미널에서:
 
+```text
 Ctrl+C
+```
 
-를 누릅니다.
+를 누르고 필요하면 MORAI 시뮬레이션도 Pause 합니다.
 
-필요하면 MORAI 시뮬레이션도 즉시 Pause 합니다.
+---
 
-11. 현재 테스트 목표
+# 현재 목표
 
-현재 단계의 목표는 다음과 같습니다.
-
+```text
 2026 global path 로딩
--> 현재 위치 기반 control path 생성
--> controller 제어 명령 생성
--> MORAI UDP 송신
--> 코스 한 바퀴 기본 경로추종
+        ↓
+현재 위치 기반 control path 생성
+        ↓
+controller 제어 명령 생성
+        ↓
+MORAI UDP 송신
+        ↓
+코스 한 바퀴 기본 경로추종
+```
 
-한 바퀴 기본 주행을 먼저 안정화한 뒤 장애물, 신호등, 합류 구간 등의 미션 로직을 새 2026 waypoint index에 맞춰 다시 적용합니다.
+기본 주행을 안정화한 뒤 장애물, 신호등, 합류 구간 등의 미션 로직을 새 2026 waypoint index에 맞춰 적용합니다.
