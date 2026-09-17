@@ -496,7 +496,7 @@ geometry_msgs::Pose Controller::calcRelativeCoordinateAboutCurr(const geometry_m
 
 void Controller::calcSteer(const nav_msgs::Path::ConstPtr& path){
     // Lookahead distance: proportional to velocity (5~15m for 30~80 km/h)
-    double lookahead_distance = std::max(1.8, target_velocity_ / 3.6 * 0.6);
+    double lookahead_distance = std::max(1.8, target_velocity_ / 3.6 * 0.9);
 
     // Find target point at lookahead distance
     const geometry_msgs::Pose& curr = current_pose_->pose;
@@ -556,18 +556,29 @@ void Controller::calcSteer(const nav_msgs::Path::ConstPtr& path){
     double abs_heading_error = std::abs(heading_error);
     double K_HEADING;
 
-    if (abs_heading_error < 0.1) {
-        K_HEADING = 0.2 * (abs_heading_error / 0.1); // 0 ~ 0.5
-    } else if (abs_heading_error < 0.15) {
-        K_HEADING = 0.4 * (abs_heading_error / 0.15); // Proportional gain scaled by π
-    } else if (abs_heading_error < 0.2) {
-        K_HEADING = 0.6 * (abs_heading_error / 0.2); // Proportional gain scaled by π
-    } else if (abs_heading_error < 0.3) {
-        K_HEADING = 0.8 * (abs_heading_error / 0.3); // Proportional gain scaled by π
-    } else if (abs_heading_error < 0.4) {
-        K_HEADING = 1.0 * (abs_heading_error / 0.4); // Cap gain at higher errors
-    } else {
-        K_HEADING = 5.0; // Cap gain at higher errors
+    if (abs_heading_error < 0.03) {
+        K_HEADING = 0.03;
+    }
+    else if (abs_heading_error < 0.06) {
+        K_HEADING = 0.05;
+    }
+    else if (abs_heading_error < 0.10) {
+        K_HEADING = 0.07;
+    }
+    else if (abs_heading_error < 0.15) {
+        K_HEADING = 0.09;
+    }
+    else if (abs_heading_error < 0.20) {
+        K_HEADING = 0.11;
+    }
+    else if (abs_heading_error < 0.30) {
+        K_HEADING = 0.13;
+    }
+    else if (abs_heading_error < 0.45) {
+        K_HEADING = 0.15;
+    }
+    else {
+        K_HEADING = 0.18;
     }
 
 
@@ -600,8 +611,17 @@ void Controller::calcSteer(const nav_msgs::Path::ConstPtr& path){
     // Path steering is radians; EgoCtrlCmd expects a normalized wheel command.
     // Lane PID already supplies a normalized command and bypasses calcSteer().
     steering_ /= max_steering_deg_ * M_PI / 180.0;
-    steering_ = std::max(-1.0, std::min(1.0, steering_));
-}
+    steering_ = std::max(-0.55, std::min(0.55, steering_));
+
+    static double prev_steering = 0.0;
+    constexpr double ALPHA = 0.25;
+
+    steering_ =
+        ALPHA * steering_
+        + (1.0 - ALPHA) * prev_steering;
+
+    prev_steering = steering_;
+    }
 
 void Controller::controlPublish(){
 
