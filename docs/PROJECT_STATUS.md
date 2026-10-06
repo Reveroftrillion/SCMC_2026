@@ -7,7 +7,7 @@
 
 | 모듈 | 상태 | 근거와 남은 일 |
 |---|---|---|
-| Global Planning | 🟡 구현됨, MORAI 검증 필요 | 고정 경로/부분 경로 구현. README 한 바퀴 보고 있음. 현재 경로 중복/곡률과 index/종료 재검증 필요. 이번에 원본 경로/Global node는 변경하지 않음 |
+| Global Planning | 🟡 구현됨, MORAI 검증 필요 | 고정 경로/부분 경로 구현. 기존 README의 한 바퀴 주행 보고는 최신 branch 검증을 대체하지 않음. 현재 경로 중복/곡률과 index/종료 재검증 필요. 원본 경로/Global node 미변경 |
 | Local Planning | 🟡 구현됨, MORAI 검증 필요 | ROS 없는 core, reference 품질 방어, 접근 속도 제한, 기억/복귀/HOLD 구현. Python 합성 50개 통과; 현재 C++/ROS/MORAI는 미실행 |
 | LiDAR | 🟡 구현됨, MORAI 검증 필요 | static DBSCAN 헤더/빈 scan/overflow 보호 구현. ROI·자체영역·지면 높이·TF 실측 필요. car 검출기는 stale 배열/빈 scan/경계 문제 잔존; 이번 수정 범위 밖 |
 | Control | 🟡 구현됨, MORAI 검증 필요 | 기본 Pure Pursuit/P 속도 제어 유지. LocalPlan validator/stop/접근 cap만 수정. C++ 계약 검사와 ROS smoke test 준비; 현재 환경에서 실행하지 못함 |
@@ -17,6 +17,8 @@
 | Dynamic Obstacle | 🟠 일부 구현 | 기존 중심 경로 차단 정지/10km/h 진행 정책 유지. zones 미설정, tracking/속도 예측 없음 |
 | Merging | 🟠 일부 구현 | 구형 함수 존재하나 in_merging_zone=false. 시간 경과 후 장애물 무시 분기 재설계 필요. 코드 미변경 |
 | Local 수학/상태/adapter 합성 검사 | ✅ 구현 + 검증 완료 | Windows Python에서 50개 통과. ROS transport·TF 보간·차량 운동을 검증한 것은 아님 |
+| Local 오프라인 개발 도구 | ✅ 구현 + 검증 완료 | preflight/path 분석/scenario/sweep 및 Python 회귀 16개 통과. 기본 scenario 12개/18frame, sweep 72행 실행. 실제 주행 검증과 별개 |
+| MORAI 진단 수집기 | 🟡 구현됨, MORAI 검증 필요 | Bash 수집기와 missing/fake ROS 테스트 구현. 현재 Windows Bash 실행 불가; POSIX 검사 2개 skip |
 | 동적 객체 tracking/예측 | ❌ 미구현 | 현재 실제 planner에는 객체 속도·미래 위치 모델 없음 |
 | GPS 음영 추측항법 | ❌ 미구현 | IMU는 수신하나 현재 위치 추정에 미사용 |
 | 전체 미션 상태 조정 | ❌ 미구현 | 신호/합류/음영/Local 상태와 정지 원인의 통합 manager 없음 |
@@ -35,6 +37,7 @@
 ## 검증 결과와 한계
 
 - `python -B -m unittest discover -s src/planning/tests -v`: 50개 통과.
+- 도구 추가 후 같은 명령: 68개 중 66개 통과, POSIX Bash collector 2개 skip. 기존 50개와 신규 Python 도구 16개 포함.
 - `python -B -m unittest discover -s src/MORAI_UDP_NetworkModule/tests -v`: 기존 UDP 회귀 13개 통과.
 - 변경 Python 파일의 Python 3.8 문법, launch XML, `git diff --check` 확인 완료.
 - 새 C++ standalone validator 테스트: Ubuntu 실행용, 현재 컴파일러 없어 미실행.
@@ -54,3 +57,5 @@ GPS 음영에서는 기존 차선 분기가 접근 cap을 적용하지 않는 �
 신호등/합류/GPS 음영 코드를 이번 Local 개발에서 통합 수정하지 않았다.
 구간/센서값을 임의로 채우지 않았으며 commit/push도 수행하지 않았다.
 빌드/launch/토픽/예상 로그는 [LOCAL_PLANNING.md](LOCAL_PLANNING.md)를 따른다.
+오프라인 검사와 팀원 진단 수집은 [LOCAL_PLANNER_OFFLINE_TOOLS.md](LOCAL_PLANNER_OFFLINE_TOOLS.md),
+실험 결과는 [LOCAL_PLANNER_TEST_RESULTS.md](LOCAL_PLANNER_TEST_RESULTS.md)에 기록한다.

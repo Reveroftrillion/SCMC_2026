@@ -1,5 +1,11 @@
 # LiDAR local planning / RViz
 
+ROS/MORAI 없이 실행하는 설정 검사·경로 분석·합성 scenario·parameter sweep과 팀원용 진단 수집은
+[LOCAL_PLANNER_OFFLINE_TOOLS.md](LOCAL_PLANNER_OFFLINE_TOOLS.md)에 정리했다.
+실측값을 채울 시험 템플릿은 `src/planning/config/local_planner_test.yaml`,
+Phase 0~10 결과 기록은 [LOCAL_PLANNER_TEST_RESULTS.md](LOCAL_PLANNER_TEST_RESULTS.md)를 사용한다.
+이번 도구 추가에서는 실행 Planner/Controller와 신호등·합류·GPS 음영 코드를 수정하지 않았다.
+
 ## 기존 코드 조사와 재사용
 
 | 기능 | 기존 파일 / 현재 연결 |
@@ -192,6 +198,8 @@ ROS 통합 테스트는 임시 포트의 별도 master를 사용하고 실제 Co
 이전 문서에는 catkin 빌드·수학 15개·ROS 합성 16개 통과가 보고되어 있었다.
 현재 feat/local-planner 변경 후 Windows Python에서 ROS 없이 수학/상태/실제 node adapter 합성 테스트
 50개를 통과했다. adapter 테스트는 메시지·시계·TF API만 대체하며 ROS transport나 TF 보간을 검증하지 않는다.
+오프라인 도구 회귀 검사를 추가한 현재 전체 suite는 68개 중 66개 통과,
+POSIX Bash 수집기 실행 검사 2개 skip이다. 기존 core/adapter 50개는 그대로 포함한다.
 현재 C++ 변경의 컴파일, 확장 ROS smoke test, MORAI 주행과 RViz 화면 정합은 이 환경에서 재검증하지 못했다.
 이전 ROS 통과 보고를 현재 변경의 검증 결과로 해석하지 않는다.
 

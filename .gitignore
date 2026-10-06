@@ -30,3 +30,7 @@ models/
 # Keep traffic-light YOLO weight
 !src/camera/models/
 !src/camera/models/1027_40epoch.pt
+
+# Generated Local Planner reports and experiment diagnostics
+reports/local_planner/
+debug_logs/

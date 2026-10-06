@@ -1,682 +1,349 @@
 # SCMC 2026
 
-2026 대학생 창작 모빌리티 경진대회 AI융합자율주행 부문용 ROS1 자율주행 코드입니다.
-
-현재 저장소는 기존 **Global Path 기반 기본 경로추종**에 더해 **LiDAR 기반 Local Planning**, **RViz 시각화**, **YOLO 신호등 인식 모델**, **LocalPlan 통합 메시지**, **MORAI UDP 제어 연동**을 포함합니다.
-
-> ROS Noetic 기준으로 개발하고 있습니다.  
-> 실제 주행 전 MORAI Network Setting, 센서 포트, 차량/센서 파라미터와 미션 구간을 반드시 확인해야 합니다.
-
----
-
-## 최근 주요 변경사항
-
-### 1. Global Path 파일 정리
-
-기존 경로 파일명 `zzinmak.txt`를 다음과 같이 변경했습니다.
-
-```text
-src/planning/paths/global_path.txt
-```
-
-`GlobalPathPlanner.py`도 `global_path.txt`를 직접 읽도록 수정했습니다.
-
-Global Path는 각 waypoint에 대해 다음 정보를 계산합니다.
-
-- 현재 위치에 가까운 waypoint 탐색
-- Path yaw 계산
-- 곡률 계산
-- 현재 위치 기준 약 20 m 전방 Control Path 생성
-
----
-
-### 2. LiDAR 기반 Local Planner 추가
-
-기존 `/control_path`를 따라가는 기본 주행은 유지하면서, 설정된 장애물 구간에서만 Local Planner가 개입하도록 구성했습니다.
-
-추가된 주요 파일:
-
-```text
-docs/LOCAL_PLANNING.md
-src/planning/config/local_planner.yaml
-src/planning/launch/local_planner.launch
-src/planning/scripts/local_planning_core.py
-src/planning/tests/
-src/simul_msgs/msg/LocalPlan.msg
-```
-
-Local Planner의 기본 상태는 다음과 같습니다.
-
-```text
-NORMAL
-  ↓ 장애물 구간 진입
-STATIC_OBSTACLE
-  ↓ 회피 완료
-RETURN_TO_GLOBAL
-  ↓ 중심 경로 복귀
-NORMAL
-```
-
-입력 데이터가 유효하지 않거나 경로 생성이 불가능한 경우에는 `HOLD` 상태로 전환하여 정지합니다.
-
-동적 장애물 구간용 `DYNAMIC_OBSTACLE` 상태도 분리되어 있으나, 현재 기본 정책은 정적 장애물처럼 좌우 회피하는 방식이 아니라 `stop_on_obstacle` 기반의 보수적인 정책입니다.
-
----
-
-### 3. Local Planner 알고리즘
-
-Local Planner는 Global Path 일부를 기준 경로로 사용하고 Frenet 좌표계에서 후보 경로를 생성합니다.
-
-주요 흐름:
-
-```text
-Global Path
-    ↓
-현재 waypoint 주변 reference path 추출
-    ↓
-Cartesian → Frenet 변환
-    ↓
-여러 lateral offset 후보 생성
-    ↓
-5차 다항식 기반 차선 변경 / 복귀 경로 생성
-    ↓
-LiDAR 장애물과 충돌 검사
-    ↓
-도로 폭 / 곡률 / 조향 변화율 검사
-    ↓
-후보 비용 계산
-    ↓
-최적 Local Path 선택
-    ↓
-/local_plan 발행
-```
-
-후보 경로 비용은 다음 요소를 사용합니다.
-
-- 장애물과의 거리
-- 횡방향 offset
-- 곡률
-- 조향 변화량
-- 이전 선택 경로와의 연속성
-- Global Path 복귀 비용
-- 좌우 경로 변경 hysteresis
-
-현재 방식은 **공간상의 Frenet 후보 경로 생성**이며, 시간 기반 동적 장애물 예측이나 최적 속도 궤적 생성은 아직 포함하지 않습니다.
-
-자세한 내용은 다음 문서를 참고합니다.
-
-```text
-docs/LOCAL_PLANNING.md
-```
-
----
-
-### 4. LocalPlan 통합 메시지
-
-Local Planner와 Controller 사이의 상태를 하나의 메시지로 전달하기 위해 다음 메시지를 추가했습니다.
-
-```text
-src/simul_msgs/msg/LocalPlan.msg
-```
-
-`/local_plan`에는 다음 정보가 포함됩니다.
-
-- Local Path
-- Local Planner 활성 여부
-- 정지 요청
-- 속도 제한
-- Planner 상태
-
-기존 `/local_path`, `/local_path_done`도 유지하지만, 새로운 Controller 모드에서는 `/local_plan`을 기준으로 Local Planner 상태를 처리합니다.
-
----
-
-### 5. Controller 연동
-
-Controller는 기본적으로 기존 `/control_path`를 사용합니다.
-
-```text
-/control_path
-    ↓
-Pure Pursuit
-    +
-Adaptive Heading Correction
-    ↓
-Steering Command
-```
-
-Local Planner를 활성화한 경우 유효한 `/local_plan`이 들어오면 해당 Local Path를 사용합니다.
-
-```text
-/control_path
-      ↓
-  Controller
-      ↑
-/local_plan
-```
-
-현재 Controller에는 다음 기능이 포함되어 있습니다.
-
-- Pure Pursuit 기반 횡제어
-- Adaptive Heading Error Gain
-- Steering Saturation
-- Low-pass Filter
-- 곡률 기반 기본 속도 제어
-- Local Planner speed limit 적용
-- Local Planner stale/invalid plan fail-safe stop
-- GPS 음영 구간 LaneNet 제어
-- 기존 신호등 정지 로직
-- 합류 구간 로직
-
-Local Planner는 기본값이 비활성화되어 있습니다.
-
-```text
-enable_local_planner:=false
-```
-
----
-
-### 6. IONIQ 5 기준 조향 제어 튜닝
-
-기본 차량은 MORAI IONIQ 5를 기준으로 사용하고 있습니다.
-
-현재 Controller 주요 파라미터:
-
-```text
-Wheelbase = 3.0 m
-```
-
-조향은 Pure Pursuit와 Heading Correction을 결합한 뒤 normalized steering command로 변환합니다.
-
-Heading Error의 크기에 따라 correction gain을 다르게 적용하며, 최종 steering에는 saturation과 low-pass filter를 적용하여 좌우 oscillation을 줄입니다.
-
----
-
-### 7. LiDAR / RViz 연동 추가
-
-Local Planning 확인을 위해 LiDAR 및 RViz 관련 launch와 설정을 추가했습니다.
-
-```text
-src/lidar/launch/lidar_rviz.launch
-src/lidar/rviz/lidar_view.rviz
-src/planning/rviz/local_planning.rviz
-```
-
-Local Planner 활성 시 다음 정보를 RViz에서 확인할 수 있습니다.
-
-| 항목 | 토픽 |
-| --- | --- |
-| Global Path | `/viz_planner/viz_global_path` |
-| Control Path | `/viz_planner/viz_control_path` |
-| Local Path | `/viz_planner/viz_local_path` |
-| Local Planner 후보 | `/static_obstacle_avoidance_planner/candidates` |
-| 장애물 | `/static_obstacle_avoidance_planner/obstacles` |
-| LiDAR Bounding Box | `/bounding_box_static` |
-| Raw LiDAR | `/velodyne_points` |
-| Cluster PointCloud | `/cluster_static` |
-| 현재 차량 위치 | `/viz_planner/viz_current_pose` |
-| Planner State | `/static_obstacle_avoidance_planner/state_marker` |
-
----
-
-### 8. YOLO 신호등 모델 포함
-
-신호등 인식을 위한 Ultralytics YOLO custom weight를 저장소에 포함했습니다.
-
-```text
-src/camera/models/1027_40epoch.pt
-```
-
-YOLO node:
-
-```text
-src/camera/scripts/traffic_yolo.py
-```
-
-현재 설정:
-
-```text
-Confidence Threshold = 0.4
-Inference Device = CPU
-```
-
-입력:
-
-```text
-/camera/front/image/compressed
-```
-
-`simulator.launch`에서 다음 remap을 통해 YOLO node에 연결합니다.
-
-```text
-/camera/front/image/compressed
-        ↓
-/image_jpeg/compressed
-        ↓
-traffic_yolo.py
-```
-
-출력:
-
-```text
-/traffic_light_status
-/yolo_traffic_light/image_raw
-```
-
-현재 detector는 검출된 객체 중 confidence가 가장 높은 신호등 class를 `/traffic_light_status`로 발행합니다.
-
-> 신호등 AI 인식 자체는 연결되어 있지만, 실제 정지선 및 미션 구간별 신호등 제어는 추가 검증이 필요합니다.
-
----
+2026 대학생 창작 모빌리티 경진대회 AI융합자율주행 부문용 ROS1 프로젝트.
+현재 개발 기준은 `feat/local-planner`이며, Local Planner의 코드·오프라인 검증을 진행했다.
+**실제 MORAI 검증과 main merge 조건은 아직 완료되지 않았다.**
 
 ## 현재 개발 상태
 
-| 항목 | 상태 |
-| --- | --- |
-| MORAI ↔ ROS UDP 통신 | ✅ 확인 |
-| GPS 수신 | ✅ 확인 |
-| IMU 수신 | ✅ 확인 |
-| Ego Vehicle Status 수신 | ✅ 확인 |
-| `global_path.txt` 로딩 | ✅ 확인 |
-| `/control_path` 생성 | ✅ 확인 |
-| 기본 경로추종 | ✅ 한 바퀴 주행 확인 |
-| IONIQ 5 조향 튜닝 | ✅ 적용 |
-| YOLO custom weight | ✅ 저장소 포함 |
-| YOLO 신호등 영상 추론 | ✅ 확인 |
-| Local Planner 코드 | ✅ 추가 |
-| Local Planner ROS 연동 | ✅ 구현 |
-| Local Planner RViz | ✅ 추가 |
-| Local Planner 실제 미션 구간 | ⚙️ 미설정 |
-| 정적 장애물 회피 실주행 | 🧪 검증 필요 |
-| 동적 장애물 정책 | 🧪 개발/검증 중 |
-| 신호등 정지 및 재출발 | 🧪 검증 중 |
-| 합류 구간 | 🧪 재설정 필요 |
+✅ 구현 및 확인 완료 · 🧪 코드 구현 완료, MORAI 검증 필요 · 🟠 일부 구현 · ❌ 미구현 · 📏 실제 측정값 필요
 
----
+✅의 확인 범위는 아래 근거에 한정한다. 자동 테스트 통과를 실제 주행 성공으로 표시하지 않는다.
 
-# 프로젝트 구조
+| 항목 | 상태 | 현재 코드와 확인 범위 |
+|---|---|---|
+| MORAI UDP | 🧪 코드 구현 완료, MORAI 검증 필요 | parser/receiver/송신 watchdog 구현; 기존 UDP 자동 검사 13개 확인. 실제 패킷 규격·네트워크 재검증 필요 |
+| GPS | 🧪 코드 구현 완료, MORAI 검증 필요 | NMEA 수신·WGS84→UTM52N pose 생성. fresh Vehicle Status yaw 필요 |
+| IMU | 🧪 코드 구현 완료, MORAI 검증 필요 | `/imu` 수신 구현; 현재 위치 추정에 융합하지 않음 |
+| Vehicle Status | 🧪 코드 구현 완료, MORAI 검증 필요 | Ego 배치 parser 구현. Competition 배치 호환은 미확정; layout 확인 플래그 필요 |
+| Global Path | 🧪 코드 구현 완료, MORAI 검증 필요 | 고정 파일 로딩·yaw/곡률 계산. 중복/짧은 선분과 reference 위험 잔존 |
+| Control Path | 🧪 코드 구현 완료, MORAI 검증 필요 | 현재 pose 기반 부분 경로 생성; 0.5m 간격 가정으로 40점, 약 20m |
+| Controller | 🧪 코드 구현 완료, MORAI 검증 필요 | Pure Pursuit/heading 보정·속도 제어·LocalPlan 선택/정지 구현; 최신 C++ 빌드와 차량 응답 검증 필요 |
+| YOLO | 🧪 코드 구현 완료, MORAI 검증 필요 | custom weight 포함, CPU/conf=0.4, 최고 confidence class 발행. 대상 신호 선택/미검출 처리 미완성 |
+| Lane Detection | 🟠 일부 구현 | `lanenet.py`의 실제 방식은 HSV/warp/slide-window; 카메라 보정·freshness 검증 필요 |
+| LiDAR Detection | 🧪 코드 구현 완료, MORAI 검증 필요 | static DBSCAN·timestamp/frame·빈 scan·overflow 보호. ROI/TF/검출 품질 실검증 필요 |
+| Local Planner Core | ✅ 구현 및 확인 완료 | ROS 없는 수학·후보/충돌/reference 방어를 합성 입력으로 확인; 차량 운동 검증과 별개 |
+| Local Planner 자동 테스트 | ✅ 구현 및 확인 완료 | **68개 중 66개 PASS, Windows에서 Bash 관련 2개 SKIP** |
+| Local Planner ROS 연동 | 🧪 코드 구현 완료, MORAI 검증 필요 | `/local_plan`과 Controller 연결·ROS smoke 구현. 최신 ROS 실행은 미검증 |
+| Local Planner RViz | 🧪 코드 구현 완료, MORAI 검증 필요 | 경로·후보·장애물·상태 marker 구현; 실제 화면/TF 정합 미검증 |
+| Static Obstacle | 🟠 일부 구현 | 회피/차단/기억/복귀 합성 확인; 실제 zone과 실주행 tuning 필요 |
+| Dynamic Obstacle | 🟠 일부 구현 | 중심 경로 차단 정지/기본 10km/h 진행 정책; tracking/예측 없음 |
+| Traffic Light | 🟠 일부 구현 | YOLO 연결. Controller 정지 이벤트는 sentinel만 남아 있음; 최종 미션 통합은 별도 개발 과제 |
+| GPS Shadow | 🟠 일부 구현 | 차선 조향/45km/h/시간 기반 index 증가; 추측항법·안정적 복구 미완성 |
+| Merging | 🟠 일부 구현 | legacy 함수 존재, `in_merging_zone()`은 false; 시간 후 장애물 무시 로직 재설계 필요 |
+| 전체 코스 통합 | ❌ 미구현 | 현재 branch의 모든 미션을 통합한 주행·검증과 Mission Manager 미완료 |
+| 실제 시험 설정 | 📏 실제 측정값 필요 | zone/센서 TF/current_pose 기준점/차량 치수/도로 폭 미확정 |
+
+## 구조와 데이터 흐름
+
+| 경로 | ROS package / 역할 |
+|---|---|
+| `src/MORAI_UDP_NetworkModule` | `morai_udp`: GPS/IMU/카메라/차량 상태 수신, `/control_cmd` UDP 송신 |
+| `src/MORAI-ROS_morai_msgs`, `src/simul_msgs` | MORAI 및 프로젝트 메시지; `simul_msgs/LocalPlan` 포함 |
+| `src/gps`, `src/camera`, `src/lidar` | `gps`, `camera`, `lidar_object_detection`: 위치·영상·DBSCAN |
+| `src/planning` | `planning`: Global/Control/Local 경로와 RViz |
+| `src/control`, `src/main` | `control`, `main`: 제어와 전체 launch |
+| `scripts/`, `docs/` | ROS 없는 개발 도구, 알고리즘/시험 문서 |
 
 ```text
-SCMC_2026/
-├── docs/
-│   ├── LOCAL_PLANNING.md
-│   └── UDP_CONNECTION.md
-│
-├── src/
-│   ├── camera/
-│   │   ├── models/
-│   │   │   └── 1027_40epoch.pt
-│   │   └── scripts/
-│   │       ├── traffic_yolo.py
-│   │       └── lanenet.py
-│   │
-│   ├── control/
-│   │   ├── launch/
-│   │   └── src/
-│   │       └── controller.cpp
-│   │
-│   ├── gps/
-│   │
-│   ├── lidar/
-│   │   ├── launch/
-│   │   ├── rviz/
-│   │   └── src/
-│   │
-│   ├── main/
-│   │   └── launch/
-│   │       └── simulator.launch
-│   │
-│   ├── planning/
-│   │   ├── config/
-│   │   │   └── local_planner.yaml
-│   │   ├── launch/
-│   │   │   ├── planner.launch
-│   │   │   └── local_planner.launch
-│   │   ├── paths/
-│   │   │   └── global_path.txt
-│   │   ├── rviz/
-│   │   ├── scripts/
-│   │   │   ├── GlobalPathPlanner.py
-│   │   │   ├── PathPlanner.py
-│   │   │   ├── StaticObstacleAvoidancePlanner.py
-│   │   │   ├── local_planning_core.py
-│   │   │   └── VizPlanner.py
-│   │   └── tests/
-│   │
-│   └── simul_msgs/
-│       └── msg/
-│           └── LocalPlan.msg
-│
-└── README.md
+MORAI GPS → /gps ───────────────┐
+MORAI Status → /vehicle_status ─┴→ gps_to_utm → /current_pose
+global_path.txt → PathPlanner 내부 GlobalPathPlanner → /global_path
+                                   + /current_pose → /control_path
+LiDAR → /velodyne_points → static DBSCAN → /obstacle_info_static
+  + /global_path + /current_pose + /curr_idx + TF → Local Planner → /local_plan
+/control_path + /local_plan + /vehicle_status → Controller → /control_cmd → UDP → MORAI
+Front camera → /camera/front/image/compressed → YOLO / Lane Detection
 ```
 
----
+`simulator.launch`는 `PathPlanner.py`를 실행한다. `GlobalPathPlanner.py`는 별도 node가 아닌 내부 클래스다.
+`object_detection_crossing.launch`는 실제로 static/car 검출기를 실행한다.
 
-# 처음 실행하는 PC
+## 새 Ubuntu ROS PC 준비와 빌드
+
+Ubuntu 20.04 / ROS Noetic의 Bash 터미널을 기준으로 한다. ROS 설치와 apt 저장소 설정을 먼저 준비한다.
+아래 명령은 **저장소 루트**에서 실행한다. `morai_msgs`는 저장소의 `src/MORAI-ROS_morai_msgs`로 제공한다.
 
 ```bash
-cd ~/바탕화면/SCMC_2026
+source /opt/ros/noetic/setup.bash
+sudo apt-get update
+sudo apt-get install -y build-essential python3-rosdep python3-pip \
+  python3-numpy python3-scipy python3-yaml python3-pyproj python3-rospkg python3-opencv \
+  ros-noetic-cv-bridge ros-noetic-pcl-ros ros-noetic-pcl-conversions \
+  ros-noetic-velodyne-pointcloud ros-noetic-rviz
+
+# 새 PC에서 rosdep 초기화가 안 된 경우에만 실행
+sudo rosdep init
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y --rosdistro noetic
+
+# YOLO 실행 의존성: 팀의 Noetic/Python 환경에 호환되는 버전을 사용
+python3 -m pip install --user torch ultralytics
+python3 -c "import numpy, scipy, yaml, pyproj, rospkg, cv2, torch, ultralytics; print('Python imports OK')"
+
+catkin_make -j2 -DPYTHON_EXECUTABLE=/usr/bin/python3
+source devel/setup.bash
+rospack find morai_udp
+rospack find morai_msgs
+rospack find planning
+rospack find control
+rospack find lidar_object_detection
+```
+
+Python dependency 버전은 아직 lock되어 있지 않다. ROS 노드가 쓰는 `/usr/bin/python3` 환경에서도 import를 확인한다.
+rosdep 오류는 설치 완료로 간주하지 말고 해결한다. 모델은 `src/camera/models/1027_40epoch.pt`에 있다.
+메시지 변경 시 모든 관련 노드를 종료하고 전체 catkin 빌드 후 재시작한다.
+
+## Local Planner 구현 요약
+
+- reference sanitization: duplicate/near-duplicate 제거, spline 입력·길이·yaw·미분·곡률 검증.
+- Cartesian→Frenet 투영과 quintic lateral candidate, 차량 footprint/segment collision 검사.
+- road corridor·curvature·steering-rate-per-m 제한, candidate cost와 continuity/hysteresis.
+- obstacle memory, 안전한 중심 후보 복귀, `RETURN_TO_GLOBAL → NORMAL`, 오류 시 `HOLD`.
+- stale/invalid LocalPlan fail-safe, 구간 접근 속도 상한, throttled 진단·marker.
+
+Local disabled이면 기존 `/control_path`를 사용한다. enabled일 때 inactive plan은 Global 경로를 유지하며
+양수 속도 상한만 줄 수 있다. active/valid plan은 Local 경로를 사용하고, stop/stale/invalid이면
+`accel=0, brake=1, steering=0`을 요청한다. LocalPlan timeout 기본값은 0.5초다.
+구간 설정이 모두 비면 `NORMAL`, active=false, 추가 속도 제한 없음이 정상이다.
+시간 기반 동적 예측·최적 속도 궤적은 구현하지 않았다.
+상세 알고리즘과 TF 계약은 [LOCAL_PLANNING.md](docs/LOCAL_PLANNING.md)를 따른다.
+
+## 개발 PC 검사와 오프라인 도구
+
+ROS/MORAI 없는 PC에서도 NumPy·SciPy·PyYAML이 있으면 실행할 수 있다. Windows에서는 `python3` 대신 `python`을 사용한다.
+다음 순서로 실행한다. 처음 네 도구의 기본 입력 설정은 `src/planning/config/local_planner.yaml`이다.
+코드 블록은 Bash 문법이다. PowerShell에서는 명령을 한 줄로 입력하고 unit test 환경변수는 먼저
+`$env:OPENBLAS_NUM_THREADS='1'`로 설정한다.
+
+```bash
+# 1. unit tests
+OPENBLAS_NUM_THREADS=1 python3 -B -m unittest discover -s src/planning/tests -v
+
+# 2. YAML preflight
+python3 -B scripts/check_local_planner_config.py \
+  --path src/planning/paths/global_path.txt --json reports/local_planner/preflight.json
+
+# 3. Global Path 품질
+python3 -B scripts/analyze_global_path.py --csv reports/local_planner/global_path.csv
+
+# 4. synthetic scenarios
+python3 -B scripts/run_local_planner_scenarios.py --csv reports/local_planner/scenarios.csv
+
+# 5. parameter sensitivity
+python3 -B scripts/sweep_local_planner_params.py --csv reports/local_planner/sweep.csv
+```
+
+| 도구 | 목적 / 입력 | 위 명령의 출력 |
+|---|---|---|
+| `scripts/check_local_planner_config.py` | YAML preflight, optional path; `--config`로 실제 시험 YAML 지정 | `preflight.json`, PASS/WARNING/ERROR; ERROR exit 2 |
+| `scripts/analyze_global_path.py` | 원본 XY 경로·Local 설정 기반 기하/reference 품질 분석; `--path`, `--config` 지원 | `global_path.csv`, `global_path.summary.json` |
+| `scripts/run_local_planner_scenarios.py` | Local core 합성 시나리오; `--config`, 반복 `--scenario` 지원 | `scenarios.csv`: 후보 수/offset/cost/clearance/stop/예상 state |
+| `scripts/sweep_local_planner_params.py` | 기본 grid 또는 `--grid` YAML; `--mode one-at-a-time`/`cartesian` | `sweep.csv`: 전체 탈락/작은 clearance/곡률·조향 변화율 비교 |
+| `scripts/collect_local_planner_debug.sh` | Ubuntu live ROS·git·지정 YAML; 아래 수집 명령 사용 | `debug_logs/YYYYMMDD_HHMMSS_XXXXXX/`, 진단 파일·`summary.tsv` |
+
+생성 보고서는 `reports/local_planner/`에 저장되고 git에서 제외된다. 도구는 원본 경로나 실행 YAML을 고치지 않는다.
+상세 옵션·exit code·CSV 해석은 [LOCAL_PLANNER_OFFLINE_TOOLS.md](docs/LOCAL_PLANNER_OFFLINE_TOOLS.md)에 있다.
+
+### 현재 오프라인 결과
+
+| 검사 | 확인된 결과 |
+|---|---|
+| Local 자동 테스트 | **68개 중 66개 PASS, Windows에서 Bash 관련 2개 SKIP** |
+| 기본 config preflight | ERROR 0 / WARNING 3: static zone 비어 있음, dynamic zone 비어 있음, LiDAR 외부 TF 또는 실측 extrinsics 필요 |
+| Global Path | 연속 중복 segment 38 / 매우 짧은 segment 5 / Local reference 위험 index 414 |
+| reference 위험 이유 | spline curvature 관련 363 / reference 길이 부족 51 |
+| synthetic scenario | 12 scenarios / 18 frames, 현재 예상 동작 확인 |
+| 기본 sweep | 24개 설정 × 3개 scenario = 72행 |
+
+**원본 `global_path.txt`는 수정하지 않았다.** 결과는 현재 기본 설정의 오프라인 검사이며 MORAI 실제 주행 성공을 의미하지 않는다.
+위험 index는 실제 실패 횟수가 아니다. 폐곡선 끝의 reference wrap도 현재 구현되지 않았다.
+Windows Bash 실행 제한으로 collector 실행 검사는 남아 있다. 최신 C++/ROS smoke/MORAI/RViz는 미검증이다.
+
+## 📏 실제 측정/확정 필요
+
+**TUNING DEFAULT = 코드의 조정용 기본값, MEASURED = 해당 차량·센서·코스에서 확인한 값.**
+현재 기본값을 MEASURED로 간주하지 않는다. 시험용 [local_planner_test.yaml](src/planning/config/local_planner_test.yaml)의
+`TODO_MEASURE`는 실측 후 채운다. 채우기 전에는 preflight ERROR와 startup reject가 정상이다.
+
+| 확정할 항목 | 현재 상태 / 팀장이 제공할 정보 |
+|---|---|
+| `static_zones`, `dynamic_zones` | 빈 배열. 실제 포함 범위 index(start/end, 0-based) 또는 map/UTM rectangle |
+| `lidar_xyz_rpy` | 빈 배열. `[x,y,z,roll,pitch,yaw]` m/rad 실측 또는 검증된 외부 TF 공급자 |
+| `current_pose` 기준점 | 차량에서의 물리적 기준점 미확정; front/rear/extrinsics를 같은 기준으로 측정 |
+| `vehicle_width`, `vehicle_front`, `vehicle_rear` | TUNING DEFAULT 1.9 / 3.5 / 1.0m; 범퍼까지의 실측값 필요 |
+| `wheelbase` | Local/Controller 코드 기본 3.0m. 실제 차량 모델과 일치 확인; Local YAML만 바꾸면 Controller 상수는 바뀌지 않음 |
+| `road_half_width` | TUNING DEFAULT 4.5m; 허용 주행 폭·차선 침범 조건 확인 |
+| LiDAR ROI / DBSCAN / obstacle size | YAML·검출기 기본값은 tuning seed; 지면·자체영역·검출 크기를 실제 cloud로 확인 |
+| static obstacle safe speed / approach distance | TUNING DEFAULT 20km/h / 15m; 실제 제동거리·추종오차로 조정 |
+
+## MORAI 시험 준비와 실행
+
+먼저 아래 정보를 저장한다. dirty worktree이면 사용한 diff도 함께 보관한다.
+
+```bash
+git branch --show-current
+git rev-parse HEAD
+git status
+```
+
+현재 [network.yaml](src/MORAI_UDP_NetworkModule/config/network.yaml)의 **실행 기본값**은
+Ego Status 수신 9111, 제어 목적지 9093/source 9094, GPS 1111, IMU 1112,
+카메라 Front/Left/Right 9291/9293/9295다. LiDAR launch 기본은 2368/rpm=600이다.
+Competition Status 9099 등 저장된 항목은 현재 독립 수신 node가 실행되지 않는다.
+MORAI 센서 Destination IP는 ROS PC 주소, `morai_ip`는 MORAI PC 주소다. `bind_ip=0.0.0.0`을 센서 목적지로 쓰지 않는다.
+패킷 field/단위/layout을 확인한 환경에서만 `status_layout_confirmed:=true`를 사용한다.
+[UDP_CONNECTION.md](docs/UDP_CONNECTION.md)의 오래된 9082 포트 예시는 현재 YAML의 9111과 다르므로 현재 YAML을 기준으로 확인한다.
+
+Phase 0부터 진행한다. 실측 준비는 송신을 끄고 센서/TF/RViz부터 확인한다.
+
+```bash
+# Phase 0: Ubuntu 빌드 후 isolated ROS smoke (MORAI UDP 송신/실제 driver 없음)
 source /opt/ros/noetic/setup.bash
 catkin_make -j2 -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
+python3 -B src/planning/tests/ros_local_planner_smoke.py
+
+# Phase 2: 기본 empty zones 설정 준비
+cp src/planning/config/local_planner.yaml /tmp/local-planner-empty.yaml
+
+# Phase 3~10: 실측 시험 설정 복사본 준비
+cp src/planning/config/local_planner_test.yaml /tmp/local-planner-test.yaml
+nano /tmp/local-planner-test.yaml
+python3 -B scripts/check_local_planner_config.py --config /tmp/local-planner-test.yaml \
+  --path src/planning/paths/global_path.txt
+
+# 실제 MORAI IP 입력 후, 센서/TF 정합을 송신 OFF로 먼저 확인
+read -rp "MORAI IP: " MORAI_IP
+roslaunch main simulator.launch morai_ip:="$MORAI_IP" \
+  status_layout_confirmed:=true enable_control:=false \
+  enable_local_planner:=true rviz:=true \
+  local_planner_config:=/tmp/local-planner-test.yaml
 ```
 
-패키지 확인:
+한 phase가 끝나면 launch를 종료하고 아래 명령 중 해당 모드로 재시작한다. 동일 노드/UDP 포트를 중복 실행하지 않는다.
+실제 주행 명령은 상태 layout과 해당 phase의 설정을 확인한 뒤 사용한다.
 
 ```bash
-rospack find morai_udp
-rospack find planning
-rospack find control
-rospack find gps
-rospack find camera
+# Phase 1: Local OFF baseline
+roslaunch main simulator.launch morai_ip:="$MORAI_IP" \
+  status_layout_confirmed:=true enable_control:=true enable_local_planner:=false
+
+# Phase 2: Local ON + empty zones
+roslaunch main simulator.launch morai_ip:="$MORAI_IP" \
+  status_layout_confirmed:=true enable_control:=true enable_local_planner:=true rviz:=true \
+  local_planner_config:=/tmp/local-planner-empty.yaml
+
+# Phase 3~10: 실측 zone/geometry/TF 적용
+roslaunch main simulator.launch morai_ip:="$MORAI_IP" \
+  status_layout_confirmed:=true enable_control:=true enable_local_planner:=true rviz:=true \
+  local_planner_config:=/tmp/local-planner-test.yaml
 ```
 
-Python YOLO 환경도 필요합니다.
+별도 driver/rosbag이 `/velodyne_points`를 발행하면 해당 명령에 `start_lidar_driver:=false`를 추가한다.
+이 옵션은 DBSCAN 검출기를 끄지 않는다. 기본 launch 값은 control 송신 OFF, Local OFF, RViz OFF, LiDAR driver ON이다.
+
+### Phase 0~10 목적과 성공 기준
+
+| Phase | 시험 | 성공 기준 |
+|---|---|---|
+| 0 | Ubuntu catkin build + ROS smoke | 빌드·isolated smoke PASS, 준비 설정의 ERROR 해결 |
+| 1 | Local Planner OFF baseline | 기존 `/control_path` 추종과 속도/조향 기준 기록 |
+| 2 | Local ON + empty zones | NORMAL/inactive/추가 속도 제한 없음, 기존 경로 추종 유지 |
+| 3 | Static zone + no obstacle | 정상 입력/TF로 HOLD 없음, center/Global 경로 유지와 zone speed cap 확인 |
+| 4 | Center obstacle | valid 측방향 후보 선택, 실제 충돌/도로 이탈 없음 |
+| 5 | Left obstacle | 충돌 없는 우측 또는 center 선택, 실제 clearance 확인 |
+| 6 | Right obstacle | 충돌 없는 좌측 또는 center 선택, 실제 clearance 확인 |
+| 7 | All candidates blocked | stop=true, accel=0/brake=1/steering=0, 실제 정지 확인 |
+| 8 | LiDAR input loss | 활성 구간에서 stale→HOLD/full brake, 복구 후 재검사 |
+| 9 | TF failure | fresh LiDAR는 유지하면서 scan 시각 TF 실패→HOLD/full brake |
+| 10 | RETURN_TO_GLOBAL | 회피 후 중심 복귀·연속 정렬 완료→NORMAL/inactive→Global 추종 |
+
+입력 loss/TF 실패 검사는 실제 zone이 활성이고 다른 입력이 정상인 조건에서 수행한다.
+상세 입력 조건·측정값·증거는 [LOCAL_PLANNER_TEST_RESULTS.md](docs/LOCAL_PLANNER_TEST_RESULTS.md)에 기록한다.
+
+### RViz와 진단
+
+RViz Fixed Frame은 `planning_origin`. 후보는 파랑=유효, 빨강=탈락, 초록=선택이다.
+
+| 표시 | 토픽 |
+|---|---|
+| Global / Control / 선택 Local 경로 | `/viz_planner/viz_global_path`, `/viz_planner/viz_control_path`, `/viz_planner/viz_local_path` |
+| 후보·offset·cost·clearance·탈락 이유 | `/static_obstacle_avoidance_planner/candidates` |
+| 장애물 / state·HOLD 이유 | `/static_obstacle_avoidance_planner/obstacles`, `/static_obstacle_avoidance_planner/state_marker` |
+| 차량 위치 / LiDAR / boxes | `/viz_planner/viz_current_pose`, `/velodyne_points`, `/bounding_box_static` |
 
 ```bash
-python3 -c "import torch, cv2, ultralytics; print('YOLO environment OK')"
-```
-
----
-
-# 네트워크 구성
-
-IP는 고정값이 아니며 실제 MORAI PC와 ROS PC의 네트워크 환경에 맞게 설정해야 합니다.
-
-예시:
-
-| 장치 | 예시 IP |
-| --- | --- |
-| MORAI 실행 PC | `192.168.0.15` |
-| ROS 알고리즘 PC | `192.168.0.2` |
-
-> 두 PC는 동일한 네트워크 대역에서 통신 가능해야 합니다.
-
-주요 UDP Port:
-
-| 항목 | 방향 | MORAI Host Port | ROS Destination Port |
-| --- | --- | ---: | ---: |
-| Ego Ctrl Cmd | User → Sim | `9093` | `9094` |
-| Collision Data | Sim → User | `9091` | `9092` |
-| Competition Vehicle Status | Sim → User | `9088` | `9099` |
-| Ego Vehicle Status | Sim → User | `9100` | `9111` |
-| Object Info | Sim → User | `7605` | `7505` |
-| GPS | Sim → User | `1110` | `1111` |
-| IMU | Sim → User | `1113` | `1112` |
-
----
-
-# 권장 실행 방법
-
-현재는 `main/simulator.launch`에서 주요 노드를 한 번에 실행할 수 있습니다.
-
-기본값:
-
-```text
-enable_control = false
-enable_local_planner = false
-rviz = false
-start_lidar_driver = true
-```
-
-## 기본 경로추종
-
-```bash
-roslaunch main simulator.launch \
-  morai_ip:=192.168.0.15 \
-  status_layout_confirmed:=true \
-  enable_control:=true \
-  enable_local_planner:=false
-```
-
-## Local Planner 포함
-
-```bash
-roslaunch main simulator.launch \
-  morai_ip:=192.168.0.15 \
-  status_layout_confirmed:=true \
-  enable_control:=true \
-  enable_local_planner:=true \
-  rviz:=true
-```
-
-이미 `/velodyne_points`를 별도 드라이버나 rosbag에서 받고 있다면:
-
-```bash
-roslaunch main simulator.launch \
-  morai_ip:=192.168.0.15 \
-  status_layout_confirmed:=true \
-  enable_control:=true \
-  enable_local_planner:=true \
-  start_lidar_driver:=false \
-  rviz:=true
-```
-
----
-
-# Local Planner 설정
-
-Local Planner 미션 구간은 다음 파일에서 설정합니다.
-
-```text
-src/planning/config/local_planner.yaml
-```
-
-현재 기본값:
-
-```yaml
-static_obstacle_avoidance_planner:
-  static_zones: []
-  dynamic_zones: []
-```
-
-현재는 실제 구간이 비어 있으므로 Local Planner를 활성화해도 미션 구간 밖에서는 기존 `/control_path` 주행을 유지합니다.
-
-waypoint index 방식:
-
-```yaml
-static_zones:
-  - {start: 1000, end: 1200}
-```
-
-또는 UTM 좌표 방식:
-
-```yaml
-static_zones:
-  - {xmin: 302000.0, xmax: 302100.0, ymin: 4123000.0, ymax: 4123100.0}
-```
-
-실제 대회 구간을 확인한 뒤 값을 입력합니다.
-
----
-
-# 기본 데이터 흐름
-
-```text
-MORAI GPS
-    ↓
-/gps
-    ↓
-gps_to_utm
-    ↓
-/current_pose
-
-global_path.txt
-    ↓
-GlobalPathPlanner
-    ↓
-/global_path
-    ↓
-PathPlanner
-    ↓
-/control_path
-    ↓
-Controller
-    ↓
-/control_cmd
-    ↓
-morai_cmd_controller
-    ↓
-UDP
-    ↓
-MORAI IONIQ 5
-```
-
-Local Planner 활성 시:
-
-```text
-LiDAR
-  ↓
-/velodyne_points
-  ↓
-DBSCAN / Object Detection
-  ↓
-/obstacle_info_static
-  ↓
-StaticObstacleAvoidancePlanner
-  ↓
-Frenet candidate generation
-  ↓
-/local_plan
-  ↓
-Controller
-```
-
-신호등:
-
-```text
-MORAI Front Camera
-    ↓
-/camera/front/image/compressed
-    ↓
-YOLO
-    ↓
-/traffic_light_status
-```
-
----
-
-# 주요 토픽 확인
-
-```bash
-rostopic hz /gps
-rostopic hz /imu
-rostopic hz /vehicle_status
 rostopic hz /current_pose
-rostopic hz /global_path
-rostopic hz /control_path
-rostopic hz /control_cmd
-```
-
-Local Planner:
-
-```bash
-rostopic echo /local_plan
 rostopic hz /obstacle_info_static
-rostopic hz /velodyne_points
+rostopic echo /local_plan/state
+rostopic echo /local_plan/stop
+rostopic echo /local_plan/speed_limit_kmh
+rostopic echo /control_cmd
+rosrun tf tf_echo map velodyne
 ```
 
-YOLO:
+상태 로그는 `[LOCAL CONFIG]`, `[LOCAL REFERENCE]`, `[LOCAL PLANNER]`, `[LOCAL HOLD]`로 구분된다.
+NORMAL에서 선택 Local Path가 비는 것은 정상이다. `/local_plan`에는 selected offset/clearance 전용 필드가 없으므로 marker/로그와 함께 기록한다.
+
+### 담당자가 반드시 남길 증거
+
+branch·commit·git status/diff, 실제 YAML, static zone, `lidar_xyz_rpy`, vehicle geometry,
+RViz screenshot, terminal log, collector 결과, 가능하면 rosbag, phase별 PASS/FAIL과 실패 재현 조건을 보관한다.
 
 ```bash
-rostopic echo /traffic_light_status
-rostopic hz /yolo_traffic_light/image_raw
+bash scripts/collect_local_planner_debug.sh --config /tmp/local-planner-test.yaml \
+  --timeout 8 --lidar-frame velodyne
 ```
 
-영상 확인:
+Phase 2에서는 `--config /tmp/local-planner-empty.yaml`을 사용한다. collector는 runtime rosparam·topic 주기·plan/cmd sample·TF·node/topic 목록을 저장한다.
+없는 항목은 unavailable로 기록하며 rosbag/스크린샷을 자동 생성하지 않는다.
+rosbag을 별도로 기록한다면 `/current_pose`, `/vehicle_status`, `/gps`, `/velodyne_points`, `/obstacle_info_static`,
+`/global_path`, `/control_path`, `/curr_idx`, `/local_plan`, `/control_cmd`, `/tf`, `/tf_static`을 포함한다.
 
-```bash
-rqt_image_view
-```
+## 알려진 문제와 남은 작업
 
-YOLO 결과 영상:
+- Global Path duplicate/short segment와 Local reference 위험 index가 남아 있다. Local 방어가 원본 Global 제어 경로까지 정리하지 않는다.
+- 실제 LiDAR TF와 vehicle reference point 미확정, MORAI 추종오차·제동거리 미검증.
+- Traffic Light는 별도 개발/최종 통합 과제다. 대상 신호·정지선·freshness·재출발 검증이 남았다.
+- GPS Shadow는 일부 구현이다. 활성 Local 중 GPS invalid는 정지하지만, 기존 음영 차선 분기에는 approach cap이 적용되지 않는다.
+- Dynamic obstacle tracking/속도 예측 미구현. Merging legacy logic 재설계 필요.
+- Mission priority/stop reason 통합과 전체 코스 회귀 검증이 필요하다.
+- 새 PC의 Python dependency lock과 최신 Ubuntu 빌드/ROS smoke/collector 실행 확인이 남아 있다.
 
-```text
-/yolo_traffic_light/image_raw
-```
+| 우선순위 | 팀 전체 작업 |
+|---|---|
+| P0 | ROS/MORAI Local 실검증, sensor/TF/geometry 확인 |
+| P1 | Static obstacle/RETURN_TO_GLOBAL tuning, Global Path 품질 처리, velocity profile |
+| P2 | Traffic Light 최종 통합, GPS Shadow 안정화 |
+| P3 | Dynamic obstacle tracking, Merging, Mission Manager, 전체 코스 통합 |
 
----
+## feat/local-planner merge 조건
 
-# Local Planner 테스트
+아래 항목은 실험 증거를 받은 뒤 체크한다. 아직 main merge 완료로 표시하지 않는다.
 
-```bash
-source /opt/ros/noetic/setup.bash
-source devel/setup.bash
+- [ ] Ubuntu catkin build
+- [ ] ROS smoke test
+- [ ] Local Planner OFF baseline
+- [ ] Local Planner ON + empty zone
+- [ ] static zone + no obstacle
+- [ ] center obstacle
+- [ ] left obstacle
+- [ ] right obstacle
+- [ ] all candidates blocked → full brake
+- [ ] LiDAR stale → HOLD + full brake
+- [ ] TF failure → HOLD + full brake
+- [ ] RETURN_TO_GLOBAL → NORMAL
+- [ ] vehicle geometry 확인
+- [ ] LiDAR TF 확인
+- [ ] 테스트 결과 문서화
 
-OPENBLAS_NUM_THREADS=1 \
-python3 -B -m unittest discover -s src/planning/tests -v
-```
+## 문서 안내
 
----
-
-# 주의사항
-
-## `morai_cmd_controller` 중복 실행 금지
-
-`morai_udp_nodes.launch` 내부에서 이미 `morai_cmd_controller`가 실행됩니다.
-
-동일 노드를 따로 실행하면 다음 오류가 발생할 수 있습니다.
-
-```text
-new node registered with same name
-```
-
-## Local Planner Fail-safe
-
-`enable_local_planner:=true`인 상태에서 다음 문제가 발생하면 차량은 정지하도록 구성되어 있습니다.
-
-- Local Plan timeout
-- invalid Local Path
-- GPS invalid
-- Local Planner stop request
-- Local Path point NaN / Inf
-- Local Plan frame 오류
-
-## LiDAR TF
-
-Local Planner에서 LiDAR obstacle을 map 좌표계로 사용하려면 올바른 TF가 필요합니다.
-
-```text
-map
- ↓
-planning_vehicle
- ↓
-velodyne
-```
-
-센서 장착 위치를 확인하지 않은 상태에서 임의의 LiDAR offset을 사용하지 마십시오.
-
----
-
-# 현재 남은 작업
-
-1. 실제 대회 코스에 맞는 `static_zones`, `dynamic_zones` 설정
-2. Local Planner 실제 MORAI 주행 검증
-3. 차량 및 도로 폭 관련 파라미터 실측/확인
-4. LiDAR mounting transform 확인
-5. 신호등 정지선 및 미션 구간 재검증
-6. Green 전환 후 정상 경로 복귀 로직 검증
-7. YOLO ROI 및 진행 방향 신호등 선택 로직 개선
-8. 동적 장애물 속도 추정 및 정책 고도화
-9. 합류 구간 waypoint 재설정
-10. 속도 profile 고도화
-
----
-
-# 현재 목표
-
-```text
-Global Path 기본 주행 안정화
-        ↓
-LiDAR 기반 Local Planning 연동
-        ↓
-정적 장애물 회피 검증
-        ↓
-Global Path 복귀 안정화
-        ↓
-YOLO 신호등 미션 안정화
-        ↓
-동적 장애물 / 합류 구간 통합
-        ↓
-전체 코스 통합 주행
-```
+| 문서 | 역할 |
+|---|---|
+| [LOCAL_PLANNING.md](docs/LOCAL_PLANNING.md) | Local 알고리즘·상태·Controller·TF 상세 |
+| [LOCAL_PLANNER_OFFLINE_TOOLS.md](docs/LOCAL_PLANNER_OFFLINE_TOOLS.md) | preflight/path/scenario/sweep/collector 사용법 |
+| [LOCAL_PLANNER_TEST_RESULTS.md](docs/LOCAL_PLANNER_TEST_RESULTS.md) | MORAI Phase 0~10 조건·결과·증거 기록 |
+| [PROJECT_STATUS.md](docs/PROJECT_STATUS.md) | 전체 프로젝트 진행현황; 별도 문서의 🟡는 README의 🧪에 해당 |
+| [UDP_CONNECTION.md](docs/UDP_CONNECTION.md) | UDP 구조·패킷·watchdog; 포트 값은 현재 network.yaml 우선 |

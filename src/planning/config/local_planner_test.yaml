@@ -1,0 +1,69 @@
+# TEST TEMPLATE: replace all TODO_MEASURE values before launch.
+# This is valid rosparam YAML structure, intentionally rejected by preflight/runtime
+# until vehicle/road/extrinsics measurements are provided. Do not use default guesses.
+static_obstacle_avoidance_planner:
+  # TODO_MEASURE: insert actual inclusive 0-based indices OR map rectangles.
+  # [{start: actual_start, end: actual_end}]
+  # [{xmin: actual_xmin, xmax: actual_xmax, ymin: actual_ymin, ymax: actual_ymax}]
+  static_zones: []
+  dynamic_zones: []
+  update_hz: 10.0
+  input_timeout: 0.5
+  global_path_timeout: 2.5
+  # Offline tuning seed, not measured road/vehicle specifications.
+  offsets: [-3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+  road_half_width: TODO_MEASURE
+  sample_step: 0.2
+  horizon: 26.0
+  transition_length: 12.0
+  return_length: 12.0
+  reference_behind_points: 20
+  reference_ahead_points: 160
+  min_reference_segment: 0.05
+  max_reference_yaw_change: 1.2
+  max_reference_curvature: 0.5
+  approach_distance: 15.0  # Tune from observed speed and braking distance.
+  approach_speed_kmh: 20.0  # Tuning seed; begin physical tests at an agreed lower speed.
+  vehicle_width: TODO_MEASURE
+  vehicle_front: TODO_MEASURE  # current_pose reference to front bumper, metres
+  vehicle_rear: TODO_MEASURE   # current_pose reference to rear bumper, metres
+  wheelbase: TODO_MEASURE      # Check consistency with existing controller model.
+  safety_margin: 0.3
+  max_curvature: 0.13          # Tuning seed; verify steering feasibility.
+  max_steering_rate_per_m: 0.25
+  max_heading_error: 0.7
+  max_lateral_accel: 1.5
+  static_speed_kmh: 20.0
+  dynamic_speed_kmh: 10.0
+  dynamic_policy: stop_on_obstacle
+  obstacle_memory_s: 2.0
+  obstacle_merge_distance: 0.5
+  return_d_tolerance: 0.25
+  return_heading_tolerance: 0.1
+  return_clear_time: 0.8
+  switch_penalty: 4.0
+  switch_hysteresis: 0.5
+  weights:
+    obstacle: 2.0
+    offset: 1.0
+    curvature: 20.0
+    steering: 5.0
+    continuity: 3.0
+    return: 0.4
+
+viz_planner:
+  lidar_frame: velodyne  # TODO_MEASURE: confirm incoming cloud frame name.
+  # Replace each value using measured current_pose-reference -> LiDAR extrinsics.
+  # Use [] ONLY when a verified external provider publishes this transform.
+  lidar_xyz_rpy: [TODO_MEASURE, TODO_MEASURE, TODO_MEASURE, TODO_MEASURE, TODO_MEASURE, TODO_MEASURE]
+
+object_detection_static:
+  # TODO_MEASURE: confirm ground/self-mask and ROI against the actual sensor mount.
+  # These seeds are copied from the existing config; they are not measured values.
+  xMinROI: -5.0
+  xMaxROI: 30.0
+  yMinROI: -5.0
+  yMaxROI: 5.0
+  xMaxBoundingBox: 6.0
+  yMaxBoundingBox: 6.0
+  zMaxBoundingBox: 3.0
