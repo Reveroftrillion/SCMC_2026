@@ -1,7 +1,15 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="enable_local_planner" default="false" />
+    <arg name="enable_traffic_missions" default="false" />
+    <arg name="enable_camera_traffic_control" default="false" />
+    <arg name="camera_control_config" default="$(find control)/config/camera_traffic_control.yaml" />
+    <arg name="traffic_config" default="$(find control)/config/traffic_missions.yaml" />
     <node pkg="control" type="control" name="control" output="screen">
+        <rosparam if="$(arg enable_traffic_missions)" command="load" file="$(arg traffic_config)" />
+        <param name="enable_traffic_missions" value="$(arg enable_traffic_missions)" />
+        <rosparam if="$(arg enable_camera_traffic_control)" command="load" file="$(arg camera_control_config)" />
+        <param name="enable_camera_traffic_control" value="$(arg enable_camera_traffic_control)" />
         <param name="enable_local_planner" value="$(arg enable_local_planner)" />
         <param name="local_plan_timeout" value="0.5" />
     </node>

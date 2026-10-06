@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="weights_path" default="$(find camera)/models/1027_40epoch.pt" />
+  <arg name="device" default="cpu" />
+  <arg name="python" default="python3" />
+  <arg name="image_topic" default="/camera/traffic/image/compressed" />
+  <arg name="confidence" default="0.4" />
+  <arg name="config" default="$(find camera)/config/traffic_camera.yaml" />
+  <node pkg="camera" name="yolov8_node" type="traffic_yolo.py" output="screen" required="true"
+        launch-prefix="$(arg python)">
+    <rosparam command="load" file="$(arg config)" />
+    <param name="weights_path" value="$(arg weights_path)" />
+    <param name="device" value="$(arg device)" />
+    <param name="confidence" value="$(arg confidence)" />
+    <remap from="/camera/traffic/image/compressed" to="$(arg image_topic)" />
+  </node>
+</launch>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Camera reception and inference only; no pose, planner or controller nodes. -->
+  <arg name="morai_ip" />
+  <arg name="bind_ip" default="0.0.0.0" />
+  <arg name="network_config" default="$(find morai_udp)/config/network.yaml" />
+  <arg name="yolo_weights" default="$(find camera)/models/1027_40epoch.pt" />
+  <arg name="yolo_device" default="cpu" />
+  <arg name="yolo_python" default="python3" />
+  <arg name="confidence" default="0.4" />
+  <arg name="view_image" default="true" />
+  <arg name="traffic_camera_port" default="9090" />
+  <arg name="image_topic" default="/camera/traffic/image/compressed" />
+  <rosparam command="load" file="$(arg network_config)" />
+  <node pkg="morai_udp" type="sensor_udp_node.py" name="camera_traffic_udp" output="screen" required="true">
+    <param name="kind" value="camera" />
+    <param name="port" value="$(arg traffic_camera_port)" />
+    <param name="topic" value="$(arg image_topic)" />
+    <param name="frame_id" value="camera_traffic" />
+    <param name="timeout" value="0.5" />
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <include file="$(find camera)/launch/traffic_yolo.launch">
+    <arg name="weights_path" value="$(arg yolo_weights)" />
+    <arg name="device" value="$(arg yolo_device)" />
+    <arg name="python" value="$(arg yolo_python)" />
+    <arg name="confidence" value="$(arg confidence)" />
+    <arg name="image_topic" value="$(arg image_topic)" />
+  </include>
+  <node if="$(arg view_image)" pkg="rqt_image_view" type="rqt_image_view" name="traffic_yolo_view"
+        args="/yolo_traffic_light/image_raw" output="screen" />
+</launch>

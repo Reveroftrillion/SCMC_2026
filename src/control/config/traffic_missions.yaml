@@ -1,0 +1,24 @@
+# Coordinates copied from message.txt, in /current_pose's map / UTM frame.
+# The recorded vehicle reference must match /current_pose. No extra offset is applied.
+traffic_signal_timeout: 0.7
+traffic_pose_timeout: 0.7
+traffic_detect_margin: 3.0
+traffic_stop_tolerance: 4.0
+traffic_pass_margin: 0.10
+traffic_corridor_width: 12.0
+traffic_approach_velocity: 20.0
+traffic_braking_deceleration: 2.0
+traffic_green_confirmations: 3
+traffic_missions:
+  - name: TL1
+    detect: [302493.6421254512, 4123770.779147276]
+    stop: [302516.834439161, 4123813.346941223]
+    pass: [302520.83968307846, 4123820.0990550215]
+  - name: TL2
+    detect: [302482.0105871663, 4123854.874305486]
+    stop: [302498.070737818, 4123883.5471132384]
+    pass: [302503.31972682767, 4123892.8604625445]
+  - name: TL3
+    detect: [302521.9150981784, 4123928.690074159]
+    stop: [302535.20955811156, 4123984.443312563]
+    pass: [302535.2661176593, 4123986.847454316]
