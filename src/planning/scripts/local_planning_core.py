@@ -5,7 +5,7 @@ All geometry is metres in map. No vehicle actuation or ROS publishers here.
 from dataclasses import dataclass, field
 import math
 import numpy as np
-from utils import CubicSpline2D, catesian_to_frenet
+from planning_geometry import CubicSpline2D, catesian_to_frenet
 from interpolation.quintic_polynomials_planner import QuinticPolynomial
 
 
@@ -26,32 +26,81 @@ class FrenetLocalPlanner:
         self.p = config
         positive = ('sample_step', 'horizon', 'transition_length', 'return_length',
                     'vehicle_width', 'vehicle_front', 'vehicle_rear', 'wheelbase',
-                    'max_curvature', 'max_steering_rate_per_m', 'road_half_width')
+                    'max_curvature', 'max_steering_rate_per_m', 'road_half_width',
+                    'min_reference_segment', 'max_reference_yaw_change', 'max_reference_curvature',
+                    'max_heading_error')
         for key in positive:
             if not math.isfinite(config[key]) or config[key] <= 0:
                 raise ValueError(key + ' must be finite and positive')
         if not config['offsets'] or not all(math.isfinite(x) for x in config['offsets']):
             raise ValueError('offsets must be a nonempty finite list')
-        if config['safety_margin'] < 0 or config['switch_penalty'] < 0:
-            raise ValueError('margins/costs must be nonnegative')
+        for key in ('safety_margin', 'switch_penalty', 'switch_hysteresis'):
+            if not math.isfinite(config[key]) or config[key] < 0:
+                raise ValueError(key + ' must be finite and nonnegative')
+        if set(config['weights']) != {'obstacle', 'offset', 'curvature', 'steering', 'continuity', 'return'}:
+            raise ValueError('invalid candidate cost weight keys')
         if any(not math.isfinite(v) or v < 0 for v in config['weights'].values()):
             raise ValueError('cost weights must be finite and nonnegative')
+        for key in ('reference_behind_points', 'reference_ahead_points'):
+            if type(config[key]) is not int or config[key] < (4 if key.endswith('ahead_points') else 0):
+                raise ValueError(key + ' has invalid point count')
+        if config['horizon'] < config['transition_length'] + config['return_length']:
+            raise ValueError('horizon must cover transition_length + return_length')
+        if config['wheelbase'] > config['vehicle_front'] + config['vehicle_rear']:
+            raise ValueError('wheelbase cannot exceed vehicle length')
+        if config['vehicle_width'] / 2 + config['safety_margin'] >= config['road_half_width']:
+            raise ValueError('vehicle does not fit configured road corridor')
+        if config['max_heading_error'] >= math.pi / 2 or config['max_reference_yaw_change'] > math.pi:
+            raise ValueError('invalid heading/yaw limits')
         self.previous = None
+        self.reference_diagnostic = {}
 
     def reset(self):
         self.previous = None
 
     def reference(self, points, index):
         # Bound spline work and disambiguate crossings with the existing waypoint.
+        self.reference_diagnostic = {}
+        points = np.asarray(points, dtype=float)
+        if points.ndim != 2 or points.shape[1] != 2 or type(index) not in (int, np.int64, np.int32) or not 0 <= index < len(points):
+            raise ValueError('invalid reference points/index')
         lo = max(0, index - self.p['reference_behind_points'])
         hi = min(len(points), index + self.p['reference_ahead_points'])
         xy = np.asarray(points[lo:hi], dtype=float)
         if len(xy) < 4 or not np.isfinite(xy).all():
             raise ValueError('reference path missing or invalid')
-        xy = xy[np.r_[True, np.linalg.norm(np.diff(xy, axis=0), axis=1) > 1e-4]]
+        # Compare to the last retained point, so densely sampled paths are thinned,
+        # rather than deleting an entire run of individually short segments.
+        kept = [xy[0]]
+        for point in xy[1:]:
+            if np.linalg.norm(point - kept[-1]) >= self.p['min_reference_segment']:
+                kept.append(point)
+        removed = len(xy) - len(kept)
+        xy = np.asarray(kept)
+        self.reference_diagnostic = {'input_points': hi - lo, 'removed_points': removed}
         if len(xy) < 4:
             raise ValueError('reference path has too few distinct points')
-        return CubicSpline2D(xy[:, 0], xy[:, 1], self.p['sample_step'])
+        segments = np.diff(xy, axis=0)
+        headings = np.arctan2(segments[:, 1], segments[:, 0])
+        turns = np.arctan2(np.sin(np.diff(headings)), np.cos(np.diff(headings)))
+        if np.max(np.abs(turns)) > self.p['max_reference_yaw_change']:
+            raise ValueError('reference yaw discontinuity')
+        if np.sum(np.linalg.norm(segments, axis=1)) < self.p['transition_length'] + self.p['return_length']:
+            raise ValueError('insufficient reference length')
+        try:
+            csp = CubicSpline2D(xy[:, 0], xy[:, 1], self.p['sample_step'])
+        except (ValueError, np.linalg.LinAlgError) as exc:
+            raise ValueError('reference spline failed: ' + str(exc)) from exc
+        if len(csp.rx) < 4 or not all(np.isfinite(v).all() for v in
+                (csp.rx, csp.ry, csp.ryaw, csp.raw_curvature, csp.derivative_speed)):
+            raise ValueError('nonfinite reference spline')
+        if np.min(csp.derivative_speed) < 1e-4:
+            raise ValueError('degenerate reference spline')
+        peak = float(np.max(csp.raw_curvature))
+        self.reference_diagnostic['peak_curvature'] = peak
+        if peak > self.p['max_reference_curvature']:
+            raise ValueError('reference curvature spike (%.3f > %.3f)' % (peak, self.p['max_reference_curvature']))
+        return csp
 
     def project(self, csp, x, y):
         # Existing converter seeds a local segment projection (including between samples).
@@ -72,10 +121,12 @@ class FrenetLocalPlanner:
 
     def clearance(self, candidate, obstacles):
         """Swept multi-disc footprint vs bounding circles, including between samples."""
-        if not obstacles:
+        obs = np.asarray(obstacles, dtype=float)
+        if obs.size == 0:
             return float('inf')
+        if obs.ndim != 2 or obs.shape[1] != 3 or not np.isfinite(obs).all() or np.any(obs[:, 2] < 0):
+            raise ValueError('invalid obstacle circles')
         p = self.p
-        obs = np.asarray(obstacles, dtype=float)  # x, y, bounding radius
         length = p['vehicle_front'] + p['vehicle_rear']
         offsets = np.linspace(-p['vehicle_rear'], p['vehicle_front'],
                               max(2, int(math.ceil(length / p['vehicle_width'])) + 1))
@@ -96,6 +147,11 @@ class FrenetLocalPlanner:
 
     def plan(self, csp, pose, obstacles, returning=False):
         p = self.p
+        if np.asarray(pose).shape != (3,) or not np.isfinite(pose).all():
+            raise ValueError('invalid planning pose')
+        arrays = (csp.rx, csp.ry, csp.ryaw)
+        if len(csp.rx) < 4 or len({len(v) for v in arrays}) != 1 or not all(np.isfinite(v).all() for v in arrays):
+            raise ValueError('invalid reference samples')
         s0, d0, ref_yaw = self.project(csp, pose[0], pose[1])
         delta = math.atan2(math.sin(pose[2] - ref_yaw), math.cos(pose[2] - ref_yaw))
         if abs(delta) > p['max_heading_error']:
@@ -134,7 +190,7 @@ class FrenetLocalPlanner:
                            for longitudinal in (-p['vehicle_rear'], p['vehicle_front'])
                            for lateral in (-p['vehicle_width'] / 2, p['vehicle_width'] / 2)]
             road_extent = max(float(np.max(np.abs(edge))) for edge in footprint_d) + p['safety_margin']
-            if not np.isfinite(xy).all() or not np.isfinite(k).all():
+            if not all(np.isfinite(v).all() for v in (xy, yaw, k, steer_rate)):
                 candidate.rejection = 'nonfinite'
             elif road_extent > p['road_half_width'] + 1e-6:
                 candidate.rejection = 'road_boundary'
@@ -174,12 +230,16 @@ class FrenetLocalPlanner:
 
 
 def validate_zones(zones):
+    if not isinstance(zones, list):
+        raise ValueError('zones must be a list')
     for z in zones:
+        if not isinstance(z, dict):
+            raise ValueError('zone must be a mapping')
         if set(z) == {'start', 'end'}:
-            if not isinstance(z['start'], int) or not isinstance(z['end'], int) or not 0 <= z['start'] <= z['end']:
+            if type(z['start']) is not int or type(z['end']) is not int or not 0 <= z['start'] <= z['end']:
                 raise ValueError('zone requires 0 <= start <= end waypoint indices')
         elif set(z) == {'xmin', 'xmax', 'ymin', 'ymax'}:
-            if not all(math.isfinite(v) for v in z.values()) or z['xmin'] > z['xmax'] or z['ymin'] > z['ymax']:
+            if not all(type(v) in (int, float) and math.isfinite(v) for v in z.values()) or z['xmin'] >= z['xmax'] or z['ymin'] >= z['ymax']:
                 raise ValueError('invalid map rectangle')
         else:
             raise ValueError('zone must be waypoint range or map rectangle')

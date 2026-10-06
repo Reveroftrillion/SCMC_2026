@@ -4,6 +4,7 @@ static_obstacle_avoidance_planner:
   dynamic_zones: []  # Or [{xmin: ..., xmax: ..., ymin: ..., ymax: ...}] in map/UTM metres
   update_hz: 10.0
   input_timeout: 0.5
+  global_path_timeout: 2.5 # receipt age; global path is static and published at 1Hz
   offsets: [-3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
   road_half_width: 4.5  # TUNING DEFAULT, not a measured road boundary
   sample_step: 0.2
@@ -12,6 +13,11 @@ static_obstacle_avoidance_planner:
   return_length: 12.0
   reference_behind_points: 20
   reference_ahead_points: 160
+  min_reference_segment: 0.05 # metres; local reference only, original path/index unchanged
+  max_reference_yaw_change: 1.2 # radians between retained segments; reject discontinuities
+  max_reference_curvature: 0.5 # 1/metre; reject spline spikes instead of clipping them
+  approach_distance: 15.0 # metres along global path before a configured zone; 0 disables
+  approach_speed_kmh: 20.0 # global path stays selected during approach; tune braking distance
   vehicle_width: 1.9    # Replace with the actual vehicle dimensions
   vehicle_front: 3.5    # From current_pose reference to front bumper (metres)
   vehicle_rear: 1.0     # From current_pose reference to rear bumper

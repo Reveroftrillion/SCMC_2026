@@ -2,6 +2,7 @@
 import copy
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 import numpy as np
 import yaml
@@ -112,6 +113,107 @@ class LocalPlanningTests(unittest.TestCase):
         s, d, yaw = self.core.project(self.ref, 10.13, -2)
         self.assertAlmostEqual(s, 10.13, places=5)
         self.assertAlmostEqual(d, -2, places=5)
+
+    def test_left_and_right_obstacles_keep_clear(self):
+        for y in (-1., 1.):
+            with self.subTest(y=y):
+                best, _, _ = self.core.plan(self.ref, (0, 0, 0), [(12, y, .5)])
+                self.assertIsNotNone(best)
+                self.assertLess(best.offset * y, 0)
+                self.assertGreater(best.clearance, 0)
+
+    def test_near_duplicates_and_short_segments_are_removed(self):
+        points = np.vstack([np.array([[x, 0], [x + 1e-6, 0], [x + .001, 0]]) for x in np.arange(0, 60, .5)])
+        ref = self.core.reference(points, 0)
+        self.assertGreater(self.core.reference_diagnostic['removed_points'], 0)
+        self.assertIsNotNone(self.core.plan(ref, (0, 0, 0), [])[0])
+
+    def test_dense_segments_accumulate_from_last_retained_point(self):
+        p = copy.deepcopy(self.p)
+        p['reference_ahead_points'] = 4000
+        core = FrenetLocalPlanner(p)
+        points = np.column_stack((np.arange(0, 40, .01), np.zeros(4000)))
+        self.assertIsNotNone(core.plan(core.reference(points, 0), (0, 0, 0), [])[0])
+
+    def test_zero_length_reference_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'too few distinct'):
+            self.core.reference(np.zeros((200, 2)), 0)
+
+    def test_sharp_yaw_discontinuity_rejected(self):
+        points = np.vstack((self.points[:80], self.points[78::-1]))
+        with self.assertRaisesRegex(ValueError, 'yaw discontinuity'):
+            self.core.reference(points, 0)
+
+    def test_spline_failure_is_a_controlled_error(self):
+        with patch('local_planning_core.CubicSpline2D', side_effect=np.linalg.LinAlgError('fixture')):
+            with self.assertRaisesRegex(ValueError, 'spline failed'):
+                self.core.reference(self.points, 0)
+
+    def test_reference_near_actual_path_end_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'reference length'):
+            self.core.reference(self.points, 195)
+
+    def test_reference_curvature_spike_is_not_clipped(self):
+        p = copy.deepcopy(self.p)
+        p['max_reference_curvature'] = .01
+        a = np.linspace(0, 1.8, 200)
+        points = np.column_stack((50 * np.sin(a), 50 * (1 - np.cos(a))))
+        with self.assertRaisesRegex(ValueError, 'curvature spike'):
+            FrenetLocalPlanner(p).reference(points, 0)
+
+    def test_invalid_geometry_config_rejected(self):
+        for key, value in [('vehicle_width', float('nan')), ('vehicle_front', 0),
+                           ('vehicle_rear', -1), ('wheelbase', 20), ('safety_margin', float('inf')),
+                           ('horizon', 10), ('switch_hysteresis', float('nan'))]:
+            with self.subTest(key=key):
+                p = copy.deepcopy(self.p)
+                p[key] = value
+                with self.assertRaises(ValueError):
+                    FrenetLocalPlanner(p)
+
+    def test_invalid_pose_obstacle_path_rejected(self):
+        for pose in [(float('nan'), 0, 0), (0, float('inf'), 0), (0, 0)]:
+            with self.assertRaises(ValueError):
+                self.core.plan(self.ref, pose, [])
+        for objects in [[(10, 0, -1)], [(10, float('nan'), 1)], [(10, 0)], [(10, 0, float('inf'))]]:
+            with self.assertRaises(ValueError):
+                self.core.plan(self.ref, (0, 0, 0), objects)
+        bad = self.points.copy()
+        bad[2, 0] = float('nan')
+        with self.assertRaises(ValueError):
+            self.core.reference(bad, 0)
+        for idx in (-1, len(self.points), True):
+            with self.assertRaises(ValueError):
+                self.core.reference(self.points, idx)
+
+    def test_switching_hysteresis_over_multiple_frames(self):
+        side = None
+        for frame in range(12):
+            best, _, _ = self.core.plan(self.ref, (frame * .02, 0, 0), [(12, .01 * (-1) ** frame, .5)])
+            self.assertIsNotNone(best)
+            if side is not None:
+                self.assertEqual(np.sign(best.offset), side)
+            side = np.sign(best.offset)
+            self.core.previous = best
+
+    def test_real_global_path_local_references_are_sanitized(self):
+        points = np.loadtxt(CONFIG.parents[1] / 'paths/global_path.txt')[:, :2]
+        for index in (0, 1245, 1800, 3079, 4390):
+            with self.subTest(index=index):
+                try:
+                    ref = self.core.reference(points, index)
+                except ValueError as exc:
+                    self.assertTrue(any(word in str(exc) for word in ('length', 'yaw', 'curvature', 'spline')))
+                else:
+                    self.assertTrue(np.isfinite(ref.raw_curvature).all())
+                    self.assertLessEqual(ref.raw_curvature.max(), self.p['max_reference_curvature'])
+
+    def test_malformed_zones_rejected(self):
+        for zones in (None, {}, [None], [{'start': True, 'end': 5}],
+                      [{'xmin': 0, 'xmax': 0, 'ymin': 0, 'ymax': 1}],
+                      [{'xmin': '0', 'xmax': 1, 'ymin': 0, 'ymax': 1}]):
+            with self.assertRaises(ValueError):
+                validate_zones(zones)
 
 
 if __name__ == '__main__':

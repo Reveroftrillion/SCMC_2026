@@ -84,11 +84,13 @@ try:
     publishers = {name: rospy.Publisher('/' + name, kind, queue_size=1) for name, kind in
                   [('global_path', RosPath), ('control_path', RosPath), ('current_pose', PoseStamped),
                    ('vehicle_status', VehicleStatus), ('gps', GPSMessage),
-                   ('obstacle_info_static', ObjectInfo), ('velodyne_points', PointCloud2)]}
+                   ('obstacle_info_static', ObjectInfo), ('velodyne_points', PointCloud2), ('local_plan', LocalPlan)]}
     vehicle = [0., 0.]
     objects = [(12., 0., 1.)]
     send_obstacles = True
     obstacle_frame = 'velodyne'
+    manual_plan_mode = None
+    status_speed = 0.
     path = RosPath()
     path.header.frame_id = 'map'
     for i in range(401):
@@ -116,7 +118,7 @@ try:
         if time.monotonic() - last_pose_time[0] >= .2:  # slower pose stream than LiDAR
             publishers['current_pose'].publish(pose)
             last_pose_time[0] = time.monotonic()
-        publishers['vehicle_status'].publish(VehicleStatus(vel_x=0., yaw=0.))
+        publishers['vehicle_status'].publish(VehicleStatus(vel_x=status_speed, yaw=0.))
         publishers['gps'].publish(GPSMessage(latitude=37., longitude=127.))
         if send_obstacles:
             msg = ObjectInfo()
@@ -127,6 +129,35 @@ try:
                 msg.lengthX[i] = msg.lengthY[i] = size
                 msg.lengthZ[i] = .5
             publishers['obstacle_info_static'].publish(msg)
+        if manual_plan_mode is not None:
+            plan = LocalPlan()
+            plan.header = Header(stamp=now, frame_id='map')
+            plan.state = 'NORMAL'
+            plan.path.header = plan.header
+            if manual_plan_mode not in ('normal', 'approach', 'inactive_stop'):
+                plan.active = True
+                plan.state = 'STATIC_OBSTACLE'
+                plan.speed_limit_kmh = 10.
+                for j in range(60):
+                    point = PoseStamped()
+                    point.header = plan.header
+                    point.pose.position.x, point.pose.position.y = vehicle[0] + j * .5, .5
+                    point.pose.orientation.w = 1.
+                    plan.path.poses.append(point)
+            if manual_plan_mode == 'approach':
+                plan.speed_limit_kmh = 10.
+            elif manual_plan_mode == 'inactive_stop':
+                plan.stop = True
+                plan.state = 'HOLD: synthetic inactive stop'
+            elif manual_plan_mode == 'wrong_frame':
+                plan.header.frame_id = 'odom'
+            elif manual_plan_mode == 'nan':
+                plan.path.poses[4].pose.position.x = float('nan')
+            elif manual_plan_mode == 'quaternion':
+                plan.path.poses[4].pose.orientation.w = 0.
+            elif manual_plan_mode == 'duplicate':
+                plan.path.poses[4].pose.position.x = plan.path.poses[3].pose.position.x
+            publishers['local_plan'].publish(plan)
 
     def check(name, predicate, timeout=7, minimum=.8):
         begun = time.monotonic()
@@ -158,10 +189,12 @@ try:
     check('missing TF cannot be treated as an empty road', lambda: latest['plan'].stop and latest['command'].brake == 1)
     obstacle_frame = 'velodyne'
     check('TF recovery resumes planning', lambda: not latest['plan'].stop and latest['command'].accel > 0)
+    vehicle[:] = [29., 1.]
+    check('off-centre pose establishes return before zone exit', lambda: latest['plan'].active and not latest['plan'].stop)
     vehicle[:] = [32., 1.]
     check('zone exit keeps local control while returning', lambda: latest['plan'].state == 'RETURN_TO_GLOBAL')
     vehicle[:] = [34., 0.]
-    check('aligned return releases global controller', lambda: latest['plan'].state == 'NORMAL' and not latest['plan'].active)
+    check('aligned return releases global controller', lambda: latest['plan'].state.startswith('NORMAL') and not latest['plan'].active)
     check('normal mode output matches unmodified controller branch',
           lambda: 'baseline' in latest and abs(latest['baseline'].accel - latest['command'].accel) < 1e-8 and
           abs(latest['baseline'].brake - latest['command'].brake) < 1e-8 and
@@ -177,6 +210,23 @@ try:
     stop(planner)
     check('planner process loss -> controller full brake', lambda: latest['command'].brake == 1 and latest['command'].accel == 0,
           minimum=1.)
+    manual_plan_mode = 'normal'
+    check('inactive plan releases global path', lambda: latest['command'].accel > 0 and latest['command'].brake == 0)
+    manual_plan_mode = 'active'
+    check('valid active plan selects local steering', lambda: abs(latest['command'].steering) > .001 and latest['command'].accel > 0)
+    for mode in ('inactive_stop', 'wrong_frame', 'nan', 'quaternion', 'duplicate'):
+        manual_plan_mode = mode
+        check('LocalPlan contract rejects/stops ' + mode,
+              lambda: latest['command'].brake == 1 and latest['command'].accel == 0 and latest['command'].steering == 0)
+    manual_plan_mode = 'approach'
+    status_speed = 15.
+    check('inactive approach caps speed while disabled controller stays global',
+          lambda: latest['command'].brake > 0 and latest['command'].accel == 0 and latest['baseline'].accel > 0)
+    manual_plan_mode = 'normal'
+    check('mission release restores global output',
+          lambda: latest['command'].accel == latest['baseline'].accel and latest['command'].brake == latest['baseline'].brake)
+    manual_plan_mode = None
+    status_speed = 0.
     # Validate actual C++ DBSCAN, including valid empty scans and acquisition metadata.
     send_obstacles = False
     start(['rosrun', 'lidar_object_detection', 'lidar_object_detection_static_node', '__name:=object_detection_static'])

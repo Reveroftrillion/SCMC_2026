@@ -1,4 +1,5 @@
 #include "control/controller.h"
+#include "control/local_plan_validation.h"
 #include <stdexcept>
 #include <boost/make_shared.hpp>
 
@@ -94,22 +95,12 @@ void Controller::localPlanCallback(const simul_msgs::LocalPlan::ConstPtr& msg){
 }
 
 bool Controller::localPlanFresh() const {
-    if (!local_plan_ || local_plan_->header.frame_id != "map") return false;
-    if (local_plan_->active && !local_plan_->stop) {
-        if (local_plan_->path.header.frame_id != "map" || local_plan_->path.poses.size() < 5 ||
-            local_plan_->path.header.stamp != local_plan_->header.stamp ||
-            !std::isfinite(local_plan_->speed_limit_kmh) || local_plan_->speed_limit_kmh <= 0.0) return false;
-        for (const auto& point : local_plan_->path.poses) {
-            const auto& p = point.pose.position;
-            const auto& q = point.pose.orientation;
-            const double norm = q.x*q.x + q.y*q.y + q.z*q.z + q.w*q.w;
-            if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.z) ||
-                !std::isfinite(norm) || std::abs(norm - 1.0) > 0.02) return false;
-        }
-    }
+    if (!local_plan_) return false;
     const double age = (ros::Time::now() - local_plan_->header.stamp).toSec();
-    return !local_plan_->header.stamp.isZero() && age >= -0.1 && age <= local_plan_timeout_ &&
-        (ros::WallTime::now() - local_plan_received_).toSec() <= local_plan_timeout_;
+    const char* reason = local_plan::invalidReason(*local_plan_, age,
+        (ros::WallTime::now() - local_plan_received_).toSec(), local_plan_timeout_);
+    if (reason) ROS_WARN_THROTTLE(1.0, "[LOCAL PLAN] %s", reason);
+    return reason == nullptr;
 }
 
 void Controller::globalPathCallback(const nav_msgs::Path::ConstPtr& global_path){
@@ -499,8 +490,8 @@ void Controller::calcVelocity(const nav_msgs::Path::ConstPtr& path){
         }
     }
 
-    if (enable_local_planner_ && localPlanFresh() && local_plan_->active &&
-        std::isfinite(local_plan_->speed_limit_kmh)) {
+    // An inactive NORMAL plan may cap speed during zone approach while preserving the global path.
+    if (enable_local_planner_ && localPlanFresh() && local_plan_->speed_limit_kmh > 0.0) {
         target_velocity_ = std::min(target_velocity_, std::max(0.0, local_plan_->speed_limit_kmh));
     }
     double accel = pid_.calcAccel(target_velocity_);
@@ -670,6 +661,13 @@ void Controller::controlPublish(){
 
     // 기본 체크
     if(!path_ || !global_path_ || !current_pose_) {
+        if (enable_local_planner_) {
+            simul_msgs::ControlCmd stop;
+            stop.accel = 0.0;
+            stop.brake = 1.0;
+            stop.steering = 0.0;
+            control_pub_.publish(stop);
+        }
         return; // 로직 실행 없이 함수 종료
     }
 
@@ -803,6 +801,7 @@ void Controller::controlPublish(){
     // This runs after waypoint publication so startup cannot deadlock waiting for /curr_idx.
     if (enable_local_planner_) {
         bool stop = !localPlanFresh();
+        if (!stop) stop = local_plan_->stop;
         if (!stop && local_plan_->active) {
             stop = local_plan_->stop || !is_gps_valid_ ||
                 local_plan_->path.header.frame_id != "map" || local_plan_->path.poses.size() < 5 ||
@@ -816,6 +815,7 @@ void Controller::controlPublish(){
             target_velocity_ = 0.0;
             accel_ = 0.0;
             brake_ = 1.0;
+            steering_ = 0.0;
             ROS_WARN_THROTTLE(1.0, "[LOCAL PLAN] Stopping: stale, blocked or invalid plan");
         }
     }
