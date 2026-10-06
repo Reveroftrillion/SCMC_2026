@@ -1,0 +1,27 @@
+# All velocities are km/h. This ceiling cannot be configured above 40.
+camera_max_velocity: 40.0
+camera_detection_hold_time: 2.0
+camera_search_velocity: 10.0
+camera_search_max_distance_m: 20.0
+camera_go_approach_velocity: 20.0
+camera_go_labels: [4green, 4greenleft]
+camera_green_confirmations: 3
+camera_green_max_gap: 0.5
+
+# Existing road-facing front camera: initial image geometry, no metric calibration.
+# Normalize image_y to the full source image, NOT the BEV or ROI.
+# Initial thresholds: verify the actual front-bumper stop position in MORAI.
+camera_allow_image_stop: true
+camera_image_slow_y: 0.56
+camera_image_stop_y: 0.75
+camera_image_approach_velocity: 15.0
+camera_image_creep_velocity: 3.0
+
+# Used automatically when StopLine.distance_valid becomes true after calibration.
+camera_stop_margin_m: 2.0
+camera_braking_deceleration: 2.0
+camera_line_hold_time: 0.35
+camera_mission_timeout: 0.7
+camera_signal_timeout: 0.35
+camera_stop_line_timeout: 0.5
+camera_vehicle_timeout: 0.5

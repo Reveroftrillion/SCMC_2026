@@ -75,6 +75,9 @@
   <exec_depend>simul_msgs</exec_depend>
   <exec_depend>lidar_object_detection</exec_depend>
   <exec_depend>morai_msgs</exec_depend>
+  <test_depend>gtest</test_depend>
+  <test_depend>rospy</test_depend>
+  <test_depend>python3-yaml</test_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

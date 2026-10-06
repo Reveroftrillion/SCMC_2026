@@ -1,0 +1,40 @@
+# Desired MORAI Camera-7 pose. Metadata only: set Pitch in MORAI to -20 deg (340 deg).
+# UDP image reception and this YAML do not rotate the simulator's physical sensor.
+camera_mount_xyz: [1.9, 0.0, 1.2]
+camera_pitch_deg: -20.0
+camera_image_size: [640, 480]
+camera_horizontal_fov_deg: 90.0
+signal_timeout: 0.7
+max_image_age: 0.7
+# Inference ROI in full-image coordinates. Narrow this to the intended lane's lights.
+roi: [0.0, 0.0, 1.0, 1.0]
+signal_filter:
+  window: 5
+  confirm_hits: 3
+  hold_time: 0.35
+  track_timeout: 1.0
+  vote_age: 0.5
+  bbox_alpha: 0.35
+  min_iou: 0.1
+  max_center_distance: 0.08
+  max_scale_ratio: 2.5
+  target_x: 0.5
+camera_mission:
+  enabled: true
+  # Initial camera-dependent threshold, NOT a calibrated physical distance.
+  enter_width_ratio: 0.04
+  cancel_width_ratio: 0.032
+  enter_confirm_frames: 3
+  enter_confirm_time: 0.25
+  max_observation_gap: 0.35
+  exit_mode: camera_edge
+  exit_edges: [top, left, right]
+  exit_edge_ratio: 0.04
+  exit_min_growth: 1.4
+  exit_min_peak_width: 0.06
+  exit_confirm_frames: 3
+  exit_confirm_time: 0.15
+  exit_loss_time: 1.0
+  cooldown_time: 3.0
+  rearm_width_ratio: 0.02
+  rearm_clear_time: 1.0

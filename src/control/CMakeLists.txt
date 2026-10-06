@@ -138,6 +138,14 @@ add_executable(
 target_link_libraries(control ${catkin_LIBRARIES})
 add_dependencies(control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
+install(TARGETS control RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY launch config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+
+if(CATKIN_ENABLE_TESTING)
+  catkin_add_gtest(test_traffic_mission tests/test_traffic_mission.cpp)
+  catkin_add_gtest(test_camera_traffic_control tests/test_camera_traffic_control.cpp)
+endif()
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 #############

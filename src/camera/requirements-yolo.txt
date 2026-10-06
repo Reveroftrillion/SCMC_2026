@@ -1,0 +1,5 @@
+# Install into a virtual environment with --system-site-packages for ROS / cv_bridge.
+ultralytics>=8,<9
+# ROS Noetic cv_bridge relies on OpenCV 4's CV_* aliases; OpenCV 5 removes them.
+opencv-python>=4.6,<4.12
+numpy>=1.23,<2
