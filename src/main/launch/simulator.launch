@@ -11,9 +11,53 @@
   <arg name="start_lidar_driver" default="true" />
   <arg name="lidar_port" default="2368" />
   <arg name="lidar_rpm" default="600" />
-  <node pkg="camera" name="yolov8_node" type="traffic_yolo.py" output="screen">
-    <remap from="/image_jpeg/compressed" to="/camera/front/image/compressed" />
-  </node>
+  <arg name="enable_yolo" default="true" />
+  <arg name="yolo_weights" default="$(find camera)/models/1027_40epoch.pt" />
+  <arg name="yolo_device" default="cpu" />
+  <arg name="yolo_python" default="python3" />
+  <arg name="enable_traffic_missions" default="false" />
+  <arg name="traffic_config" default="$(find control)/config/traffic_missions.yaml" />
+  <arg name="enable_camera_traffic_control" default="true" />
+  <arg name="camera_control_config" default="$(find control)/config/camera_traffic_control.yaml" />
+  <arg name="camera_traffic_config" default="$(find camera)/config/traffic_camera.yaml" />
+  <arg name="stop_line_config" default="$(find camera)/config/stop_line_front.yaml" />
+  <arg name="traffic_camera_port" default="9090" />
+  <arg name="traffic_image_topic" default="/camera/traffic/image/compressed" />
+  <arg name="stop_line_image_topic" default="/camera/front/image/compressed" />
+  <arg name="view_image" default="true" />
+  <arg name="view_traffic_image" default="$(arg view_image)" />
+  <arg name="view_stop_line_image" default="$(arg view_image)" />
+  <include if="$(arg enable_yolo)" file="$(find camera)/launch/traffic_yolo.launch">
+    <arg name="weights_path" value="$(arg yolo_weights)" />
+    <arg name="device" value="$(arg yolo_device)" />
+    <arg name="python" value="$(arg yolo_python)" />
+    <arg name="config" value="$(arg camera_traffic_config)" />
+    <arg name="image_topic" value="$(arg traffic_image_topic)" />
+  </include>
+  <group if="$(arg enable_yolo)">
+    <!-- Camera-7 is now dedicated to upward-looking traffic-light recognition. -->
+    <node pkg="morai_udp" type="sensor_udp_node.py" name="camera_traffic_udp" output="screen" required="true">
+      <param name="kind" value="camera" />
+      <param name="port" value="$(arg traffic_camera_port)" />
+      <param name="topic" value="$(arg traffic_image_topic)" />
+      <param name="frame_id" value="camera_traffic" />
+      <param name="timeout" value="0.5" />
+      <param name="bind_ip" value="$(arg bind_ip)" />
+      <param name="source_ip" value="$(arg morai_ip)" />
+    </node>
+    <node if="$(arg view_traffic_image)" pkg="rqt_image_view" type="rqt_image_view"
+          name="traffic_yolo_view" args="/yolo_traffic_light/image_raw" output="screen" />
+  </group>
+  <group if="$(arg enable_camera_traffic_control)">
+    <include file="$(find camera)/launch/stop_line.launch">
+      <arg name="config" value="$(arg stop_line_config)" />
+      <arg name="image_topic" value="$(arg stop_line_image_topic)" />
+      <!-- Warm the confirmation filter before mission entry; control stays mission-gated. -->
+      <arg name="require_mission_active" value="false" />
+    </include>
+    <node if="$(arg view_stop_line_image)" pkg="rqt_image_view" type="rqt_image_view"
+          name="stop_line_view" args="/stop_line/image_raw" output="screen" />
+  </group>
   <node pkg="camera" name="lanenet_node" type="lanenet.py" output="screen">
     <!-- Shared front image; lane ROI/warp must be calibrated for the fixed camera. -->
     <remap from="/image_jpeg2/compressed" to="/camera/front/image/compressed" />
@@ -22,6 +66,10 @@
   <include file="$(find planning)/launch/planner.launch" />
   <include file="$(find control)/launch/control.launch">
     <arg name="enable_local_planner" value="$(arg enable_local_planner)" />
+    <arg name="enable_traffic_missions" value="$(arg enable_traffic_missions)" />
+    <arg name="traffic_config" value="$(arg traffic_config)" />
+    <arg name="enable_camera_traffic_control" value="$(arg enable_camera_traffic_control)" />
+    <arg name="camera_control_config" value="$(arg camera_control_config)" />
   </include>
   <include if="$(arg enable_local_planner)" file="$(find planning)/launch/local_planner.launch">
     <arg name="config" value="$(arg local_planner_config)" />

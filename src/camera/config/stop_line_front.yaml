@@ -1,0 +1,22 @@
+# Existing road-facing front camera, shared with LaneNet, UDP 9291.
+# Separate geometry from the former downward-looking Camera-7 calibration.
+camera_image_size: [1280, 720]
+# Initial ROI based on the saved front frame: road below horizon, above bonnet.
+# Order: bottom-left, top-left, top-right, bottom-right. Tune on live stop-line frames.
+roi: [[0.27, 0.79], [0.47, 0.51], [0.59, 0.51], [0.76, 0.79]]
+bev_size: 320
+white_v_min: 165
+white_s_max: 80
+min_coverage: 0.60
+min_band_height: 0.01
+max_band_height: 0.09
+arrow_stem_min_length: 0.10
+crosswalk_min_bands: 3
+crosswalk_max_gap: 0.14
+confirm_window: 5
+confirm_hits: 3
+max_y_jump: 0.08
+image_timeout: 0.5
+# The old camera's correspondences cannot be reused on this camera.
+calibration_image_points: []
+calibration_ground_points: []

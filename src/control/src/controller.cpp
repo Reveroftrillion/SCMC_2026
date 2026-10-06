@@ -29,7 +29,7 @@ constexpr double LANE_VELOCITY = 45.;
 
 Controller::Controller(): pid_(P_GAIN, I_GAIN, D_GAIN), nearest_dyna_obs_(std::numeric_limits<double>::max()),
     g_curr_idx_(0), g_path_size_(0), is_finish_(false), should_decel_(false), should_stop_(false),
-    traffic_sign_status_(""), prev_traffic_sign_1_(""), prev_traffic_sign_2_(""), traffic_sign_stable_count_(0),
+    traffic_sign_status_("UNKNOWN"),
     lanenet_angle_(0.0), obstacle_waiting_time(0), use_global_path_(true), is_gps_valid_(true),
     deadlock_timer_(0), is_deadlocked_(false), current_velocity_(0.0){
     ros::NodeHandle private_nh("~");
@@ -37,6 +37,8 @@ Controller::Controller(): pid_(P_GAIN, I_GAIN, D_GAIN), nearest_dyna_obs_(std::n
     if (!std::isfinite(max_steering_deg_) || max_steering_deg_ <= 0.0) {
         throw std::invalid_argument("max_steering_deg must be positive");
     }
+    configureTrafficMissions(private_nh);
+    configureCameraTraffic(private_nh);
     private_nh.param("enable_local_planner", enable_local_planner_, false);
     private_nh.param("local_plan_timeout", local_plan_timeout_, 0.5);
     if (!std::isfinite(local_plan_timeout_) || local_plan_timeout_ <= 0.0) {
@@ -52,6 +54,7 @@ Controller::Controller(): pid_(P_GAIN, I_GAIN, D_GAIN), nearest_dyna_obs_(std::n
     pid_.setCurrVelocity(0.0);
     control_pub_ = nh_.advertise<simul_msgs::ControlCmd>("/control_cmd", 1);
     curr_waypoint_pub = nh_.advertise<std_msgs::Int16>("/curr_idx", 1);
+    traffic_state_pub_ = nh_.advertise<std_msgs::String>("/traffic_mission_state", 1);
 
     path_sub_ = nh_.subscribe("/control_path", 1, &Controller::pathCallback, this);
     local_path_sub_ = nh_.subscribe("/local_path", 1, &Controller::localPathCallback, this);
@@ -63,6 +66,184 @@ Controller::Controller(): pid_(P_GAIN, I_GAIN, D_GAIN), nearest_dyna_obs_(std::n
     lanenet_angle_sub_ = nh_.subscribe("/lanenet/angle", 1, &Controller::lanenetAngleCallback, this);
     obstacle_info_sub_ = nh_.subscribe("/car_info", 1, &Controller::obstacleInfoCallback, this);
     gps_sub_ = nh_.subscribe("/gps", 1, &Controller::gpsCallback, this);
+}
+
+void Controller::configureTrafficMissions(ros::NodeHandle& private_nh) {
+    private_nh.param("enable_traffic_missions", enable_traffic_missions_, false);
+    if (!enable_traffic_missions_) return;
+    traffic::Settings settings;
+    private_nh.param("traffic_signal_timeout", settings.signal_timeout, settings.signal_timeout);
+    private_nh.param("traffic_pose_timeout", traffic_pose_timeout_, traffic_pose_timeout_);
+    private_nh.param("traffic_detect_margin", settings.detect_margin, settings.detect_margin);
+    private_nh.param("traffic_stop_tolerance", settings.stop_tolerance, settings.stop_tolerance);
+    private_nh.param("traffic_pass_margin", settings.pass_margin, settings.pass_margin);
+    private_nh.param("traffic_corridor_width", settings.corridor_width, settings.corridor_width);
+    private_nh.param("traffic_approach_velocity", settings.approach_velocity, settings.approach_velocity);
+    private_nh.param("traffic_braking_deceleration", settings.braking_deceleration, settings.braking_deceleration);
+    private_nh.param("traffic_green_confirmations", settings.green_confirmations, settings.green_confirmations);
+    if (!std::isfinite(traffic_pose_timeout_) || traffic_pose_timeout_ <= 0.0)
+        throw std::invalid_argument("traffic_pose_timeout must be positive");
+    XmlRpc::XmlRpcValue values;
+    if (!private_nh.getParam("traffic_missions", values) || values.getType() != XmlRpc::XmlRpcValue::TypeArray)
+        throw std::invalid_argument("traffic_missions must be an array (load traffic_missions.yaml)");
+    const auto number = [](XmlRpc::XmlRpcValue& value) -> double {
+        if (value.getType() == XmlRpc::XmlRpcValue::TypeInt) return static_cast<int>(value);
+        if (value.getType() == XmlRpc::XmlRpcValue::TypeDouble) return static_cast<double>(value);
+        throw std::invalid_argument("traffic coordinates must be numeric");
+    };
+    const auto point = [&number](XmlRpc::XmlRpcValue& value) -> traffic::Point {
+        if (value.getType() != XmlRpc::XmlRpcValue::TypeArray || value.size() != 2)
+            throw std::invalid_argument("traffic point must contain [x, y]");
+        return {number(value[0]), number(value[1])};
+    };
+    std::vector<traffic::Mission> missions;
+    for (int i = 0; i < values.size(); ++i) {
+        auto& value = values[i];
+        if (value.getType() != XmlRpc::XmlRpcValue::TypeStruct || !value.hasMember("name") ||
+            !value.hasMember("detect") || !value.hasMember("stop") || !value.hasMember("pass") ||
+            value["name"].getType() != XmlRpc::XmlRpcValue::TypeString)
+            throw std::invalid_argument("traffic mission requires name, detect, stop and pass");
+        missions.push_back({static_cast<std::string>(value["name"]), point(value["detect"]),
+            point(value["stop"]), point(value["pass"])});
+    }
+    traffic_mission_.configure(missions, settings);
+    ROS_INFO("[TRAFFIC] Loaded %zu coordinate missions", missions.size());
+}
+
+void Controller::configureCameraTraffic(ros::NodeHandle& private_nh) {
+    private_nh.param("enable_camera_traffic_control", enable_camera_traffic_control_, false);
+    if (!enable_camera_traffic_control_) return;
+    if (enable_traffic_missions_)
+        throw std::invalid_argument("enable only one of coordinate and camera traffic control");
+    camera_traffic::Settings s;
+    private_nh.param("camera_max_velocity", s.max_velocity, s.max_velocity);
+    private_nh.param("camera_detection_hold_time", s.detection_hold_time, s.detection_hold_time);
+    private_nh.param("camera_search_velocity", s.search_velocity, s.search_velocity);
+    private_nh.param("camera_search_max_distance_m", s.search_max_distance_m, s.search_max_distance_m);
+    private_nh.param("camera_go_approach_velocity", s.go_approach_velocity, s.go_approach_velocity);
+    private_nh.param("camera_image_approach_velocity", s.image_approach_velocity, s.image_approach_velocity);
+    private_nh.param("camera_image_creep_velocity", s.image_creep_velocity, s.image_creep_velocity);
+    private_nh.param("camera_image_slow_y", s.image_slow_y, s.image_slow_y);
+    private_nh.param("camera_image_stop_y", s.image_stop_y, s.image_stop_y);
+    private_nh.param("camera_allow_image_stop", s.allow_image_stop, s.allow_image_stop);
+    private_nh.param("camera_stop_margin_m", s.stop_margin_m, s.stop_margin_m);
+    private_nh.param("camera_braking_deceleration", s.braking_deceleration, s.braking_deceleration);
+    private_nh.param("camera_line_hold_time", s.line_hold_time, s.line_hold_time);
+    private_nh.param("camera_green_confirmations", s.green_confirmations, s.green_confirmations);
+    private_nh.param("camera_green_max_gap", s.green_max_gap, s.green_max_gap);
+    private_nh.param("camera_go_labels", s.go_labels, s.go_labels);
+    private_nh.param("camera_mission_timeout", camera_mission_timeout_, camera_mission_timeout_);
+    private_nh.param("camera_signal_timeout", camera_signal_timeout_, camera_signal_timeout_);
+    private_nh.param("camera_stop_line_timeout", camera_stop_line_timeout_, camera_stop_line_timeout_);
+    private_nh.param("camera_vehicle_timeout", camera_vehicle_timeout_, camera_vehicle_timeout_);
+    for (double timeout : {camera_mission_timeout_, camera_signal_timeout_,
+                           camera_stop_line_timeout_, camera_vehicle_timeout_}) {
+        if (!std::isfinite(timeout) || timeout <= 0.0)
+            throw std::invalid_argument("camera control timeouts must be positive");
+    }
+    camera_traffic_control_.configure(s);
+    camera_mission_sub_ = nh_.subscribe("/traffic_camera_mission", 1, &Controller::cameraMissionCallback, this);
+    tracked_signal_sub_ = nh_.subscribe("/traffic_light/tracked", 1, &Controller::trackedSignalCallback, this);
+    stop_line_sub_ = nh_.subscribe("/stop_line/detection", 1, &Controller::stopLineCallback, this);
+    camera_reset_sub_ = nh_.subscribe("/traffic_camera_mission/reset", 1, &Controller::cameraResetCallback, this);
+    ROS_INFO("[CAMERA TRAFFIC] enabled: maximum %.1f km/h, image stopping=%d", s.max_velocity, s.allow_image_stop);
+}
+
+void Controller::cameraMissionCallback(const simul_msgs::CameraTrafficMission::ConstPtr& msg) {
+    camera_mission_ = msg;
+    camera_mission_received_ = ros::WallTime::now();
+}
+void Controller::trackedSignalCallback(const simul_msgs::TrafficLightTrack::ConstPtr& msg) {
+    tracked_signal_ = msg;
+    tracked_signal_received_ = ros::WallTime::now();
+}
+void Controller::stopLineCallback(const simul_msgs::StopLine::ConstPtr& msg) {
+    stop_line_ = msg;
+    stop_line_received_ = ros::WallTime::now();
+}
+void Controller::cameraResetCallback(const std_msgs::Bool::ConstPtr& msg) {
+    if (!msg->data) return;
+    camera_traffic_control_.reset();
+    camera_mission_.reset();
+    tracked_signal_.reset();
+    stop_line_.reset();
+}
+
+void Controller::applyCameraTrafficControl() {
+    camera_traffic::Input in;
+    const auto now = ros::Time::now();
+    const auto wall_now = ros::WallTime::now();
+    const auto fresh = [&now, &wall_now](const ros::Time& stamp, const ros::WallTime& received, double timeout) {
+        const double age = (now - stamp).toSec();
+        const double wall_age = (wall_now - received).toSec();
+        return !stamp.isZero() && age >= -0.1 && age <= timeout && wall_age >= 0.0 && wall_age <= timeout;
+    };
+    if (camera_mission_) {
+        in.mission_fresh = fresh(camera_mission_->header.stamp, camera_mission_received_, camera_mission_timeout_) &&
+            camera_mission_->phase != "ACTIVE_STALE";
+        in.mission_active = camera_mission_->active;
+        in.mission_cooldown = camera_mission_->phase == "COOLDOWN";
+        in.mission_id = camera_mission_->mission_id;
+        in.track_id = camera_mission_->target_track_id;
+        in.mission_stamp = camera_mission_->header.stamp.toSec();
+        if (in.mission_active && (in.mission_id == 0 || in.track_id == 0)) in.mission_fresh = false;
+    }
+    const double vehicle_age = (wall_now - vehicle_received_).toSec();
+    in.vehicle_fresh = !vehicle_received_.isZero() && vehicle_age >= 0.0 && vehicle_age <= camera_vehicle_timeout_;
+    in.velocity = current_velocity_;
+    in.motion_allowed = target_velocity_ > 0.0 &&
+        (!enable_local_planner_ || !localPlanRequiresStop());
+    if (tracked_signal_) {
+        const auto& s = *tracked_signal_;
+        in.signal_fresh = fresh(s.header.stamp, tracked_signal_received_, camera_mission_timeout_) &&
+            !s.last_detection_stamp.isZero() && (now - s.last_detection_stamp).toSec() >= -0.1 &&
+            (now - s.last_detection_stamp).toSec() <= camera_signal_timeout_ &&
+            std::isfinite(s.signal_age) && s.signal_age >= 0.0 && s.signal_age <= camera_signal_timeout_;
+        in.signal_valid = s.signal_valid;
+        in.signal_observed = s.observed && !s.held;
+        in.signal_track_id = s.track_id;
+        in.signal_stamp = s.last_detection_stamp.toSec();
+        in.label = s.label; in.raw_label = s.raw_label;
+        static const std::vector<std::string> traffic_labels = {"4red", "4redleft", "4yellow", "4redyellow",
+            "4greenleft", "4green", "3red", "3redleft", "3redyellow"};
+        const bool box_valid = s.bbox_valid && std::isfinite(s.xmin) && std::isfinite(s.ymin) &&
+            std::isfinite(s.xmax) && std::isfinite(s.ymax) &&
+            s.xmin >= 0.0 && s.ymin >= 0.0 && s.xmax <= 1.0 && s.ymax <= 1.0 &&
+            s.xmin < s.xmax && s.ymin < s.ymax;
+        in.target_observed = fresh(s.header.stamp, tracked_signal_received_, camera_signal_timeout_) &&
+            !s.last_detection_stamp.isZero() && (now - s.last_detection_stamp).toSec() >= -0.1 &&
+            (now - s.last_detection_stamp).toSec() <= camera_signal_timeout_ &&
+            in.signal_observed && s.track_id > 0 && box_valid && std::isfinite(s.confidence) && s.confidence > 0.0 &&
+            std::find(traffic_labels.begin(), traffic_labels.end(), s.raw_label) != traffic_labels.end();
+    }
+    if (stop_line_) {
+        const auto& s = *stop_line_;
+        in.line_ready = s.enabled && fresh(s.header.stamp, stop_line_received_, camera_stop_line_timeout_) &&
+            s.state != "STALE_IMAGE" && s.state != "IMAGE_ERROR" && s.state != "WAITING_FOR_IMAGE";
+        in.line_detected = s.detected;
+        in.distance_valid = s.distance_valid;
+        in.line_stamp = s.header.stamp.toSec();
+        in.image_y = s.image_y_ratio;
+        in.distance_m = s.distance_m;
+    }
+    const auto decision = camera_traffic_control_.update(in, wall_now.toSec());
+    if (decision.state != camera_traffic_decision_.state || decision.mission_id != camera_traffic_decision_.mission_id)
+        ROS_INFO("[CAMERA TRAFFIC] M%u:%s limit=%.1f km/h", decision.mission_id, decision.state.c_str(), decision.speed_limit);
+    camera_traffic_decision_ = decision;
+    std_msgs::String state;
+    state.data = "M" + std::to_string(decision.mission_id) + ":" + decision.state;
+    traffic_state_pub_.publish(state);
+    if (decision.stop) {
+        target_velocity_ = 0.0;
+        accel_ = 0.0;
+        brake_ = 1.0;
+    } else if (decision.speed_limit < target_velocity_) {
+        target_velocity_ = decision.speed_limit;
+        const double output = pid_.calcAccel(target_velocity_);
+        // An obstacle, end-of-path, or existing stop must never be released by a green signal.
+        accel_ = std::min(accel_, std::max(0.0, output));
+        brake_ = std::max(brake_, std::max(0.0, -output));
+    }
 }
 
 void Controller::pathCallback(const nav_msgs::Path::ConstPtr& path){
@@ -97,10 +278,29 @@ void Controller::localPlanCallback(const simul_msgs::LocalPlan::ConstPtr& msg){
 bool Controller::localPlanFresh() const {
     if (!local_plan_) return false;
     const double age = (ros::Time::now() - local_plan_->header.stamp).toSec();
-    const char* reason = local_plan::invalidReason(*local_plan_, age,
-        (ros::WallTime::now() - local_plan_received_).toSec(), local_plan_timeout_);
-    if (reason) ROS_WARN_THROTTLE(1.0, "[LOCAL PLAN] %s", reason);
+    const char* reason = local_plan::invalidReason(
+        *local_plan_,
+        age,
+        (ros::WallTime::now() - local_plan_received_).toSec(),
+        local_plan_timeout_);
+    if (reason) {
+        ROS_WARN_THROTTLE(1.0, "[LOCAL PLAN] %s", reason);
+    }
     return reason == nullptr;
+}
+
+bool Controller::localPlanRequiresStop() const {
+    if (!localPlanFresh()) return true;
+
+    // stop is always honoured, including an inactive LocalPlan.
+    if (local_plan_->stop) return true;
+
+    if (!local_plan_->active) return false;
+
+    return !is_gps_valid_ ||
+        local_plan_->path.header.frame_id != "map" ||
+        local_plan_->path.poses.size() < 5 ||
+        !std::isfinite(local_plan_->speed_limit_kmh) || local_plan_->speed_limit_kmh <= 0.0;
 }
 
 void Controller::globalPathCallback(const nav_msgs::Path::ConstPtr& global_path){
@@ -110,30 +310,19 @@ void Controller::globalPathCallback(const nav_msgs::Path::ConstPtr& global_path)
 
 void Controller::currentPoseCallback(const geometry_msgs::PoseStamped::ConstPtr& current_pose){
     current_pose_ = current_pose;
+    traffic_pose_received_ = ros::WallTime::now();
 }
 
 void Controller::vehicleInfoCallback(const simul_msgs::VehicleStatus::ConstPtr& vehicle_info){
+    vehicle_received_ = ros::WallTime::now();
     pid_.setCurrVelocity(vehicle_info->vel_x);  // vel_x is already in km/h
     vehicle_yaw_ = vehicle_info->yaw * M_PI / 180.0;  // Convert degree to radian
     current_velocity_ = vehicle_info->vel_x;  // Store current velocity for deadlock detection
 }
 
 void Controller::trafficLightStatusCallback(const std_msgs::String::ConstPtr& msg){
-    if (!msg->data.empty()) {
-        std::string new_signal = msg->data;
-
-        // Check if the new signal matches the previous 2 signals (3 consecutive same signals)
-        if (new_signal == prev_traffic_sign_1_ && new_signal == prev_traffic_sign_2_) {
-            // 3 consecutive same signals - update the status
-            traffic_sign_status_ = new_signal;
-            traffic_sign_stable_count_++;
-        } else {
-            // Signal changed - shift the history
-            prev_traffic_sign_2_ = prev_traffic_sign_1_;
-            prev_traffic_sign_1_ = new_signal;
-            traffic_sign_stable_count_ = 0;
-        }
-    }
+    traffic_sign_status_ = msg->data.empty() ? "UNKNOWN" : msg->data;
+    traffic_mission_.observe(traffic_sign_status_, ros::WallTime::now().toSec());
 }
 
 void Controller::lanenetAngleCallback(const std_msgs::Float32::ConstPtr& msg){
@@ -154,9 +343,7 @@ void Controller::gpsCallback(const morai_msgs::GPSMessage::ConstPtr& msg){
 }
 
 bool Controller::isGreenSign(){
-    // Red 신호가 아니면 통과 (green, yellow 등)
-    bool is_red = (traffic_sign_status_.find("red") != std::string::npos);
-    return !is_red;
+    return traffic_mission_.canGo(ros::WallTime::now().toSec());
 }
 
 bool Controller::isObstacle(){
@@ -222,6 +409,23 @@ double Controller::getDistance(const geometry_msgs::Pose& a, const geometry_msgs
 }
 
 void Controller::flowControl(const geometry_msgs::Pose& curr_pose){
+    if (enable_traffic_missions_) {
+        const ros::WallTime now = ros::WallTime::now();
+        const double pose_age = (ros::Time::now() - current_pose_->header.stamp).toSec();
+        const bool pose_valid = is_gps_valid_ && current_pose_->header.frame_id == "map" &&
+            !current_pose_->header.stamp.isZero() && pose_age >= -0.1 && pose_age <= traffic_pose_timeout_ &&
+            (now - traffic_pose_received_).toSec() <= traffic_pose_timeout_;
+        traffic_decision_ = traffic_mission_.update({curr_pose.position.x, curr_pose.position.y}, now.toSec(), pose_valid);
+        should_stop_ = traffic_decision_.stop;
+        should_decel_ = false; // Coordinate missions apply their speed limit below.
+        std_msgs::String state;
+        state.data = traffic_mission_.activeName() + ":" + traffic_decision_.state;
+        traffic_state_pub_.publish(state);
+        ROS_INFO_THROTTLE(1.0, "[TRAFFIC] mission=%s state=%s signal=%s limit=%.2f km/h",
+            traffic_mission_.activeName().c_str(), traffic_decision_.state.c_str(),
+            traffic_sign_status_.c_str(), traffic_decision_.speed_limit);
+        return;
+    }
     if(!global_path_ || g_path_size_ == 0) return;
 
     // Initialize event manager with current index
@@ -490,9 +694,13 @@ void Controller::calcVelocity(const nav_msgs::Path::ConstPtr& path){
         }
     }
 
-    // An inactive NORMAL plan may cap speed during zone approach while preserving the global path.
-    if (enable_local_planner_ && localPlanFresh() && local_plan_->speed_limit_kmh > 0.0) {
-        target_velocity_ = std::min(target_velocity_, std::max(0.0, local_plan_->speed_limit_kmh));
+    // Inactive NORMAL plans can cap speed before entering a Local mission zone.
+    if (enable_local_planner_ &&
+        localPlanFresh() &&
+        local_plan_->speed_limit_kmh > 0.0) {
+        target_velocity_ = std::min(
+            target_velocity_,
+            std::max(0.0, local_plan_->speed_limit_kmh));
     }
     double accel = pid_.calcAccel(target_velocity_);
 
@@ -671,6 +879,8 @@ void Controller::controlPublish(){
         return; // 로직 실행 없이 함수 종료
     }
 
+    if (enable_traffic_missions_) flowControl(current_pose_->pose);
+
     // ===== 최우선: GPS 음영 구간 체크 =====
     // GPS가 0,0일 때 (음영 구간) 무조건 lanenet 제어만 사용
     // GPS 음영 구간에서는 calcGlobalCurrWaypoint 호출하지 않음!
@@ -723,7 +933,7 @@ void Controller::controlPublish(){
         }
         else {
             calcGlobalCurrWaypoint(current_pose_->pose);
-            flowControl(current_pose_->pose);  // 일반 구간 제어 (신호등 등)
+            if (!enable_traffic_missions_) flowControl(current_pose_->pose);
         }
 
         // Select path to use based on flags and conditions
@@ -797,21 +1007,26 @@ void Controller::controlPublish(){
         }
     }
 
+    // Apply traffic constraints to every control mode, including GPS blackout.
+    if (enable_traffic_missions_) {
+        if (traffic_decision_.stop) {
+            target_velocity_ = 0.0;
+            accel_ = 0.0;
+            brake_ = 1.0;
+        } else if (traffic_decision_.speed_limit < target_velocity_) {
+            target_velocity_ = traffic_decision_.speed_limit;
+            const double output = pid_.calcAccel(target_velocity_);
+            accel_ = std::max(0.0, output);
+            brake_ = std::max(0.0, -output);
+        }
+    }
+
+    if (enable_camera_traffic_control_) applyCameraTrafficControl();
+
     // Planner loss/blocked path stops only when the new planner is explicitly enabled.
     // This runs after waypoint publication so startup cannot deadlock waiting for /curr_idx.
     if (enable_local_planner_) {
-        bool stop = !localPlanFresh();
-        if (!stop) stop = local_plan_->stop;
-        if (!stop && local_plan_->active) {
-            stop = local_plan_->stop || !is_gps_valid_ ||
-                local_plan_->path.header.frame_id != "map" || local_plan_->path.poses.size() < 5 ||
-                !std::isfinite(local_plan_->speed_limit_kmh) || local_plan_->speed_limit_kmh <= 0.0;
-            for (const auto& p : local_plan_->path.poses) {
-                stop = stop || !std::isfinite(p.pose.position.x) || !std::isfinite(p.pose.position.y) ||
-                    !std::isfinite(p.pose.position.z);
-            }
-        }
-        if (stop) {
+        if (localPlanRequiresStop()) {
             target_velocity_ = 0.0;
             accel_ = 0.0;
             brake_ = 1.0;
@@ -821,9 +1036,12 @@ void Controller::controlPublish(){
     }
 
     // Apply the speed limit to every longitudinal mode without weakening a stop.
-    if(current_velocity_ >= MAX_VELOCITY){
+    const double longitudinal_ceiling = enable_camera_traffic_control_ &&
+        std::isfinite(camera_traffic_decision_.speed_limit)
+        ? std::min(MAX_VELOCITY, camera_traffic_decision_.speed_limit) : MAX_VELOCITY;
+    if(current_velocity_ >= longitudinal_ceiling){
         accel_ = 0.0;
-        brake_ = std::max(brake_, std::min(1.0, P_GAIN * (current_velocity_ - MAX_VELOCITY)));
+        brake_ = std::max(brake_, std::min(1.0, P_GAIN * (current_velocity_ - longitudinal_ceiling)));
     }
 
     ROS_INFO_THROTTLE(1.0,

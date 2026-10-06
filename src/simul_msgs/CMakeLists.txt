@@ -14,6 +14,9 @@ add_message_files(
   ControlCmd.msg
   VehicleStatus.msg
   TrafficSign.msg
+  StopLine.msg
+  TrafficLightTrack.msg
+  CameraTrafficMission.msg
   BBox2D.msg
   BBox2DArray.msg
 )

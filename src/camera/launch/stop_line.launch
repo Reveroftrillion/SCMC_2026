@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="image_topic" default="/camera/front/image/compressed" />
+  <arg name="config" default="$(find camera)/config/stop_line_front.yaml" />
+  <arg name="require_mission_active" default="false" />
+  <node pkg="camera" type="stop_line.py" name="stop_line_detector" output="screen" required="true">
+    <rosparam command="load" file="$(arg config)" />
+    <param name="require_mission_active" value="$(arg require_mission_active)" />
+    <remap from="/camera/front/image/compressed" to="$(arg image_topic)" />
+  </node>
+</launch>

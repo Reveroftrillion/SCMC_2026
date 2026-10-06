@@ -29,6 +29,8 @@
   <exec_depend>planning</exec_depend>
   <exec_depend>control</exec_depend>
   <exec_depend>camera</exec_depend>
+  <exec_depend>morai_udp</exec_depend>
+  <exec_depend>rqt_image_view</exec_depend>
   <exec_depend>simul_msgs</exec_depend>
 
   <export>

@@ -14,10 +14,15 @@
 #include <simul_msgs/ControlCmd.h>
 #include <simul_msgs/LocalPlan.h>
 #include <simul_msgs/TrafficSign.h>
+#include <simul_msgs/TrafficLightTrack.h>
+#include <simul_msgs/CameraTrafficMission.h>
+#include <simul_msgs/StopLine.h>
 #include <lidar_object_detection/ObjectInfo.h>
 #include <morai_msgs/GPSMessage.h>
 
 #include "control/pid.h"
+#include "control/traffic_mission.h"
+#include "control/camera_traffic_control.h"
 
 #include <vector>
 #include <string>
@@ -106,11 +111,19 @@ private:
 
     void localPlanCallback(const simul_msgs::LocalPlan::ConstPtr& msg);
     bool localPlanFresh() const;
+    bool localPlanRequiresStop() const;
 
     void calcVelocity(const nav_msgs::Path::ConstPtr& path);
     int calcGlobalCurrWaypoint(const geometry_msgs::Pose& curr_pose);
     double getDistance(const geometry_msgs::Pose& a, const geometry_msgs::Pose& b);
     void flowControl(const geometry_msgs::Pose& curr_pose);
+    void configureTrafficMissions(ros::NodeHandle& private_nh);
+    void configureCameraTraffic(ros::NodeHandle& private_nh);
+    void cameraMissionCallback(const simul_msgs::CameraTrafficMission::ConstPtr& msg);
+    void trackedSignalCallback(const simul_msgs::TrafficLightTrack::ConstPtr& msg);
+    void stopLineCallback(const simul_msgs::StopLine::ConstPtr& msg);
+    void cameraResetCallback(const std_msgs::Bool::ConstPtr& msg);
+    void applyCameraTrafficControl();
     bool isGreenSign();
     bool isObstacle();
     bool in_merging_zone();
@@ -132,6 +145,7 @@ private:
 
 
     ros::Publisher control_pub_, curr_waypoint_pub;
+    ros::Publisher traffic_state_pub_;
     ros::Subscriber path_sub_, local_path_sub_, local_path_done_sub_, global_path_sub_, curr_pose_sub_, vehicle_info_sub_, nearest_dyna_obs_sub_, traffic_sign_sub_, lanenet_angle_sub_, obstacle_info_sub_, gps_sub_;
 
     nav_msgs::Path::ConstPtr path_;
@@ -162,11 +176,23 @@ private:
     // Traffic light control
     EventPlaceInfoManager event_manager_;
     std::string traffic_sign_status_;
-    std::string prev_traffic_sign_1_;  // Previous signal 1
-    std::string prev_traffic_sign_2_;  // Previous signal 2
-    int traffic_sign_stable_count_;    // Consecutive same signal count
     bool should_decel_;
     bool should_stop_;
+    bool enable_traffic_missions_ = false;
+    double traffic_pose_timeout_ = 0.7;
+    ros::WallTime traffic_pose_received_;
+    traffic::MissionController traffic_mission_;
+    traffic::Decision traffic_decision_;
+    bool enable_camera_traffic_control_ = false;
+    camera_traffic::Controller camera_traffic_control_;
+    camera_traffic::Decision camera_traffic_decision_;
+    simul_msgs::CameraTrafficMission::ConstPtr camera_mission_;
+    simul_msgs::TrafficLightTrack::ConstPtr tracked_signal_;
+    simul_msgs::StopLine::ConstPtr stop_line_;
+    ros::Subscriber camera_mission_sub_, tracked_signal_sub_, stop_line_sub_, camera_reset_sub_;
+    ros::WallTime camera_mission_received_, tracked_signal_received_, stop_line_received_, vehicle_received_;
+    double camera_mission_timeout_ = 0.7, camera_signal_timeout_ = 0.35;
+    double camera_stop_line_timeout_ = 0.5, camera_vehicle_timeout_ = 0.5;
     const double DECEL_DISTANCE_ = 15.0;  // Start deceleration 15m before traffic light
 
     // Obstacle waiting timer

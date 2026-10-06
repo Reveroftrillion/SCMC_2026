@@ -1,0 +1,10 @@
+std_msgs/Header header
+uint32 mission_id
+uint32 target_track_id
+bool active
+string phase
+string reason
+float32 enter_threshold_width_ratio
+float32 entry_width_ratio
+float32 peak_width_ratio
+bool exit_armed

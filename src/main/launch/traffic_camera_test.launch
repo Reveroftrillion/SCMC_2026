@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Two-camera perception test; no planner/controller/vehicle-command nodes. -->
+  <arg name="morai_ip" />
+  <arg name="bind_ip" default="0.0.0.0" />
+  <arg name="front_port" default="9291" />
+  <arg name="traffic_camera_port" default="9090" />
+  <arg name="front_topic" default="/camera/front/image/compressed" />
+  <arg name="traffic_topic" default="/camera/traffic/image/compressed" />
+  <arg name="start_front_receiver" default="true" />
+  <arg name="start_traffic_receiver" default="true" />
+  <arg name="yolo_weights" default="$(find camera)/models/1027_40epoch.pt" />
+  <arg name="yolo_python" default="python3" />
+  <arg name="yolo_device" default="cpu" />
+  <arg name="confidence" default="0.4" />
+  <arg name="traffic_config" default="$(find camera)/config/traffic_camera.yaml" />
+  <arg name="stop_line_config" default="$(find camera)/config/stop_line_front.yaml" />
+  <arg name="view_image" default="true" />
+  <node if="$(arg start_front_receiver)" pkg="morai_udp" type="sensor_udp_node.py"
+        name="camera_front_udp" output="screen" required="true">
+    <param name="kind" value="camera" />
+    <param name="port" value="$(arg front_port)" />
+    <param name="topic" value="$(arg front_topic)" />
+    <param name="frame_id" value="camera_front" />
+    <param name="timeout" value="0.5" />
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <node if="$(arg start_traffic_receiver)" pkg="morai_udp" type="sensor_udp_node.py"
+        name="camera_traffic_udp" output="screen" required="true">
+    <param name="kind" value="camera" />
+    <param name="port" value="$(arg traffic_camera_port)" />
+    <param name="topic" value="$(arg traffic_topic)" />
+    <param name="frame_id" value="camera_traffic" />
+    <param name="timeout" value="0.5" />
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <include file="$(find camera)/launch/traffic_yolo.launch">
+    <arg name="weights_path" value="$(arg yolo_weights)" />
+    <arg name="device" value="$(arg yolo_device)" />
+    <arg name="python" value="$(arg yolo_python)" />
+    <arg name="image_topic" value="$(arg traffic_topic)" />
+    <arg name="confidence" value="$(arg confidence)" />
+    <arg name="config" value="$(arg traffic_config)" />
+  </include>
+  <include file="$(find camera)/launch/stop_line.launch">
+    <arg name="image_topic" value="$(arg front_topic)" />
+    <arg name="config" value="$(arg stop_line_config)" />
+    <arg name="require_mission_active" value="false" />
+  </include>
+  <node if="$(arg view_image)" pkg="rqt_image_view" type="rqt_image_view" name="traffic_yolo_view"
+        args="/yolo_traffic_light/image_raw" output="screen" />
+  <node if="$(arg view_image)" pkg="rqt_image_view" type="rqt_image_view" name="stop_line_view"
+        args="/stop_line/image_raw" output="screen" />
+</launch>

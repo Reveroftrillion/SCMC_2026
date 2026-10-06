@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="morai_ip" />
+  <!-- Stop-line detection shares the existing road-facing front camera. -->
+  <arg name="camera_port" default="9291" />
+  <arg name="bind_ip" default="0.0.0.0" />
+  <arg name="image_topic" default="/camera/front/image/compressed" />
+  <arg name="config" default="$(find camera)/config/stop_line_front.yaml" />
+  <arg name="start_camera_receiver" default="true" />
+  <arg name="view_image" default="true" />
+  <arg name="require_mission_active" default="false" />
+  <node if="$(arg start_camera_receiver)" pkg="morai_udp" type="sensor_udp_node.py"
+        name="camera_front_udp" output="screen" required="true">
+    <param name="kind" value="camera" />
+    <param name="port" value="$(arg camera_port)" />
+    <param name="topic" value="$(arg image_topic)" />
+    <param name="frame_id" value="camera_front" />
+    <param name="timeout" value="0.5" />
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param name="source_ip" value="$(arg morai_ip)" />
+  </node>
+  <include file="$(find camera)/launch/stop_line.launch">
+    <arg name="image_topic" value="$(arg image_topic)" />
+    <arg name="config" value="$(arg config)" />
+    <arg name="require_mission_active" value="$(arg require_mission_active)" />
+  </include>
+  <node if="$(arg view_image)" pkg="rqt_image_view" type="rqt_image_view" name="stop_line_view"
+        args="/stop_line/image_raw" output="screen" />
+</launch>
