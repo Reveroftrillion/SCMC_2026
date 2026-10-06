@@ -1,3 +1,4 @@
+std_msgs/Header header
 int32 objectCounts
 float64[100] centerX
 float64[100] centerY

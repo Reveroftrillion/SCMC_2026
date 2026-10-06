@@ -12,7 +12,6 @@ Reference:
 
 import math
 
-import matplotlib.pyplot as plt
 import numpy as np
 
 # parameter
@@ -142,6 +141,7 @@ def quintic_polynomials_planner(sx, sy, syaw, sv, sa, gx, gy, gyaw, gv, ga, max_
             break
 
     if show_animation:  # pragma: no cover
+        import matplotlib.pyplot as plt
         for i, _ in enumerate(time):
             plt.cla()
             # for stopping simulation with the esc key.
@@ -167,6 +167,7 @@ def plot_arrow(x, y, yaw, length=1.0, width=0.5, fc="r", ec="k"):  # pragma: no 
     Plot arrow
     """
 
+    import matplotlib.pyplot as plt
     if not isinstance(x, float):
         for (ix, iy, iyaw) in zip(x, y, yaw):
             plot_arrow(ix, iy, iyaw)
@@ -197,6 +198,7 @@ def main():
         sx, sy, syaw, sv, sa, gx, gy, gyaw, gv, ga, max_accel, max_jerk, dt)
 
     if show_animation:  # pragma: no cover
+        import matplotlib.pyplot as plt
         plt.plot(x, y, "-r")
 
         plt.subplots()

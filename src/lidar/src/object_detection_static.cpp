@@ -48,7 +48,7 @@ ros::Publisher pubPlaneInfo;
 
 //MSG
 lidar_object_detection::ObjectInfo objectInfoMsg;
-lidar_object_detection::PointInfo pointInfoMsg; // 이미지에 옮길 bbox 각 꼭짓점 정보
+lidar_object_detection::PointInfo pointInfoMsg; // ?��?지????�� bbox �?�?��???�보
 
 
 void cfgCallback(lidar_object_detection::objectDetectorStaticConfig &config_tunnel_static, int32_t level) {
@@ -84,8 +84,7 @@ pcl::PointCloud<PointT>::Ptr ROI (const sensor_msgs::PointCloud2ConstPtr& input)
     // ... do data processing
     pcl::PointCloud<PointT>::Ptr cloud(new pcl::PointCloud<PointT>);
 
-    pcl::fromROSMsg(*input, *cloud); // sensor_msgs -> PointCloud 형변환
-
+    pcl::fromROSMsg(*input, *cloud); // sensor_msgs -> PointCloud ?��???
     pcl::PointCloud<PointT>::Ptr cloud_filtered(new pcl::PointCloud<PointT>);
     pcl::PointCloud<PointT>::Ptr center(new pcl::PointCloud<PointT>);
     pcl::PointCloud<PointT>::Ptr outskirt(new pcl::PointCloud<PointT>);
@@ -96,7 +95,7 @@ pcl::PointCloud<PointT>::Ptr ROI (const sensor_msgs::PointCloud2ConstPtr& input)
 
 
 
-    // X축 ROI 먼저 적용
+    // X�?ROI 먼�? ?�용
     pcl::PassThrough<PointT> filter;
     filter.setInputCloud(cloud);
     filter.setFilterFieldName("x");
@@ -104,22 +103,22 @@ pcl::PointCloud<PointT>::Ptr ROI (const sensor_msgs::PointCloud2ConstPtr& input)
     filter.setFilterLimitsNegative(false);
     filter.filter(*cloud_filtered);
 
-    // 차량 중앙 부분 제거 (앞뒤 비대칭)
+    // 차량 중앙 부�??�거 (?�뒤 비�?�?
     pcl::PointCloud<PointT>::Ptr cloud_car_filtered(new pcl::PointCloud<PointT>);
 
     for (const auto& point : cloud_filtered->points) {
         bool inCarArea = false;
 
-        // Y축 차량 영역 확인
+        // Y�?차량 ?�역 ?�인
         if (std::abs(point.y) <= yCarROI) {
-            // X축 차량 영역 확인 (앞뒤 비대칭)
-            if ((point.x >= 0 && point.x <= xCarROIFront) ||    // 앞쪽 (양수)
-                (point.x < 0 && point.x >= -xCarROIRear)) {      // 뒤쪽 (음수)
+            // X�?차량 ?�역 ?�인 (?�뒤 비�?�?
+            if ((point.x >= 0 && point.x <= xCarROIFront) ||    // ?�쪽 (?�수)
+                (point.x < 0 && point.x >= -xCarROIRear)) {      // ?�쪽 (?�수)
                 inCarArea = true;
             }
         }
 
-        // 차량 영역이 아닌 점만 추가
+        // 차량 ?�역???�닌 ?�만 추�?
         if (!inCarArea) {
             cloud_car_filtered->push_back(point);
         }
@@ -127,27 +126,26 @@ pcl::PointCloud<PointT>::Ptr ROI (const sensor_msgs::PointCloud2ConstPtr& input)
 
     *cloud_filtered = *cloud_car_filtered;
 
-    // Y축 ROI
+    // Y�?ROI
     filter.setInputCloud(cloud_filtered);
     filter.setFilterFieldName("y");
     filter.setFilterLimits(yMinROI, yMaxROI);
     filter.setFilterLimitsNegative(false);
     filter.filter(*cloud_filtered);
 
-    // Z축 ROI
+    // Z�?ROI
     filter.setInputCloud(cloud_filtered);
     filter.setFilterFieldName("z");
     filter.setFilterLimits(zMinROI, zMaxROI);
     filter.setFilterLimitsNegative(false);
     filter.filter(*cloud_filtered);
 
-    // 포인트수 출력
+    // ?�인?�수 출력
     // std::cout << "ROI Filtered :" << cloud_filtered->width * cloud_filtered->height  << '\n';
 
     sensor_msgs::PointCloud2 roi_raw;
     pcl::toROSMsg(*cloud_filtered, roi_raw);
-    roi_raw.header.frame_id = "velodyne";
-    roi_raw.header.stamp = ros::Time::now();
+    roi_raw.header = input->header;
 
     pubROI.publish(roi_raw);
 
@@ -166,14 +164,14 @@ pcl::PointCloud<PointT>::Ptr segmentPlane(pcl::PointCloud<PointT>::Ptr input) {
 }
 
 pcl::PointCloud<PointT>::Ptr voxelGrid(pcl::PointCloud<PointT>::Ptr input) {
-    //Voxel Grid를 이용한 DownSampling
-    pcl::VoxelGrid<PointT> vg;    // VoxelGrid 선언
-    pcl::PointCloud<PointT>::Ptr cloud_filtered(new pcl::PointCloud<PointT>); //Filtering 된 Data를 담을 PointCloud 선언
-    vg.setInputCloud(input);             // Raw Data 입력
-    vg.setLeafSize(leafSize, leafSize, leafSize); // 사이즈를 너무 작게 하면 샘플링 에러 발생
-    vg.filter(*cloud_filtered);          // Filtering 된 Data를 cloud PointCloud에 삽입
+    //Voxel Grid�??�용??DownSampling
+    pcl::VoxelGrid<PointT> vg;    // VoxelGrid ?�언
+    pcl::PointCloud<PointT>::Ptr cloud_filtered(new pcl::PointCloud<PointT>); //Filtering ??Data�??�을 PointCloud ?�언
+    vg.setInputCloud(input);             // Raw Data ?�력
+    vg.setLeafSize(leafSize, leafSize, leafSize); // ?�이즈�? ?�무 ?�게 ?�면 ?�플�??�러 발생
+    vg.filter(*cloud_filtered);          // Filtering ??Data�?cloud PointCloud???�입
 
-    // std::cout << "After Voxel Filtered :" << cloud_filtered->width * cloud_filtered->height  << '\n'; 
+    // std::cout << "After Voxel Filtered :" << cloud_filtered->width * cloud_filtered->height  << '\n';
 
     return cloud_filtered;
 }
@@ -183,11 +181,11 @@ void cluster(pcl::PointCloud<PointT>::Ptr input) {
         sensor_msgs::PointCloud2 cluster_point;
         pcl::PointCloud<clusterPointT> totalcloud_clustered;
         pcl::toROSMsg(totalcloud_clustered, cluster_point);
-        cluster_point.header.frame_id = "velodyne";
+        cluster_point.header = objectInfoMsg.header;
         pubCluster.publish(cluster_point);
 
         objectInfoMsg.objectCounts = 0;
-        // pubObjectInfo.publish(objectInfoMsg);
+        pubObjectInfo.publish(objectInfoMsg);
         return;
     }
 
@@ -203,7 +201,7 @@ void cluster(pcl::PointCloud<PointT>::Ptr input) {
     //DBSCAN with Kdtree for accelerating
     DBSCANKdtreeCluster<PointT> dc;
     dc.setCorePointMinPts(minPoints);   //Set minimum number of neighbor points
-    dc.setClusterTolerance(epsilon); //Set Epsilon 
+    dc.setClusterTolerance(epsilon); //Set Epsilon
     dc.setMinClusterSize(minClusterSize);
     dc.setMaxClusterSize(maxClusterSize);
     dc.setSearchMethod(tree);
@@ -213,30 +211,36 @@ void cluster(pcl::PointCloud<PointT>::Ptr input) {
     pcl::PointCloud<clusterPointT> totalcloud_clustered;
     int cluster_id = 0;
 
-    //각 Cluster 접근
+    //�?Cluster ?�근
     for (std::vector<pcl::PointIndices>::const_iterator it = cluster_indices.begin(); it != cluster_indices.end(); it++, cluster_id++) {
+        if (cluster_id >= 100) {
+            ROS_WARN_THROTTLE(1.0, "Too many clusters: local planner must stop");
+            objectInfoMsg.objectCounts = -1;
+            pubObjectInfo.publish(objectInfoMsg);
+            return;
+        }
         pcl::PointCloud<clusterPointT> eachcloud_clustered;
         float cluster_counts = cluster_indices.size();
 
-        //각 Cluster내 각 Point 접근
+        //�?Cluster??�?Point ?�근
         for(std::vector<int>::const_iterator pit = it->indices.begin(); pit != it->indices.end(); ++pit) {
 
             clusterPointT tmp;
-            tmp.x = input->points[*pit].x; 
+            tmp.x = input->points[*pit].x;
             tmp.y = input->points[*pit].y;
             tmp.z = input->points[*pit].z;
-            tmp.intensity = cluster_id % 100; // 상수 : 예상 가능한 cluster 총 개수
+            tmp.intensity = cluster_id % 100; // ?�수 : ?�상 가?�한 cluster �?개수
             eachcloud_clustered.push_back(tmp);
             totalcloud_clustered.push_back(tmp);
         }
 
-        //minPoint와 maxPoint 받아오기
+        //minPoint?� maxPoint 받아?�기
         clusterPointT minPoint, maxPoint;
         pcl::getMinMax3D(eachcloud_clustered, minPoint, maxPoint);
 
-        objectInfoMsg.lengthX[cluster_id] = maxPoint.x - minPoint.x; // 
-        objectInfoMsg.lengthY[cluster_id] = maxPoint.y - minPoint.y; // 
-        objectInfoMsg.lengthZ[cluster_id] = maxPoint.z - minPoint.z; // 
+        objectInfoMsg.lengthX[cluster_id] = maxPoint.x - minPoint.x; //
+        objectInfoMsg.lengthY[cluster_id] = maxPoint.y - minPoint.y; //
+        objectInfoMsg.lengthZ[cluster_id] = maxPoint.z - minPoint.z; //
         objectInfoMsg.centerX[cluster_id] = (minPoint.x + maxPoint.x)/2; //직육면체 중심 x 좌표
         objectInfoMsg.centerY[cluster_id] = (minPoint.y + maxPoint.y)/2; //직육면체 중심 y 좌표
         objectInfoMsg.centerZ[cluster_id] = (minPoint.z + maxPoint.z)/2; //직육면체 중심 z 좌표
@@ -245,7 +249,7 @@ void cluster(pcl::PointCloud<PointT>::Ptr input) {
             yMinBoundingBox <= objectInfoMsg.lengthY[cluster_id] && objectInfoMsg.lengthY[cluster_id] <= yMaxBoundingBox &&
             zMinBoundingBox <= objectInfoMsg.lengthZ[cluster_id] && objectInfoMsg.lengthZ[cluster_id] <= zMaxBoundingBox) {
             if (objectInfoMsg.centerY[cluster_id] >= 0) {
-                pointInfoMsg.xMini[cluster_id] = maxPoint.x; 
+                pointInfoMsg.xMini[cluster_id] = maxPoint.x;
                 pointInfoMsg.yMini[cluster_id] = minPoint.y;
                 pointInfoMsg.zMini[cluster_id] = minPoint.z;
 
@@ -254,7 +258,7 @@ void cluster(pcl::PointCloud<PointT>::Ptr input) {
                 pointInfoMsg.zMaxi[cluster_id] = maxPoint.z;
             }
             else if (objectInfoMsg.centerY[cluster_id] < 0) {
-                pointInfoMsg.xMini[cluster_id] = minPoint.x; 
+                pointInfoMsg.xMini[cluster_id] = minPoint.x;
                 pointInfoMsg.yMini[cluster_id] = minPoint.y;
                 pointInfoMsg.zMini[cluster_id] = minPoint.z;
 
@@ -278,7 +282,7 @@ void cluster(pcl::PointCloud<PointT>::Ptr input) {
 
     sensor_msgs::PointCloud2 cluster_point;
     pcl::toROSMsg(totalcloud_clustered, cluster_point);
-    cluster_point.header.frame_id = "velodyne";
+    cluster_point.header = objectInfoMsg.header;
     pubCluster.publish(cluster_point);
 }
 
@@ -286,7 +290,7 @@ void visualizeObject() {
     visualization_msgs::MarkerArray objectMarkerArray;
     visualization_msgs::Marker objectMarker;
 
-    objectMarker.header.frame_id = "velodyne"; 
+    objectMarker.header = objectInfoMsg.header;
     objectMarker.ns = "object_shape";
     objectMarker.type = visualization_msgs::Marker::CUBE;
     objectMarker.action = visualization_msgs::Marker::ADD;
@@ -299,8 +303,8 @@ void visualizeObject() {
 
             // Set the namespace and id for this marker.  This serves to create a unique ID
             // Any marker sent with the same namespace and id will overwrite the old one
-            objectMarker.header.stamp = ros::Time::now();
-            objectMarker.id = 100+i; // 
+            objectMarker.header.stamp = objectInfoMsg.header.stamp;
+            objectMarker.id = 100+i; //
 
             // Set the pose of the marker.  This is a full 6DOF pose relative to the frame/time specified in the header
             objectMarker.pose.position.x = objectInfoMsg.centerX[i];
@@ -332,6 +336,12 @@ void visualizeObject() {
 }
 
 void mainCallback(const sensor_msgs::PointCloud2ConstPtr& input) {
+    objectInfoMsg = lidar_object_detection::ObjectInfo();
+    objectInfoMsg.header = input->header;
+    if (input->header.frame_id.empty() || input->header.stamp.isZero()) {
+        ROS_WARN_THROTTLE(1.0, "LiDAR frame/stamp missing; rejecting scan");
+        return;
+    }
     pcl::PointCloud<PointT>::Ptr cloudPtr;
 
     // main process method

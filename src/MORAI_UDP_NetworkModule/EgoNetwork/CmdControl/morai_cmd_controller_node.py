@@ -45,6 +45,8 @@ class MoraiCmdController:
         self.worker.start()
         rospy.loginfo('UDP control enabled=%s, destination=%s:%s',
                       self.enabled, self.sender.ip, self.sender.port)
+        if not self.enabled:
+            rospy.logwarn('UDP control disabled: no driving commands will be sent (enable_control=false)')
 
     def controlCmdCallback(self, msg):
         try:
@@ -64,17 +66,35 @@ class MoraiCmdController:
 
     def send_loop(self):
         # Wall-clock watchdog continues even if /clock stalls.
+        next_report = 0.0
         while not self.stop.is_set():
             if self.enabled:
                 with self.lock:
+                    now = time.monotonic()
+                    ages = tuple(now - stamp if stamp is not None else -1.0
+                                 for stamp in (self.last_command, self.last_status, self.last_gps))
+                    reasons = [name for name, age, limit in zip(
+                        ('control_cmd', 'vehicle_status', 'gps'), ages,
+                        (self.timeout, self.status_timeout, self.status_timeout))
+                        if age < 0.0 or age > limit]
+                    if self.values is None and 'control_cmd' not in reasons:
+                        reasons.append('control_cmd')
                     # Blackout reports are still live GPS messages. Missing packets are not.
                     state_time = (min(self.last_status, self.last_gps)
                                   if self.last_status is not None and self.last_gps is not None else None)
                     values = watchdog_values(self.values, self.last_command, state_time,
-                                             time.monotonic(), self.timeout, self.status_timeout)
+                                             now, self.timeout, self.status_timeout)
                 self.data.accel, self.data.brake, self.data.steer = values
                 try:
                     self.sender.send(self.data)
+                    if now >= next_report:
+                        log = rospy.logwarn if reasons else rospy.loginfo
+                        log('[UDP TX] destination=%s:%s accel=%.3f brake=%.3f '
+                            'watchdog=%s ages(command/status/gps)=%.3f/%.3f/%.3fs '
+                            '(-1=missing)', self.sender.ip, self.sender.port,
+                            values[0], values[1],
+                            'STOP:' + ','.join(reasons) if reasons else 'PASS', *ages)
+                        next_report = now + 1.0
                 except OSError as exc:
                     rospy.logwarn_throttle(2.0, 'UDP command send failed: %s', exc)
             self.stop.wait(self.period)

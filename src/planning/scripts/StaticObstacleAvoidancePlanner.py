@@ -1,452 +1,299 @@
 #!/usr/bin/env python3
-
-import sys
+"""LiDAR local planning using the existing /global_path and /local_path interfaces."""
 import os
+import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
-import rospy
+import math
+import threading
+from collections import deque
+import time
 import numpy as np
-
-from geometry_msgs.msg import Pose, PoseStamped
+import rospy
+import tf
+from geometry_msgs.msg import PoseStamped, Point
 from nav_msgs.msg import Path
-from lidar_object_detection.msg import ObjectInfo
 from std_msgs.msg import Bool, Int16
-
-from tf.transformations import euler_from_quaternion, quaternion_from_euler
-from utils import CubicSpline2D, catesian_to_frenet
+from visualization_msgs.msg import Marker, MarkerArray
+from lidar_object_detection.msg import ObjectInfo
+from simul_msgs.msg import LocalPlan
+from local_planning_core import FrenetLocalPlanner, in_zones, validate_zones
+from utils import make_pose_stamped
 
 
 class StaticObstacleAvoidancePlanner:
-    """
-    정적 장애물 회피를 위한 로컬 경로 플래너
-    /obstacle_info_static 토픽에서 장애물 정보를 받아
-    global path 기준 왼쪽/오른쪽 판단 후 회피 경로 생성
-    """
-
     def __init__(self):
-        """
-        정적 장애물 회피 경로 플래너
-        """
-        # 센서 오프셋 (라이다가 GPS 앞 3.9m)
-        self.lidar_offset_x = 1.0  # 라이다가 차량(GPS) 기준 전방 3.9m
-        self.lidar_offset_y = 0.0   # 좌우 오프셋 없음
-
-        # Global path 관련
+        self.p = rospy.get_param('~')
+        self.core = FrenetLocalPlanner(self.p)
+        for key in ('static_zones', 'dynamic_zones'):
+            validate_zones(self.p[key])
+        if self.p['dynamic_policy'] not in ('stop_on_obstacle', 'observe_only'):
+            raise ValueError('unknown dynamic_policy')
+        for key in ('update_hz', 'input_timeout', 'static_speed_kmh', 'dynamic_speed_kmh',
+                    'max_lateral_accel', 'obstacle_memory_s', 'return_clear_time'):
+            if not math.isfinite(self.p[key]) or self.p[key] <= 0:
+                raise ValueError(key + ' must be positive and finite')
+        self.lock = threading.RLock()
+        self.listener = tf.TransformListener()
         self.global_path = None
-        self.g_path = None  # numpy array (N, 4) [x, y, kappa, yaw]
-        self.csp = None  # CubicSpline2D
-        self.is_global_path_set = False
-
-        # 현재 차량 상태
-        self.curr_pose = Pose()
-        self.curr_idx = 0
-        self.is_pose_set = False  # 차량 위치 정보 수신 여부
-
-        # 장애물 정보
-        self.obstacle_detected = False
-        self.obstacle_global_x = []
-        self.obstacle_global_y = []
-        self.obstacle_count = 0
-
-        # 회피 경로 관련
+        self.points = None
+        self.pose = None
+        self.pose_received = None
+        self.curr_idx = None
+        self.index_received = None
+        self.pending_scans = deque(maxlen=30)
+        self.obstacle_msg = None
+        self.obstacle_received = None
+        self.obstacle_stamp = None
+        self.obstacles = []  # world circles x/y/radius + last observation monotonic time
         self.avoidance_active = False
-        self.target_x = None
-        self.target_y = None
-
-        # 회피 경로 저장
-        self.local_path = Path()
-        self.local_path.header.frame_id = 'map'
-
-        # Publisher
+        self.clear_since = None
+        self.last_state = None
         self.local_path_pub = rospy.Publisher('/local_path', Path, queue_size=1)
         self.local_path_done_pub = rospy.Publisher('/local_path_done', Bool, queue_size=1)
+        self.plan_pub = rospy.Publisher('/local_plan', LocalPlan, queue_size=1)
+        self.candidate_pub = rospy.Publisher('~candidates', MarkerArray, queue_size=1)
+        self.obstacle_pub = rospy.Publisher('~obstacles', MarkerArray, queue_size=1)
+        self.state_pub = rospy.Publisher('~state_marker', Marker, queue_size=1)
+        rospy.Subscriber('/global_path', Path, self.global_path_callback, queue_size=1)
+        rospy.Subscriber('/current_pose', PoseStamped, self.current_pose_callback, queue_size=1)
+        rospy.Subscriber('/curr_idx', Int16, self.curr_idx_callback, queue_size=1)
+        rospy.Subscriber('/obstacle_info_static', ObjectInfo, self.obstacle_callback, queue_size=1)
+        self.timer = rospy.Timer(rospy.Duration(1.0 / self.p['update_hz']), self.tick)
 
-        # Subscriber
-        self.global_path_sub = rospy.Subscriber('/global_path', Path, self.global_path_callback)
-        self.current_pose_sub = rospy.Subscriber('/current_pose', PoseStamped, self.current_pose_callback)
-        self.curr_idx_sub = rospy.Subscriber('/curr_idx', Int16, self.curr_idx_callback)
-        self.obstacle_sub = rospy.Subscriber('/obstacle_info_static', ObjectInfo, self.obstacle_callback)
+    def global_path_callback(self, msg):
+        with self.lock:
+            xy = np.array([[p.pose.position.x, p.pose.position.y] for p in msg.poses])
+            if msg.header.frame_id != 'map' or len(xy) < 4 or not np.isfinite(xy).all():
+                self.points = None
+                return
+            if self.points is not None and np.array_equal(xy, self.points):
+                return
+            self.global_path, self.points = msg, xy
+            self.core.reset()
 
-        rospy.loginfo("[StaticObstacleAvoidancePlanner] 초기화 완료")
+    def current_pose_callback(self, msg):
+        with self.lock:
+            self.pose, self.pose_received = msg, time.monotonic()
 
-    def global_path_callback(self, msg: Path):
-        """
-        /global_path 콜백 함수
-        전역 경로를 받아서 CubicSpline2D 생성
-        """
-        self.global_path = msg
+    def curr_idx_callback(self, msg):
+        with self.lock:
+            self.curr_idx, self.index_received = msg.data, time.monotonic()
 
-        # Path에서 x, y 추출
-        if len(msg.poses) == 0:
-            # rospy.logwarn("[StaticObstacleAvoidancePlanner] Received empty global path")
-            return
+    def obstacle_callback(self, msg):
+        with self.lock:
+            self.obstacle_msg, self.obstacle_received = msg, time.monotonic()
+            self.pending_scans.append((msg, self.obstacle_received))
 
-        # numpy array로 변환 (x, y, z는 curvature로 사용)
-        path_x = [pose.pose.position.x for pose in msg.poses]
-        path_y = [pose.pose.position.y for pose in msg.poses]
-        path_z = [pose.pose.position.z for pose in msg.poses]  # curvature
+    def fresh(self, received, stamp=None):
+        if received is None or time.monotonic() - received > self.p['input_timeout']:
+            return False
+        if stamp is not None:
+            age = (rospy.Time.now() - stamp).to_sec()
+            return stamp != rospy.Time() and -0.1 <= age <= self.p['input_timeout']
+        return True
 
-        self.g_path = np.array([[x, y, z, 0.0] for x, y, z in zip(path_x, path_y, path_z)])
-
-        # CubicSpline2D 생성
-        try:
-            self.csp = CubicSpline2D(path_x, path_y, interval=0.2)
-            self.is_global_path_set = True
-        except Exception as e:
-            rospy.logerr(f"[StaticObstacleAvoidancePlanner] CubicSpline2D 생성 실패: {e}")
-            self.is_global_path_set = False
-
-    def current_pose_callback(self, msg: PoseStamped):
-        """
-        /current_pose 콜백 함수
-        GPS로부터 변환된 차량의 현재 위치 정보 수신
-        """
-        self.curr_pose = msg.pose
-        if not self.is_pose_set:
-            self.is_pose_set = True
-
-    def curr_idx_callback(self, msg: Int16):
-        """
-        /curr_idx 콜백 함수
-        현재 global path 상의 인덱스 정보 수신
-        """
-        self.curr_idx = msg.data
-
-    # def in_static_obstacle_zone(self):
-    #     """
-    #     현재 위치가 정적 장애물 구간인지 확인
-    #     controller.cpp의 in_static_obstacle_zone()과 동일한 로직
-    #     """
-    #     return (self.curr_idx >= 1930 and self.curr_idx <= 2200) or \
-    #            (self.curr_idx >= 5420 and self.curr_idx <= 6000)
-    def in_static_obstacle_zone(self):
-        return False
-
-    def obstacle_callback(self, msg: ObjectInfo):
-        """
-        /obstacle_info_static 콜백 함수
-        장애물 정보를 받아 global 좌표계로 변환하고 시각화
-        """
-        # 정적 장애물 구간인지 먼저 확인
-        if not self.in_static_obstacle_zone():
-            rospy.loginfo_throttle(5.0, "[StaticObstacleAvoidancePlanner] 정적 장애물 구간이 아님 (idx: %d)", self.curr_idx)
-            return
-
-        # 필수 정보 확인
-        if not self.is_pose_set:
-            # rospy.logwarn_throttle(1.0, "[StaticObstacleAvoidancePlanner] Waiting for current_pose...")
-            return
-
-        if not self.is_global_path_set:
-            # rospy.logwarn_throttle(1.0, "[StaticObstacleAvoidancePlanner] Waiting for global_path...")
-            return
-
-        # 회피 중이면 무조건 완료할 때까지 새 장애물 무시
-        if self.avoidance_active:
-            if self.check_target_reached():
-                self.send_path_done_signal()
-                self.avoidance_active = False
-            return  # 회피 완료 전까지는 새 경로 생성 안함
-
-        # 여기부터는 회피 중이 아닐 때만 실행
-        self.obstacle_count = msg.objectCounts
-
-        if self.obstacle_count == 0:
-            self.obstacle_detected = False
-            return
-
-        # 차량 좌표계 -> 전역 좌표계 변환
-        self.transform_obstacles_to_global(msg)
-
-        # 장애물이 경로상에 있는지 확인하고 회피 경로 생성
-        self.obstacle_detected = True
-        self.plan_avoidance_path()
-
-    def transform_obstacles_to_global(self, msg: ObjectInfo):
-        """
-        차량 좌표계의 장애물을 전역 좌표계로 변환
-        GPS 기반의 정확한 차량 위치와 방향 정보 활용
-        라이다-GPS 간 3.9m 오프셋 보정 포함
-        """
-        # 차량의 현재 orientation에서 yaw 추출
-        orientation_list = [
-            self.curr_pose.orientation.x,
-            self.curr_pose.orientation.y,
-            self.curr_pose.orientation.z,
-            self.curr_pose.orientation.w
-        ]
-        _, _, yaw = euler_from_quaternion(orientation_list)
-
-        # 회전 행렬
-        cos_yaw = np.cos(yaw)
-        sin_yaw = np.sin(yaw)
-
-        self.obstacle_global_x = []
-        self.obstacle_global_y = []
-
-        for i in range(self.obstacle_count):
-            # 라이다 좌표계 장애물 위치
-            lidar_rel_x = msg.centerX[i]
-            lidar_rel_y = msg.centerY[i]
-
-            # Step 1: 라이다 좌표계 -> 차량(GPS) 좌표계 변환
-            # 라이다가 GPS 앞 3.9m에 있으므로, GPS 기준으로는 3.9m 더해야 함
-            vehicle_rel_x = lidar_rel_x + self.lidar_offset_x
-            vehicle_rel_y = lidar_rel_y + self.lidar_offset_y
-
-            # Step 2: 차량(GPS) 좌표계 -> 전역 좌표계 변환
-            global_x = self.curr_pose.position.x + cos_yaw * vehicle_rel_x - sin_yaw * vehicle_rel_y
-            global_y = self.curr_pose.position.y + sin_yaw * vehicle_rel_x + cos_yaw * vehicle_rel_y
-
-            self.obstacle_global_x.append(global_x)
-            self.obstacle_global_y.append(global_y)
-
-    def plan_avoidance_path(self):
-        """
-        Frenet 좌표계를 활용한 회피 경로 생성
-        """
-        if not self.is_global_path_set or self.csp is None:
-            rospy.logwarn("[회피 경로 생성 실패] Global path 또는 CubicSpline2D가 초기화되지 않음")
-            return
-
-        # 라이다 위치 계산 (GPS 앞 3.9m)
-        orientation_list = [
-            self.curr_pose.orientation.x,
-            self.curr_pose.orientation.y,
-            self.curr_pose.orientation.z,
-            self.curr_pose.orientation.w
-        ]
-        _, _, yaw = euler_from_quaternion(orientation_list)
-
-        lidar_x = self.curr_pose.position.x + self.lidar_offset_x * np.cos(yaw)
-        lidar_y = self.curr_pose.position.y + self.lidar_offset_x * np.sin(yaw)
-
-        # 가장 가까운 장애물 찾기 (라이다 기준)
-        min_dist = float('inf')
-        nearest_obs_x = None
-        nearest_obs_y = None
-
-        for i in range(self.obstacle_count):
-            obs_x = self.obstacle_global_x[i]
-            obs_y = self.obstacle_global_y[i]
-
-            # 라이다 기준 거리 계산
-            dist = np.hypot(obs_x - lidar_x, obs_y - lidar_y)
-
-            if dist < min_dist:
-                min_dist = dist
-                nearest_obs_x = obs_x
-                nearest_obs_y = obs_y
-
-        if nearest_obs_x is None:
-            return
-
-        # 라이다 기준 감지 거리 (더 일찍 감지)
-        if min_dist > 10.0:
-            return
-
-        # 장애물을 Frenet 좌표계로 변환
-        s_obs, d_obs = catesian_to_frenet(nearest_obs_x, nearest_obs_y, self.csp)
-
-        # d 값으로 왼쪽/오른쪽 판단
-        # d > 0: 경로 왼쪽에 장애물 → 오른쪽으로 회피
-        # d < 0: 경로 오른쪽에 장애물 → 왼쪽으로 회피
-        # d ≈ 0: 경로 중앙에 장애물 → 오른쪽으로 크게 회피
-
-        # 현재 차량 위치의 Frenet 좌표 (GPS 기준)
-        curr_s, curr_d = catesian_to_frenet(
-            self.curr_pose.position.x,
-            self.curr_pose.position.y,
-            self.csp
-        )
-
-        lateral_offset = 0.9  # 기본 회피 거리 (m)
-
-        if abs(d_obs) < 0.3:  # 중앙
-            target_d = -lateral_offset * 2.4  # 오른쪽으로 크게 (1.28m)
-            rospy.loginfo("[회피 경로 생성] 장애물이 경로 중앙에 위치 - 오른쪽으로 크게 회피")
-        elif d_obs > 0:  # 왼쪽
-            target_d = -lateral_offset # 오른쪽으로 (0.85m)
-            rospy.loginfo("[회피 경로 생성] 장애물이 경로 왼쪽에 위치 - 오른쪽으로 회피")
-        else:  # 오른쪽
-            target_d = lateral_offset  # 왼쪽으로 (0.85m)
-            rospy.loginfo("[회피 경로 생성] 장애물이 경로 오른쪽에 위치 - 왼쪽으로 회피")
-
-        # 타이트한 회피 경로 (장애물 간격 20m 고려)
-        # 현재 위치에서 장애물까지 거리 체크
-        dist_to_obs = s_obs - curr_s
-
-        # Step 1: 장애물을 지나는 지점 (장애물 + 1m) - 빨리 회피
-        avoidance_s = s_obs + 1.0
-
-        # Step 2: 빠른 복귀 경로 (장애물 + 8m, d=0으로 복귀) - 8m → 5m로 단축
-        return_s = s_obs + 6.0
-        target_s = return_s
-
-        # 회피 경로 생성 (2단계: 회피 + 복귀)
-        path_length = target_s - curr_s
-        if path_length < 2.0:
-            rospy.logwarn(f"[회피 경로 생성 실패] 경로 길이가 너무 짧음: {path_length:.2f}m")
-            return
-
-        self.local_path.poses = []
-        self.local_path.header.stamp = rospy.Time.now()
-
-        # Phase 1: 현재 위치 → 회피 지점 (target_d로 이동)
-        avoidance_length = avoidance_s - curr_s
-        waypoints_phase1 = []
-        if avoidance_length > 0:
-            L1 = avoidance_length
-            a0_1 = curr_d
-            a1_1 = 0
-            a2_1 = (3 * (target_d - curr_d)) / (L1 ** 2)
-            a3_1 = (-2 * (target_d - curr_d)) / (L1 ** 3)
-
-            num_points_1 = max(int(avoidance_length / 0.2), 5)
-            s_points_1 = np.linspace(curr_s, avoidance_s, num_points_1)
-
-            for s in s_points_1:
-                ds = s - curr_s
-                d = a0_1 + a1_1 * ds + a2_1 * (ds ** 2) + a3_1 * (ds ** 3)
-                x, y, _ = self.frenet_to_cartesian(s, d)
-                waypoints_phase1.append((x, y))
-
-        # Phase 2: 회피 지점 → 복귀 지점 (d=0으로 복귀)
-        return_length = return_s - avoidance_s
-        waypoints_phase2 = []
-        if return_length > 0:
-            L2 = return_length
-            a0_2 = target_d
-            a1_2 = 0
-            a2_2 = (3 * (0 - target_d)) / (L2 ** 2)  # d=0으로 복귀
-            a3_2 = (-2 * (0 - target_d)) / (L2 ** 3)
-
-            num_points_2 = max(int(return_length / 0.2), 5)
-            s_points_2 = np.linspace(avoidance_s, return_s, num_points_2)
-
-            for s in s_points_2:
-                ds = s - avoidance_s
-                d = a0_2 + a1_2 * ds + a2_2 * (ds ** 2) + a3_2 * (ds ** 3)
-                x, y, _ = self.frenet_to_cartesian(s, d)
-                waypoints_phase2.append((x, y))
-
-        # 전체 waypoints 합치기
-        all_waypoints = waypoints_phase1 + waypoints_phase2
-
-        # 실제 경로 진행 방향으로 yaw 계산하여 poses 생성
-        for i, (x, y) in enumerate(all_waypoints):
-            pose_stamped = PoseStamped()
-            pose_stamped.header = self.local_path.header
-            pose_stamped.pose.position.x = x
-            pose_stamped.pose.position.y = y
-            pose_stamped.pose.position.z = 0.0
-
-            # 다음 waypoint를 향하는 방향으로 yaw 계산
-            if i < len(all_waypoints) - 1:
-                dx = all_waypoints[i + 1][0] - x
-                dy = all_waypoints[i + 1][1] - y
-                yaw = np.arctan2(dy, dx)
+    def transform_obstacles_to_global(self):
+        msg = self.obstacle_msg
+        if msg is None or not self.fresh(self.obstacle_received, msg.header.stamp):
+            raise ValueError('LiDAR missing/stale')
+        if not msg.header.frame_id or not 0 <= msg.objectCounts <= len(msg.centerX):
+            raise ValueError('invalid LiDAR frame/count (or cluster overflow)')
+        now = time.monotonic()
+        self.obstacles = [o for o in self.obstacles if now - o[3] <= self.p['obstacle_memory_s']]
+        # LiDAR can run faster than localization. Keep a small queue so an older,
+        # still-fresh scan can be transformed after the next pose brackets its stamp.
+        # Retrying only the newest scan would starve forever on future-TF errors.
+        for candidate, received in reversed(self.pending_scans):
+            if not self.fresh(received, candidate.header.stamp):
+                continue
+            if not candidate.header.frame_id or not 0 <= candidate.objectCounts <= len(candidate.centerX):
+                continue
+            if self.obstacle_stamp == candidate.header.stamp:
+                return [o[:3] for o in self.obstacles]
+            try:
+                translation, rotation = self.listener.lookupTransform(
+                    'map', candidate.header.frame_id, candidate.header.stamp)
+            except tf.Exception:
+                continue
+            msg = candidate
+            break
+        else:
+            raise ValueError('LiDAR TF unavailable at scan time')
+        # Transform at scan acquisition time, never mix velodyne coordinates with map.
+        matrix = tf.transformations.quaternion_matrix(rotation)
+        matrix[:3, 3] = translation
+        for i in range(msg.objectCounts):
+            xyz = np.array([msg.centerX[i], msg.centerY[i], msg.centerZ[i], 1.0])
+            dims = np.array([msg.lengthX[i], msg.lengthY[i], msg.lengthZ[i]])
+            if not np.isfinite(xyz).all() or not np.isfinite(dims).all() or np.any(dims < 0):
+                raise ValueError('invalid obstacle geometry')
+            # Project all 8 transformed box corners to a conservative map-plane circle.
+            corners = np.array([[sx, sy, sz] for sx in (-.5, .5)
+                                for sy in (-.5, .5) for sz in (-.5, .5)]) * dims
+            center = matrix.dot(xyz)
+            offsets = corners.dot(matrix[:3, :3].T)
+            radius = max(0.05, float(np.max(np.linalg.norm(offsets[:, :2], axis=1))))
+            # Keep short-lived old detections to avoid cutting back through an occluded object.
+            near = [j for j, o in enumerate(self.obstacles)
+                    if np.hypot(o[0] - center[0], o[1] - center[1]) < self.p['obstacle_merge_distance']]
+            item = (float(center[0]), float(center[1]), radius, now)
+            if near:
+                self.obstacles[near[0]] = item
             else:
-                # 마지막 점은 이전 점의 방향 유지
-                if i > 0:
-                    dx = x - all_waypoints[i - 1][0]
-                    dy = y - all_waypoints[i - 1][1]
-                    yaw = np.arctan2(dy, dx)
-                else:
-                    yaw = 0.0
+                self.obstacles.append(item)
+        self.obstacle_stamp = msg.header.stamp
+        return [o[:3] for o in self.obstacles]
 
-            quat = quaternion_from_euler(0, 0, yaw)
-            pose_stamped.pose.orientation.x = quat[0]
-            pose_stamped.pose.orientation.y = quat[1]
-            pose_stamped.pose.orientation.z = quat[2]
-            pose_stamped.pose.orientation.w = quat[3]
+    def make_path(self, candidate):
+        path = Path()
+        path.header.frame_id = 'map'
+        path.header.stamp = rospy.Time.now()
+        if candidate is not None:
+            # Existing controller uses position.z as curvature, not altitude.
+            path.poses = [make_pose_stamped(path.header.stamp, 'map', [x, y, abs(k)],
+                          tf.transformations.quaternion_from_euler(0, 0, yaw))
+                          for (x, y), yaw, k in zip(candidate.xy, candidate.yaw, candidate.curvature)]
+        return path
 
-            self.local_path.poses.append(pose_stamped)
+    def publish(self, state, active=False, stop=False, candidate=None, candidates=(), obstacles=(), speed=0):
+        path = self.make_path(candidate)
+        plan = LocalPlan()
+        plan.header = path.header
+        plan.active, plan.stop, plan.state = active, stop, state
+        plan.speed_limit_kmh, plan.path = speed, path
+        self.plan_pub.publish(plan)
+        self.local_path_pub.publish(path)
+        self.local_path_done_pub.publish(Bool(data=not active))
+        self.visualize(state, candidates, candidate, obstacles)
+        if state != self.last_state:
+            rospy.loginfo('[LOCAL PLANNER] %s', state)
+            self.last_state = state
 
-        # 목표 지점 저장
-        if len(self.local_path.poses) > 0:
-            last_pose = self.local_path.poses[-1]
-            self.target_x = last_pose.pose.position.x
-            self.target_y = last_pose.pose.position.y
+    def tick(self, _event):
+        with self.lock:
+            try:
+                self.process()
+            except (ValueError, IndexError, tf.Exception) as exc:
+                rospy.logwarn_throttle(1.0, '[LOCAL PLANNER] %s', str(exc))
+                self.publish('HOLD: ' + str(exc), active=True, stop=True)
 
+    def process(self):
+        # Unconfigured mission zones leave the existing global controller untouched.
+        if not self.p['static_zones'] and not self.p['dynamic_zones']:
+            self.publish('NORMAL: zones not configured')
+            return
+        if self.pose is None or not self.fresh(self.pose_received, self.pose.header.stamp):
+            raise ValueError('current_pose missing/stale')
+        if self.pose.header.frame_id != 'map':
+            raise ValueError('current_pose must be in map')
+        pos, ori = self.pose.pose.position, self.pose.pose.orientation
+        q = [ori.x, ori.y, ori.z, ori.w]
+        if not np.isfinite([pos.x, pos.y] + q).all() or abs(np.linalg.norm(q) - 1) > .01:
+            raise ValueError('invalid current pose')
+        yaw = tf.transformations.euler_from_quaternion(q)[2]
+        if any('start' in z for z in self.p['static_zones'] + self.p['dynamic_zones']):
+            if not self.fresh(self.index_received) or self.curr_idx < 0:
+                raise ValueError('waypoint index missing/stale')
+        static = in_zones(self.p['static_zones'], self.curr_idx, pos.x, pos.y)
+        dynamic = in_zones(self.p['dynamic_zones'], self.curr_idx, pos.x, pos.y)
+        if not static and not dynamic and not self.avoidance_active:
+            self.core.reset()
+            self.publish('NORMAL')
+            return
+        if self.points is None:
+            raise ValueError('global_path unavailable')
+        # Map rectangles also work before the index arrives; projection is then geometric.
+        idx = self.curr_idx if self.fresh(self.index_received) else int(np.argmin(np.linalg.norm(self.points - [pos.x, pos.y], axis=1)))
+        if not 0 <= idx < len(self.points):
+            raise ValueError('waypoint outside global path')
+        csp = self.core.reference(self.points, idx)
+        obstacles = self.transform_obstacles_to_global()
+        # Dynamic policy is independent of static lateral avoidance.
+        if dynamic:
+            self.process_dynamic(csp, (pos.x, pos.y, yaw), obstacles)
+            return
+        returning = not static
+        best, candidates, (_, d, heading) = self.core.plan(csp, (pos.x, pos.y, yaw), obstacles, returning)
+        if best is None:
             self.avoidance_active = True
+            self.clear_since = None
+            self.publish('STATIC_OBSTACLE: blocked', True, True, candidates=candidates, obstacles=obstacles)
+            return
+        self.core.previous = best
+        if returning and abs(d) <= self.p['return_d_tolerance'] and abs(heading) <= self.p['return_heading_tolerance']:
+            if self.clear_since is None:
+                self.clear_since = time.monotonic()
+            if time.monotonic() - self.clear_since >= self.p['return_clear_time']:
+                self.avoidance_active = False
+                self.core.reset()
+                self.publish('NORMAL', candidates=candidates, obstacles=obstacles)
+                return
+        else:
+            self.clear_since = None
+        self.avoidance_active = True
+        peak_k = max(1e-4, float(np.max(np.abs(best.curvature))))
+        speed = min(self.p['static_speed_kmh'], 3.6 * math.sqrt(self.p['max_lateral_accel'] / peak_k))
+        self.publish('RETURN_TO_GLOBAL' if returning else 'STATIC_OBSTACLE', True, False,
+                     best, candidates, obstacles, speed)
 
-            # 경로 발행
-            self.local_path_pub.publish(self.local_path)
+    def process_dynamic(self, csp, pose, obstacles):
+        # No motion classification/tracking or time-based obstacle ignoring is implied.
+        best, candidates, _ = self.core.plan(csp, pose, obstacles, returning=True)
+        if self.p['dynamic_policy'] == 'observe_only' and not self.avoidance_active:
+            self.publish('DYNAMIC_OBSTACLE: observe_only', candidates=candidates, obstacles=obstacles)
+        elif best is None:
+            self.publish('DYNAMIC_OBSTACLE: stop', True, True, candidates=candidates, obstacles=obstacles)
+        else:
+            self.core.previous = best
+            self.avoidance_active = True
+            self.publish('DYNAMIC_OBSTACLE: corridor_clear', True, False, best, candidates,
+                         obstacles, self.p['dynamic_speed_kmh'])
 
-    def frenet_to_cartesian(self, s: float, d: float):
-        """
-        Frenet 좌표를 Cartesian 좌표로 변환
+    def marker(self, ns, ident, kind):
+        m = Marker()
+        m.header.frame_id, m.header.stamp = 'map', rospy.Time.now()
+        m.ns, m.id, m.type, m.action = ns, ident, kind, Marker.ADD
+        m.pose.orientation.w = 1
+        m.lifetime = rospy.Duration(0.5)
+        return m
 
-        Args:
-            s: 경로를 따라가는 거리
-            d: 경로에 수직인 거리
-
-        Returns:
-            x, y, yaw
-        """
-        # s에 해당하는 인덱스 찾기
-        idx = int(s / self.csp.interval)
-        idx = min(max(idx, 0), len(self.csp.rx) - 1)
-
-        # 경로상의 점
-        rx = self.csp.rx[idx]
-        ry = self.csp.ry[idx]
-        ryaw = self.csp.ryaw[idx]
-
-        # 수직 방향으로 d만큼 오프셋
-        x = rx - d * np.sin(ryaw)
-        y = ry + d * np.cos(ryaw)
-
-        return x, y, ryaw
-
-    def check_target_reached(self):
-        """
-        목표 지점 근처 도달 여부 확인
-        라이다 기준으로 목표점까지 거리 계산
-        """
-        if self.target_x is None or self.target_y is None:
-            return False
-
-        if not self.is_pose_set:
-            return False
-
-        # 라이다 위치 계산 (GPS 앞 3.9m)
-        orientation_list = [
-            self.curr_pose.orientation.x,
-            self.curr_pose.orientation.y,
-            self.curr_pose.orientation.z,
-            self.curr_pose.orientation.w
-        ]
-        _, _, yaw = euler_from_quaternion(orientation_list)
-
-        lidar_x = self.curr_pose.position.x + self.lidar_offset_x * np.cos(yaw)
-        lidar_y = self.curr_pose.position.y + self.lidar_offset_x * np.sin(yaw)
-
-        # 라이다 기준 목표점까지 거리
-        dist = np.hypot(lidar_x - self.target_x, lidar_y - self.target_y)
-
-        # 목표 지점에 3m 이내 도달하면 완료 신호
-        COMPLETION_DISTANCE = 9.83
-
-        if dist < COMPLETION_DISTANCE:
-            rospy.loginfo(f"[회피 완료] 목표까지 거리: {dist:.2f}m (임계값: {COMPLETION_DISTANCE}m)")
-            return True
-
-        return False
-
-    def send_path_done_signal(self):
-        """
-        Local path 완료 신호 발행
-        Controller에게 안전하게 control_path로 복귀하도록 알림
-        """
-        done_msg = Bool()
-        done_msg.data = True
-        self.local_path_done_pub.publish(done_msg)
-
-        # 목표 지점 초기화
-        self.target_x = None
-        self.target_y = None
+    def visualize(self, state, candidates, selected, obstacles):
+        markers = MarkerArray()
+        clear = self.marker('clear', 0, Marker.LINE_STRIP)
+        clear.action = Marker.DELETEALL
+        markers.markers.append(clear)
+        for i, c in enumerate(candidates):
+            m = self.marker('candidates', i, Marker.LINE_STRIP)
+            m.scale.x = .14 if c is selected else .055
+            color = (1., .15, .15) if c.rejection else ((0., 1., .2) if c is selected else (.2, .6, 1.))
+            m.color.r, m.color.g, m.color.b, m.color.a = (*color, .9)
+            m.points = [Point(x=float(x), y=float(y), z=.1) for x, y in c.xy]
+            markers.markers.append(m)
+            label = self.marker('costs', i, Marker.TEXT_VIEW_FACING)
+            label.pose.position.x, label.pose.position.y = c.xy[len(c.xy) // 2]
+            label.pose.position.z = 1 + .15 * i
+            label.scale.z, label.color.a = .35, 1
+            label.color.r = label.color.g = label.color.b = 1
+            label.text = 'd=%+.1f %s cost=%.2f' % (c.offset, c.rejection or 'OK', c.cost)
+            markers.markers.append(label)
+        self.candidate_pub.publish(markers)
+        detected = MarkerArray()
+        detected.markers.append(clear)
+        for i, (x, y, radius) in enumerate(obstacles):
+            m = self.marker('obstacles', i, Marker.CYLINDER)
+            m.pose.position.x, m.pose.position.y, m.pose.position.z = x, y, .5
+            m.scale.x = m.scale.y = 2 * radius
+            m.scale.z = 1
+            m.color.r, m.color.g, m.color.a = 1, .5, .5
+            detected.markers.append(m)
+        self.obstacle_pub.publish(detected)
+        if self.pose is not None:
+            m = self.marker('state', 0, Marker.TEXT_VIEW_FACING)
+            m.pose.position.x, m.pose.position.y = self.pose.pose.position.x, self.pose.pose.position.y
+            m.pose.position.z, m.scale.z, m.color.a = 3., .5, 1.
+            m.color.r = m.color.g = m.color.b = 1.
+            m.text = state
+            self.state_pub.publish(m)
 
 
 if __name__ == '__main__':

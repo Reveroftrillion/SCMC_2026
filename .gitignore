@@ -26,3 +26,7 @@ models/
 
 *.jpg
 *.bag
+
+# Keep traffic-light YOLO weight
+!src/camera/models/
+!src/camera/models/1027_40epoch.pt

@@ -42,6 +42,8 @@
   <exec_depend>laser_geometry</exec_depend>
   <exec_depend>message_runtime</exec_depend>
   <exec_depend>dynamic_reconfigure</exec_depend>
+  <exec_depend>velodyne_pointcloud</exec_depend>
+  <exec_depend>rviz</exec_depend>
 
   <export>
   </export>

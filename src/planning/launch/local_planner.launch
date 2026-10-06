@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="config" default="$(find planning)/config/local_planner.yaml" />
+  <arg name="rviz" default="true" />
+  <rosparam command="load" file="$(arg config)" />
+  <node pkg="planning" type="StaticObstacleAvoidancePlanner.py" name="static_obstacle_avoidance_planner" output="screen" required="true" />
+  <node pkg="planning" type="VizPlanner.py" name="viz_planner" output="screen" required="true" />
+  <node if="$(arg rviz)" pkg="rviz" type="rviz" name="local_planning_rviz" args="-d $(find planning)/rviz/local_planning.rviz" output="screen" />
+</launch>

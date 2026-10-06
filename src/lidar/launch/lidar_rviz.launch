@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="start_driver" default="true" />
+    <arg name="device_ip" default="" />
+    <arg name="port" default="2368" />
+    <arg name="rpm" default="600" />
+
+    <group if="$(arg start_driver)">
+        <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+            <arg name="device_ip" value="$(arg device_ip)" />
+            <arg name="port" value="$(arg port)" />
+            <arg name="rpm" value="$(arg rpm)" />
+        </include>
+    </group>
+
+    <node pkg="rviz" type="rviz" name="lidar_rviz" output="screen"
+          args="-d $(find lidar_object_detection)/rviz/lidar_view.rviz" />
+</launch>

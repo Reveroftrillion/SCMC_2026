@@ -1,5 +1,6 @@
 #include "control/controller.h"
 #include <stdexcept>
+#include <boost/make_shared.hpp>
 
 #include <tf/transform_datatypes.h>
 #include <std_msgs/Float32.h>
@@ -14,8 +15,9 @@ constexpr double D_GAIN = 0.;
 
 constexpr double minimum_distance = 1.; // (m)
 
+constexpr double MAX_VELOCITY = 60.; // km/h
 constexpr double CURVATURE_MIN_VELOCITY = 30.;
-constexpr double CURVATURE_MAX_VELOCITY = 50.;
+constexpr double CURVATURE_MAX_VELOCITY = MAX_VELOCITY;
 
 constexpr double DYNA_OBS_MIN_VELOCITY = 0.;
 constexpr double DYNA_OBS_MAX_VELOCITY = 50.;
@@ -34,7 +36,18 @@ Controller::Controller(): pid_(P_GAIN, I_GAIN, D_GAIN), nearest_dyna_obs_(std::n
     if (!std::isfinite(max_steering_deg_) || max_steering_deg_ <= 0.0) {
         throw std::invalid_argument("max_steering_deg must be positive");
     }
+    private_nh.param("enable_local_planner", enable_local_planner_, false);
+    private_nh.param("local_plan_timeout", local_plan_timeout_, 0.5);
+    if (!std::isfinite(local_plan_timeout_) || local_plan_timeout_ <= 0.0) {
+        throw std::invalid_argument("local_plan_timeout must be positive");
+    }
+    if (enable_local_planner_) {
+        local_plan_sub_ = nh_.subscribe("/local_plan", 1, &Controller::localPlanCallback, this);
+    }
     vehicle_yaw_ = 0.0;
+    target_velocity_ = 0.0;
+    accel_ = 0.0;
+    brake_ = 1.0;
     pid_.setCurrVelocity(0.0);
     control_pub_ = nh_.advertise<simul_msgs::ControlCmd>("/control_cmd", 1);
     curr_waypoint_pub = nh_.advertise<std_msgs::Int16>("/curr_idx", 1);
@@ -56,6 +69,7 @@ void Controller::pathCallback(const nav_msgs::Path::ConstPtr& path){
 }
 
 void Controller::localPathCallback(const nav_msgs::Path::ConstPtr& local_path){
+    if (enable_local_planner_) return; // /local_plan carries path and flags atomically.
     local_path_ = local_path;
 
     // 새로운 local_path를 받으면 플래그를 false로 초기화 (다시 local_path 사용 시작)
@@ -66,11 +80,36 @@ void Controller::localPathCallback(const nav_msgs::Path::ConstPtr& local_path){
 }
 
 void Controller::localPathDoneCallback(const std_msgs::Bool::ConstPtr& msg){
+    if (enable_local_planner_) return;
     if(msg->data){
         // local_path 완료 신호 수신 - 안전하게 control_path로 복귀
         use_global_path_ = true;
         // ROS_INFO("[LOCAL PATH DONE] Received completion signal - switching to control_path (use_global_path_ = true)");
     }
+}
+
+void Controller::localPlanCallback(const simul_msgs::LocalPlan::ConstPtr& msg){
+    local_plan_ = msg;
+    local_plan_received_ = ros::WallTime::now();
+}
+
+bool Controller::localPlanFresh() const {
+    if (!local_plan_ || local_plan_->header.frame_id != "map") return false;
+    if (local_plan_->active && !local_plan_->stop) {
+        if (local_plan_->path.header.frame_id != "map" || local_plan_->path.poses.size() < 5 ||
+            local_plan_->path.header.stamp != local_plan_->header.stamp ||
+            !std::isfinite(local_plan_->speed_limit_kmh) || local_plan_->speed_limit_kmh <= 0.0) return false;
+        for (const auto& point : local_plan_->path.poses) {
+            const auto& p = point.pose.position;
+            const auto& q = point.pose.orientation;
+            const double norm = q.x*q.x + q.y*q.y + q.z*q.z + q.w*q.w;
+            if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.z) ||
+                !std::isfinite(norm) || std::abs(norm - 1.0) > 0.02) return false;
+        }
+    }
+    const double age = (ros::Time::now() - local_plan_->header.stamp).toSec();
+    return !local_plan_->header.stamp.isZero() && age >= -0.1 && age <= local_plan_timeout_ &&
+        (ros::WallTime::now() - local_plan_received_).toSec() <= local_plan_timeout_;
 }
 
 void Controller::globalPathCallback(const nav_msgs::Path::ConstPtr& global_path){
@@ -445,7 +484,7 @@ void Controller::calcVelocity(const nav_msgs::Path::ConstPtr& path){
         }
     }
 
-    target_velocity_ = (max_curvature == 0.) ? 50. : std::max(CURVATURE_MIN_VELOCITY, std::min(CURVATURE_MAX_VELOCITY, 1. / (max_curvature * 2.5)));
+    target_velocity_ = (max_curvature == 0.) ? MAX_VELOCITY : std::max(CURVATURE_MIN_VELOCITY, std::min(CURVATURE_MAX_VELOCITY, 1. / (max_curvature * 2.5)));
 
     if(in_merging_zone()){
         target_velocity_=25.0;
@@ -460,6 +499,10 @@ void Controller::calcVelocity(const nav_msgs::Path::ConstPtr& path){
         }
     }
 
+    if (enable_local_planner_ && localPlanFresh() && local_plan_->active &&
+        std::isfinite(local_plan_->speed_limit_kmh)) {
+        target_velocity_ = std::min(target_velocity_, std::max(0.0, local_plan_->speed_limit_kmh));
+    }
     double accel = pid_.calcAccel(target_velocity_);
 
     if(accel > 1e-5) {
@@ -637,7 +680,7 @@ void Controller::controlPublish(){
         // Use lanenet steering angle
         steering_ = lanenet_angle_;
 
-        // Fixed target velocity of 30 km/h
+        // GPS shadow target velocity in km/h.
         target_velocity_ = LANE_VELOCITY;
         double accel = pid_.calcAccel(target_velocity_);
 
@@ -701,8 +744,13 @@ void Controller::controlPublish(){
                               g_curr_idx_, use_global_path_ ? "true" : "false");
         }
 
+        if (enable_local_planner_ && localPlanFresh() && local_plan_->active && !local_plan_->stop) {
+            active_path = boost::make_shared<nav_msgs::Path>(local_plan_->path);
+        }
+
         // Check if path is empty or too short (end of path reached)
         if(active_path->poses.empty() || active_path->poses.size() < 5) {
+            target_velocity_ = 0.;
             accel_ = 0.;
             brake_ = 1.;
             steering_ = 0.;
@@ -710,6 +758,7 @@ void Controller::controlPublish(){
         }
         // Traffic light stop control
         else if(should_stop_){
+            target_velocity_ = 0.;
             accel_ = 0.;
             brake_ = 1.;
             steering_ = 0.;
@@ -717,9 +766,12 @@ void Controller::controlPublish(){
         }
         // Traffic light deceleration control
         else if(should_decel_){
+            // Recompute from the current path instead of using an old/uninitialized target.
+            calcVelocity(active_path);
             calcSteer(active_path);
             // Reduce target velocity for deceleration
-            double decel_velocity = target_velocity_ / 4.0;
+            target_velocity_ /= 4.0;
+            double decel_velocity = target_velocity_;
             double accel = pid_.calcAccel(decel_velocity);
 
             if(accel > 1e-5) {
@@ -746,6 +798,38 @@ void Controller::controlPublish(){
             calcSteer(active_path);
         }
     }
+
+    // Planner loss/blocked path stops only when the new planner is explicitly enabled.
+    // This runs after waypoint publication so startup cannot deadlock waiting for /curr_idx.
+    if (enable_local_planner_) {
+        bool stop = !localPlanFresh();
+        if (!stop && local_plan_->active) {
+            stop = local_plan_->stop || !is_gps_valid_ ||
+                local_plan_->path.header.frame_id != "map" || local_plan_->path.poses.size() < 5 ||
+                !std::isfinite(local_plan_->speed_limit_kmh) || local_plan_->speed_limit_kmh <= 0.0;
+            for (const auto& p : local_plan_->path.poses) {
+                stop = stop || !std::isfinite(p.pose.position.x) || !std::isfinite(p.pose.position.y) ||
+                    !std::isfinite(p.pose.position.z);
+            }
+        }
+        if (stop) {
+            target_velocity_ = 0.0;
+            accel_ = 0.0;
+            brake_ = 1.0;
+            ROS_WARN_THROTTLE(1.0, "[LOCAL PLAN] Stopping: stale, blocked or invalid plan");
+        }
+    }
+
+    // Apply the speed limit to every longitudinal mode without weakening a stop.
+    if(current_velocity_ >= MAX_VELOCITY){
+        accel_ = 0.0;
+        brake_ = std::max(brake_, std::min(1.0, P_GAIN * (current_velocity_ - MAX_VELOCITY)));
+    }
+
+    ROS_INFO_THROTTLE(1.0,
+        "[LONGITUDINAL] speed=%.2f km/h target=%.2f km/h accel=%.3f brake=%.3f stop=%d decel=%d",
+        current_velocity_, target_velocity_,
+        accel_, brake_, should_stop_, should_decel_);
 
     simul_msgs::ControlCmd msg;
     msg.accel = accel_;

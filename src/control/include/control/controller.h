@@ -12,6 +12,7 @@
 #include <geometry_msgs/Pose.h>
 #include <simul_msgs/VehicleStatus.h>
 #include <simul_msgs/ControlCmd.h>
+#include <simul_msgs/LocalPlan.h>
 #include <simul_msgs/TrafficSign.h>
 #include <lidar_object_detection/ObjectInfo.h>
 #include <morai_msgs/GPSMessage.h>
@@ -103,6 +104,9 @@ private:
     void obstacleInfoCallback(const lidar_object_detection::ObjectInfo::ConstPtr& msg);
     void gpsCallback(const morai_msgs::GPSMessage::ConstPtr& msg);
 
+    void localPlanCallback(const simul_msgs::LocalPlan::ConstPtr& msg);
+    bool localPlanFresh() const;
+
     void calcVelocity(const nav_msgs::Path::ConstPtr& path);
     int calcGlobalCurrWaypoint(const geometry_msgs::Pose& curr_pose);
     double getDistance(const geometry_msgs::Pose& a, const geometry_msgs::Pose& b);
@@ -120,6 +124,12 @@ private:
     ros::NodeHandle nh_;
 
     PID pid_;
+    ros::Subscriber local_plan_sub_;
+    simul_msgs::LocalPlan::ConstPtr local_plan_;
+    ros::WallTime local_plan_received_;
+    bool enable_local_planner_ = false;
+    double local_plan_timeout_ = 0.5;
+
 
     ros::Publisher control_pub_, curr_waypoint_pub;
     ros::Subscriber path_sub_, local_path_sub_, local_path_done_sub_, global_path_sub_, curr_pose_sub_, vehicle_info_sub_, nearest_dyna_obs_sub_, traffic_sign_sub_, lanenet_angle_sub_, obstacle_info_sub_, gps_sub_;

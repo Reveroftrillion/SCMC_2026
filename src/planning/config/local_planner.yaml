@@ -1,0 +1,60 @@
+# No mission coordinates are assumed. Empty zones preserve global tracking.
+static_obstacle_avoidance_planner:
+  static_zones: []   # [{start: <first index>, end: <last index>}] (inclusive)
+  dynamic_zones: []  # Or [{xmin: ..., xmax: ..., ymin: ..., ymax: ...}] in map/UTM metres
+  update_hz: 10.0
+  input_timeout: 0.5
+  offsets: [-3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+  road_half_width: 4.5  # TUNING DEFAULT, not a measured road boundary
+  sample_step: 0.2
+  horizon: 26.0
+  transition_length: 12.0
+  return_length: 12.0
+  reference_behind_points: 20
+  reference_ahead_points: 160
+  vehicle_width: 1.9    # Replace with the actual vehicle dimensions
+  vehicle_front: 3.5    # From current_pose reference to front bumper (metres)
+  vehicle_rear: 1.0     # From current_pose reference to rear bumper
+  wheelbase: 3.0       # Existing controller WHEEL_BASE
+  safety_margin: 0.3
+  max_curvature: 0.13
+  max_steering_rate_per_m: 0.25
+  max_heading_error: 0.7
+  max_lateral_accel: 1.5
+  static_speed_kmh: 20.0
+  dynamic_speed_kmh: 10.0
+  dynamic_policy: stop_on_obstacle # Separate provisional policy; observe_only does not intervene
+  obstacle_memory_s: 2.0
+  obstacle_merge_distance: 0.5
+  return_d_tolerance: 0.25
+  return_heading_tolerance: 0.1
+  return_clear_time: 0.8
+  switch_penalty: 4.0
+  switch_hysteresis: 0.5
+  weights:
+    obstacle: 2.0
+    offset: 1.0
+    curvature: 20.0
+    steering: 5.0
+    continuity: 3.0
+    return: 0.4
+
+viz_planner:
+  lidar_frame: velodyne
+  # REQUIRED unless another node supplies map->velodyne TF.
+  # Measured transform from current_pose XY reference (planning_vehicle) to LiDAR.
+  # [x, y, z, roll, pitch, yaw], metres and radians. Do not guess mount offsets.
+  lidar_xyz_rpy: []
+
+# Reuse the existing static DBSCAN detector. Widen its narrow +/-1.7m ROI
+# so obstacles in adjacent candidate corridors are visible.
+# These parameters take effect when the detector starts; use rqt_reconfigure live.
+object_detection_static:
+  xMinROI: -5.0
+  xMaxROI: 30.0
+  yMinROI: -5.0
+  yMaxROI: 5.0
+  xMaxBoundingBox: 6.0
+  yMaxBoundingBox: 6.0
+  zMaxBoundingBox: 3.0
+  # Keep existing ground-height/self-mask thresholds until the sensor mount is confirmed.

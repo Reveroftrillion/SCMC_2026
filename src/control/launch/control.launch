@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-    <node pkg="control" type="control" name="control" output="screen"/>
+    <arg name="enable_local_planner" default="false" />
+    <node pkg="control" type="control" name="control" output="screen">
+        <param name="enable_local_planner" value="$(arg enable_local_planner)" />
+        <param name="local_plan_timeout" value="0.5" />
+    </node>
 </launch>

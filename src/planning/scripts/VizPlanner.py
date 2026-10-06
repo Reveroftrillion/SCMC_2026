@@ -1,154 +1,80 @@
 #!/usr/bin/env python3
+"""Existing planning displays, with real TF frames instead of map coordinate subtraction."""
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import copy
+import math
 import rospy
-
+import tf
+import tf2_ros
+from geometry_msgs.msg import PoseStamped, TransformStamped
 from nav_msgs.msg import Path
-from geometry_msgs.msg import PoseStamped
 from visualization_msgs.msg import Marker
-from std_msgs.msg import Bool
 
-from utils import make_pose_stamped
 
 class VizPlanner:
     def __init__(self):
-        self.viz_control_path_pub = rospy.Publisher('~viz_control_path', Path, queue_size=10)
-        self.viz_global_path_pub = rospy.Publisher('~viz_global_path', Path, queue_size=10)
-        self.viz_local_path_pub = rospy.Publisher('~viz_local_path', Path, queue_size=10)
-        self.viz_current_pose_pub = rospy.Publisher('~viz_current_pose', Marker, queue_size=10)
-        self.viz_completion_zone_pub = rospy.Publisher('~viz_completion_zone', Marker, queue_size=10)
+        self.dynamic = tf.TransformBroadcaster()
+        self.static = tf2_ros.StaticTransformBroadcaster()
+        self.origin = None
+        self.extrinsics = rospy.get_param('~lidar_xyz_rpy', [])
+        self.lidar_frame = rospy.get_param('~lidar_frame', 'velodyne')
+        if self.extrinsics and (len(self.extrinsics) != 6 or not all(math.isfinite(v) for v in self.extrinsics)):
+            raise ValueError('lidar_xyz_rpy must be empty or [x,y,z,roll,pitch,yaw] in metres/radians')
+        if not self.extrinsics:
+            rospy.logwarn('No LiDAR extrinsics configured. Supply existing map->LiDAR TF or lidar_xyz_rpy; no guessed transform is published.')
+        self.pubs = {}
+        for topic in ('global_path', 'control_path', 'local_path'):
+            self.pubs[topic] = rospy.Publisher('~viz_' + topic, Path, queue_size=1, latch=True)
+            rospy.Subscriber('/' + topic, Path, self.path_callback, callback_args=topic, queue_size=1)
+        self.pose_pub = rospy.Publisher('~viz_current_pose', Marker, queue_size=1)
+        rospy.Subscriber('/current_pose', PoseStamped, self.pose_callback, queue_size=1)
 
-        self.viz_offset_x = 0
-        self.viz_offset_y = 0
+    def transform(self, child, translation, rotation):
+        t = TransformStamped()
+        t.header.stamp, t.header.frame_id, t.child_frame_id = rospy.Time.now(), 'map', child
+        t.transform.translation.x, t.transform.translation.y, t.transform.translation.z = translation
+        t.transform.rotation.x, t.transform.rotation.y, t.transform.rotation.z, t.transform.rotation.w = rotation
+        return t
 
-        # Local path 목표 지점
-        self.local_path_target = None
-
-        rospy.Subscriber('/control_path', Path, self.control_path_callback)
-        rospy.Subscriber('/global_path', Path, self.global_path_callback)
-        rospy.Subscriber('/local_path', Path, self.local_path_callback)
-        rospy.Subscriber('/current_pose', PoseStamped, self.current_pose_callback)
-        rospy.Subscriber('/local_path_done', Bool, self.local_path_done_callback)
-
-    def current_pose_callback(self, current_pose: PoseStamped):
-        if self.viz_offset_x == 0:
-            self.viz_offset_x = current_pose.pose.position.x
-            self.viz_offset_y = current_pose.pose.position.y
-
-        # Create arrow marker
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rospy.Time.now()
-        marker.ns = "current_pose"
-        marker.id = 0
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-
-        # Position (with offset)
-        marker.pose.position.x = current_pose.pose.position.x - self.viz_offset_x
-        marker.pose.position.y = current_pose.pose.position.y - self.viz_offset_y
-        marker.pose.position.z = 0.0
-
-        # Orientation (same as vehicle)
-        marker.pose.orientation = current_pose.pose.orientation
-
-        # Arrow size
-        marker.scale.x = 2.0  # Length
-        marker.scale.y = 0.3  # Width
-        marker.scale.z = 0.3  # Height
-
-        # Color (red arrow)
-        marker.color.r = 1.0
-        marker.color.g = 0.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0
-
-        self.viz_current_pose_pub.publish(marker)
-        
-    def global_path_callback(self, global_path: Path):
-        if self.viz_offset_x == 0:
+    def pose_callback(self, msg):
+        if msg.header.frame_id != 'map' or msg.header.stamp == rospy.Time():
             return
-        
-        for pose in global_path.poses:
-            pose.pose.position.x -= self.viz_offset_x
-            pose.pose.position.y -= self.viz_offset_y
-        
-        self.viz_global_path_pub.publish(global_path)
-        
-    def control_path_callback(self, control_path: Path):
-        if self.viz_offset_x == 0:
+        p, q = msg.pose.position, msg.pose.orientation
+        if not all(math.isfinite(v) for v in [p.x, p.y, q.x, q.y, q.z, q.w]):
             return
+        if self.origin is None:
+            self.origin = (p.x, p.y, 0.)
+            transforms = [self.transform('planning_origin', self.origin, (0, 0, 0, 1))]
+            if self.extrinsics:
+                xyz, rpy = self.extrinsics[:3], self.extrinsics[3:]
+                t = self.transform(self.lidar_frame, xyz, tf.transformations.quaternion_from_euler(*rpy))
+                t.header.frame_id = 'planning_vehicle'
+                transforms.append(t)
+            self.static.sendTransform(transforms)
+        # planning_vehicle is exactly the current_pose XY reference, not an assumed rear axle.
+        self.dynamic.sendTransform((p.x, p.y, 0.), (q.x, q.y, q.z, q.w),
+                                   msg.header.stamp, 'planning_vehicle', 'map')
+        m = Marker()
+        m.header = msg.header
+        m.ns, m.id, m.type, m.action = 'current_pose', 0, Marker.ARROW, Marker.ADD
+        m.pose = copy.deepcopy(msg.pose)
+        m.pose.position.z = .2
+        m.scale.x, m.scale.y, m.scale.z = 2., .35, .35
+        m.color.r, m.color.g, m.color.a = 1., .8, 1.
+        m.lifetime = rospy.Duration(.5)
+        self.pose_pub.publish(m)
 
-        for pose in control_path.poses:
-            pose.pose.position.x -= self.viz_offset_x
-            pose.pose.position.y -= self.viz_offset_y
+    def path_callback(self, msg, topic):
+        path = copy.deepcopy(msg)
+        # Path z contains controller curvature. Render it on the map plane only in RViz copies.
+        for pose in path.poses:
+            pose.pose.position.z = .05
+        self.pubs[topic].publish(path)
 
-        self.viz_control_path_pub.publish(control_path)
-
-    def local_path_callback(self, local_path: Path):
-        if self.viz_offset_x == 0:
-            return
-
-        # Local path의 마지막 지점을 목표로 저장
-        if len(local_path.poses) > 0:
-            last_pose = local_path.poses[-1]
-            self.local_path_target = (last_pose.pose.position.x, last_pose.pose.position.y)
-
-            # Completion zone 시각화
-            self.visualize_completion_zone()
-
-        for pose in local_path.poses:
-            pose.pose.position.x -= self.viz_offset_x
-            pose.pose.position.y -= self.viz_offset_y
-
-        self.viz_local_path_pub.publish(local_path)
-
-    def local_path_done_callback(self, msg: Bool):
-        """Local path 완료 시 completion zone 제거"""
-        if msg.data:
-            self.local_path_target = None
-            # 빈 마커로 삭제
-            marker = Marker()
-            marker.header.frame_id = "map"
-            marker.header.stamp = rospy.Time.now()
-            marker.ns = "completion_zone"
-            marker.id = 0
-            marker.action = Marker.DELETE
-            self.viz_completion_zone_pub.publish(marker)
-
-    def visualize_completion_zone(self):
-        """COMPLETION_DISTANCE 범위를 원으로 시각화"""
-        if self.local_path_target is None:
-            return
-
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rospy.Time.now()
-        marker.ns = "completion_zone"
-        marker.id = 0
-        marker.type = Marker.CYLINDER
-        marker.action = Marker.ADD
-
-        # 목표 지점 위치 (offset 적용)
-        marker.pose.position.x = self.local_path_target[0] - self.viz_offset_x
-        marker.pose.position.y = self.local_path_target[1] - self.viz_offset_y
-        marker.pose.position.z = 0.0
-
-        marker.pose.orientation.w = 1.0
-
-        # 원 크기: COMPLETION_DISTANCE = 2.0m
-        COMPLETION_DISTANCE = 2.0
-        marker.scale.x = COMPLETION_DISTANCE * 2  # 지름
-        marker.scale.y = COMPLETION_DISTANCE * 2
-        marker.scale.z = 0.1  # 높이 (얇게)
-
-        # 색상: 반투명 녹색
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        marker.color.a = 0.3  # 반투명
-
-        self.viz_completion_zone_pub.publish(marker)
 
 if __name__ == '__main__':
     rospy.init_node('viz_planner')
-    viz_planner = VizPlanner()
+    node = VizPlanner()
     rospy.spin()

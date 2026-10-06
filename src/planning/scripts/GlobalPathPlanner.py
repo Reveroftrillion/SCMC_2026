@@ -27,7 +27,7 @@ class GlobalPathPlanner:
         
         ##### 전역 경로 로딩 #####
         self.gps_offset_x, self.gps_offset_y = 302595.0, 4124145.0 
-        with open(os.path.join(pkg_path, 'paths', 'zzinmak.txt'), 'r') as f:
+        with open(os.path.join(pkg_path, 'paths', 'global_path.txt'), 'r') as f:
             while True:
                 line = f.readline()
                 if not line: break
