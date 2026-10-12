@@ -1,4 +1,5 @@
 #include "control/controller.h"
+#include "control/local_plan_validation.h"
 #include <stdexcept>
 #include <boost/make_shared.hpp>
 
@@ -112,6 +113,10 @@ void Controller::configureTrafficMissions(ros::NodeHandle& private_nh) {
 void Controller::configureCameraTraffic(ros::NodeHandle& private_nh) {
     private_nh.param("enable_camera_traffic_control", enable_camera_traffic_control_, false);
     if (!enable_camera_traffic_control_) return;
+    private_nh.param("camera_startup_delay", camera_startup_delay_, camera_startup_delay_);
+    if (!std::isfinite(camera_startup_delay_) || camera_startup_delay_ < 0.0)
+        throw std::invalid_argument("camera_startup_delay must be finite and nonnegative");
+    camera_control_started_ = ros::WallTime::now();
     if (enable_traffic_missions_)
         throw std::invalid_argument("enable only one of coordinate and camera traffic control");
     camera_traffic::Settings s;
@@ -128,7 +133,11 @@ void Controller::configureCameraTraffic(ros::NodeHandle& private_nh) {
     private_nh.param("camera_stop_margin_m", s.stop_margin_m, s.stop_margin_m);
     private_nh.param("camera_braking_deceleration", s.braking_deceleration, s.braking_deceleration);
     private_nh.param("camera_line_hold_time", s.line_hold_time, s.line_hold_time);
+    private_nh.param("camera_stop_on_detection", s.stop_on_detection, s.stop_on_detection);
+    private_nh.param("camera_signal_only", s.signal_only, s.signal_only);
+    private_nh.param("camera_signal_stop_line_approach", s.signal_stop_line_approach, s.signal_stop_line_approach);
     private_nh.param("camera_green_confirmations", s.green_confirmations, s.green_confirmations);
+    private_nh.param("camera_red_confirmations", s.red_confirmations, s.red_confirmations);
     private_nh.param("camera_green_max_gap", s.green_max_gap, s.green_max_gap);
     private_nh.param("camera_go_labels", s.go_labels, s.go_labels);
     private_nh.param("camera_mission_timeout", camera_mission_timeout_, camera_mission_timeout_);
@@ -172,6 +181,16 @@ void Controller::applyCameraTrafficControl() {
     camera_traffic::Input in;
     const auto now = ros::Time::now();
     const auto wall_now = ros::WallTime::now();
+    if ((wall_now - camera_control_started_).toSec() < camera_startup_delay_) {
+        camera_traffic_control_.reset();
+        camera_traffic_decision_ = camera_traffic::Decision{};
+        std_msgs::String state;
+        state.data = "STARTUP_DELAY";
+        traffic_state_pub_.publish(state);
+        ROS_INFO_THROTTLE(1.0, "[CAMERA TRAFFIC] Startup delay: ignoring signals for %.1f more seconds",
+            camera_startup_delay_ - (wall_now - camera_control_started_).toSec());
+        return;
+    }
     const auto fresh = [&now, &wall_now](const ros::Time& stamp, const ros::WallTime& received, double timeout) {
         const double age = (now - stamp).toSec();
         const double wall_age = (wall_now - received).toSec();
@@ -275,29 +294,30 @@ void Controller::localPlanCallback(const simul_msgs::LocalPlan::ConstPtr& msg){
 }
 
 bool Controller::localPlanFresh() const {
-    if (!local_plan_ || local_plan_->header.frame_id != "map") return false;
-    if (local_plan_->active && !local_plan_->stop) {
-        if (local_plan_->path.header.frame_id != "map" || local_plan_->path.poses.size() < 5 ||
-            local_plan_->path.header.stamp != local_plan_->header.stamp ||
-            !std::isfinite(local_plan_->speed_limit_kmh) || local_plan_->speed_limit_kmh <= 0.0) return false;
-        for (const auto& point : local_plan_->path.poses) {
-            const auto& p = point.pose.position;
-            const auto& q = point.pose.orientation;
-            const double norm = q.x*q.x + q.y*q.y + q.z*q.z + q.w*q.w;
-            if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.z) ||
-                !std::isfinite(norm) || std::abs(norm - 1.0) > 0.02) return false;
-        }
-    }
+    if (!local_plan_) return false;
     const double age = (ros::Time::now() - local_plan_->header.stamp).toSec();
-    return !local_plan_->header.stamp.isZero() && age >= -0.1 && age <= local_plan_timeout_ &&
-        (ros::WallTime::now() - local_plan_received_).toSec() <= local_plan_timeout_;
+    const char* reason = local_plan::invalidReason(
+        *local_plan_,
+        age,
+        (ros::WallTime::now() - local_plan_received_).toSec(),
+        local_plan_timeout_);
+    if (reason) {
+        ROS_WARN_THROTTLE(1.0, "[LOCAL PLAN] %s", reason);
+    }
+    return reason == nullptr;
 }
 
 bool Controller::localPlanRequiresStop() const {
     if (!localPlanFresh()) return true;
+
+    // stop is always honoured, including an inactive LocalPlan.
+    if (local_plan_->stop) return true;
+
     if (!local_plan_->active) return false;
-    return local_plan_->stop || !is_gps_valid_ ||
-        local_plan_->path.header.frame_id != "map" || local_plan_->path.poses.size() < 5 ||
+
+    return !is_gps_valid_ ||
+        local_plan_->path.header.frame_id != "map" ||
+        local_plan_->path.poses.size() < 5 ||
         !std::isfinite(local_plan_->speed_limit_kmh) || local_plan_->speed_limit_kmh <= 0.0;
 }
 
@@ -692,9 +712,13 @@ void Controller::calcVelocity(const nav_msgs::Path::ConstPtr& path){
         }
     }
 
-    if (enable_local_planner_ && localPlanFresh() && local_plan_->active &&
-        std::isfinite(local_plan_->speed_limit_kmh)) {
-        target_velocity_ = std::min(target_velocity_, std::max(0.0, local_plan_->speed_limit_kmh));
+    // Inactive NORMAL plans can cap speed before entering a Local mission zone.
+    if (enable_local_planner_ &&
+        localPlanFresh() &&
+        local_plan_->speed_limit_kmh > 0.0) {
+        target_velocity_ = std::min(
+            target_velocity_,
+            std::max(0.0, local_plan_->speed_limit_kmh));
     }
     double accel = pid_.calcAccel(target_velocity_);
 
@@ -863,6 +887,13 @@ void Controller::controlPublish(){
 
     // 기본 체크
     if(!path_ || !global_path_ || !current_pose_) {
+        if (enable_local_planner_) {
+            simul_msgs::ControlCmd stop;
+            stop.accel = 0.0;
+            stop.brake = 1.0;
+            stop.steering = 0.0;
+            control_pub_.publish(stop);
+        }
         return; // 로직 실행 없이 함수 종료
     }
 
@@ -1017,6 +1048,7 @@ void Controller::controlPublish(){
             target_velocity_ = 0.0;
             accel_ = 0.0;
             brake_ = 1.0;
+            steering_ = 0.0;
             ROS_WARN_THROTTLE(1.0, "[LOCAL PLAN] Stopping: stale, blocked or invalid plan");
         }
     }

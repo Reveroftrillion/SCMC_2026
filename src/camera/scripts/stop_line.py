@@ -29,7 +29,7 @@ class StopLineNode:
             raise ValueError('image_timeout must be positive')
         keys = ('roi', 'bev_size', 'white_v_min', 'white_s_max', 'min_coverage', 'min_band_height',
                 'max_band_height', 'crosswalk_min_bands', 'crosswalk_max_gap', 'arrow_stem_min_length',
-                'calibration_image_points', 'calibration_ground_points')
+                'calibration_image_points', 'calibration_ground_points', 'min_image_band_height')
         options = {key: rospy.get_param('~'+key) for key in keys if rospy.has_param('~'+key)}
         self.detector = StopLineDetector(**options)
         self.confirm = Confirmation(rospy.get_param('~confirm_window', 5),

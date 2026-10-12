@@ -26,7 +26,11 @@ struct Settings {
     double line_hold_time = 0.35;
     double green_max_gap = 0.5;
     int green_confirmations = 3;
+    int red_confirmations = 1;
     bool allow_image_stop = true;
+    bool stop_on_detection = true;
+    bool signal_only = false;
+    bool signal_stop_line_approach = false;
     std::vector<std::string> go_labels = {"4green", "4greenleft"};
 };
 
@@ -69,7 +73,7 @@ public:
             !std::isfinite(s.image_slow_y) || !std::isfinite(s.image_stop_y) ||
             s.image_slow_y < 0.0 || s.image_stop_y >= 1.0 || s.image_slow_y >= s.image_stop_y ||
             s.image_creep_velocity > s.image_approach_velocity ||
-            s.green_confirmations < 1 || s.go_labels.empty())
+            s.green_confirmations < 1 || s.red_confirmations < 1 || s.go_labels.empty())
             throw std::invalid_argument("invalid camera traffic control settings (maximum is 40 km/h)");
         // Mixed red/left labels must not become a permissive signal by a typo in YAML.
         for (const auto& label : s.go_labels)
@@ -81,10 +85,13 @@ public:
 
     void reset() {
         active_ = crossing_ = waiting_ = have_line_ = false;
+        approach_stopped_ = false;
         mission_id_ = track_id_ = 0;
         mission_stamp_ = last_line_stamp_ = last_signal_stamp_ = 0.0;
         last_line_time_ = last_green_time_ = -std::numeric_limits<double>::infinity();
         green_count_ = 0;
+        red_count_ = 0; red_track_id_ = 0; last_red_stamp_ = 0.0;
+        last_red_time_ = -std::numeric_limits<double>::infinity();
         search_distance_ = 0.0;
         last_update_time_ = -1.0;
         pre_detection_stamp_ = 0.0;
@@ -100,10 +107,15 @@ public:
             track_id_ = in.track_id;
             mission_stamp_ = in.mission_stamp;
         }
-        if (!in.vehicle_fresh || !std::isfinite(in.velocity) || in.velocity < 0.0)
+        if (!in.vehicle_fresh)
             return stopped("VEHICLE_STALE");
+        // MORAI may report tiny negative longitudinal speeds at standstill.
+        // Treat these as zero; substantial reverse motion still blocks departure.
+        if (!std::isfinite(in.velocity) || in.velocity < -0.1)
+            return stopped("INVALID_VELOCITY");
+        if (settings_.signal_only) return updateSignalOnly(in, now);
         if (active_ && !have_line_ && last_update_time_ >= 0.0)
-            search_distance_ += in.velocity / 3.6 * std::max(0.0, now - last_update_time_);
+            search_distance_ += std::max(0.0, in.velocity) / 3.6 * std::max(0.0, now - last_update_time_);
         last_update_time_ = now;
         if (!active_) {
             if (!in.mission_fresh) return stopped("MISSION_STALE");
@@ -154,6 +166,16 @@ public:
             }
             return stopped("WAIT_SIGNAL");
         }
+        // A confirmed red light and a fresh DETECTED marking are sufficient:
+        // do not delay emergency braking for distance/image geometry validation.
+        const bool red = in.signal_fresh && in.signal_valid &&
+            in.signal_track_id == track_id_ &&
+            (in.label == "3red" || in.label == "3redleft" || in.label == "3redyellow" ||
+             in.label == "4red" || in.label == "4redleft" || in.label == "4redyellow");
+        if (red && in.line_detected && in.line_stamp >= mission_stamp_) {
+            waiting_ = true;
+            return stopped("WAIT_SIGNAL");
+        }
         const bool valid_distance = in.distance_valid && std::isfinite(in.distance_m);
         const bool valid_image = settings_.allow_image_stop && std::isfinite(in.image_y) &&
             in.image_y >= 0.0 && in.image_y <= 1.0;
@@ -165,6 +187,10 @@ public:
             image_y_ = in.image_y;
             last_line_stamp_ = in.line_stamp;
             last_line_time_ = now;
+            if (settings_.stop_on_detection) {
+                waiting_ = true;
+                return stopped("WAIT_SIGNAL");
+            }
         }
         if (!have_line_) {
             if (in.line_detected && !valid_distance && !settings_.allow_image_stop)
@@ -202,6 +228,92 @@ public:
     }
 
 private:
+    Decision updateSignalOnly(const Input& in, double now) {
+        // Count distinct actual red observations before entering signal control.
+        const bool red = in.target_observed &&
+            (in.raw_label == "3red" || in.raw_label == "3redleft" ||
+             in.raw_label == "3redyellow" || in.raw_label == "4red" ||
+             in.raw_label == "4redleft" || in.raw_label == "4redyellow");
+        if (red) {
+            if (in.signal_track_id != red_track_id_ ||
+                now - last_red_time_ > settings_.green_max_gap) red_count_ = 0;
+            if (in.signal_stamp > last_red_stamp_) {
+                red_track_id_ = in.signal_track_id;
+                last_red_stamp_ = in.signal_stamp;
+                last_red_time_ = now;
+                ++red_count_;
+            }
+            if (!waiting_ && red_count_ < settings_.red_confirmations) {
+                Decision d; d.state = "CONFIRM_RED"; return d;
+            }
+            active_ = waiting_ = true;
+            green_count_ = 0;
+            track_id_ = in.signal_track_id;
+            last_signal_stamp_ = in.signal_stamp;
+            if (!settings_.signal_stop_line_approach) return stopped("RED_SIGNAL");
+        }
+        if (!red && ((in.signal_observed && in.signal_stamp > last_red_stamp_) ||
+                     now - last_red_time_ > settings_.green_max_gap)) red_count_ = 0;
+        if (!waiting_) return {};
+        const bool green = in.signal_fresh && in.signal_valid && in.signal_observed &&
+            allowed(in.label) && allowed(in.raw_label);
+        if (!green || now - last_green_time_ > settings_.green_max_gap ||
+            in.signal_track_id != track_id_) green_count_ = 0;
+        if (green && in.signal_stamp > last_signal_stamp_) {
+            track_id_ = in.signal_track_id;
+            last_signal_stamp_ = in.signal_stamp;
+            last_green_time_ = now;
+            ++green_count_;
+        }
+        if (green && green_count_ >= settings_.green_confirmations) {
+            if (!in.motion_allowed) return stopped("WAIT_PATH");
+            reset();
+            return moving("SIGNAL_GO", settings_.max_velocity);
+        }
+        if (!settings_.signal_stop_line_approach) return stopped("WAIT_GREEN");
+        return approachStopLine(in, now);
+    }
+    Decision approachStopLine(const Input& in, double now) {
+        if (last_update_time_ >= 0.0)
+            search_distance_ += std::max(0.0, in.velocity) / 3.6 *
+                std::max(0.0, now - last_update_time_);
+        last_update_time_ = now;
+        if (approach_stopped_) return stopped("WAIT_SIGNAL");
+        if (!in.line_ready) { approach_stopped_ = true; return stopped("STOP_CAMERA_STALE"); }
+        const bool metric = in.distance_valid && std::isfinite(in.distance_m);
+        const bool image = settings_.allow_image_stop && std::isfinite(in.image_y) &&
+            in.image_y >= 0.0 && in.image_y <= 1.0;
+        if (in.line_detected && in.line_stamp > last_line_stamp_ && (metric || image)) {
+            have_line_ = true;
+            metric_ = metric;
+            distance_ = in.distance_m;
+            image_y_ = in.image_y;
+            last_line_stamp_ = in.line_stamp;
+            last_line_time_ = now;
+        }
+        if (!have_line_) {
+            if (search_distance_ >= settings_.search_max_distance_m) {
+                approach_stopped_ = true;
+                return stopped("NO_STOP_LINE");
+            }
+            return moving("SEARCH_LINE", settings_.search_velocity);
+        }
+        if (now - last_line_time_ > settings_.line_hold_time) {
+            approach_stopped_ = true;
+            return stopped("STOP_LINE_LOST");
+        }
+        const double speed = std::max(0.0, in.velocity) / 3.6;
+        const double remaining = distance_ - speed * std::max(0.0, now - last_line_time_);
+        const bool brake_now = metric_ ? remaining <= settings_.stop_margin_m +
+            speed * speed / (2.0 * settings_.braking_deceleration)
+            : image_y_ >= settings_.image_stop_y;
+        if (brake_now) {
+            approach_stopped_ = true;
+            return stopped("WAIT_SIGNAL");
+        }
+        // Approach at the configured search speed; stop commands bypass this floor.
+        return moving(metric_ ? "APPROACH_METRIC" : "APPROACH_IMAGE", settings_.search_velocity);
+    }
     bool allowed(const std::string& label) const {
         return std::find(settings_.go_labels.begin(), settings_.go_labels.end(), label) != settings_.go_labels.end();
     }
@@ -219,8 +331,13 @@ private:
     }
     Settings settings_;
     bool active_ = false, crossing_ = false, waiting_ = false, have_line_ = false, metric_ = false;
+    bool approach_stopped_ = false;
     uint32_t mission_id_ = 0, track_id_ = 0;
     int green_count_ = 0;
+    int red_count_ = 0;
+    uint32_t red_track_id_ = 0;
+    double last_red_stamp_ = 0.0;
+    double last_red_time_ = -std::numeric_limits<double>::infinity();
     double mission_stamp_ = 0.0, last_line_stamp_ = 0.0, last_signal_stamp_ = 0.0;
     double last_line_time_ = -std::numeric_limits<double>::infinity();
     double last_green_time_ = -std::numeric_limits<double>::infinity();

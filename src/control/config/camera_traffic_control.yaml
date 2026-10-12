@@ -1,11 +1,18 @@
 # All velocities are km/h. This ceiling cannot be configured above 40.
 camera_max_velocity: 40.0
+camera_startup_delay: 15.0
+camera_signal_only: true
+# Keep signal-driven entry/departure; use the stop line only to place a red stop.
+camera_signal_stop_line_approach: true
 camera_detection_hold_time: 2.0
 camera_search_velocity: 10.0
+# Latch a stop on the first confirmed line in the active traffic mission.
+camera_stop_on_detection: false
 camera_search_max_distance_m: 20.0
 camera_go_approach_velocity: 20.0
 camera_go_labels: [4green, 4greenleft]
 camera_green_confirmations: 3
+camera_red_confirmations: 3
 camera_green_max_gap: 0.5
 
 # Existing road-facing front camera: initial image geometry, no metric calibration.

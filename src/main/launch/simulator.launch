@@ -18,10 +18,11 @@
   <arg name="enable_traffic_missions" default="false" />
   <arg name="traffic_config" default="$(find control)/config/traffic_missions.yaml" />
   <arg name="enable_camera_traffic_control" default="true" />
+  <arg name="enable_stop_line_detector" default="true" />
   <arg name="camera_control_config" default="$(find control)/config/camera_traffic_control.yaml" />
   <arg name="camera_traffic_config" default="$(find camera)/config/traffic_camera.yaml" />
   <arg name="stop_line_config" default="$(find camera)/config/stop_line_front.yaml" />
-  <arg name="traffic_camera_port" default="9090" />
+  <arg name="traffic_camera_port" default="9297" />
   <arg name="traffic_image_topic" default="/camera/traffic/image/compressed" />
   <arg name="stop_line_image_topic" default="/camera/front/image/compressed" />
   <arg name="view_image" default="true" />
@@ -48,7 +49,7 @@
     <node if="$(arg view_traffic_image)" pkg="rqt_image_view" type="rqt_image_view"
           name="traffic_yolo_view" args="/yolo_traffic_light/image_raw" output="screen" />
   </group>
-  <group if="$(arg enable_camera_traffic_control)">
+  <group if="$(arg enable_stop_line_detector)">
     <include file="$(find camera)/launch/stop_line.launch">
       <arg name="config" value="$(arg stop_line_config)" />
       <arg name="image_topic" value="$(arg stop_line_image_topic)" />

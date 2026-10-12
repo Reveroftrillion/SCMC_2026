@@ -28,6 +28,32 @@ void confirm(camera_traffic::Controller& c, camera_traffic::Input& in, const std
 }
 }
 
+TEST(CameraTraffic, RedDetectedLineImmediatelyStopsWithoutGeometryAndLatches) {
+    for (const auto& label : {"3red", "4red", "4redleft", "4redyellow"}) {
+        camera_traffic::Controller c;
+        camera_traffic::Settings s; s.stop_on_detection = false; c.configure(s);
+        auto in = input();
+        green(in, label, 1);
+        EXPECT_EQ(c.update(in, 1).state, "SEARCH_LINE");
+        in.line_detected = true; in.line_stamp = 1.1;
+        const auto d = c.update(in, 1.1);
+        EXPECT_TRUE(d.stop); EXPECT_DOUBLE_EQ(d.speed_limit, 0);
+        in.line_detected = false;
+        EXPECT_TRUE(c.update(in, 1.2).stop);
+    }
+}
+TEST(CameraTraffic, StandstillNegativeNoiseDoesNotBlockGreenDeparture) {
+    camera_traffic::Controller c;
+    auto in = input(); line(in, .52, 1);
+    in.velocity = -0.00001;
+    EXPECT_EQ(c.update(in, 1).state, "WAIT_SIGNAL");
+    confirm(c, in);
+    EXPECT_EQ(c.update(in, 1.25).state, "CROSSING");
+    in.velocity = -1;
+    EXPECT_EQ(c.update(in, 1.3).state, "INVALID_VELOCITY");
+    in.velocity = 0; in.vehicle_fresh = false;
+    EXPECT_EQ(c.update(in, 1.4).state, "VEHICLE_STALE");
+}
 TEST(CameraTraffic, IdleDoesNotRestrictGlobalRoute) {
     camera_traffic::Controller c;
     auto in = input(); in.mission_active = false;
@@ -85,6 +111,7 @@ TEST(CameraTraffic, EarlyCapTransitionsToStricterMissionSearch) {
 }
 TEST(CameraTraffic, SearchCannotContinueIndefinitelyWithoutALine) {
     camera_traffic::Controller c;
+    camera_traffic::Settings settings; settings.stop_on_detection = false; c.configure(settings);
     auto in = input(); in.velocity = 36;
     c.update(in, 1);
     EXPECT_EQ(c.update(in, 3.1).state, "NO_STOP_LINE");
@@ -93,6 +120,7 @@ TEST(CameraTraffic, SearchCannotContinueIndefinitelyWithoutALine) {
 }
 TEST(CameraTraffic, ImageApproachSlowsAndWaitsAtConfiguredPosition) {
     camera_traffic::Controller c;
+    camera_traffic::Settings settings; settings.stop_on_detection = false; c.configure(settings);
     auto in = input(); line(in, .56, 1);
     const double far = c.update(in, 1).speed_limit;
     line(in, .70, 1.1);
@@ -184,6 +212,7 @@ TEST(CameraTraffic, CameraOrVehicleFailureCannotAuthorizeDeparture) {
 }
 TEST(CameraTraffic, LostApproachLineStopsAfterBoundedHold) {
     camera_traffic::Controller c;
+    camera_traffic::Settings settings; settings.stop_on_detection = false; c.configure(settings);
     auto in = input(); line(in, .57, 1); c.update(in, 1);
     in.line_detected = false;
     EXPECT_FALSE(c.update(in, 1.3).stop);
@@ -192,6 +221,7 @@ TEST(CameraTraffic, LostApproachLineStopsAfterBoundedHold) {
 }
 TEST(CameraTraffic, MetricDistanceOverridesImageAndReservesStoppingMargin) {
     camera_traffic::Controller c;
+    camera_traffic::Settings settings; settings.stop_on_detection = false; c.configure(settings);
     auto in = input(); line(in, .79, 1);
     in.distance_valid = true; in.distance_m = 20;
     auto d = c.update(in, 1);
@@ -203,6 +233,7 @@ TEST(CameraTraffic, MetricDistanceOverridesImageAndReservesStoppingMargin) {
 }
 TEST(CameraTraffic, MetricHoldAccountsForTravelledDistance) {
     camera_traffic::Controller c;
+    camera_traffic::Settings settings; settings.stop_on_detection = false; c.configure(settings);
     auto in = input(); line(in, .56, 1);
     in.distance_valid = true; in.distance_m = 3; in.velocity = 36;
     c.update(in, 1);
@@ -254,4 +285,112 @@ TEST(CameraTraffic, InvalidSettingsAndNonFiniteInputsFailClosed) {
     s = {}; s.image_stop_y = s.image_slow_y; EXPECT_THROW(c.configure(s), std::invalid_argument);
     auto in = input(); in.velocity = std::numeric_limits<double>::quiet_NaN();
     EXPECT_TRUE(c.update(in, 1).stop);
+}
+
+TEST(CameraTraffic, FirstConfirmedFarLineStopsAndLossCannotRelease) {
+    camera_traffic::Controller c;
+    auto in = input(); line(in, .52, 1);
+    in.distance_valid = true; in.distance_m = 20;
+    const auto d = c.update(in, 1);
+    EXPECT_TRUE(d.stop); EXPECT_DOUBLE_EQ(d.speed_limit, 0);
+    EXPECT_EQ(d.state, "WAIT_SIGNAL");
+    in.line_detected = false;
+    EXPECT_TRUE(c.update(in, 1.05).stop);
+    confirm(c, in);
+    EXPECT_EQ(c.update(in, 1.25).state, "CROSSING");
+}
+
+TEST(CameraTraffic, SignalOnlyStopsBeforeMissionAndRestartsWithoutLine) {
+    camera_traffic::Controller c;
+    camera_traffic::Settings s; s.signal_only = true; c.configure(s);
+    auto in = input(); in.mission_active = false; in.mission_fresh = false;
+    in.line_ready = false;
+    in.target_observed = true; in.raw_label = "4red";
+    EXPECT_EQ(c.update(in, 1).state, "RED_SIGNAL");
+    in.target_observed = false; in.raw_label = "UNKNOWN";
+    EXPECT_TRUE(c.update(in, 1.05).stop);
+    in.motion_allowed = false;
+    confirm(c, in);
+    EXPECT_EQ(c.update(in, 1.25).state, "WAIT_PATH");
+    in.motion_allowed = true;
+    EXPECT_EQ(c.update(in, 1.26).state, "SIGNAL_GO");
+    in.target_observed = true; in.raw_label = "4red"; in.signal_stamp = 1.3;
+    EXPECT_EQ(c.update(in, 1.3).state, "RED_SIGNAL");
+}
+TEST(CameraTraffic, SignalOnlyDuplicateGreenCannotReleaseRed) {
+    camera_traffic::Controller c;
+    camera_traffic::Settings s; s.signal_only = true; c.configure(s);
+    auto in = input(); in.target_observed = true; in.raw_label = "4red";
+    c.update(in, 1);
+    in.target_observed = false; green(in, "4green", 1.1);
+    for (int i = 0; i < 10; ++i) EXPECT_TRUE(c.update(in, 1.1 + .01*i).stop);
+}
+
+TEST(CameraTraffic, RedApproachAtTenBrakesBeforeMetricMarginAndWaitsForGreen) {
+    camera_traffic::Controller c;
+    camera_traffic::Settings s; s.signal_only = s.signal_stop_line_approach = true;
+    c.configure(s);
+    auto in = input(); in.mission_active = false; in.mission_fresh = false;
+    in.target_observed = true; in.raw_label = "4red"; in.velocity = 10;
+    auto d = c.update(in, 1);
+    EXPECT_FALSE(d.stop); EXPECT_DOUBLE_EQ(d.speed_limit, 10);
+    line(in, .6, 1.1); in.distance_valid = true; in.distance_m = 8;
+    d = c.update(in, 1.1);
+    EXPECT_EQ(d.state, "APPROACH_METRIC"); EXPECT_DOUBLE_EQ(d.speed_limit, 10);
+    in.line_stamp = 1.2; in.distance_m = 3.8;
+    EXPECT_TRUE(c.update(in, 1.2).stop);
+    in.line_detected = false; in.target_observed = false;
+    EXPECT_TRUE(c.update(in, 1.3).stop);
+    for (int i=0; i<3; ++i) {
+        green(in, "4green", 1.4+.1*i); d = c.update(in, 1.4+.1*i);
+    }
+    EXPECT_EQ(d.state, "SIGNAL_GO");
+}
+TEST(CameraTraffic, RedImageApproachAndLineLossLatchStop) {
+    camera_traffic::Controller c;
+    camera_traffic::Settings s; s.signal_only = s.signal_stop_line_approach = true;
+    c.configure(s);
+    auto in = input(); in.target_observed = true; in.raw_label = "4red";
+    line(in, .6, 1);
+    EXPECT_DOUBLE_EQ(c.update(in, 1).speed_limit, 10);
+    in.line_detected = false;
+    EXPECT_EQ(c.update(in, 1.36).state, "STOP_LINE_LOST");
+    line(in, .6, 1.4);
+    EXPECT_TRUE(c.update(in, 1.4).stop);
+    c.reset(); line(in, .76, 2);
+    EXPECT_TRUE(c.update(in, 2).stop);
+}
+TEST(CameraTraffic, RedSearchLimitStopsButConfirmedGreenCanReleaseWithoutLine) {
+    camera_traffic::Controller c;
+    camera_traffic::Settings s; s.signal_only = s.signal_stop_line_approach = true;
+    s.search_max_distance_m = 1; c.configure(s);
+    auto in = input(); in.target_observed = true; in.raw_label = "4red"; in.velocity = 10;
+    EXPECT_FALSE(c.update(in, 1).stop);
+    EXPECT_EQ(c.update(in, 1.5).state, "NO_STOP_LINE");
+    in.target_observed = false;
+    for (int i=0; i<3; ++i) {
+        green(in, "4green", 1.6+.1*i); c.update(in, 1.6+.1*i);
+    }
+    EXPECT_EQ(c.update(in, 1.85).state, "IDLE");
+}
+
+TEST(CameraTraffic, ThreeDistinctRedFramesStartLineSearchAndDuplicatesDoNotCount) {
+    camera_traffic::Controller c;
+    camera_traffic::Settings s; s.signal_only = s.signal_stop_line_approach = true;
+    s.red_confirmations = 3; c.configure(s);
+    auto in = input(); in.mission_active = false; in.target_observed = true; in.raw_label = "4red";
+    EXPECT_EQ(c.update(in, 1).state, "CONFIRM_RED");
+    EXPECT_EQ(c.update(in, 1.01).state, "CONFIRM_RED");
+    in.signal_stamp = 1.1;
+    EXPECT_EQ(c.update(in, 1.1).state, "CONFIRM_RED");
+    in.signal_observed = true; in.raw_label = "4green"; in.signal_stamp = 1.15;
+    c.update(in, 1.15);
+    in.raw_label = "4red";
+    for (int i=0; i<2; ++i) {
+        in.signal_stamp = 1.2+.1*i;
+        EXPECT_EQ(c.update(in, in.signal_stamp).state, "CONFIRM_RED");
+    }
+    in.signal_stamp = 1.4;
+    const auto d = c.update(in, 1.4);
+    EXPECT_EQ(d.state, "SEARCH_LINE"); EXPECT_DOUBLE_EQ(d.speed_limit, 10);
 }

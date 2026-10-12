@@ -4,7 +4,7 @@
   <arg name="morai_ip" />
   <arg name="bind_ip" default="0.0.0.0" />
   <arg name="front_port" default="9291" />
-  <arg name="traffic_camera_port" default="9090" />
+  <arg name="traffic_camera_port" default="9297" />
   <arg name="front_topic" default="/camera/front/image/compressed" />
   <arg name="traffic_topic" default="/camera/traffic/image/compressed" />
   <arg name="start_front_receiver" default="true" />

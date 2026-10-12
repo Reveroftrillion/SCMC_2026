@@ -34,12 +34,15 @@ class StopLineDetector:
                  bev_size=320, white_v_min=165, white_s_max=80,
                  min_coverage=.6, min_band_height=.01, max_band_height=.09, crosswalk_min_bands=3,
                  crosswalk_max_gap=.14, arrow_stem_min_length=.10, calibration_image_points=(),
-                 calibration_ground_points=()):
+                 calibration_ground_points=(), min_image_band_height=0.0):
         self.roi = quadrilateral(roi)
         self.bev_size = int(bev_size)
         self.white_v_min, self.white_s_max = int(white_v_min), int(white_s_max)
         self.min_coverage = float(min_coverage)
         self.min_band_height, self.max_band_height = float(min_band_height), float(max_band_height)
+        self.min_image_band_height = float(min_image_band_height)
+        if not math.isfinite(self.min_image_band_height) or not 0 <= self.min_image_band_height < .1:
+            raise ValueError('Invalid minimum image band height')
         self.crosswalk_min_bands, self.crosswalk_max_gap = int(crosswalk_min_bands), float(crosswalk_max_gap)
         self.arrow_stem_min_length = float(arrow_stem_min_length)
         if (not 64 <= self.bev_size <= 1024 or not 0 <= self.white_s_max <= 255 or
@@ -127,6 +130,14 @@ class StopLineDetector:
         result = Detection(state='CROSSWALK_PATTERN' if repeated and not choices else
                            'ARROW_PATTERN' if arrows and not choices else 'SEARCHING')
         inverse = np.linalg.inv(transform)
+        # BEV stretches distant one-pixel markings. Require real thickness in
+        # the source image as well, rather than accepting the stretched band.
+        def thick_enough(band):
+            start, end, _ = band
+            points = np.float32([[[size/2., start], [size/2., end+1]]])
+            original = cv2.perspectiveTransform(points, inverse)[0]
+            return abs(float(original[1, 1]-original[0, 1])) / height >= self.min_image_band_height
+        choices = [band for band in choices if thick_enough(band)]
 
         def band_endpoints(band):
             start, end, _support = band

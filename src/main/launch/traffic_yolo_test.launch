@@ -9,7 +9,7 @@
   <arg name="yolo_python" default="python3" />
   <arg name="confidence" default="0.4" />
   <arg name="view_image" default="true" />
-  <arg name="traffic_camera_port" default="9090" />
+  <arg name="traffic_camera_port" default="9297" />
   <arg name="image_topic" default="/camera/traffic/image/compressed" />
   <rosparam command="load" file="$(arg network_config)" />
   <node pkg="morai_udp" type="sensor_udp_node.py" name="camera_traffic_udp" output="screen" required="true">

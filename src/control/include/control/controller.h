@@ -186,6 +186,8 @@ private:
     bool enable_camera_traffic_control_ = false;
     camera_traffic::Controller camera_traffic_control_;
     camera_traffic::Decision camera_traffic_decision_;
+    ros::WallTime camera_control_started_;
+    double camera_startup_delay_ = 15.0;
     simul_msgs::CameraTrafficMission::ConstPtr camera_mission_;
     simul_msgs::TrafficLightTrack::ConstPtr tracked_signal_;
     simul_msgs::StopLine::ConstPtr stop_line_;

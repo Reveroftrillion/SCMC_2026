@@ -160,7 +160,7 @@ class FrontCameraRegressionTests(unittest.TestCase):
         settings = yaml.safe_load((SCRIPTS.parent/'config/stop_line_front.yaml').read_text())
         keys = ('roi', 'bev_size', 'white_v_min', 'white_s_max', 'min_coverage', 'min_band_height',
                 'max_band_height', 'crosswalk_min_bands', 'crosswalk_max_gap', 'arrow_stem_min_length',
-                'calibration_image_points', 'calibration_ground_points')
+                'calibration_image_points', 'calibration_ground_points', 'min_image_band_height')
         self.detector = StopLineDetector(**{key: settings[key] for key in keys})
 
     def test_saved_front_road_without_line_does_not_create_a_stop(self):
@@ -176,6 +176,12 @@ class FrontCameraRegressionTests(unittest.TestCase):
         self.assertTrue(result.detected)
         self.assertAlmostEqual(result.image_y_ratio, .644, delta=.01)
         self.assertFalse(result.distance_valid)
+
+    def test_front_roi_rejects_thin_horizontal_paint(self):
+        for row in (410, 460, 530):
+            frame = np.full((720, 1280, 3), 40, dtype=np.uint8)
+            cv2.rectangle(frame, (100, row), (1180, row+1), (255, 255, 255), -1)
+            self.assertFalse(self.detector.detect(frame)[0].candidate)
 
     def test_front_roi_rejects_a_transverse_arrow_branch(self):
         frame = np.full((720, 1280, 3), 40, dtype=np.uint8)
