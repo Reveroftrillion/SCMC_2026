@@ -1,0 +1,1288 @@
+{
+  "schema_version": 1,
+  "session_date": "2026-10-25",
+  "scope": "CTRL current documentation rewrite only",
+  "rewritten_existing": 18,
+  "new_guides": [
+    "ros1-port/docs/SOURCES_AND_HISTORY.md",
+    "ros1-port/src/ctrl_bringup/README.md",
+    "ros1-port/src/ctrl_camera_train/README.md",
+    "ros1-port/src/ctrl_control/README.md",
+    "ros1-port/src/ctrl_interfaces/README.md"
+  ],
+  "snapshots": [
+    {
+      "path": "AGENTS.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/AGENTS.original.md",
+      "before_sha256": "cb5a1c3f193d9b00bb3ad34163bee1b48d3f9c24c0afb4e218401c62019a985b",
+      "after_sha256": "0cf23ad7b4906f6dffb2b5634ad995bfe30cabbc1c5d91c74d46fd61ee99c0f9",
+      "snapshot_source": "pre-edit working file bytes",
+      "initial_refresh_after_sha256": "7d12ec1fb9e5d4b925c93a1b347c4a2ad1d99b33cda2e55aabc656d2b7a7b116"
+    },
+    {
+      "path": "README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ROOT_README.original.md",
+      "before_sha256": "a0ea9aeb3c3be2355d7a07bc47ae0e42813fb79c01c7d014b14bf257a315c3a5",
+      "after_sha256": "c12072cdf6876d78dc1183f46633e2637b1ca089dc1edd36683e4a8a68895011",
+      "snapshot_source": "pre-edit HEAD Git blob"
+    },
+    {
+      "path": "ros1-port/README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/README.md",
+      "before_sha256": "a5209ba9c53e627dc4ec94ce835929240d76d1720394547a75ecbab3d1f196e6",
+      "after_sha256": "60ad2094ac235d78835df790501c6ffa954976ef382a0c1f5efae347e8a03b55",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/docker/README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/docker/README.md",
+      "before_sha256": "f938885070d3c3802fa63ef3632ce057a71443fb55d39bd3c309ed3bdf2e7e9c",
+      "after_sha256": "9229e47399cfc8b34905b430d111fd19218b1c1939e028e14a2f32ac35e170e0",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/docs/DEVELOPMENT_WORKFLOW.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/docs/DEVELOPMENT_WORKFLOW.md",
+      "before_sha256": "c8037e81dc3fdc1a5ea0693c38ac59299c4764e0722bd8560abbca7d92e7c4fd",
+      "after_sha256": "dc65d0f31ec856cc08ef4e1605be7d24bd422adfcdcf1910d15073435a6ed1e4",
+      "snapshot_source": "pre-edit working file bytes",
+      "initial_refresh_after_sha256": "59814bff156869b06569d69246adbaa04ca991882532f32dd48a95bf37daf610"
+    },
+    {
+      "path": "ros1-port/docs/MARKDOWN_INDEX.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/docs/MARKDOWN_INDEX.md",
+      "before_sha256": "b892516a8ece273030f505121cd534af3de6c789c277f6dc48f63c7d6b4069e4",
+      "after_sha256": "7581c8e687528a98dacb9e80ae8196b1e0cd4eb89c8519d584ecb3ace6120d47",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera/README.md",
+      "before_sha256": "8623d3d708e5b74b498e9b4e943439078e0c7d5cf2c5aa5ae928e4ab87350f5f",
+      "after_sha256": "206a353068baa07d5b827b901cb3b76c969e7168560b61f9ba5e1237938f23a8",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/YOLO_STOPLINE_2026-09-28.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera/YOLO_STOPLINE_2026-09-28.md",
+      "before_sha256": "6fc1c47868724d6bb4b41fdc2746038c3f335eedbc5f58ba0a54057f38b91c8f",
+      "after_sha256": "f81d1288fe31a5363fb3461b760cdd4c6b779d1031860495f94b29425a5b2a57",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera_train/개발구조.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera_train/개발구조.md",
+      "before_sha256": "7cb32edbe48fd979a11c973077d55f0a2c231f1176434d30fc9e6548374d94db",
+      "after_sha256": "e51f844f12511a75c595363402d72a15a335fcfcce1d82087aceef6c80ab0c02",
+      "snapshot_source": "pre-edit working file bytes",
+      "initial_refresh_after_sha256": "ea484c7782d4ae6d82a56f005106dee84faee6b7b0775474d00461ac3825ac6c"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera_train/개발명세서.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera_train/개발명세서.md",
+      "before_sha256": "4af5476fded6ebf0f12d49cc679143c7cb0e5eeec42b29e29b3bfc1c4270d6a6",
+      "after_sha256": "609f17bc87e86034d4a67358700cb54be24417bdf1e960b059bd400c15aff5de",
+      "snapshot_source": "pre-edit working file bytes",
+      "initial_refresh_after_sha256": "e0dfb35158f3cca668038fabd9d1d05df10d46261c459ffd3798abe04b6df379"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera_train/사용법.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera_train/사용법.md",
+      "before_sha256": "9f1d923b4478b673d37686b779bc9adc2a9a6bdf3f391cd64c1024a825237133",
+      "after_sha256": "e39622928b64803cdfc3f8cb1344ba5068734193efa2d463d5fc7c4ba7ad6030",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_lidar/README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_lidar/README.md",
+      "before_sha256": "13955c4888765e90e2539d11dd5ea958b29d5997666926062476e4fb60bd6197",
+      "after_sha256": "e6c0838803002a44050ff1e4759cfcbac8821e8a87b9c708a69fe325ae8a75f3",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_lidar/오탐분석.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_lidar/오탐분석.md",
+      "before_sha256": "d907b374fa28df143affda34dcf0aff31a2977af94b647b773c5e792ab124c11",
+      "after_sha256": "2520f862f5cf5fae7b7c01442ac5d604a014b7dbfa604bd819100f0099772045",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/HIGHWAY.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_planning/HIGHWAY.md",
+      "before_sha256": "154947744c22f46414e9f3aa509bafbd69dfa579a7b2b080a24b0c2c45bb853f",
+      "after_sha256": "97d94b150c578798c874e11dae3ce42c3d4743ac515b26a53c26409310302e7f",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_planning/README.md",
+      "before_sha256": "4630856f70176279569d3376c673ad429d9a201b5318ab0dc3775ca8e192dc9c",
+      "after_sha256": "1eae10d17d627e02457e93cee11a173175510c315e883c63a5ead0a4827fe90b",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/ROUNDABOUT.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_planning/ROUNDABOUT.md",
+      "before_sha256": "24ecacd07e02b84c8f6f5d86d260186961fdac7c9182185f73d303c55a1f5b5c",
+      "after_sha256": "7c36c6188490c4cc6b8355bbfe874db8f35bba6e2df54dd6f87b28a48ae848b3",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "ros1-port/src/ctrl_ros1/README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_ros1/README.md",
+      "before_sha256": "385ef93a795b18ea1dd7da75fee966485cadefdaf2bbf1761b12da68af49bc08",
+      "after_sha256": "bd4262d3863a7c63e791357b9e463eca18b655f3fcfb4c90e48c3475e198d5cd",
+      "snapshot_source": "pre-edit working file bytes"
+    },
+    {
+      "path": "과거자료/README.md",
+      "snapshot": "과거자료/ctrl-document-history-20261025/과거자료/README.md",
+      "before_sha256": "5512ce35512261f09ef3711403856cfe3cf245d55e74c745ccfb6ff44bc92ef2",
+      "after_sha256": "d2d348995cd6de2ed6e4821511c858bb36c8ce18e40d6823bcd957b5a28a319f",
+      "snapshot_source": "pre-edit working file bytes"
+    }
+  ],
+  "protected_non_markdown_files": 2673,
+  "verified_prior_source_manifest_files": 19,
+  "preserved_existing_markdown": 175,
+  "documents": [
+    {
+      "path": "2026_CTRL_competition/CLAUDE.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "252ae8027135f266c3b19fd4c31c62e2f3dc06d0e3ca7a19acf1611bdf356c30"
+    },
+    {
+      "path": "2026_CTRL_competition/HANDOFF_AVOID.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "1c00cdd3fee5fc3563583e80ca3b64d02f846e688a5f7d34635f7002f6d07995"
+    },
+    {
+      "path": "2026_CTRL_competition/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "12e50245b5af8862a43239b8bee63d9e8d78b33c5147b9492505f25ae39d251f"
+    },
+    {
+      "path": "2026_CTRL_competition/YOLO_다른PC_인수인계.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "9554e468a0f744bb4150f9f8492ccc943e94039199c26d8c6f639a2d9648ad50"
+    },
+    {
+      "path": "2026_CTRL_competition/docs/superpowers/plans/2026-10-06-bev-avoidance.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "b8674ce691fd03687ee8207d79cc2fa1a316d610e2d343a917d659dda412cf2d"
+    },
+    {
+      "path": "2026_CTRL_competition/docs/superpowers/plans/2026-10-06-obstacle-path-validation.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "7833cd1dcf4964e68084e521fa8fceb6b9e08c3f3faf6d95a90792aba38e1215"
+    },
+    {
+      "path": "2026_CTRL_competition/docs/superpowers/specs/2026-10-06-bev-avoidance-design.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "1c8d4012f35bbb740647c1184f842f02c65b0522ef304097b0ac76e6d61eb988"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/HANDOFF.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "2e050eb60393376a5fb1c76d950cd7214705abdac2f36fc8ffcaa0f965377579"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/HIGHWAY_PIPELINE.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "dc4c8e67a66d13049a5d17353a1f28ed277accbd7d996377cd5dd2f0d918708c"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "db4aecf44a0e26ab695cb5c689d1d1181ea9ea346d58618ab9b67f60895f4c5c"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/TuningPoint.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "2de1338d3ab17cb8e7c462df7fea68ee20645696372ee12e7e9755ecf6c950ec"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/sim/obstacle_paths/BEV_CLEARANCE.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "81f4fee22eb9992f5809832bf5166f0a08102c915bd4b14188332085c2f95e5a"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/sim/ordinary_tuning/RESULTS.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "bd118f2a13b1b679c8730d00a86306df92d0f331fe1ca486835496c43a94ec6f"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/sim/ordinary_tuning/highway_review.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "66663a734843ed2f044ea5eaa19ef232c9db97f2cb69704141676aa3c6cf85e4"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/sim/ordinary_tuning/plan.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "08cb03ebe804a11a63bf82ee5da1396573a5f8cb26165746913f3d3db17d0137"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/sim/tunnel_tuning/plan.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "c0cff4225852d855abde0f0fe41458834418f5c9626b28f791fc19540d859202"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/sim/tunnel_tuning/results.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "6ff6477447138077d648fe15808420f783cc81661d652ef1cfad50411378b6ec"
+    },
+    {
+      "path": "2026_CTRL_competition/practice/일어나면_먼저_볼것.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "75b8b33313a4b53ae562aabb317b98b9169696702ea35afd26ccc15d330b0812"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_camera/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "ec335fae238e48585135275cc81d6e00c16bf3b23953fe69bd43a53b936dac8d"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_camera/YOLO_STOPLINE_2026-09-28.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "13373e60a40f2643a437b3afc62fd62a21461fddd8b4709f3b4449953e0a82f6"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_camera/models/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_camera_train/개발구조.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "dd472fefaa9d6ff35a6ceca36f8665e38a2e84a7bf10754d1de85ffc2229665b"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_camera_train/개발명세서.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "6c2641475e23b1bdc3f9d637348cc3f13085c654bde7ea3534e62bc92bb14e1d"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_camera_train/사용법.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "25e3105bcb6d2f360ff962328929f094656e8663d54e9003353d5098dc42611a"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_lidar/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "7257bddaaf4271e28f04e963e925ebf75a58af19fce0df4c69b6bdb5f395c3ab"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_lidar/test/data/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "f97d3b5dc112139d1cbabedec2ccf84d4428e696506195e1bf5d406f2efed3ca"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_lidar/오탐분석.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "493f0806edf586ac03f868562ecf9d88e02d12f785bd055381c9c1c5d5326eed"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_planning/HIGHWAY.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "695b00d7d4e729cfc54c34e78fb4428b2b4d9673164acb73c30b189bf3815d82"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_planning/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "20505066e91edb516cec07ca489d83dd303c16d31f7d865772f237a704ddf226"
+    },
+    {
+      "path": "2026_CTRL_competition/src/foscar_planning/ROUNDABOUT.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "a185489ffa16406fcfab52009cae3d6ae7958fd3b977f89b628629f28c64b52a"
+    },
+    {
+      "path": "2026_CTRL_competition/tools/lidar_lane/README.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "4f5be54d62c8259492126e49fbee95b23ae4ef5e0e365244bf9fa86e529b0633"
+    },
+    {
+      "path": "2026_CTRL_competition/tools/위치기록_사용법.md",
+      "role": "external_2026_reference_preserved",
+      "sha256": "1bf0fc6b134b5b346cda5de56202b91556e9d38f63d9f06a8da0a8cf734915c7"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "ctrl_current_development_guide",
+      "sha256": "0cf23ad7b4906f6dffb2b5634ad995bfe30cabbc1c5d91c74d46fd61ee99c0f9"
+    },
+    {
+      "path": "README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "c12072cdf6876d78dc1183f46633e2637b1ca089dc1edd36683e4a8a68895011"
+    },
+    {
+      "path": "ros1-port/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "60ad2094ac235d78835df790501c6ffa954976ef382a0c1f5efae347e8a03b55"
+    },
+    {
+      "path": "ros1-port/docker/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "9229e47399cfc8b34905b430d111fd19218b1c1939e028e14a2f32ac35e170e0"
+    },
+    {
+      "path": "ros1-port/docs/ARCHIVE_CONSOLIDATION_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "bdfd9d4eea10055d054268e8bf687e135e9ad4a2d19e471fe20145ef74cd4ce0"
+    },
+    {
+      "path": "ros1-port/docs/CHANGES.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "a675a202fc795e86742f0467d80b1fe4ffd53b0e4afeb11c92cf3b5171e2cd4c"
+    },
+    {
+      "path": "ros1-port/docs/CONSOLE_TUNNEL_RECHECK_2026-10-22.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "a116d56c763fcee95244f7a9cb6dc953a7df2aa6c7f0e7d1418134b851188505"
+    },
+    {
+      "path": "ros1-port/docs/CONTROL_CONTRACT_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "d4e7561766eb6789927f52e043327c0307734cf6414b693120a76b8fdeb9de06"
+    },
+    {
+      "path": "ros1-port/docs/CTRL_NAMES_2026-10-24.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "cc7ec59ee3786b7877045a8ddfed9efe95295d1126d54bcdae53d60d7fdd1c54"
+    },
+    {
+      "path": "ros1-port/docs/CTRL_START_LAUNCH_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "fab5e4d09f152738af5bae4c9f07f5da7a0476d06aa818962e5cdf3f1eda48af"
+    },
+    {
+      "path": "ros1-port/docs/CTRL_START_LIVE_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "b9d3a572a61a6a872de0588f1903e217e67b138e7c0e29dcfb3c123c20c58d0c"
+    },
+    {
+      "path": "ros1-port/docs/CURRENT_STATUS_2026-10-22.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "f20aec9b26fd3e5255427a55f24d896a2f01b4b0f19a9c4f1c9de1fd76b1f73f"
+    },
+    {
+      "path": "ros1-port/docs/DEVELOPMENT_WORKFLOW.md",
+      "role": "ctrl_current_development_guide",
+      "sha256": "dc65d0f31ec856cc08ef4e1605be7d24bd422adfcdcf1910d15073435a6ed1e4"
+    },
+    {
+      "path": "ros1-port/docs/FILE_MISSIONS_2026-10-22.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "edc9633165fa1f2ab4b24e5677a2cfe83715dedb1e8f9e5fad18196ab0f9f398"
+    },
+    {
+      "path": "ros1-port/docs/FULL_COURSE_AUDIT_2026-10-16.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "604ff59c0ced3628cf00841aba63df1d5dd10a9ebc695c39009fb5dbe3f92090"
+    },
+    {
+      "path": "ros1-port/docs/FULL_COURSE_AUDIT_2026-10-22.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "3d032e039b7537ee5349647c7492c3df0b17c126d8caa83d0c17bee667a525ac"
+    },
+    {
+      "path": "ros1-port/docs/FULL_COURSE_FIXED_AUDIT_2026-10-21.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "6766b4ad255a976d578ca3a737552baef475e47ad08132624ac58cfd279849de"
+    },
+    {
+      "path": "ros1-port/docs/HOST_ROSLAUNCH_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "877144459058e880135d67eb97b93149a892fe224a02997e35877bf90733c9a2"
+    },
+    {
+      "path": "ros1-port/docs/IDENTIFIERS_DOCS_2026-10-13.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "5e918aa716a68f9fc320333a546d744550002945fcf7a4638bc9ce842687f4e7"
+    },
+    {
+      "path": "ros1-port/docs/INDEPENDENT_REBUILD_PLAN_2026-10-25.md",
+      "role": "ctrl_current_development_guide",
+      "sha256": "8b5ae68d703606b0bf1b45df23d524ab7c1985c33bdc122335eb30df75508ed9"
+    },
+    {
+      "path": "ros1-port/docs/KNOWN_ISSUES.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "ceeb4bbe4d5598b36ef1bf0b387833fcaab4b7f7073f7997845801bf27deecd5"
+    },
+    {
+      "path": "ros1-port/docs/LATERAL_FOUNDATION_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "9034de4d5b55256830336d1c954fd2b36dfc9d5401e319f9f2585738bd0dcfb4"
+    },
+    {
+      "path": "ros1-port/docs/MARKDOWN_INDEX.md",
+      "role": "ctrl_current_guide",
+      "sha256": "7581c8e687528a98dacb9e80ae8196b1e0cd4eb89c8519d584ecb3ace6120d47"
+    },
+    {
+      "path": "ros1-port/docs/MESSAGE_DEFAULTS.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "6102860258286f22e6ae24de5195c9e8c2a2635f7a1c286146d2fef4e31ba4a4"
+    },
+    {
+      "path": "ros1-port/docs/MORAI_MANUAL_LAUNCH_2026-10-13.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "61955a414cde75746105671d85641be249fad9f5838a5a39e80e744cbe6ba127"
+    },
+    {
+      "path": "ros1-port/docs/MORAI_MIDCHECK_2ND_2026-10-16.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "46662d0f5a4190b9491da5260bcb386e03271473f6626e71bf1d8aee3f64cb33"
+    },
+    {
+      "path": "ros1-port/docs/MORAI_READINESS_2026-10-21.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "933a552f07abc31537b24a264aa6e77dadfe19c034e47c838311e70fefe624bc"
+    },
+    {
+      "path": "ros1-port/docs/MORAI_READINESS_RECHECK_2026-10-21.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "f2a63c7e10993e6596e048137ae72ecf0fe6f76182bc2dc5263fe54521eaff8a"
+    },
+    {
+      "path": "ros1-port/docs/MORAI_SHORT_DRIVE_2026-10-13.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "ecf342c0bd45f027c77ec1d25dabd80fc21a1d7cf35f4648be61042fcfcbb242"
+    },
+    {
+      "path": "ros1-port/docs/MORAI_STATUS_FOLLOWUP_2026-10-13.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "3883d5aedad63404ab3496431519fd41f805be8823681a40ad02168238f39cc3"
+    },
+    {
+      "path": "ros1-port/docs/NOETIC_DOCKER_VALIDATION.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "cee1e752b4bfdcda3c3ce1414290789ed726d4738e9f9d3004558996327859d9"
+    },
+    {
+      "path": "ros1-port/docs/NOETIC_ENVIRONMENT.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "d4819b3adff14372d0616cbd6343b5dcf784a0c91cd8a6886548165a0407ef1b"
+    },
+    {
+      "path": "ros1-port/docs/NO_TARGET_FIX_2026-10-16.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "e49be277046cce555fdcce2e84ef6dd498d18c76c872837c116fc9c131ad9955"
+    },
+    {
+      "path": "ros1-port/docs/PATH_CONVERSION_CONTRACT_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "b5c0866b43b407d4653d663996d9fb902b69c561a8397bb556fdaabc3020b5d1"
+    },
+    {
+      "path": "ros1-port/docs/PATH_CONVERSION_RESULT_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "83d2dc4f1dbe81ed2d8ebd16835fd71fe31e48aa61f1c7758d0bd35b239313dc"
+    },
+    {
+      "path": "ros1-port/docs/PATH_SELECTION_CONTRACT_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "2c8e41210b6947db017a36ef50689b4fb9f61343d1da1c778e7fb9a7b2506705"
+    },
+    {
+      "path": "ros1-port/docs/PATH_SELECTION_RESULT_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "f5af247841d971c8aa7ce23fc3c75329d436c8107336b650cdb324774e0c1053"
+    },
+    {
+      "path": "ros1-port/docs/PROGRESS_CONTRACT_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "299fab828b3a0c9e18987e435f453147872864496da29c871c5dd1d73be11943"
+    },
+    {
+      "path": "ros1-port/docs/PROGRESS_RESULT_2026-10-25.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "0ec93a1cf54259e036a6cea06ef23146893c04fcd97cd402b0068b84c5e492b4"
+    },
+    {
+      "path": "ros1-port/docs/REFERENCE_DIRECTORY_RENAME_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "7889ad65ad0bfa0fc9bada6f108460ebc2d4913644f5962829d9bc970f55684e"
+    },
+    {
+      "path": "ros1-port/docs/RIGHT_STATIC_PEDESTRIAN_2026-10-22.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "fec77ca94b2cf5380153f8c7724077cc041349a035c6b16261786fb744c8a0d1"
+    },
+    {
+      "path": "ros1-port/docs/ROLLBACK_STOP_ANALYSIS_2026-10-16.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "0d11a3f2fbd9abd715ce28338920a07404c57bf40d7591e4fde9b457f38c580b"
+    },
+    {
+      "path": "ros1-port/docs/ROS1_INTEGRATION.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "4d5fa1d9f1c700ee3444dc5ea1019a205d1bdce20d886e78415dcb9f1e836af3"
+    },
+    {
+      "path": "ros1-port/docs/ROUNDABOUT_WAIT_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "8f8060781526c7f67b7be575a0fe369d5aa316f811dd1296cf583a719dfd5ee5"
+    },
+    {
+      "path": "ros1-port/docs/SOURCES_AND_HISTORY.md",
+      "role": "ctrl_current_guide",
+      "sha256": "7f9adcf11f7d8935a9041ad0704d3ca1c0d50e68ea1c0d1378f890d51c53e0fd"
+    },
+    {
+      "path": "ros1-port/docs/STABILITY_AUDIT_2026-10-22.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "441c61685f819a2a1c176141ee932b00d4314a95bf8d9255d20498a2130fba3a"
+    },
+    {
+      "path": "ros1-port/docs/STATIC_COURSE_FIX_2026-10-21.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "6c4201a3fbf0c30059aed206f495546a9b9baee906058ff459bd0b0422cd4dc7"
+    },
+    {
+      "path": "ros1-port/docs/STATIC_STOP_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "34052eebcb006895bbbf98ac4133351dcc6984360adfde4d7c025cf6e9d0255e"
+    },
+    {
+      "path": "ros1-port/docs/TUNNEL_CONTINGENCY_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "f35686f873c21e129b554156eb5aa4162501e3a69015eb2fb0391c07fd14292d"
+    },
+    {
+      "path": "ros1-port/docs/TUNNEL_GROUND_REPLAY_2026-10-21.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "674680782dc248b08ef00bce72204bb8cf55228ed137825c0c5ee62716549a23"
+    },
+    {
+      "path": "ros1-port/docs/TUNNEL_MATERIAL_EDGE_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "0e12d773355577ae07883381eb25d1f4d378d4bba534c0e6da5457c8d9f4a9c4"
+    },
+    {
+      "path": "ros1-port/docs/TUNNEL_SEQUENCE_ANALYSIS_2026-10-21.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "64a7ea367860acedad2d26a7fcf5067058e2d50391f000acadb96b3ded3bd7ac"
+    },
+    {
+      "path": "ros1-port/docs/UNUSED_FILE_CLEANUP_2026-10-22.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "4bb50dd9836b88cc0d8d6fa24fa728772bb6ebe24cff93984a717dda7d6643f6"
+    },
+    {
+      "path": "ros1-port/docs/UPDATE_2026-10-16.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "2e28fc10f74e510d8f7338c814961fdd46b0f46ea2f074dcb00e2030b974da3a"
+    },
+    {
+      "path": "ros1-port/docs/USER_FULLCOURSE_2026-10-23.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "b1545c1a638fe61b2fa8a46f95d1fdadcf10fadde79271d1849d85c26c8ab241"
+    },
+    {
+      "path": "ros1-port/docs/WORK_LOG_2026-10-13.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "46488276eed6eafd69023267ca842611d56393c0c71b214867baafdfacfb5877"
+    },
+    {
+      "path": "ros1-port/docs/verification.md",
+      "role": "existing_technical_or_validation_record_preserved",
+      "sha256": "29396245b3408937b2dec364573cea9ac11553c42f654a2a26d0a80e7ab9340f"
+    },
+    {
+      "path": "ros1-port/src/ctrl_bringup/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "fd48bceab8c0bd1dac1ead8d5cc4206689d14e8fab096975b4c30e03f3d137bf"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "206a353068baa07d5b827b901cb3b76c969e7168560b61f9ba5e1237938f23a8"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/YOLO_STOPLINE_2026-09-28.md",
+      "role": "ctrl_current_guide",
+      "sha256": "f81d1288fe31a5363fb3461b760cdd4c6b779d1031860495f94b29425a5b2a57"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/models/README.md",
+      "role": "asset_or_fixture_provenance_preserved",
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera_train/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "01dce4458f4f45f7f4372612f55d0e20408c23bd3b5f2346b757cdadce598958"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera_train/개발구조.md",
+      "role": "ctrl_current_development_guide",
+      "sha256": "e51f844f12511a75c595363402d72a15a335fcfcce1d82087aceef6c80ab0c02"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera_train/개발명세서.md",
+      "role": "ctrl_current_development_guide",
+      "sha256": "609f17bc87e86034d4a67358700cb54be24417bdf1e960b059bd400c15aff5de"
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera_train/사용법.md",
+      "role": "ctrl_current_guide",
+      "sha256": "e39622928b64803cdfc3f8cb1344ba5068734193efa2d463d5fc7c4ba7ad6030"
+    },
+    {
+      "path": "ros1-port/src/ctrl_control/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "a463f48259ed4e6645b62a2853cefbceff971a5c46746e98beb1ad5191dbe3a8"
+    },
+    {
+      "path": "ros1-port/src/ctrl_interfaces/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "5cdc3262f33ce4d1728fcf81d26e5c6b7822f72cf428df20c7d202c508f4543a"
+    },
+    {
+      "path": "ros1-port/src/ctrl_lidar/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "e6c0838803002a44050ff1e4759cfcbac8821e8a87b9c708a69fe325ae8a75f3"
+    },
+    {
+      "path": "ros1-port/src/ctrl_lidar/test/data/README.md",
+      "role": "asset_or_fixture_provenance_preserved",
+      "sha256": "f97d3b5dc112139d1cbabedec2ccf84d4428e696506195e1bf5d406f2efed3ca"
+    },
+    {
+      "path": "ros1-port/src/ctrl_lidar/오탐분석.md",
+      "role": "ctrl_current_guide",
+      "sha256": "2520f862f5cf5fae7b7c01442ac5d604a014b7dbfa604bd819100f0099772045"
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/HIGHWAY.md",
+      "role": "ctrl_current_guide",
+      "sha256": "97d94b150c578798c874e11dae3ce42c3d4743ac515b26a53c26409310302e7f"
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "1eae10d17d627e02457e93cee11a173175510c315e883c63a5ead0a4827fe90b"
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/ROUNDABOUT.md",
+      "role": "ctrl_current_guide",
+      "sha256": "7c36c6188490c4cc6b8355bbfe874db8f35bba6e2df54dd6f87b28a48ae848b3"
+    },
+    {
+      "path": "ros1-port/src/ctrl_ros1/README.md",
+      "role": "ctrl_current_guide",
+      "sha256": "bd4262d3863a7c63e791357b9e463eca18b655f3fcfb4c90e48c3475e198d5cd"
+    },
+    {
+      "path": "과거자료/2026foscar-records/CLAUDE.md",
+      "role": "historical_or_external_archive",
+      "sha256": "252ae8027135f266c3b19fd4c31c62e2f3dc06d0e3ca7a19acf1611bdf356c30"
+    },
+    {
+      "path": "과거자료/2026foscar-records/HANDOFF_AVOID.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1c00cdd3fee5fc3563583e80ca3b64d02f846e688a5f7d34635f7002f6d07995"
+    },
+    {
+      "path": "과거자료/2026foscar-records/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "04fd2a043ab9dcb0cb4a9b0e5be060e6f892f90ab0fb37a6f7bd8c02e08bb0ba"
+    },
+    {
+      "path": "과거자료/2026foscar-records/YOLO_다른PC_인수인계.md",
+      "role": "historical_or_external_archive",
+      "sha256": "9554e468a0f744bb4150f9f8492ccc943e94039199c26d8c6f639a2d9648ad50"
+    },
+    {
+      "path": "과거자료/2026foscar-records/docs/superpowers/plans/2026-10-06-bev-avoidance.md",
+      "role": "historical_or_external_archive",
+      "sha256": "b8674ce691fd03687ee8207d79cc2fa1a316d610e2d343a917d659dda412cf2d"
+    },
+    {
+      "path": "과거자료/2026foscar-records/docs/superpowers/plans/2026-10-06-obstacle-path-validation.md",
+      "role": "historical_or_external_archive",
+      "sha256": "7833cd1dcf4964e68084e521fa8fceb6b9e08c3f3faf6d95a90792aba38e1215"
+    },
+    {
+      "path": "과거자료/2026foscar-records/docs/superpowers/specs/2026-10-06-bev-avoidance-design.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1c8d4012f35bbb740647c1184f842f02c65b0522ef304097b0ac76e6d61eb988"
+    },
+    {
+      "path": "과거자료/2026foscar-records/practice/HANDOFF.md",
+      "role": "historical_or_external_archive",
+      "sha256": "2e050eb60393376a5fb1c76d950cd7214705abdac2f36fc8ffcaa0f965377579"
+    },
+    {
+      "path": "과거자료/2026foscar-records/practice/HIGHWAY_PIPELINE.md",
+      "role": "historical_or_external_archive",
+      "sha256": "dc4c8e67a66d13049a5d17353a1f28ed277accbd7d996377cd5dd2f0d918708c"
+    },
+    {
+      "path": "과거자료/2026foscar-records/practice/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "db4aecf44a0e26ab695cb5c689d1d1181ea9ea346d58618ab9b67f60895f4c5c"
+    },
+    {
+      "path": "과거자료/2026foscar-records/practice/TuningPoint.md",
+      "role": "historical_or_external_archive",
+      "sha256": "dba64f86d6a2dd809b2a3e5ddc2d8bdb9a0fb1efc62ef88deb31e1fd0a39d934"
+    },
+    {
+      "path": "과거자료/2026foscar-records/practice/sim/obstacle_paths/BEV_CLEARANCE.md",
+      "role": "historical_or_external_archive",
+      "sha256": "81f4fee22eb9992f5809832bf5166f0a08102c915bd4b14188332085c2f95e5a"
+    },
+    {
+      "path": "과거자료/2026foscar-records/practice/sim/ordinary_tuning/RESULTS.md",
+      "role": "historical_or_external_archive",
+      "sha256": "bd118f2a13b1b679c8730d00a86306df92d0f331fe1ca486835496c43a94ec6f"
+    },
+    {
+      "path": "과거자료/2026foscar-records/practice/일어나면_먼저_볼것.md",
+      "role": "historical_or_external_archive",
+      "sha256": "75b8b33313a4b53ae562aabb317b98b9169696702ea35afd26ccc15d330b0812"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_camera/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "ec335fae238e48585135275cc81d6e00c16bf3b23953fe69bd43a53b936dac8d"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_camera/YOLO_STOPLINE_2026-09-28.md",
+      "role": "historical_or_external_archive",
+      "sha256": "13373e60a40f2643a437b3afc62fd62a21461fddd8b4709f3b4449953e0a82f6"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_camera/models/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_camera_train/개발구조.md",
+      "role": "historical_or_external_archive",
+      "sha256": "dd472fefaa9d6ff35a6ceca36f8665e38a2e84a7bf10754d1de85ffc2229665b"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_camera_train/개발명세서.md",
+      "role": "historical_or_external_archive",
+      "sha256": "6c2641475e23b1bdc3f9d637348cc3f13085c654bde7ea3534e62bc92bb14e1d"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_camera_train/사용법.md",
+      "role": "historical_or_external_archive",
+      "sha256": "25e3105bcb6d2f360ff962328929f094656e8663d54e9003353d5098dc42611a"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_lidar/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "7257bddaaf4271e28f04e963e925ebf75a58af19fce0df4c69b6bdb5f395c3ab"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_lidar/test/data/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "f97d3b5dc112139d1cbabedec2ccf84d4428e696506195e1bf5d406f2efed3ca"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_lidar/오탐분석.md",
+      "role": "historical_or_external_archive",
+      "sha256": "493f0806edf586ac03f868562ecf9d88e02d12f785bd055381c9c1c5d5326eed"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_planning/HIGHWAY.md",
+      "role": "historical_or_external_archive",
+      "sha256": "695b00d7d4e729cfc54c34e78fb4428b2b4d9673164acb73c30b189bf3815d82"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_planning/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "20505066e91edb516cec07ca489d83dd303c16d31f7d865772f237a704ddf226"
+    },
+    {
+      "path": "과거자료/2026foscar-records/src/foscar_planning/ROUNDABOUT.md",
+      "role": "historical_or_external_archive",
+      "sha256": "a185489ffa16406fcfab52009cae3d6ae7958fd3b977f89b628629f28c64b52a"
+    },
+    {
+      "path": "과거자료/2026foscar-records/tools/lidar_lane/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "4f5be54d62c8259492126e49fbee95b23ae4ef5e0e365244bf9fa86e529b0633"
+    },
+    {
+      "path": "과거자료/2026foscar-records/tools/위치기록_사용법.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1bf0fc6b134b5b346cda5de56202b91556e9d38f63d9f06a8da0a8cf734915c7"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/CLAUDE.md",
+      "role": "historical_or_external_archive",
+      "sha256": "46a28e16c9b1037f9a3fd1bdf9395c19f27872f497b4622731858c63e8acbbc7"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/HANDOFF_AVOID.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1c00cdd3fee5fc3563583e80ca3b64d02f846e688a5f7d34635f7002f6d07995"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "12e50245b5af8862a43239b8bee63d9e8d78b33c5147b9492505f25ae39d251f"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/YOLO_다른PC_인수인계.md",
+      "role": "historical_or_external_archive",
+      "sha256": "9554e468a0f744bb4150f9f8492ccc943e94039199c26d8c6f639a2d9648ad50"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/docs/superpowers/plans/2026-10-01-highway-overtake-phase1.md",
+      "role": "historical_or_external_archive",
+      "sha256": "2653657dee698dd35580f63334a25830609001b0783ee63ce8b70d3ec4d8314d"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/docs/superpowers/plans/2026-10-01-highway-overtake-phase2-a1.md",
+      "role": "historical_or_external_archive",
+      "sha256": "9030a78f6ead09e610980a743bb8e820e1c1cf0ab43c96e68ac0e463b945420f"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/docs/superpowers/specs/2026-10-01-highway-overtake-design.md",
+      "role": "historical_or_external_archive",
+      "sha256": "4bc8602938ff66abb4ac4e4217229f839df26ad322265d8081cbbc1e81849b51"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/practice/HANDOFF.md",
+      "role": "historical_or_external_archive",
+      "sha256": "3105c313de2d77e1598b9c6cc6cf6f5a3450a4181cffe9b69b6e788236bd7460"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/practice/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "db4aecf44a0e26ab695cb5c689d1d1181ea9ea346d58618ab9b67f60895f4c5c"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/practice/TuningPoint.md",
+      "role": "historical_or_external_archive",
+      "sha256": "dba64f86d6a2dd809b2a3e5ddc2d8bdb9a0fb1efc62ef88deb31e1fd0a39d934"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/practice/일어나면_먼저_볼것.md",
+      "role": "historical_or_external_archive",
+      "sha256": "75b8b33313a4b53ae562aabb317b98b9169696702ea35afd26ccc15d330b0812"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_camera/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1ae2750290950278ec70526a88bbfc56296140c570d927fb0896c95cfb1fd192"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_camera/YOLO_STOPLINE_2026-09-28.md",
+      "role": "historical_or_external_archive",
+      "sha256": "13373e60a40f2643a437b3afc62fd62a21461fddd8b4709f3b4449953e0a82f6"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_camera/models/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_camera_train/개발구조.md",
+      "role": "historical_or_external_archive",
+      "sha256": "dd472fefaa9d6ff35a6ceca36f8665e38a2e84a7bf10754d1de85ffc2229665b"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_camera_train/개발명세서.md",
+      "role": "historical_or_external_archive",
+      "sha256": "6c2641475e23b1bdc3f9d637348cc3f13085c654bde7ea3534e62bc92bb14e1d"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_camera_train/사용법.md",
+      "role": "historical_or_external_archive",
+      "sha256": "25e3105bcb6d2f360ff962328929f094656e8663d54e9003353d5098dc42611a"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_lidar/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "7257bddaaf4271e28f04e963e925ebf75a58af19fce0df4c69b6bdb5f395c3ab"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_lidar/test/data/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "f97d3b5dc112139d1cbabedec2ccf84d4428e696506195e1bf5d406f2efed3ca"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_lidar/오탐분석.md",
+      "role": "historical_or_external_archive",
+      "sha256": "493f0806edf586ac03f868562ecf9d88e02d12f785bd055381c9c1c5d5326eed"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_planning/HIGHWAY.md",
+      "role": "historical_or_external_archive",
+      "sha256": "695b00d7d4e729cfc54c34e78fb4428b2b4d9673164acb73c30b189bf3815d82"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_planning/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "20505066e91edb516cec07ca489d83dd303c16d31f7d865772f237a704ddf226"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/src/foscar_planning/ROUNDABOUT.md",
+      "role": "historical_or_external_archive",
+      "sha256": "a185489ffa16406fcfab52009cae3d6ae7958fd3b977f89b628629f28c64b52a"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/tools/lidar_lane/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "4f5be54d62c8259492126e49fbee95b23ae4ef5e0e365244bf9fa86e529b0633"
+    },
+    {
+      "path": "과거자료/2026foscar-team2/tools/위치기록_사용법.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1bf0fc6b134b5b346cda5de56202b91556e9d38f63d9f06a8da0a8cf734915c7"
+    },
+    {
+      "path": "과거자료/2026foscar/CLAUDE.md",
+      "role": "historical_or_external_archive",
+      "sha256": "46a28e16c9b1037f9a3fd1bdf9395c19f27872f497b4622731858c63e8acbbc7"
+    },
+    {
+      "path": "과거자료/2026foscar/HANDOFF_AVOID.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1c00cdd3fee5fc3563583e80ca3b64d02f846e688a5f7d34635f7002f6d07995"
+    },
+    {
+      "path": "과거자료/2026foscar/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "12e50245b5af8862a43239b8bee63d9e8d78b33c5147b9492505f25ae39d251f"
+    },
+    {
+      "path": "과거자료/2026foscar/YOLO_다른PC_인수인계.md",
+      "role": "historical_or_external_archive",
+      "sha256": "9554e468a0f744bb4150f9f8492ccc943e94039199c26d8c6f639a2d9648ad50"
+    },
+    {
+      "path": "과거자료/2026foscar/practice/HANDOFF.md",
+      "role": "historical_or_external_archive",
+      "sha256": "3105c313de2d77e1598b9c6cc6cf6f5a3450a4181cffe9b69b6e788236bd7460"
+    },
+    {
+      "path": "과거자료/2026foscar/practice/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "db4aecf44a0e26ab695cb5c689d1d1181ea9ea346d58618ab9b67f60895f4c5c"
+    },
+    {
+      "path": "과거자료/2026foscar/practice/TuningPoint.md",
+      "role": "historical_or_external_archive",
+      "sha256": "ed58b01571fa6188c30747500655e7cbdaf43c0f7da34cbaf76e269473559f7d"
+    },
+    {
+      "path": "과거자료/2026foscar/practice/일어나면_먼저_볼것.md",
+      "role": "historical_or_external_archive",
+      "sha256": "75b8b33313a4b53ae562aabb317b98b9169696702ea35afd26ccc15d330b0812"
+    },
+    {
+      "path": "과거자료/2026foscar/practice/터널_보행자_변경내역.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1cdcb36284301fd0e3ce0a69cb4f5c920a642454b74e172ac6a09a283b6341a0"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_camera/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1ae2750290950278ec70526a88bbfc56296140c570d927fb0896c95cfb1fd192"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_camera/YOLO_STOPLINE_2026-09-28.md",
+      "role": "historical_or_external_archive",
+      "sha256": "13373e60a40f2643a437b3afc62fd62a21461fddd8b4709f3b4449953e0a82f6"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_camera/models/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_camera_train/개발구조.md",
+      "role": "historical_or_external_archive",
+      "sha256": "dd472fefaa9d6ff35a6ceca36f8665e38a2e84a7bf10754d1de85ffc2229665b"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_camera_train/개발명세서.md",
+      "role": "historical_or_external_archive",
+      "sha256": "6c2641475e23b1bdc3f9d637348cc3f13085c654bde7ea3534e62bc92bb14e1d"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_camera_train/사용법.md",
+      "role": "historical_or_external_archive",
+      "sha256": "25e3105bcb6d2f360ff962328929f094656e8663d54e9003353d5098dc42611a"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_lidar/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "7257bddaaf4271e28f04e963e925ebf75a58af19fce0df4c69b6bdb5f395c3ab"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_lidar/test/data/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "f97d3b5dc112139d1cbabedec2ccf84d4428e696506195e1bf5d406f2efed3ca"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_lidar/오탐분석.md",
+      "role": "historical_or_external_archive",
+      "sha256": "493f0806edf586ac03f868562ecf9d88e02d12f785bd055381c9c1c5d5326eed"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_planning/HIGHWAY.md",
+      "role": "historical_or_external_archive",
+      "sha256": "695b00d7d4e729cfc54c34e78fb4428b2b4d9673164acb73c30b189bf3815d82"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_planning/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "20505066e91edb516cec07ca489d83dd303c16d31f7d865772f237a704ddf226"
+    },
+    {
+      "path": "과거자료/2026foscar/src/foscar_planning/ROUNDABOUT.md",
+      "role": "historical_or_external_archive",
+      "sha256": "a185489ffa16406fcfab52009cae3d6ae7958fd3b977f89b628629f28c64b52a"
+    },
+    {
+      "path": "과거자료/2026foscar/tools/lidar_lane/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "4f5be54d62c8259492126e49fbee95b23ae4ef5e0e365244bf9fa86e529b0633"
+    },
+    {
+      "path": "과거자료/2026foscar/tools/위치기록_사용법.md",
+      "role": "historical_or_external_archive",
+      "sha256": "1bf0fc6b134b5b346cda5de56202b91556e9d38f63d9f06a8da0a8cf734915c7"
+    },
+    {
+      "path": "과거자료/HANDOFF_터널_2026-10-12.md",
+      "role": "historical_or_external_archive",
+      "sha256": "128a5b77c95b7d2f0b04daa810a1a496c85557e2719d8b1f17f79ada8d6789bf"
+    },
+    {
+      "path": "과거자료/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "d2d348995cd6de2ed6e4821511c858bb36c8ce18e40d6823bcd957b5a28a319f"
+    },
+    {
+      "path": "과거자료/Readme, 각종정보파일/DEVELOPMENT_PLAN.md",
+      "role": "historical_or_external_archive",
+      "sha256": "c9ebf77523e7018d4667b444bfcb53930d633ed17ff6102fda7731a5c726ffcd"
+    },
+    {
+      "path": "과거자료/Readme, 각종정보파일/MORAI-NetworkModule/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "2c298233eb45f5792cd98edfb02ff9ace22162b082d843e28f1d8e6dc9e479b8"
+    },
+    {
+      "path": "과거자료/Readme, 각종정보파일/PROJECT_MASTER.md",
+      "role": "historical_or_external_archive",
+      "sha256": "9acfb4d3c47753cbcade15127b78dce243fc3bc5c23ceddb378e136cc2430f34"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/AGENTS.original.md",
+      "role": "historical_or_external_archive",
+      "sha256": "cb5a1c3f193d9b00bb3ad34163bee1b48d3f9c24c0afb4e218401c62019a985b"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "cf5d3c6544fe8d0d0cf55ff4dc261a95fd686a8e51dac77a1408c1ad91370fca"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ROOT_README.original.md",
+      "role": "historical_or_external_archive",
+      "sha256": "a0ea9aeb3c3be2355d7a07bc47ae0e42813fb79c01c7d014b14bf257a315c3a5"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "a5209ba9c53e627dc4ec94ce835929240d76d1720394547a75ecbab3d1f196e6"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/docker/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "f938885070d3c3802fa63ef3632ce057a71443fb55d39bd3c309ed3bdf2e7e9c"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/docs/DEVELOPMENT_WORKFLOW.md",
+      "role": "historical_or_external_archive",
+      "sha256": "c8037e81dc3fdc1a5ea0693c38ac59299c4764e0722bd8560abbca7d92e7c4fd"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/docs/MARKDOWN_INDEX.md",
+      "role": "historical_or_external_archive",
+      "sha256": "b892516a8ece273030f505121cd534af3de6c789c277f6dc48f63c7d6b4069e4"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "8623d3d708e5b74b498e9b4e943439078e0c7d5cf2c5aa5ae928e4ab87350f5f"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera/YOLO_STOPLINE_2026-09-28.md",
+      "role": "historical_or_external_archive",
+      "sha256": "6fc1c47868724d6bb4b41fdc2746038c3f335eedbc5f58ba0a54057f38b91c8f"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera_train/개발구조.md",
+      "role": "historical_or_external_archive",
+      "sha256": "7cb32edbe48fd979a11c973077d55f0a2c231f1176434d30fc9e6548374d94db"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera_train/개발명세서.md",
+      "role": "historical_or_external_archive",
+      "sha256": "4af5476fded6ebf0f12d49cc679143c7cb0e5eeec42b29e29b3bfc1c4270d6a6"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_camera_train/사용법.md",
+      "role": "historical_or_external_archive",
+      "sha256": "9f1d923b4478b673d37686b779bc9adc2a9a6bdf3f391cd64c1024a825237133"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_lidar/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "13955c4888765e90e2539d11dd5ea958b29d5997666926062476e4fb60bd6197"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_lidar/오탐분석.md",
+      "role": "historical_or_external_archive",
+      "sha256": "d907b374fa28df143affda34dcf0aff31a2977af94b647b773c5e792ab124c11"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_planning/HIGHWAY.md",
+      "role": "historical_or_external_archive",
+      "sha256": "154947744c22f46414e9f3aa509bafbd69dfa579a7b2b080a24b0c2c45bb853f"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_planning/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "4630856f70176279569d3376c673ad429d9a201b5318ab0dc3775ca8e192dc9c"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_planning/ROUNDABOUT.md",
+      "role": "historical_or_external_archive",
+      "sha256": "24ecacd07e02b84c8f6f5d86d260186961fdac7c9182185f73d303c55a1f5b5c"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/ros1-port/src/ctrl_ros1/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "385ef93a795b18ea1dd7da75fee966485cadefdaf2bbf1761b12da68af49bc08"
+    },
+    {
+      "path": "과거자료/ctrl-document-history-20261025/과거자료/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "5512ce35512261f09ef3711403856cfe3cf245d55e74c745ccfb6ff44bc92ef2"
+    },
+    {
+      "path": "과거자료/sim_2025/Simulator_2025-ai_mission/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "f8b6f58a6e7f276a7c25b0641eaa8db3a6c32e26ca0128d4396f1746cd7a16b8"
+    },
+    {
+      "path": "과거자료/sim_2025/Simulator_2025-ai_mission/src/MORAI-ROS_morai_msgs/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "d871e0b51835078d665a58f89c88964378dac3d0169e6d95d967338fddb08c37"
+    },
+    {
+      "path": "과거자료/sim_2025/Simulator_2025-ai_mission/src/MORAI_UDP_NetworkModule/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "a3ff7e1cdbb251f69bf44b4ed6ec9118d09c21a00d78b5dcf49559f16a4701ae"
+    },
+    {
+      "path": "과거자료/sim_2025/Simulator_2025-main/Simulator_2025-main/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "f8b6f58a6e7f276a7c25b0641eaa8db3a6c32e26ca0128d4396f1746cd7a16b8"
+    },
+    {
+      "path": "과거자료/sim_2025/Simulator_2025-main/Simulator_2025-main/src/MORAI-ROS_morai_msgs/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "d871e0b51835078d665a58f89c88964378dac3d0169e6d95d967338fddb08c37"
+    },
+    {
+      "path": "과거자료/sim_2025/Simulator_2025-main/Simulator_2025-main/src/MORAI_UDP_NetworkModule/README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "a3ff7e1cdbb251f69bf44b4ed6ec9118d09c21a00d78b5dcf49559f16a4701ae"
+    },
+    {
+      "path": "과거자료/개발계획서.md",
+      "role": "historical_or_external_archive",
+      "sha256": "2dcac0af6ad32a9e16d981ba867093923d89d7e4c617153728b7c720c14be9b5"
+    },
+    {
+      "path": "과거자료/규정집_v1.1.5_예비_대학생AISW모빌리티 경진대회.md",
+      "role": "historical_or_external_archive",
+      "sha256": "2c4110fd10d1e80a41422b7d5a40d00942ad0685e97405bfd9ba9f1ef98d8f4a"
+    },
+    {
+      "path": "과거자료/남은 할일.md",
+      "role": "historical_or_external_archive",
+      "sha256": "ddc80e07a567685e17183e6e86a15cd374f9809ee496fff03590140f220b6674"
+    },
+    {
+      "path": "과거자료/측정테스트파일/LOW_SPEED_README.md",
+      "role": "historical_or_external_archive",
+      "sha256": "8286fb444589f5c53c42dc87190943c7e79895680417dca228a3f8b49bf3f808"
+    },
+    {
+      "path": "과거자료/할일.md",
+      "role": "historical_or_external_archive",
+      "sha256": "b637d1ea49088021693625b227077685526b700d6c1c0aa8ae922382299b40d9"
+    }
+  ],
+  "notes": [
+    "2025 archived material is distinguished from 2026 FOSCAR references",
+    "Original/reference/technical evidence and two asset/fixture provenance documents were not rewritten",
+    "No existing code, config, model, validation JSON or resource manifest was changed",
+    "Root README snapshot restored from pre-edit HEAD Git blob after snapshot-index name collision; other snapshots retain pre-edit working bytes",
+    "Earlier current-plan question-mark prefixes were replaced with UTF-8 guides"
+  ],
+  "checks": {
+    "current_guide_links": 200,
+    "fragments": 0,
+    "preserved_incoming_fragment_links": 1,
+    "failures": [],
+    "snapshots_verified": 18,
+    "non_markdown_hashes_verified": 2673,
+    "new_runtime_tests": "not run; documentation-only changes",
+    "known_exception": "Root README snapshot is the pre-edit HEAD blob, not an assertion about prior worktree line endings"
+  },
+  "wording_revision": {
+    "date": "2026-10-25",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "before_sha256": "7d12ec1fb9e5d4b925c93a1b347c4a2ad1d99b33cda2e55aabc656d2b7a7b116",
+        "after_sha256": "0cf23ad7b4906f6dffb2b5634ad995bfe30cabbc1c5d91c74d46fd61ee99c0f9",
+        "snapshot": "C:/Users/rever/Coding/audit-reports/ctrl-workflow-wording-20261025/before/AGENTS.md"
+      },
+      {
+        "path": "ros1-port/docs/DEVELOPMENT_WORKFLOW.md",
+        "before_sha256": "59814bff156869b06569d69246adbaa04ca991882532f32dd48a95bf37daf610",
+        "after_sha256": "dc65d0f31ec856cc08ef4e1605be7d24bd422adfcdcf1910d15073435a6ed1e4",
+        "snapshot": "C:/Users/rever/Coding/audit-reports/ctrl-workflow-wording-20261025/before/ros1-port/docs/DEVELOPMENT_WORKFLOW.md"
+      },
+      {
+        "path": "ros1-port/docs/INDEPENDENT_REBUILD_PLAN_2026-10-25.md",
+        "before_sha256": "6087a4fa30b578beed425ab96cbbc98bb4f67f708f305666d2dc7217e309601c",
+        "after_sha256": "8b5ae68d703606b0bf1b45df23d524ab7c1985c33bdc122335eb30df75508ed9",
+        "snapshot": "C:/Users/rever/Coding/audit-reports/ctrl-workflow-wording-20261025/before/ros1-port/docs/INDEPENDENT_REBUILD_PLAN_2026-10-25.md"
+      },
+      {
+        "path": "ros1-port/src/ctrl_camera_train/개발구조.md",
+        "before_sha256": "ea484c7782d4ae6d82a56f005106dee84faee6b7b0775474d00461ac3825ac6c",
+        "after_sha256": "e51f844f12511a75c595363402d72a15a335fcfcce1d82087aceef6c80ab0c02",
+        "snapshot": "C:/Users/rever/Coding/audit-reports/ctrl-workflow-wording-20261025/before/ros1-port/src/ctrl_camera_train/개발구조.md"
+      },
+      {
+        "path": "ros1-port/src/ctrl_camera_train/개발명세서.md",
+        "before_sha256": "e0dfb35158f3cca668038fabd9d1d05df10d46261c459ffd3798abe04b6df379",
+        "after_sha256": "609f17bc87e86034d4a67358700cb54be24417bdf1e960b059bd400c15aff5de",
+        "snapshot": "C:/Users/rever/Coding/audit-reports/ctrl-workflow-wording-20261025/before/ros1-port/src/ctrl_camera_train/개발명세서.md"
+      }
+    ],
+    "preserved": "Rule count, code/API tokens, technical tables, implementation order, result values and original attribution"
+  }
+}

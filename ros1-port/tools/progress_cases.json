@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "scope": "Offline progress management; synthetic configuration only",
+  "lateral_cases": "lateral_cases.json",
+  "progress_config": {
+    "max_speed_mps": 20.0,
+    "backtrack_m": 1.0,
+    "forward_margin_m": 0.3,
+    "max_gap_s": 0.25,
+    "max_tracking_error_m": 3.0,
+    "max_heading_error_rad": 1.2,
+    "pose_max_age_s": 0.15,
+    "reference_max_age_s": 0.5,
+    "future_tolerance_s": 0.02,
+    "end_tolerance_m": 0.1
+  }
+}

@@ -1,39 +1,19 @@
-# 과거 자료
+# CTRL 팀 과거 자료 안내
 
-2026-10-23에 루트의 과거 개발·계획·참고 자료를 이곳으로 모았다.
-현재 개발·실행은 [ros1-port](../ros1-port/README.md), 비교 기준 원본은
-`../2026_CTRL_competition/`이다. 현재 계획은
-[DEVELOPMENT_WORKFLOW.md](../ros1-port/docs/DEVELOPMENT_WORKFLOW.md)를 따른다.
+여기는 현재 실행 안내와 구분해 보관하는 외부 참고 코드·예전 개발 문서·측정/규정 자료다. 보관한 파일의 작성자·라이선스·날짜·결과를 CTRL 팀 작성물로 다시 표시하지 않는다.
 
-## 보관 내용
+| 위치 | 분류 |
+| --- | --- |
+| `sim_2025/` | 2025 자료로 보관된 작년 simulator/ROS 참고 코드 |
+| `2026foscar/`, `2026foscar-records/`, `2026foscar-team2/` | 2026 FOSCAR 참고 코드와 그 안의 문서/기록 |
+| `Readme, 각종정보파일/` | 기존 사양과 외부 예제·계획 자료 |
+| `측정테스트파일/` | 과거 측정/저속 실행 참고 자료 |
+| `ctrl-document-history-20261025/` | CTRL 현재 문서로 다시 쓰기 직전의 원문 snapshot |
 
-- `2026foscar/`, `2026foscar-team2/`, `2026foscar-records/`: 과거 ROS2 개발본·고유 시험·기록.
-- `sim_2025/`: 이전 외부 참고 구현.
-- `tunnel_tools/`, `측정테스트파일/`: 과거 분석·측정 도구.
-- `Readme, 각종정보파일/`: 제공 자료·지도·초기 사양·계획.
-- `개발계획서.md`, `할일.md`, `남은 할일.md`: 과거 계획. 미완료 체크박스는 현재 할 일이 아니다.
-- `HANDOFF_터널_2026-10-12.md`: 과거 인계 기록.
-- `global_path.txt`, `global_path_smoothed.txt`: 과거 경로 비교 입력.
-- `규정집_v1.1.5_예비_대학생AISW모빌리티 경진대회.md`: 제공 규정 참고 자료.
+2026 참고 원본 비교 트리는 저장소 루트 `2026_CTRL_competition/`에 별도로 있다. 이름에 CTRL이 포함돼 있어도 원래 작성 주체를 바꾸는 것은 아니다. 이 폴더와 2025 자료를 같은 연도의 코드로 취급하지 않는다.
 
-원문·작성자·라이선스·과거 검사 결과는 수정하지 않았다. 이 디렉터리 안의
-이전 자료 간 상대 배치는 유지했지만, 옛 절대 경로와 루트를 기준으로 하는
-스크립트·문서 링크는 그대로 남아 있다. 현재 실행 안내로 사용하지 않는다.
-원본의 `records_readme.py` 등도 이전 루트 경로를 참조하므로 과거 기록 도구를
-그대로 실행하면 안 된다.
+현재 실행과 재개발은 [CTRL 팀 README](../README.md), [개발 계획](../ros1-port/docs/DEVELOPMENT_WORKFLOW.md), [문서 목차](../ros1-port/docs/MARKDOWN_INDEX.md)를 따른다. 보관 원문의 명령·개인 경로·과거 승인은 당시 문맥에서만 읽는다.
 
-## 과거 경로 재현
+## 이전 문서 원문
 
-과거 시험이 필요하면 현재 저장소와 분리한 사본에서 원래 배치를 복원한다.
-아래는 복원 예시이며, 복사 후 해당 시험의 ROS2 환경·외부 입력을 별도로 준비해야 한다.
-현재 주행 도구나 비교 원본을 변경할 필요는 없다.
-
-```bash
-replay_root=$(mktemp -d /tmp/rmt-legacy-replay-XXXXXX)
-cp -a 과거자료/. "$replay_root/"
-cp -a 2026_CTRL_competition "$replay_root/"
-printf '%s\n' "$replay_root"
-```
-
-복원 예시 자체를 이번 작업에서 실행하거나 과거 시험 성공을 확인하지는 않았다.
-이동 범위와 검증은 [통합 기록](../ros1-port/docs/ARCHIVE_CONSOLIDATION_2026-10-23.md)에 있다.
+[교체 전 원문과 당시 기록](ctrl-document-history-20261025/%EA%B3%BC%EA%B1%B0%EC%9E%90%EB%A3%8C/README.md). 원래 작성자·날짜·출처와 실험 수치를 보존했다.
