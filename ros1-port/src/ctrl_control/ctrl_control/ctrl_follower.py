@@ -85,7 +85,7 @@ class Follower(Node):
                         dr_speed_kmh=0., hold_brake=0.15, transition_time_s=1.5, return_time_s=2.0, transition_min_m=6.,
                         accel_max=0.4, entry_accel_max=0.6, a_lat_zones=[0.,0.,0.], boost_zones=[0.,0.], emergency_brake_zones=[0.,0.], finish_runout_m=0., finish_decel_mps2=1.0, highway_decel_mps2=0., exit_decel_mps2=0., exit_decel_m=0., brake_steer=0., brake_steer_zones=[0.,0.], accel_rise_per_s=3.0, lookahead_gain=1.0, lookahead_max_m=10., accel_mps2=1.0, reference_accel_mps2=0., reference_lookahead_max_m=0., steer_predict_s=0., reference_lateral_ki=-1., reference_steer_predict_s=-1., steer_tau=0.1,
                         steer_kick_deg=0., steer_kick_at_s=0., steer_kick_duration_s=0.3, lateral_ki=0.03,
-                        sensor_mount_confirmed=False, log_dir=str(FilePath.home()/'foscar_logs'))
+                        sensor_mount_confirmed=False, log_dir=str(FilePath.home()/'foscar_logs'), shadow_config_file='')
         self.p = {k: self.declare_parameter(k, v).value for k, v in defaults.items()}
         self.uncapped_zones=uncapped_highway_zones(self.p['speed_policy_file'])
         self.global_points = np.loadtxt(self.p['path_file'])
@@ -125,6 +125,10 @@ class Follower(Node):
         self.last_report = 0.
         self.previous_state = ''
         self.handshake_start = None
+        self.shadow_recorder = None
+        self.shadow_failed = False
+        self.shadow_request_stamp = None
+        self.shadow_request = None
         self.create_timer(0.05, self.tick)
         self.get_logger().info(f'log={self.log_path}')
 
@@ -357,7 +361,48 @@ class Follower(Node):
             self.log.flush()
             self.last_report, self.previous_state = now, output.state
 
+        if self.p.get('shadow_config_file'):
+            self.record_shadow(output, msg, x, y, yaw, speed)
+
+    def record_shadow(self, output, command, x, y, yaw, speed):
+        if self.shadow_failed or self.controller is None or self.odom is None:
+            return
+        try:
+            from .ctrl_shadow import (ShadowEngine, ShadowFrame, ShadowRecorder, ShadowSettings,
+                                      VehiclePose, StationedPath, request_from_target)
+            if self.shadow_recorder is None:
+                settings = ShadowSettings.from_dict(json.loads(FilePath(self.p['shadow_config_file']).read_text(encoding='utf-8')))
+                base = StationedPath.from_global_route('follower-route', 'map', self.route.points,
+                                                       global_origin_m=-self.controller.s_offset)
+                path = self.log_path.with_suffix('.shadow.jsonl')
+                self.shadow_recorder = ShadowRecorder(ShadowEngine(base, settings), path)
+                self.get_logger().info(f'shadow comparison log={path}')
+            if self.shadow_recorder.error:
+                raise RuntimeError(self.shadow_recorder.error)
+            error = ''
+            if self.target_stamp != self.shadow_request_stamp:
+                self.shadow_request_stamp = self.target_stamp
+                try:
+                    self.shadow_request = request_from_target(self.target, self.target_stamp)
+                except (TypeError, ValueError, AttributeError, OverflowError):
+                    self.shadow_request = None
+                    error = 'target_snapshot_error'
+            if self.target is not None and self.target.state in ('INVALID_TARGET', 'CLOCK_RESET'):
+                error = self.target.state
+            stamp = self.odom.header.stamp
+            pose = VehiclePose(float(x), float(y), float(yaw), float(speed),
+                               stamp.secs + stamp.nsecs * 1e-9, self.odom.header.frame_id)
+            self.shadow_recorder.push(ShadowFrame(self.get_clock().now().nanoseconds * 1e-9,
+                pose, float(output.progress), float(command.steering_rad), self.shadow_request,
+                self.target_stamp, output.state == 'CRUISE', error))
+        except Exception as exc:
+            self.shadow_failed = True
+            self.get_logger().error(f'shadow comparison disabled: {type(exc).__name__}: {exc}')
+
     def close(self):
+        recorder = getattr(self, 'shadow_recorder', None)
+        if recorder is not None and not recorder.close():
+            self.get_logger().error('shadow log incomplete: ' + str(recorder.error))
         self.log.close()
 
 

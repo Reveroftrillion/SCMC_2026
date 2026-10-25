@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T04:23:33.992193+00:00",
+  "passed": true,
+  "unit": {
+    "tests": 369,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  "synthetic_replay": [
+    {
+      "frames": 200,
+      "mismatches": [],
+      "passed": true,
+      "mode": "global",
+      "valid_candidates": 200
+    },
+    {
+      "frames": 200,
+      "mismatches": [],
+      "passed": true,
+      "mode": "legacy_offset",
+      "valid_candidates": 200
+    },
+    {
+      "frames": 200,
+      "mismatches": [],
+      "passed": true,
+      "mode": "reference",
+      "valid_candidates": 200
+    }
+  ],
+  "source_sha256": {
+    "ros1-port/tools/validate_shadow.py": "837083de9744e091104aaa585ab5cabd993f505e374982ced22a449cf352aecd",
+    "ros1-port/src/ctrl_control/test/test_lateral.py": "9f7e3e596a56ed7d9f03ce93e33d2023824b888a1133a158eb0ffba10f1f4c15",
+    "ros1-port/src/ctrl_control/test/test_progress.py": "a923fc4deb2f7724184df17f8fd8e0d09048b073b57eeaf299894fcbb897a964",
+    "ros1-port/src/ctrl_control/test/test_path_conversion.py": "49ac7dc0f0ee31c5e48f0313d4d29d2360de5ec91096f7875de4e311a991e850",
+    "ros1-port/src/ctrl_control/test/test_path_selection.py": "22be745b24cb7d976c9cabc1dc38297b9220bfe53d01247015b253f0d7b44d49",
+    "ros1-port/src/ctrl_control/test/test_shadow.py": "383b7bc12beb29b658dfbe2f3eb5cd8df217bc52a4d8a32520cd6f98173dc908",
+    "ros1-port/src/ctrl_control/test/test_shadow_follower.py": "e437b67bc69f631445a0824a9a912707fe3485ca1270a9fb2de5b6b0bce8e366",
+    "ros1-port/src/ctrl_control/test/test_core.py": "cc742f0d7e6eca3f54da9e95436b049ed376a24b8664befdf5c0d162fdfa20f0",
+    "ros1-port/src/ctrl_control/test/test_reference_wire.py": "31f73db28cf62a427a2e1c89fa0e9ae59162191a90c421828f519c4fcdafcc43",
+    "ros1-port/src/ctrl_control/test/test_route_start.py": "85fb080500dcbce5652b2ea7ee9dc409b336765911f3b216e80fb8a092947073",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_bridge.py": "ad05d90569470fa77964ffd5333045e1225a8e6e9599aba472bbebb8a7203289",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_core.py": "cd636c45a55e6c06d935a39eddeb97dcd9922b3340b0b2c6aedaf1a644a0525e",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_follower.py": "e56907243c18d6279f3c4a1c4424e4de1f3c159d14d5b79adb49f83b05e3c997",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_lateral.py": "be3d533e9b163894a401b06b0d8021bc7d982f91aabb2cde192ca15777f74614",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_localization.py": "06dfe5bf5db186515813d007537b0a76623d396ae35feebb94a1c3d14c1324cc",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_mission_config.py": "d8164567044b75aaae37b04d7812d97a9ed3ad842ccdb07a552f5bcf0fd9616e",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_path_conversion.py": "fd65e6f7692784f5b58deadde88d91381582c977cfa748123019fa2b5c49fb2f",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_path_selection.py": "a92c573597465c118047c903871a150c5db92718e5bd796c782182ecaf3e18fe",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_progress.py": "38c1fc7e8b254e0f8230b3ebec3295fa54c0579e77210b89c48f23eee9326366",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_reference.py": "2aba543e33aa1af73bee3602349e8ed98185293deea45d1986c6abfe2383d4a2",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_reference_control.py": "886cce22642baad922befe97ba77af43c3f3d806b347fe2b637a116f7dccccda",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_route_start.py": "4594846215f859a9970e9f7ce7eb1ddc2b732c3478289c8bc9ae9780254a536a",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_shadow.py": "1779d033255094f96410097f0e5fc57c7f1981183766ad4b8708ad3d62d91123",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_speed_policy.py": "9995f408dda9d56cc00ca80ed8752dd091639da9cfd68b75c72ae1ccf750d86e",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_telemetry.py": "1311a98d423a1f94ec30dca4839abeb931c2408bbad9eb2e719fba897bfbff45",
+    "ros1-port/verification/ros_stubs.py": "4debfb4eeafe2e990bad841f0c0e6e0f01e60055f072206b2f21f5e0cc69ff6b",
+    "ros1-port/tools/lateral_cases.json": "f6feabe96c4348c0eedef775559688f709bc5eb514d9c0dc8881c1a6d7a0b4ce",
+    "ros1-port/tools/progress_cases.json": "f5391449059574517f02d1caaf83761bc46ed900792fe5190f9f600c248fa559",
+    "ros1-port/tools/path_selection_cases.json": "9334b9ecd2d376cc41144d438852eb4ec9df0b4107352e7e1164333208da3725"
+  },
+  "limitations": [
+    "ROS doubles only; no catkin, middleware, physical sensor replay or MORAI validation",
+    "Synthetic input replay checks determinism, not closed-loop vehicle performance",
+    "No vehicle command transmission; shadow default disabled"
+  ]
+}

@@ -9,8 +9,9 @@
 | 새 진행 관리 | `ctrl_progress` | 구간 재획득·오차·시간 관리 |
 | 새 경로 변환 | `ctrl_path_conversion` | 일반/회피/reference와 전역 거리 대응 |
 | 새 요청 선택 | `ctrl_path_selection` | 선택·유지·해제·만료와 오류 차단 |
+| 새 비교 기록 | `ctrl_shadow` | follower 입력 병행 계산·JSONL 기록·재생, 기본 비활성 |
 
-새 계산은 Python 표준 라이브러리와 새 모듈끼리의 의존성을 사용한다. 기존 production follower에 아직 연결하지 않았고, 실제 차량의 조향 응답을 검증한 상태도 아니다.
+새 계산은 Python 표준 라이브러리와 새 모듈끼리의 의존성을 사용한다. follower의 `shadow_config_file`에 설정 파일을 지정하면 병행 계산을 기록한다. 기본값은 빈 문자열이며 실제 명령은 기존 제어기가 계산한다. 실제 차량의 조향 응답은 아직 검증하지 않았다.
 
 ## 인터페이스
 
@@ -23,7 +24,7 @@
 저장소 루트에서:
 
 ```powershell
-& .\ros1-port\.python310\python.exe -X utf8 -B .\ros1-port\tools\validate_path_selection.py
+& .\ros1-port\.python310\python.exe -X utf8 -B .\ros1-port\tools\validate_shadow.py
 ```
 
-[현재 결과](../../docs/PATH_SELECTION_RESULT_2026-10-25.md)에 278개 검사와 연속 장면, 미검증 범위가 있다. 실행/재빌드는 [ROS1 안내](../../README.md)를 따른다. 새 모듈을 계산한다고 기존 주행 전체가 CTRL 독자 구현으로 교체된 것은 아니다.
+[현재 결과](../../docs/SHADOW_RESULT_2026-10-25.md)에 369개 검사와 합성 기록 재생, 미검증 범위가 있다. 실행/재빌드는 [ROS1 안내](../../README.md)를 따른다. 새 모듈을 계산한다고 기존 주행 전체가 CTRL 독자 구현으로 교체된 것은 아니다.

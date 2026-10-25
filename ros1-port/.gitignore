@@ -2,3 +2,4 @@
 .downloads/
 verification/.work/
 .catkin_workspace
+*.shadow.jsonl
