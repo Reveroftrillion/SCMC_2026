@@ -1,0 +1,175 @@
+{
+  "scope": "real MORAI UDP and ROS1 TCPROS, drive=false; current camera differs from source conditions",
+  "topics": {
+    "/sensors/gps": {
+      "count": 20,
+      "observed_hz": 10.568167071862229,
+      "last": {
+        "type": "sensor_msgs/NavSatFix",
+        "frame_id": "gps_link",
+        "stamp_ns": 1791872821158035993
+      }
+    },
+    "/sensors/imu": {
+      "count": 50,
+      "observed_hz": 24.941803823598764,
+      "last": {
+        "type": "sensor_msgs/Imu",
+        "frame_id": "imu_link",
+        "stamp_ns": 1791872821239566802
+      }
+    },
+    "/vehicle/status": {
+      "count": 58,
+      "observed_hz": 29.02745957904236,
+      "last": {
+        "type": "foscar_interfaces/VehicleStatus",
+        "frame_id": "base_link",
+        "stamp_ns": 1791872821236376762,
+        "speed_mps": 7.987556374347251e-07,
+        "gear": 1
+      }
+    },
+    "/sensors/lidar/points": {
+      "count": 18,
+      "observed_hz": 8.510482510242198,
+      "last": {
+        "type": "sensor_msgs/PointCloud2",
+        "frame_id": "lidar",
+        "stamp_ns": 1791872821322769165,
+        "width": 7650,
+        "height": 1
+      }
+    },
+    "/sensors/camera/traffic/compressed": {
+      "count": 0,
+      "observed_hz": null,
+      "last": null
+    },
+    "/localization/odometry": {
+      "count": 98,
+      "observed_hz": 50.33349306832523,
+      "last": {
+        "type": "nav_msgs/Odometry",
+        "frame_id": "map",
+        "stamp_ns": 1791872821416478872
+      }
+    },
+    "/localization/s": {
+      "count": 98,
+      "observed_hz": 50.32876641442884,
+      "last": {
+        "type": "std_msgs/Float64",
+        "data": 0.8690400591926722
+      }
+    },
+    "/localization/mode": {
+      "count": 3,
+      "observed_hz": 1.0343818851645787,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "GPS"
+      }
+    },
+    "/map/route": {
+      "count": 1,
+      "observed_hz": null,
+      "last": {
+        "type": "nav_msgs/Path",
+        "frame_id": "map",
+        "stamp_ns": 1791872819435196399
+      }
+    },
+    "/tf": {
+      "count": 98,
+      "observed_hz": 50.188972995755776,
+      "last": {
+        "type": "tf2_msgs/TFMessage"
+      }
+    },
+    "/tf_static": {
+      "count": 1,
+      "observed_hz": null,
+      "last": {
+        "type": "tf2_msgs/TFMessage"
+      }
+    },
+    "/behavior/target": {
+      "count": 31,
+      "observed_hz": 20.035357343436555,
+      "last": {
+        "type": "foscar_interfaces/DrivingTarget",
+        "frame_id": "",
+        "stamp_ns": 1791872821420031785,
+        "state": "CRUISE",
+        "v_max": 16.666666666666668,
+        "stop_s": "NaN"
+      }
+    },
+    "/behavior/state": {
+      "count": 31,
+      "observed_hz": 20.03548900860729,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "CRUISE"
+      }
+    },
+    "/behavior/mission": {
+      "count": 27,
+      "observed_hz": 19.997852722870974,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "{\"mission\": \"CRUISE\", \"substate\": \"CRUISE\", \"reason\": \"\", \"yield_status\": {\"kind\": \"NONE\", \"phase\": \"INACTIVE\", \"reason\": \"\", \"target_type\": null, \"progress\": null}, \"transition\": \"initial localization\", \"speed_limit_kmh\": 60.00000000000001, \"pedestrian_yield_completed\": false, \"allowed_states\": [\"CRUISE\", \"STOP_LINE\"]}"
+      }
+    },
+    "/control/request": {
+      "count": 44,
+      "observed_hz": 19.99862889400625,
+      "last": {
+        "type": "foscar_interfaces/ControlCommand",
+        "frame_id": "base_link",
+        "stamp_ns": 1791872821412512779,
+        "state": "HANDSHAKE",
+        "accel": 0.0,
+        "brake": 1.0,
+        "steering_rad": 0.0
+      }
+    },
+    "/control/state": {
+      "count": 44,
+      "observed_hz": 19.99954611263298,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m"
+      }
+    },
+    "/perception/traffic_signal": {
+      "count": 0,
+      "observed_hz": null,
+      "last": null
+    },
+    "/events": {
+      "count": 0,
+      "observed_hz": null,
+      "last": null
+    },
+    "/perception/footprints": {
+      "count": 15,
+      "observed_hz": 8.712202756312246,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "{\"stamp\": 1791872821.3227692, \"frame\": \"map\", \"objects\": [{\"id\": \"lidar:8fffbbb4bd9144c1825e5d0f1dabd73f:7\", \"xy\": [[-119.7968154841144, -397.4554064596279], [-120.59275476711193, -396.51283402094884], [-120.68039046943993, -396.43508136394354], [-120.76843394734587, -396.3575872427384], [-121.12364809979769, -396.04640418526856], [-120.1327273986161, -397.1424574797538], [-120.04865147401637, -397.221736657175]], \"center\": [-120.44926981458654, -396.7422432430108], \"vx\": 6.041618563174518e-08, \"vy\": 1.2280843701821557e-07, \"kind\": \"OBSTACLE\", \"on_road\": true, \"height\": 0.5257903337478638, \"caution\": false}], \"cleared\": [], \"scan_valid\": true, \"sight\": null, \"boundary_evidence\": [], \"tunnel_walls\": []}"
+      }
+    }
+  },
+  "errors": [],
+  "control_udp_destination_9093": [],
+  "drive_parameter": false,
+  "killed_node": "/sensor_bridge",
+  "expected_post_shutdown_master_disconnect": "[Errno 111] Connection refused",
+  "launch_returncode_before_shutdown": 0,
+  "launch_returncode": 0,
+  "passed_receive_and_decisions": false,
+  "source_sensor_equivalence": "NOT VERIFIED: Camera-7 resolution/pitch differ; original camera position/FOV and MORAI vehicle-origin to base_link/rear-axle transform unknown; actual LiDAR/GPS mounts differ numerically",
+  "passed_required_node_shutdown": true
+}

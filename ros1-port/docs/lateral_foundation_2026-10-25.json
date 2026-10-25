@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Synthetic kinematic bicycle validation only; not MORAI or a production calibration",
+  "recorded_at_utc": "2026-10-25T02:42:17.396078+00:00",
+  "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "unit": {
+    "tests": 115,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 115,
+    "exit_code": 0
+  },
+  "scenarios": [
+    {
+      "name": "straight_slow_left",
+      "kind": "straight",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 0.0170201763160754,
+        "final_error_m": 0.00909355594099055,
+        "max_angle_rad": 0.14959974096379536,
+        "max_rate_rad_s": 0.8000000000000007
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 9,
+      "compute_us": {
+        "p50": 14.6,
+        "p95": 15.3,
+        "p99": 18.5,
+        "max": 51.0
+      }
+    },
+    {
+      "name": "straight_slow_right",
+      "kind": "straight",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 0.0170201763160754,
+        "final_error_m": 0.00909355594099055,
+        "max_angle_rad": 0.14959974096379536,
+        "max_rate_rad_s": 0.8000000000000007
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 9,
+      "compute_us": {
+        "p50": 14.7,
+        "p95": 15.3,
+        "p99": 19.2,
+        "max": 21.8
+      }
+    },
+    {
+      "name": "straight_medium_left",
+      "kind": "straight",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 9.734926156097524e-05,
+        "final_error_m": 6.383144443506108e-05,
+        "max_angle_rad": 0.07147109051599089,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 4,
+      "compute_us": {
+        "p50": 8.5,
+        "p95": 9.1,
+        "p99": 12.6,
+        "max": 21.5
+      }
+    },
+    {
+      "name": "straight_medium_right",
+      "kind": "straight",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 9.734926156097524e-05,
+        "final_error_m": 6.383144443506108e-05,
+        "max_angle_rad": 0.07147109051599089,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 4,
+      "compute_us": {
+        "p50": 8.5,
+        "p95": 9.3,
+        "p99": 13.4,
+        "max": 26.2
+      }
+    },
+    {
+      "name": "straight_fast_left",
+      "kind": "straight",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 6.272260705517662e-06,
+        "final_error_m": 2.4272252337861823e-06,
+        "max_angle_rad": 0.0334368030157538,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 2,
+      "compute_us": {
+        "p50": 8.5,
+        "p95": 9.2,
+        "p99": 13.6,
+        "max": 21.0
+      }
+    },
+    {
+      "name": "straight_fast_right",
+      "kind": "straight",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 6.272260705517662e-06,
+        "final_error_m": 2.4272252337861823e-06,
+        "max_angle_rad": 0.0334368030157538,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 2,
+      "compute_us": {
+        "p50": 8.5,
+        "p95": 9.3,
+        "p99": 12.5,
+        "max": 21.8
+      }
+    },
+    {
+      "name": "circle_left",
+      "kind": "circle",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.5,
+        "tail_rms_m": 0.000201525110685146,
+        "final_error_m": 0.00016249773763377107,
+        "max_angle_rad": 0.12244295429579442,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 4,
+      "compute_us": {
+        "p50": 808.8,
+        "p95": 853.1,
+        "p99": 1152.4,
+        "max": 2553.6
+      }
+    },
+    {
+      "name": "circle_right",
+      "kind": "circle",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.5,
+        "tail_rms_m": 0.000201525110685146,
+        "final_error_m": 0.00016249773763377107,
+        "max_angle_rad": 0.12244295429579442,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 600,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 4,
+      "compute_us": {
+        "p50": 808.4,
+        "p95": 867.1,
+        "p99": 1069.0,
+        "max": 2095.3
+      }
+    },
+    {
+      "name": "sine_left",
+      "kind": "sine",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 0.19320446188232523,
+        "final_error_m": 0.12445715293995052,
+        "max_angle_rad": 0.0919394872456136,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 900,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 5,
+      "compute_us": {
+        "p50": 1220.0,
+        "p95": 1405.3,
+        "p99": 2112.3,
+        "max": 4056.4
+      }
+    },
+    {
+      "name": "sine_right",
+      "kind": "sine",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 0.19320446188232523,
+        "final_error_m": 0.12445715293995052,
+        "max_angle_rad": 0.0919394872456136,
+        "max_rate_rad_s": 0.8
+      },
+      "failure": null,
+      "steps": 900,
+      "angle_limited_steps": 0,
+      "rate_limited_steps": 5,
+      "compute_us": {
+        "p50": 1216.0,
+        "p95": 1272.6,
+        "p99": 1552.3,
+        "max": 2552.4
+      }
+    }
+  ],
+  "config": {
+    "wheelbase_m": 2.8,
+    "lookahead_min_m": 4.0,
+    "lookahead_max_m": 12.0,
+    "lookahead_time_s": 0.6,
+    "max_angle_rad": 0.5,
+    "max_rate_rad_s": 0.8,
+    "max_tracking_error_m": 3.0,
+    "max_heading_error_rad": 1.2,
+    "pose_max_age_s": 0.15,
+    "reference_max_age_s": 0.5,
+    "future_tolerance_s": 0.02,
+    "max_step_s": 0.2
+  },
+  "dt_s": 0.02,
+  "tail_s": 2.0,
+  "project_or_ros_imports": [
+    "ctrl_control",
+    "ctrl_control.ctrl_lateral"
+  ],
+  "source_sha256": {
+    "ros1-port/tools/validate_lateral.py": "f897f17531efa11c4310790470d6d75b38ac1049474e7aa8e0ebc043207775fd",
+    "ros1-port/tools/lateral_cases.json": "f6feabe96c4348c0eedef775559688f709bc5eb514d9c0dc8881c1a6d7a0b4ce",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_lateral.py": "cd9041bb6c68223dd0eef7a440e1a096377e2cc78803def4405e6f61abf1bcd8",
+    "ros1-port/src/ctrl_control/test/test_lateral.py": "9f7e3e596a56ed7d9f03ce93e33d2023824b888a1133a158eb0ffba10f1f4c15",
+    "ros1-port/docs/CONTROL_CONTRACT_2026-10-25.md": "d4e7561766eb6789927f52e043327c0307734cf6414b693120a76b8fdeb9de06"
+  },
+  "limitations": [
+    "No ROS/catkin/MORAI execution",
+    "No control packets sent",
+    "No actuator delay, tire dynamics, sensor noise or collision model",
+    "No production calibration or baseline live-performance comparison"
+  ],
+  "session_date": "2026-10-25",
+  "baseline_commit": "6c2d9a2",
+  "existing_control_regression": {
+    "tests": 79,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 79,
+    "scope": [
+      "test_core.py",
+      "test_reference.py",
+      "test_route_start.py"
+    ],
+    "environment": "existing ROS doubles, Python 3.10 with -X utf8",
+    "warnings": 10
+  },
+  "prior_environment_failures": [
+    "Missing package path caused collection failure before setting up existing ROS doubles",
+    "Default cp949 encoding: 77 pass / 2 checkpoint decoding failures; rerun with UTF-8: 79 pass"
+  ],
+  "artifact_directory": "verification/.work/independent-lateral-20261025-024213Z-44a693ea"
+}

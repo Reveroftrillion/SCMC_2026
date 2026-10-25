@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "scope": "Synthetic path conversion + progress + steering only",
+  "base_step_m": 0.25,
+  "max_offset_m": 4.0,
+  "max_points": 2000,
+  "scenarios": [
+    {"name": "general", "kind": "global", "origin_m": 500.0, "speed_mps": 6.0, "duration_s": 12.0, "initial_error_m": 0.8, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "spawn_connector", "kind": "global", "origin_m": -15.0, "speed_mps": 6.0, "duration_s": 12.0, "initial_error_m": -0.8, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "entry_return_left", "kind": "preview", "origin_m": 500.0, "offset_m": 2.0, "speed_mps": 4.0, "duration_s": 20.0, "initial_error_m": 0.5, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35},
+    {"name": "entry_return_right", "kind": "preview", "origin_m": 500.0, "offset_m": -2.0, "speed_mps": 4.0, "duration_s": 20.0, "initial_error_m": -0.5, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35},
+    {"name": "multiple_moves", "kind": "chain", "origin_m": 500.0, "speed_mps": 4.0, "duration_s": 22.0, "initial_error_m": 0.5, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35},
+    {"name": "lane_reference", "kind": "reference", "origin_m": 1000.0, "speed_mps": 4.0, "duration_s": 25.0, "initial_error_m": 0.5, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35}
+  ]
+}

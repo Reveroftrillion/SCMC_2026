@@ -1,0 +1,12 @@
+{
+  "syntax_files": 7,
+  "document_links": 230,
+  "broken_links": [],
+  "frozen_source_files": 346,
+  "source_changes": [],
+  "reference_files": 530,
+  "reference_changes": [],
+  "tool_tests": "22 passed; skip 0",
+  "native_simulator_scene_verified": "ID16 and ObstaclePath - 16 persist, actual avoidance pending",
+  "note": "First link checker did not percent-decode URLs; corrected parser, documents unchanged"
+}

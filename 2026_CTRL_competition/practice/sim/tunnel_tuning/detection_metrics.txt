@@ -1,0 +1,20 @@
+20261012_115259_held_baseline_brake/0 deer13    seen 29.9@49km/h stable 26.4@49km/h caution 29.9@49km/h PED 14.0@36km/h
+20261012_115259_held_baseline_brake/0 person59  seen 26.6@22km/h stable 25.4@23km/h caution 26.6@22km/h PED 17.7@28km/h
+20261012_115259_held_baseline_brake/1 deer13    seen 30.9@49km/h stable 27.7@49km/h caution 30.9@49km/h PED 13.6@34km/h
+20261012_115259_held_baseline_brake/1 person59  seen 22.8@26km/h stable 21.2@28km/h caution 21.2@28km/h PED 17.7@31km/h
+20261012_115259_held_baseline_brake/2 deer13    seen 30.9@49km/h stable 28.1@49km/h caution 8.4@10km/h PED 30.9@49km/h
+20261012_115259_held_baseline_brake/2 person59  seen 26.0@26km/h stable 24.3@26km/h PED 26.0@26km/h
+20261012_115259_held_baseline_brake/3 deer13    seen 29.4@49km/h stable 26.7@49km/h caution 29.4@49km/h PED 13.5@34km/h
+20261012_115259_held_baseline_brake/3 person59  seen 25.9@26km/h stable 24.5@27km/h caution 25.9@26km/h PED 17.2@32km/h
+20261012_115259_held_baseline_brake/4 deer13    seen 30.5@49km/h stable 27.9@49km/h caution 30.5@49km/h PED 11.9@31km/h
+20261012_115259_held_baseline_brake/4 person59  seen 26.8@25km/h stable 25.3@25km/h caution 26.8@25km/h PED 25.8@25km/h
+20261012_115259_held_baseline_brake/0 deer: stop->release 1.32 s | left our line(+-1.8 m) +0.45 s before release | left both lanes -0.41 s | release->accel 0.05 s
+20261012_115259_held_baseline_brake/0 person: stop->release 0.79 s | left our line(+-1.8 m) -0.22 s before release | left both lanes -0.94 s | release->accel 0.02 s
+20261012_115259_held_baseline_brake/1 deer: stop->release 1.13 s | left our line(+-1.8 m) +0.29 s before release | left both lanes -0.53 s | release->accel 0.03 s
+20261012_115259_held_baseline_brake/1 person: stop->release 0.57 s | left our line(+-1.8 m) -0.34 s before release | left both lanes -1.02 s | release->accel 0.02 s
+20261012_115259_held_baseline_brake/2 deer: stop->release 1.24 s | left our line(+-1.8 m) +0.24 s before release | left both lanes -0.43 s | release->accel 0.03 s
+20261012_115259_held_baseline_brake/2 person: stop->release 0.75 s | left our line(+-1.8 m) -0.11 s before release | left both lanes -0.87 s | release->accel 0.01 s
+20261012_115259_held_baseline_brake/3 deer: stop->release 0.97 s | left our line(+-1.8 m) +0.03 s before release | left both lanes -0.64 s | release->accel 0.02 s
+20261012_115259_held_baseline_brake/3 person: stop->release 0.56 s | left our line(+-1.8 m) -0.45 s before release | left both lanes -1.13 s | release->accel 0.01 s
+20261012_115259_held_baseline_brake/4 deer: stop->release 1.22 s | left our line(+-1.8 m) +0.30 s before release | left both lanes -0.42 s | release->accel 0.03 s
+20261012_115259_held_baseline_brake/4 person: stop->release 0.44 s | left our line(+-1.8 m) -0.54 s before release | left both lanes -1.32 s | release->accel 0.04 s

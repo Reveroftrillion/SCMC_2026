@@ -1,0 +1,823 @@
+{
+  "before": {
+    "missing_map": [
+      {
+        "input": {
+          "now": 1.0,
+          "bodies": [
+            {
+              "key": "lidar:barrier",
+              "kind": "OBSTACLE",
+              "s": 1905.0,
+              "d": 0.0,
+              "length": 3.0,
+              "width": 2.0,
+              "height": 1.02,
+              "lateral_mps": 0.0
+            }
+          ],
+          "expect": "stop",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": false
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "",
+        "yield_reason": "",
+        "checks": {
+          "stop_command": false,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": false,
+        "calculation_s": 0.004138860998864402
+      }
+    ],
+    "fully_blocked_then_cleared": [
+      {
+        "input": {
+          "now": 1.0,
+          "bodies": [
+            {
+              "key": "lidar:barrier",
+              "kind": "OBSTACLE",
+              "s": 1890.0,
+              "d": 0.0,
+              "length": 3.0,
+              "width": 20.0,
+              "height": 1.02,
+              "lateral_mps": 0.0
+            }
+          ],
+          "expect": "stop",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "",
+        "yield_reason": "",
+        "checks": {
+          "stop_command": false,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": false,
+        "calculation_s": 0.016909572999793454
+      },
+      {
+        "input": {
+          "now": 1.1,
+          "bodies": [
+            {
+              "key": "lidar:barrier",
+              "kind": "OBSTACLE",
+              "s": 1890.0,
+              "d": 0.0,
+              "length": 3.0,
+              "width": 20.0,
+              "height": 1.02,
+              "lateral_mps": 0.0
+            }
+          ],
+          "expect": "stop",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "",
+        "yield_reason": "",
+        "checks": {
+          "stop_command": false,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": false,
+        "calculation_s": 0.018459925000570365
+      },
+      {
+        "input": {
+          "now": 1.2,
+          "bodies": [],
+          "expect": "move",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [
+            {
+              "id": "lidar:barrier",
+              "last_seen": 1.1
+            }
+          ],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "",
+        "yield_reason": "",
+        "checks": {
+          "movement_available": true,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": true,
+        "calculation_s": 0.00015947999963827897
+      },
+      {
+        "input": {
+          "now": 1.3,
+          "bodies": [],
+          "expect": "move",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "",
+        "yield_reason": "",
+        "checks": {
+          "movement_available": true,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": true,
+        "calculation_s": 5.750000127591193e-05
+      }
+    ]
+  },
+  "after_same_inputs": {
+    "missing_map": [
+      {
+        "input": {
+          "now": 1.0,
+          "bodies": [
+            {
+              "key": "lidar:barrier",
+              "kind": "OBSTACLE",
+              "s": 1905.0,
+              "d": 0.0,
+              "length": 3.0,
+              "width": 2.0,
+              "height": 1.02,
+              "lateral_mps": 0.0
+            }
+          ],
+          "expect": "stop",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": false
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 0.0,
+          "stop_s": 1900.1704941412675,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "AVOID",
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "AVOID": {
+            "state": "AVOID",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 0.0,
+            "stop_s": 1900.1704941412675,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "planner hold",
+        "yield_reason": "",
+        "checks": {
+          "stop_command": true,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": true,
+        "calculation_s": 0.0064139340011024615
+      }
+    ],
+    "fully_blocked_then_cleared": [
+      {
+        "input": {
+          "now": 1.0,
+          "bodies": [
+            {
+              "key": "lidar:barrier",
+              "kind": "OBSTACLE",
+              "s": 1890.0,
+              "d": 0.0,
+              "length": 3.0,
+              "width": 20.0,
+              "height": 1.02,
+              "lateral_mps": 0.0
+            }
+          ],
+          "expect": "stop",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 0.0,
+          "stop_s": 1885.1733458315841,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "AVOID",
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "AVOID": {
+            "state": "AVOID",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 0.0,
+            "stop_s": 1885.1733458315841,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "planner hold",
+        "yield_reason": "",
+        "checks": {
+          "stop_command": true,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": true,
+        "calculation_s": 0.04405125499943097
+      },
+      {
+        "input": {
+          "now": 1.1,
+          "bodies": [
+            {
+              "key": "lidar:barrier",
+              "kind": "OBSTACLE",
+              "s": 1890.0,
+              "d": 0.0,
+              "length": 3.0,
+              "width": 20.0,
+              "height": 1.02,
+              "lateral_mps": 0.0
+            }
+          ],
+          "expect": "stop",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 0.0,
+          "stop_s": 1885.1733458315841,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "AVOID",
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "AVOID": {
+            "state": "AVOID",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 0.0,
+            "stop_s": 1885.1733458315841,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "planner hold",
+        "yield_reason": "",
+        "checks": {
+          "stop_command": true,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": true,
+        "calculation_s": 0.04620538699964527
+      },
+      {
+        "input": {
+          "now": 1.2,
+          "bodies": [],
+          "expect": "move",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [
+            {
+              "id": "lidar:barrier",
+              "last_seen": 1.1
+            }
+          ],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "planner hold",
+        "yield_reason": "",
+        "checks": {
+          "movement_available": true,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": true,
+        "calculation_s": 0.0001760199993441347
+      },
+      {
+        "input": {
+          "now": 1.3,
+          "bodies": [],
+          "expect": "move",
+          "s": 1880.0,
+          "speed": 0.0,
+          "loc_mode": "DR",
+          "scan_stamp": null,
+          "cleared": [],
+          "mapped": true
+        },
+        "mission": "TUNNEL",
+        "target": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "engaged": [
+          "TUNNEL",
+          "CRUISE"
+        ],
+        "state_targets": {
+          "TUNNEL": {
+            "state": "TUNNEL",
+            "reference": null,
+            "reference_release": false,
+            "v_max": null,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          },
+          "CRUISE": {
+            "state": "CRUISE",
+            "reference": null,
+            "reference_release": false,
+            "v_max": 13.88888888888889,
+            "stop_s": null,
+            "lat_offset": 0.0,
+            "return_s": null,
+            "return_length_m": 0.0,
+            "entry_s": null,
+            "entry_length_m": 0.0,
+            "chain": []
+          }
+        },
+        "bev_reason": "planner hold",
+        "yield_reason": "",
+        "checks": {
+          "movement_available": true,
+          "finite_nonnegative_speed_cap": true,
+          "mission_speed_cap": true,
+          "mission": true
+        },
+        "passed": true,
+        "calculation_s": 5.757999861089047e-05
+      }
+    ]
+  },
+  "scope": "Initial unchanged inputs/expectations on host Python 3.8; only the two confirmed bug cases. Original full local results preserved."
+}

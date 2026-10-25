@@ -1,0 +1,227 @@
+[
+  {
+    "phase": "before",
+    "side": "left",
+    "run": "live-left-01",
+    "reason": "route_end_stopped",
+    "elapsed_s": 245.21647095680237,
+    "max_s": 2174.5518036732656,
+    "source_unchanged": true,
+    "collision_packets": 0,
+    "decoded_packets": 10138,
+    "collision_parse_errors": 0,
+    "handoff": {
+      "samples": 31,
+      "duration_s": 0.6792967319488525,
+      "maximum_abs_speed_mps": 0.0011074980203476218,
+      "last": {
+        "time": 1792749542.2986133,
+        "port": 909,
+        "speed": 0.00011893029699826406,
+        "yaw": 1.1503279317776982,
+        "mode": 1,
+        "gear": 1,
+        "steer_deg": 0.0,
+        "link": "A2256W000748",
+        "stamp_hex": "e62fdb6a801ec311"
+      }
+    },
+    "callback_errors": [],
+    "target_gaps_gt_1s": 0,
+    "matched_observations": 25,
+    "first_match_s": 1880.455856616337,
+    "max_target_offset": 4.5,
+    "max_measured_d": 4.575486689641961,
+    "near_s2000": {
+      "s": 2000.03263622568,
+      "d": -0.07920872065948387
+    },
+    "checkpoint_count": 15,
+    "checkpoints_within_radius": 15,
+    "evidence_sha256": {
+      "end.json": "782d9094e230d1c0ae251ba9e465e96c23cb0fbebb08c791e9a2ad44b84b0125",
+      "source-before.json": "e483329ba565de63d02e2fb268885ce1ac8d8ad6a174cca04b2a9e30d1247425",
+      "source-after.json": "e483329ba565de63d02e2fb268885ce1ac8d8ad6a174cca04b2a9e30d1247425"
+    }
+  },
+  {
+    "phase": "before",
+    "side": "left",
+    "run": "live-left-02",
+    "reason": "collision_packet_alarm",
+    "elapsed_s": 378.17642426490784,
+    "max_s": 1903.2476076141115,
+    "source_unchanged": true,
+    "collision_packets": 12,
+    "decoded_packets": 14747,
+    "collision_parse_errors": 0,
+    "handoff": {
+      "samples": 31,
+      "duration_s": 0.6666531562805176,
+      "maximum_abs_speed_mps": 0.008974135335948732,
+      "last": {
+        "time": 1792750439.831347,
+        "port": 909,
+        "speed": -0.0003290073558067282,
+        "yaw": -2.205867036140642,
+        "mode": 1,
+        "gear": 1,
+        "steer_deg": 0.0,
+        "link": "A2256W000131",
+        "stamp_hex": "6733db6ac00d8831"
+      }
+    },
+    "callback_errors": [],
+    "target_gaps_gt_1s": 0,
+    "matched_observations": 12,
+    "first_match_s": 1881.890329769307,
+    "max_target_offset": 4.25,
+    "max_measured_d": 1.6541651221699567,
+    "near_s2000": {
+      "s": 1903.1273957769104,
+      "d": 1.6541651221699567
+    },
+    "checkpoint_count": 15,
+    "checkpoints_within_radius": 14,
+    "evidence_sha256": {
+      "end.json": "6cec741fbe4f6f5b23b3a5b52bd60cd5fa9b8c7974411a65d5d382264550d670",
+      "source-before.json": "e483329ba565de63d02e2fb268885ce1ac8d8ad6a174cca04b2a9e30d1247425",
+      "source-after.json": "e483329ba565de63d02e2fb268885ce1ac8d8ad6a174cca04b2a9e30d1247425"
+    }
+  },
+  {
+    "phase": "after",
+    "side": "left",
+    "run": "live-left-03-after-dropout",
+    "reason": "follower_finish",
+    "elapsed_s": 400.90874552726746,
+    "max_s": 2174.5518036732656,
+    "source_unchanged": true,
+    "collision_packets": 0,
+    "decoded_packets": 16001,
+    "collision_parse_errors": 0,
+    "handoff": {
+      "samples": 31,
+      "duration_s": 0.6581246852874756,
+      "maximum_abs_speed_mps": 0.0011321313730958435,
+      "last": {
+        "time": 1792752020.431896,
+        "port": 909,
+        "speed": 2.0316155213448736e-05,
+        "yaw": 1.1535828472619931,
+        "mode": 1,
+        "gear": 1,
+        "steer_deg": 0.0,
+        "link": "A2256W000748",
+        "stamp_hex": "9439db6ac089b019"
+      }
+    },
+    "callback_errors": [],
+    "target_gaps_gt_1s": 0,
+    "matched_observations": 27,
+    "first_match_s": 1880.784985430668,
+    "max_target_offset": 4.5,
+    "max_measured_d": 4.614361690931101,
+    "near_s2000": {
+      "s": 2000.0882505501822,
+      "d": -0.08784373436780293
+    },
+    "checkpoint_count": 15,
+    "checkpoints_within_radius": 15,
+    "evidence_sha256": {
+      "end.json": "04ac91d5f4674adc0ad5f4ee5a0430eed5bfe790444a3717e9442f83bee0f1b5",
+      "source-before.json": "451bc44af316ac210f94c658ebae9f88ea65d251390de5acc2ea49f7c1db0978",
+      "source-after.json": "451bc44af316ac210f94c658ebae9f88ea65d251390de5acc2ea49f7c1db0978"
+    }
+  },
+  {
+    "phase": "after",
+    "side": "center",
+    "run": "live-center-01",
+    "reason": "follower_finish",
+    "elapsed_s": 391.8769199848175,
+    "max_s": 2174.5518036732656,
+    "source_unchanged": true,
+    "collision_packets": 0,
+    "decoded_packets": 15689,
+    "collision_parse_errors": 0,
+    "handoff": {
+      "samples": 30,
+      "duration_s": 0.650090217590332,
+      "maximum_abs_speed_mps": 0.0011598926761911975,
+      "last": {
+        "time": 1792752910.8071868,
+        "port": 909,
+        "speed": 0.00012235689306786904,
+        "yaw": 1.176570188527121,
+        "mode": 1,
+        "gear": 1,
+        "steer_deg": 0.0,
+        "link": "A2256W000748",
+        "stamp_hex": "0e3ddb6ac0d71930"
+      }
+    },
+    "callback_errors": [],
+    "target_gaps_gt_1s": 0,
+    "matched_observations": 22,
+    "first_match_s": 1881.6921634826956,
+    "max_target_offset": 3.5,
+    "max_measured_d": 3.646901747941414,
+    "near_s2000": {
+      "s": 1999.9305344860095,
+      "d": 0.03894467956414698
+    },
+    "checkpoint_count": 15,
+    "checkpoints_within_radius": 15,
+    "evidence_sha256": {
+      "end.json": "369f31fe7eb45f5905cdc97d65d61395fa8f6601e1385cddaa74929ae759b714",
+      "source-before.json": "451bc44af316ac210f94c658ebae9f88ea65d251390de5acc2ea49f7c1db0978",
+      "source-after.json": "451bc44af316ac210f94c658ebae9f88ea65d251390de5acc2ea49f7c1db0978"
+    }
+  },
+  {
+    "phase": "after",
+    "side": "right",
+    "run": "live-right-01",
+    "reason": "route_end_stopped",
+    "elapsed_s": 352.8915536403656,
+    "max_s": 2174.5518036732656,
+    "source_unchanged": true,
+    "collision_packets": 0,
+    "decoded_packets": 14297,
+    "collision_parse_errors": 0,
+    "handoff": {
+      "samples": 30,
+      "duration_s": 0.6456770896911621,
+      "maximum_abs_speed_mps": 0.0012331722407705253,
+      "last": {
+        "time": 1792754413.5140917,
+        "port": 909,
+        "speed": 3.9467219418535626e-07,
+        "yaw": 1.0321296520650385,
+        "mode": 1,
+        "gear": 1,
+        "steer_deg": 0.0,
+        "link": "A2256W000748",
+        "stamp_hex": "ed42db6a40c2931e"
+      }
+    },
+    "callback_errors": [],
+    "target_gaps_gt_1s": 0,
+    "matched_observations": 22,
+    "first_match_s": 1880.308799260505,
+    "max_target_offset": 2.75,
+    "max_measured_d": 2.849352738246892,
+    "near_s2000": {
+      "s": 2000.055877310592,
+      "d": -0.1440105465605584
+    },
+    "checkpoint_count": 15,
+    "checkpoints_within_radius": 15,
+    "evidence_sha256": {
+      "end.json": "a74aeb13e7ea72ddb3dd6ae34d04610114d9a8a5019aad0a59accdd7a205e514",
+      "source-before.json": "451bc44af316ac210f94c658ebae9f88ea65d251390de5acc2ea49f7c1db0978",
+      "source-after.json": "451bc44af316ac210f94c658ebae9f88ea65d251390de5acc2ea49f7c1db0978"
+    }
+  }
+]

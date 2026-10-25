@@ -1,0 +1,12 @@
+{
+  "scope": "Plot estimated native paths from CLOSED, analyzed left-box audits.\n\nLocalization estimates are not simulator ground truth or swept-body clearance.\nBoth output files must be new; source evidence is read only.\n",
+  "source_sha256": {
+    "docker/artifacts/tunnel-batch-20261023-01/live-left-01/end.json": "782d9094e230d1c0ae251ba9e465e96c23cb0fbebb08c791e9a2ad44b84b0125",
+    "docker/artifacts/tunnel-batch-20261023-01/left01-analysis/poses.json": "8a60589355071fddafb27d230559ae616c7ed3850cefb29dfa19601fb00809c9",
+    "docker/artifacts/tunnel-batch-20261023-01/live-left-02/end.json": "6cec741fbe4f6f5b23b3a5b52bd60cd5fa9b8c7974411a65d5d382264550d670",
+    "docker/artifacts/tunnel-batch-20261023-01/left02-analysis/poses.json": "a21dfb8d6aee1d5d37f26ab331cd60e60e53767f2e690e80dbdf6dda46373d1e",
+    "docker/artifacts/tunnel-batch-20261023-01/live-left-03-after-dropout/end.json": "04ac91d5f4674adc0ad5f4ee5a0430eed5bfe790444a3717e9442f83bee0f1b5",
+    "docker/artifacts/tunnel-batch-20261023-01/left03-analysis/poses.json": "c905f039e5c6bb9e629f49e6f559a5483662048bba554ec6ade7a3ab751e6dca"
+  },
+  "plot_sha256": "3037f18d8b0bea3884f95825a8a172a0729bc29d9f7bfb3cdd7d89cece547317"
+}

@@ -1,1 +1,7 @@
 * text=auto eol=lf
+
+# Imported source/evidence use their recorded bytes; leave existing src/docs rules intact.
+ros1-port/** -text
+2026_CTRL_competition/** -text
+과거자료/** -text
+AGENTS.md -text

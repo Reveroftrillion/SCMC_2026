@@ -1,0 +1,151 @@
+{
+  "run": 4,
+  "branch": "fix/tunnel-material-support-20261023",
+  "scope": "One modified-source supervised sample_scene completion; not official score or repeated-condition stability",
+  "fixed_source_sha256_manifest": "ros1-port/docker/artifacts/ctrl-start-validation-20261023-125934/fixed-source-sha256.json",
+  "preflight_passed": true,
+  "preflight_udp_control_packets": 0,
+  "reason": "route_end_stopped",
+  "provided_CP_all_within_radius": true,
+  "checkpoint_min_distances_m": {
+    "1": 0.32670742149805315,
+    "2": 0.11105307599632963,
+    "3": 0.10478044760096165,
+    "4": 0.06550269739693457,
+    "5": 0.03715983781934325,
+    "6": 0.30298192805498786,
+    "7": 0.2601613608764266,
+    "8": 0.15203735195176613,
+    "9": 0.08976256622096003,
+    "10": 0.17646151216737854,
+    "12": 0.616345432059428,
+    "13": 0.044447624091007075,
+    "14": 0.14986821131643294,
+    "15": 0.18887009672526225,
+    "0": 0.10835754161937274
+  },
+  "mission_transitions": [
+    {
+      "time": 1792730658.1072257,
+      "s": 2.107083900655989,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792730674.80816,
+      "s": 167.53320422143716,
+      "mission": "SIGNAL_1"
+    },
+    {
+      "time": 1792730768.0584762,
+      "s": 204.54630201531802,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792730773.6575148,
+      "s": 270.652219028927,
+      "mission": "STATIC_OBSTACLE"
+    },
+    {
+      "time": 1792730839.208731,
+      "s": 388.4120360652567,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792730840.2134807,
+      "s": 404.0440414865606,
+      "mission": "PEDESTRIAN"
+    },
+    {
+      "time": 1792730927.6573694,
+      "s": 494.08838721077177,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792730932.7085645,
+      "s": 565.6611138264666,
+      "mission": "SIGNAL_4"
+    },
+    {
+      "time": 1792730948.658038,
+      "s": 602.9850790889088,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792730963.681437,
+      "s": 801.4951124213027,
+      "mission": "ROUNDABOUT"
+    },
+    {
+      "time": 1792730974.2062204,
+      "s": 908.5339273864221,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792730986.6763077,
+      "s": 1100.9861973749084,
+      "mission": "HIGHWAY"
+    },
+    {
+      "time": 1792731025.8107412,
+      "s": 1731.7032456409368,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792731030.4869165,
+      "s": 1808.6064015822365,
+      "mission": "TUNNEL"
+    },
+    {
+      "time": 1792731043.638962,
+      "s": 1990.5034175616534,
+      "mission": "CRUISE"
+    }
+  ],
+  "max_s": 2174.5518036732656,
+  "elapsed_including_start_stop_s": 411.0358307361603,
+  "collision_packets": 16210,
+  "valid_collision_packets": 0,
+  "manual_park_stationary_evidence": {
+    "samples": 31,
+    "duration_s": 0.6740083694458008,
+    "maximum_abs_speed_mps": 0.0011277227248582575,
+    "last": {
+      "time": 1792731062.4411006,
+      "port": 909,
+      "speed": 1.8962823055011944e-05,
+      "yaw": 1.1489252448315534,
+      "mode": 1,
+      "gear": 1,
+      "steer_deg": 0.0,
+      "link": "A2256W000748",
+      "stamp_hex": "b6e7da6a00de391a"
+    }
+  },
+  "child_exitcodes": [
+    0,
+    0,
+    0
+  ],
+  "callback_errors": [],
+  "source_unchanged_during_drive": true,
+  "fixed_source_changed_paths": [],
+  "maximum_target_gap_s": 0.12659478187561035,
+  "max_cross_track_m": 3.248069737195443,
+  "max_speed_kmh": 84.32815551757812,
+  "offline_regression": {
+    "algorithm_passed": 946,
+    "algorithm_failed": 0,
+    "algorithm_skipped": 0,
+    "tools_passed": 9,
+    "tools_failed": 0,
+    "tools_skipped": 0
+  },
+  "remaining": [
+    "Run-01 all-input interruption, cause unconfirmed",
+    "Run-03 static stop at s315.649, record replay reproduces; not resolved by later success",
+    "Official wheel-line/penalties unverified",
+    "Other scenes/weather/NPC and fault conditions unverified",
+    "Only one completed full course on modified source",
+    "Existing packaging/resource/identifier baselines and recording issues retained"
+  ]
+}

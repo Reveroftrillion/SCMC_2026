@@ -1,0 +1,19 @@
+{
+  "scope": "post-trial receive-only actual vehicle status",
+  "errors": [],
+  "maximum_abs_speed_mps": 4.2504547713583125e-06,
+  "distinct_source_timestamps": 153,
+  "modes": [
+    1
+  ],
+  "gears": [
+    1
+  ],
+  "stationary_confirmed": true,
+  "raw_samples_preserved_locally": {
+    "path": "ros1-port/docker/artifacts/drive-first-20261013/stationary-confirmation.json",
+    "sha256": "2334c7850fc7489f024fa318c16c072586488920614c977b800815d3e167e81b",
+    "sample_count": 221,
+    "scope": "published report omits raw samples; original local report remains unchanged"
+  }
+}

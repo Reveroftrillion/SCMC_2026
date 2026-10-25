@@ -1,0 +1,42 @@
+{
+  "baseline_head": "0fe5ae635f5acbc79aae9e9c7f88a3474a63b233",
+  "snapshot": "ros1-port/verification/.work/unused-cleanup-20261022-120150",
+  "files": [
+    {
+      "path": "sim_2025/Simulator_2025-ai_mission/src/lidar/header.h",
+      "role": "옛 LiDAR 패키지 루트의 사용하지 않는 헤더",
+      "reason": "모든 C++ 소스가 같은 src 디렉터리의 ./header.h를 include. CMake의 include/export/install도 src만 사용하며 루트 헤더 참조 및 동적 glob 없음.",
+      "replacement": "sim_2025/Simulator_2025-ai_mission/src/lidar/src/header.h",
+      "sha256": "6ec626a4c1732762c677cbe4205f4bde7b198b50af517b06887dce69f68b9f5a",
+      "bytes": 1864,
+      "restore": "아래 복구 명령 또는 before-source.tar.gz의 동일 경로"
+    },
+    {
+      "path": "sim_2025/Simulator_2025-main/Simulator_2025-main/src/lidar/header.h",
+      "role": "옛 LiDAR 패키지 루트의 사용하지 않는 헤더",
+      "reason": "모든 C++ 소스가 같은 src 디렉터리의 ./header.h를 include. CMake의 include/export/install도 src만 사용하며 루트 헤더 참조 및 동적 glob 없음.",
+      "replacement": "sim_2025/Simulator_2025-main/Simulator_2025-main/src/lidar/src/header.h",
+      "sha256": "a1c723626e262511dc2c70cefdab297a3f484220e35c8684ab506d3b271cc7a4",
+      "bytes": 1900,
+      "restore": "아래 복구 명령 또는 before-source.tar.gz의 동일 경로"
+    },
+    {
+      "path": "sim_2025/Simulator_2025-ai_mission/src/planning/scripts/make_path/main_interpolation.txt",
+      "role": "예전 경로 편집 폴더에 중복으로 남은 출력 경로",
+      "reason": "paths/의 실제 경로와 SHA256 동일. planner·설치 목록에서 make_path 하위 txt 참조가 없고 폴더 glob 소비자 없음. 해당 폴더에 실행 가능한 편집기 없음. 독립적인 예전 편집기 버전이 든 ZIP은 고유 코드가 있어 보존하며, ZIP에도 같은 경로 데이터가 포함됨.",
+      "replacement": "sim_2025/Simulator_2025-ai_mission/src/planning/paths/main_interpolation.txt",
+      "sha256": "593b4ebe285c59e2628b3fbf1656deb75edf4f4c9ffda9e34d5de8c4ce346f89",
+      "bytes": 598559,
+      "restore": "아래 복구 명령 또는 before-source.tar.gz의 동일 경로"
+    },
+    {
+      "path": "sim_2025/Simulator_2025-main/Simulator_2025-main/src/planning/scripts/make_path/zzinmak.txt",
+      "role": "예전 경로 편집 폴더에 중복으로 남은 출력 경로",
+      "reason": "paths/의 실제 경로와 SHA256 동일. planner는 paths/만 읽으며 CMake는 PathPlanner.py만 설치. 편집기의 현재 진입점은 home.txt를 읽고 삭제 후보를 열지 않음. 폴더 glob 소비자 없음.",
+      "replacement": "sim_2025/Simulator_2025-main/Simulator_2025-main/src/planning/paths/zzinmak.txt",
+      "sha256": "512618b9837ff23700d1e694e4bf7e0820ff8e71845debd928ebfbfa520b2e88",
+      "bytes": 597619,
+      "restore": "아래 복구 명령 또는 before-source.tar.gz의 동일 경로"
+    }
+  ]
+}

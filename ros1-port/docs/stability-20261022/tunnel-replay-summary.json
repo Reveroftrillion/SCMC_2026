@@ -1,0 +1,673 @@
+{
+  "recordings": {
+    "053941": {
+      "bag": "/home/foscar/RMT-ros1/ros1-port/docker/artifacts/bags/run_20261022_053941\n.bag",
+      "sha256": "86f992205611be5f04158875eb9d4183a9bdb5bc9367949d25262f8cc50ec6a2",
+      "topics": [
+        "/behavior/highway",
+        "/behavior/highway_markers",
+        "/behavior/markers",
+        "/behavior/mission",
+        "/behavior/prediction",
+        "/behavior/prediction_markers",
+        "/behavior/signal_camera",
+        "/behavior/signal_stop",
+        "/behavior/state",
+        "/behavior/target",
+        "/control/request",
+        "/control/state",
+        "/control/telemetry",
+        "/events",
+        "/localization/mode",
+        "/localization/odometry",
+        "/localization/s",
+        "/map/route",
+        "/perception/clearance_queries",
+        "/perception/footprints",
+        "/perception/obstacle_markers",
+        "/perception/road_users",
+        "/perception/traffic_signal",
+        "/vehicle/status"
+      ],
+      "ticks": 304,
+      "elapsed": 2.593717875999573,
+      "states": {
+        "CRUISE:CRUISE": 71,
+        "TUNNEL:AVOID": 233
+      },
+      "mission_transitions": [
+        {
+          "t": 1792647717.4436612,
+          "s": 1750.1090456046109,
+          "mission": "CRUISE",
+          "substate": "CRUISE"
+        },
+        {
+          "t": 1792647721.0823877,
+          "s": 1809.91399034276,
+          "mission": "TUNNEL",
+          "substate": "AVOID"
+        }
+      ],
+      "recorded_zero": 231,
+      "replay_zero": 232,
+      "first_recorded_zero": {
+        "t": 1792647721.1537578,
+        "s": 1810.9084819070251,
+        "pose": [
+          64.16179893156662,
+          -444.1909613160034,
+          -1.905652153239015,
+          16.524540583292644
+        ],
+        "mode": "GPS",
+        "recorded_mission": "TUNNEL",
+        "replay_mission": "TUNNEL",
+        "footprint_stamp": 1792647721.0713723,
+        "footprint_age": 0.08238554000854492,
+        "odom_age": 0.014845609664916992,
+        "recorded": {
+          "state": "AVOID",
+          "v_max": 0.0,
+          "stop_s": 1838.5424663843444,
+          "offset": 0.0,
+          "entry_s": "nan",
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "replay": {
+          "state": "AVOID",
+          "v_max": 0.0,
+          "stop_s": 1838.5424663843444,
+          "offset": 0.0,
+          "chain": []
+        },
+        "reason": "planner hold",
+        "boxes": [
+          {
+            "s_min": 1841.5424663843444,
+            "s_max": 1843.776239104859,
+            "d_min": -1.7126606386382428,
+            "d_max": 0.99166597949498,
+            "vertices": [
+              [
+                1841.5424663843444,
+                0.819837308686161
+              ],
+              [
+                1842.2200197940413,
+                -0.25994108385942366
+              ],
+              [
+                1843.5946491605118,
+                -1.7126606386382428
+              ],
+              [
+                1843.776239104859,
+                -1.540831967829429
+              ],
+              [
+                1843.44234303678,
+                -0.8242334639785173
+              ],
+              [
+                1841.7240563286919,
+                0.99166597949498
+              ]
+            ]
+          }
+        ],
+        "calculation_s": 0.0036166230020171497
+      },
+      "first_replay_zero": {
+        "t": 1792647721.1264443,
+        "s": 1810.578120890283,
+        "pose": [
+          64.270369537964,
+          -443.8789404817077,
+          -1.9029957375153785,
+          16.52457767062717
+        ],
+        "mode": "GPS",
+        "recorded_mission": "TUNNEL",
+        "replay_mission": "TUNNEL",
+        "footprint_stamp": 1792647721.0713723,
+        "footprint_age": 0.05507206916809082,
+        "odom_age": 0.0075225830078125,
+        "recorded": {
+          "state": "AVOID",
+          "v_max": 12.489995996796797,
+          "stop_s": 1836.7600453189605,
+          "offset": 0.0,
+          "entry_s": "nan",
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "replay": {
+          "state": "AVOID",
+          "v_max": 0.0,
+          "stop_s": 1838.5424663843444,
+          "offset": 0.0,
+          "chain": []
+        },
+        "reason": "planner hold",
+        "boxes": [
+          {
+            "s_min": 1841.5424663843444,
+            "s_max": 1843.776239104859,
+            "d_min": -1.7126606386382428,
+            "d_max": 0.99166597949498,
+            "vertices": [
+              [
+                1841.5424663843444,
+                0.819837308686161
+              ],
+              [
+                1842.2200197940413,
+                -0.25994108385942366
+              ],
+              [
+                1843.5946491605118,
+                -1.7126606386382428
+              ],
+              [
+                1843.776239104859,
+                -1.540831967829429
+              ],
+              [
+                1843.44234303678,
+                -0.8242334639785173
+              ],
+              [
+                1841.7240563286919,
+                0.99166597949498
+              ]
+            ]
+          }
+        ],
+        "calculation_s": 0.021155220998480218
+      },
+      "last": {
+        "t": 1792647732.6014879,
+        "s": 1828.0901714289776,
+        "pose": [
+          57.72804339197214,
+          -460.11852897080166,
+          -2.1130675448426506,
+          2.9208861936543444e-06
+        ],
+        "mode": "GPS",
+        "recorded_mission": "TUNNEL",
+        "replay_mission": "TUNNEL",
+        "footprint_stamp": 1792647732.5537748,
+        "footprint_age": 0.04771304130554199,
+        "odom_age": 0.0025374889373779297,
+        "recorded": {
+          "state": "AVOID",
+          "v_max": 0.0,
+          "stop_s": 1838.5424663843444,
+          "offset": 0.0,
+          "entry_s": "nan",
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "replay": {
+          "state": "AVOID",
+          "v_max": 0.0,
+          "stop_s": 1838.5424663843444,
+          "offset": 0.0,
+          "chain": []
+        },
+        "reason": "planner hold",
+        "boxes": [
+          {
+            "s_min": 1841.5424663843444,
+            "s_max": 1843.776239104859,
+            "d_min": -1.7126606386382428,
+            "d_max": 0.99166597949498,
+            "vertices": [
+              [
+                1841.5424663843444,
+                0.819837308686161
+              ],
+              [
+                1842.2200197940413,
+                -0.25994108385942366
+              ],
+              [
+                1843.5946491605118,
+                -1.7126606386382428
+              ],
+              [
+                1843.776239104859,
+                -1.540831967829429
+              ],
+              [
+                1843.44234303678,
+                -0.8242334639785173
+              ],
+              [
+                1841.7240563286919,
+                0.99166597949498
+              ]
+            ]
+          }
+        ],
+        "calculation_s": 0.007420956000714796
+      },
+      "max_gap": 0.14034008979797363,
+      "ages": {
+        "footprint": {
+          "max": 0.1461009979248047,
+          "median": 0.07529735565185547,
+          "p99": 0.14498235940933227
+        },
+        "odom": {
+          "max": 0.02045607566833496,
+          "median": 0.009999632835388184,
+          "p99": 0.020181047916412353
+        },
+        "target_record_age": {
+          "max": 0.0038259029388427734,
+          "median": 0.001384139060974121,
+          "p99": 0.0027655458450317376
+        }
+      },
+      "reasons": {
+        "None": 71,
+        "occupied": 1,
+        "planner hold": 232
+      },
+      "limitations": [
+        "Recorded poses/footprints, no raw clouds or images; cannot identify ground-vs-physical-object truth",
+        "Planner context starts at s1750; no prewindow object/wall memory",
+        "Only Cruise/Avoid/Tunnel synthesized; no YIELD/events/highway/signal/executor",
+        "Recorded target callback time used as replay tick; asynchronous ROS callback order not exact",
+        "Offline timing under current host load, not live executor timing"
+      ]
+    },
+    "054906": {
+      "bag": "/home/foscar/RMT-ros1/ros1-port/docker/artifacts/bags/run_20261022_054906\n.bag",
+      "sha256": "8f2b357b7938758238900a78ef1b4ed5e458184398ee81b8da3d9b848d0ed5ef",
+      "topics": [
+        "/behavior/highway",
+        "/behavior/highway_markers",
+        "/behavior/markers",
+        "/behavior/mission",
+        "/behavior/prediction",
+        "/behavior/prediction_markers",
+        "/behavior/signal_camera",
+        "/behavior/signal_stop",
+        "/behavior/state",
+        "/behavior/target",
+        "/control/request",
+        "/control/state",
+        "/control/telemetry",
+        "/events",
+        "/localization/mode",
+        "/localization/odometry",
+        "/localization/s",
+        "/map/route",
+        "/perception/clearance_queries",
+        "/perception/footprints",
+        "/perception/obstacle_markers",
+        "/perception/road_users",
+        "/perception/traffic_signal",
+        "/vehicle/status"
+      ],
+      "ticks": 412,
+      "elapsed": 3.4553774970008817,
+      "states": {
+        "CRUISE:CRUISE": 148,
+        "TUNNEL:CRUISE": 79,
+        "TUNNEL:AVOID": 3,
+        "TUNNEL:TUNNEL": 182
+      },
+      "mission_transitions": [
+        {
+          "t": 1792648295.9262335,
+          "s": 1750.0985174812963,
+          "mission": "CRUISE",
+          "substate": "CRUISE"
+        },
+        {
+          "t": 1792648299.4329123,
+          "s": 1807.9503379574626,
+          "mission": "TUNNEL",
+          "substate": "CRUISE"
+        },
+        {
+          "t": 1792648312.7097902,
+          "s": 1990.8487637614176,
+          "mission": "CRUISE",
+          "substate": "CRUISE"
+        }
+      ],
+      "recorded_zero": 0,
+      "replay_zero": 0,
+      "first_recorded_zero": null,
+      "first_replay_zero": null,
+      "last": {
+        "t": 1792648316.5271943,
+        "s": 2049.9844286949806,
+        "pose": [
+          -134.61121593001795,
+          -538.5104358659472,
+          2.508840634974268,
+          16.337299346923828
+        ],
+        "mode": "GPS",
+        "recorded_mission": "CRUISE",
+        "replay_mission": "CRUISE",
+        "footprint_stamp": 1792648316.4463978,
+        "footprint_age": 0.08079648017883301,
+        "odom_age": 0.008313655853271484,
+        "recorded": {
+          "state": "CRUISE",
+          "v_max": 16.666666666666668,
+          "stop_s": "nan",
+          "offset": 0.0,
+          "entry_s": "nan",
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "replay": {
+          "state": "CRUISE",
+          "v_max": 16.666666666666668,
+          "stop_s": "nan",
+          "offset": 0.0,
+          "chain": []
+        },
+        "reason": "unobserved",
+        "boxes": [],
+        "calculation_s": 5.750000127591193e-06
+      },
+      "max_gap": 0.14292407035827637,
+      "ages": {
+        "footprint": {
+          "max": 0.1537914276123047,
+          "median": 0.07461285591125488,
+          "p99": 0.14691170692443847
+        },
+        "odom": {
+          "max": 0.020305871963500977,
+          "median": 0.010494470596313477,
+          "p99": 0.020064382553100585
+        },
+        "target_record_age": {
+          "max": 0.0271914005279541,
+          "median": 0.0014113187789916992,
+          "p99": 0.003037722110748291
+        }
+      },
+      "reasons": {
+        "None": 70,
+        "": 26,
+        "unobserved": 316
+      },
+      "limitations": [
+        "Recorded poses/footprints, no raw clouds or images; cannot identify ground-vs-physical-object truth",
+        "Planner context starts at s1750; no prewindow object/wall memory",
+        "Only Cruise/Avoid/Tunnel synthesized; no YIELD/events/highway/signal/executor",
+        "Recorded target callback time used as replay tick; asynchronous ROS callback order not exact",
+        "Offline timing under current host load, not live executor timing"
+      ]
+    }
+  },
+  "final_stop_geometry": {
+    "recorded_time": 1792647732.6014879,
+    "s": 1828.0901714289776,
+    "body_half_with_margin": 1.746,
+    "candidates": [
+      {
+        "d": -6.0,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -5.75,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -5.5,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -5.25,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -5.0,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -4.75,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -4.5,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -4.25,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -4.0,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -3.75,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -3.5,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": -3.25,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -3.0,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -2.75,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -2.5,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -2.25,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -2.0,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -1.75,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -1.5,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -1.25,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -1.0,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -0.75,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -0.5,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": -0.25,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 0.0,
+        "obstacle_clear": false,
+        "pavement_clear": true
+      },
+      {
+        "d": 0.25,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 0.5,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 0.75,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 1.0,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 1.25,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 1.5,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 1.75,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 2.0,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 2.25,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 2.5,
+        "obstacle_clear": false,
+        "pavement_clear": false
+      },
+      {
+        "d": 2.75,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 3.0,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 3.25,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 3.5,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 3.75,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 4.0,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 4.25,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 4.5,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 4.75,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 5.0,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 5.25,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 5.5,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 5.75,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      },
+      {
+        "d": 6.0,
+        "obstacle_clear": true,
+        "pavement_clear": false
+      }
+    ],
+    "obstacle_clear": 25,
+    "pavement_clear": 1,
+    "both": 0,
+    "limits": "Recorded footprint and base map at final stop only; no raw ground truth, no simulated movement or relaxed geometry"
+  }
+}

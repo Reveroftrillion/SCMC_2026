@@ -1,0 +1,20 @@
+{
+  "scope": "stationary logging check only; drive=false",
+  "launch_returncode": 0,
+  "bags": [
+    {
+      "path": "/workspace/ros1-port/docker/artifacts/drive-first-20261013/bag-stationary-check/bags/run_20261013_065843\n.bag",
+      "bytes": 300091,
+      "messages": 835,
+      "topics": [
+        "/control/request",
+        "/control/state",
+        "/control/telemetry",
+        "/events",
+        "/perception/footprints",
+        "/perception/obstacle_markers"
+      ]
+    }
+  ],
+  "passed": true
+}

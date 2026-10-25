@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="port" default="9208" />
+  <arg name="model" default="$(find ctrl_camera)/models/best.onnx" />
+  <node pkg="ctrl_camera" type="ctrl_camera_bridge" name="camera_bridge" output="screen">
+    <param name="port" value="$(arg port)" type="int" />
+    <param name="topic" value="/sensors/camera/traffic/compressed" type="str" />
+    <param name="frame_id" value="camera_7" type="str" />
+    <param name="stamp_source" value="recv" type="str" />
+  </node>
+  <node pkg="ctrl_camera" type="ctrl_yolo_signal_node" name="yolo_signal_node" output="screen">
+    <param name="model_file" value="$(arg model)" type="str" />
+    <param name="stoplines_file" value="$(find ctrl_camera)/config/yolo_stoplines.json" type="str" />
+    <param name="detections_log" command="python3 &quot;$(find ctrl_bringup)/scripts/ctrl_launch_info&quot; detections-log" />
+    <param name="confidence" value="0.4" type="double" />
+    <param name="confirm_frames" value="2" type="int" />
+    <param name="max_frame_age_s" value="1.0" type="double" />
+    <param name="threads" value="4" type="int" />
+  </node>
+</launch>

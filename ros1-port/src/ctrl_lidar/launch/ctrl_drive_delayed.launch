@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="drive" />
+  <arg name="speed_kmh" />
+  <arg name="continuous" />
+  <arg name="distance_m" />
+  <arg name="route" />
+  <arg name="rviz" />
+  <arg name="config" />
+  <arg name="view" />
+  <arg name="cameras" />
+  <arg name="camera_port" />
+  <arg name="camera_scale" />
+  <arg name="lidar_x" />
+  <arg name="lidar_y" />
+  <arg name="lidar_z" />
+  <arg name="lidar_port" />
+  <arg name="roi_y_abs" />
+  <arg name="ground_z" />
+  <arg name="ground_slope_tol" />
+  <arg name="moving_enter_mps" />
+  <arg name="ped_max_size_m" />
+  <arg name="corridor_half_m" />
+  <arg name="use_route" />
+  <include file="$(find ctrl_camera)/launch/ctrl_yolo_signal.launch" if="$(arg cameras)">
+    <arg name="port" value="$(arg camera_port)" />
+  </include>
+  <node pkg="ctrl_camera" type="ctrl_camera_view" name="camera_view" output="log" if="$(arg cameras)">
+    <param name="scale" value="$(arg camera_scale)" type="double" />
+  </node>
+</launch>

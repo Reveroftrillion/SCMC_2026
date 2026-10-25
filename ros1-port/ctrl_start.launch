@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- Competition entry point for the current local MORAI host. Starts driving. -->
+<launch>
+  <arg name="drive" default="true" />
+  <arg name="bag" default="true" />
+  <arg name="raw" default="true" />
+  <arg name="run_dir" default="$(dirname)/docker/artifacts/$(anon ctrl_start)" />
+
+  <!-- Create the recording parent before any recorder starts. No ROS node or UDP. -->
+  <param name="/ros1_port/ctrl_start/run_dir"
+         command="python3 &quot;$(find ctrl_bringup)/scripts/ctrl_launch_info&quot; prepare-run-dir &quot;$(arg run_dir)&quot;" />
+  <include file="$(dirname)/docker/local.launch">
+    <arg name="drive" value="$(arg drive)" />
+    <arg name="bag" value="$(arg bag)" />
+    <arg name="bag_dir" value="$(arg run_dir)/bags" />
+  </include>
+  <group if="$(arg bag)">
+    <node pkg="rosbag" type="record" name="manual_sensor_bag" output="log"
+          if="$(arg raw)"
+          args="-O &quot;$(arg run_dir)/raw.bag&quot; /sensors/gps /sensors/imu /sensors/lidar/points /sensors/camera/traffic/compressed /perception/traffic_light/debug/compressed /tf /tf_static /rosout_agg" />
+  </group>
+  <param name="/localization/start_at_beginning" value="true" type="bool" />
+  <param name="/path_follower/start_at_beginning" value="true" type="bool" />
+  <param name="/behavior_node/start_at_beginning" value="true" type="bool" />
+  <param name="/path_follower/log_dir" value="$(arg run_dir)/follower" type="str" />
+</launch>

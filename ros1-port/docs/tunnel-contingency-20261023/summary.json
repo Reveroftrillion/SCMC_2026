@@ -1,0 +1,32 @@
+{
+  "python": "3.10.12",
+  "source_unchanged": true,
+  "cases": 17,
+  "frames": 33,
+  "passed": [
+    "clear_dr",
+    "clear_gps",
+    "clear_at_50kmh",
+    "gps_return_at_exit",
+    "missing_map",
+    "fully_blocked_then_cleared",
+    "late_blocker",
+    "stale_scan_then_restored",
+    "pedestrian_clear_and_reenter",
+    "pedestrian_during_bypass",
+    "unknown_crossing_body",
+    "static_right",
+    "static_center",
+    "static_left_no_paved_gap",
+    "sudden_person_at_20kmh",
+    "sudden_person_at_50kmh"
+  ],
+  "failed": [
+    "static_left_narrow"
+  ],
+  "limitations": [
+    "Synthetic events and footprints, no LiDAR detection/classification",
+    "Prescribed poses, no closed-loop vehicle, braking-distance or collision certification",
+    "No ROS scheduling, UDP, camera, official penalty evaluation or localization integration"
+  ]
+}

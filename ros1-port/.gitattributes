@@ -1,0 +1,3 @@
+# Preserve the copied calibration/model/config/cache bytes across Windows/Linux.
+# In particular, route_sha256 is a hash of raw route-file bytes.
+* -text

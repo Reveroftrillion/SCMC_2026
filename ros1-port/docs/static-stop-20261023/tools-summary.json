@@ -1,0 +1,9 @@
+{
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "warnings": 1,
+  "elapsed_s": 3.75,
+  "exit_code": 0,
+  "scope": "offline diagnostic integrity and static launch XML loading; no ROS nodes or control UDP"
+}

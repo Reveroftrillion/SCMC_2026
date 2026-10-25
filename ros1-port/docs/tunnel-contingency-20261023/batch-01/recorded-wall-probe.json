@@ -1,0 +1,25 @@
+{
+  "bag": "/workspace/ros1-port/docker/artifacts/tunnel-batch-20261023-01/live-left-01/diagnostics_0.bag",
+  "bag_bytes": 932885977,
+  "at_s": 1880.0,
+  "wall_scans": 42,
+  "last_scan_s": 1880.455856616337,
+  "last_record_time": 1792749510.8060884,
+  "corridor_runs": 1,
+  "map_only": {
+    "static_left_narrow": false,
+    "static_center": true,
+    "static_right": true
+  },
+  "with_recorded_walls": {
+    "static_left_narrow": true,
+    "static_center": true,
+    "static_right": true
+  },
+  "source_unchanged": true,
+  "limitations": [
+    "Synthetic obstacle/ego poses, recorded walls only; no raw LiDAR or closed-loop simulation",
+    "Bag record order and preceding s, not native callback timing or exact live wall rebuild phase",
+    "Walls observed on one baseline lap, not proof that a changed obstacle cannot occlude them"
+  ]
+}

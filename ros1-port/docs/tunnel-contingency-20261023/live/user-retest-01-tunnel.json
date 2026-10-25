@@ -1,0 +1,117 @@
+{
+  "run": "docker/artifacts/ctrl_start_foscar_7_7691998378760118893",
+  "termination_scope": "user-confirmed stop/Manual-P; no external collision audit",
+  "scene_sha256": "4f0011853b1d95255c16084024e12e3a788a9e0d5da0e7bc1329a47ff4492606",
+  "expected_actor": {
+    "DataID": 40100001,
+    "UNIQUEID": 16,
+    "m_eobstacleObjType": 4,
+    "pos": {
+      "x": -2.3711730547994088,
+      "y": -506.93559575171656,
+      "z": 28.400100854380373,
+      "_x": "-2.371",
+      "_y": "-506.936",
+      "_z": "28.400"
+    },
+    "rot": {
+      "roll": "0.000",
+      "pitch": "0.000",
+      "yaw": "-151.547"
+    },
+    "scale": {
+      "x": 3.0,
+      "y": 1.0,
+      "z": 1.0,
+      "_x": "3.000",
+      "_y": "1.000",
+      "_z": "1.000"
+    },
+    "initPos": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "_x": "0.000",
+      "_y": "0.000",
+      "_z": "0.000"
+    },
+    "initRot": {
+      "roll": "0.000",
+      "pitch": "0.000",
+      "yaw": "0.000"
+    },
+    "isWaypointMode": true,
+    "moveSpeed": 0.0,
+    "activeDistance": 0.0,
+    "waypointEventList": []
+  },
+  "expected_station": 1905.0,
+  "matched_observations": 31,
+  "matched_ids": [
+    "lidar:8367e9668eda4090a4a69e3f93f17c9a:1628",
+    "lidar:8367e9668eda4090a4a69e3f93f17c9a:1629"
+  ],
+  "first_match": {
+    "t": 1792748171.6747243,
+    "stamp": 1792748171.6546237,
+    "ego_s": 1880.9694026717034,
+    "id": "lidar:8367e9668eda4090a4a69e3f93f17c9a:1628",
+    "kind": "OBSTACLE",
+    "height": 0.3523259162902832,
+    "center_distance_to_actor_m": 0.8094713624342171,
+    "s_min": 1905.7552840365993,
+    "s_max": 1905.776911898153,
+    "d_min": -0.07942406610812527,
+    "d_max": 2.0965445599056043
+  },
+  "last_match": {
+    "t": 1792748175.3748472,
+    "stamp": 1792748175.3597667,
+    "ego_s": 1902.8086702809978,
+    "id": "lidar:8367e9668eda4090a4a69e3f93f17c9a:1628",
+    "kind": "OBSTACLE",
+    "height": 0.8923830389976501,
+    "center_distance_to_actor_m": 1.0282472311756221,
+    "s_min": 1905.8055061757361,
+    "s_max": 1906.4378428760995,
+    "d_min": 0.3303416223829904,
+    "d_max": 2.554795949052957
+  },
+  "target_states": {
+    "CRUISE": 101,
+    "AVOID": 282,
+    "TUNNEL": 32
+  },
+  "avoidance_targets": 282,
+  "minimum_target_offset": 0.0,
+  "maximum_target_offset": 4.5,
+  "minimum_measured_d": -0.2528507559185833,
+  "maximum_measured_d": 4.613742138292909,
+  "localization_modes": [
+    {
+      "t": 1792748166.6313794,
+      "s": 1819.394810363323,
+      "mode": "GPS"
+    },
+    {
+      "t": 1792748171.152699,
+      "s": 1873.8673815277475,
+      "mode": "DR"
+    },
+    {
+      "t": 1792748185.8724103,
+      "s": 1990.7485611517084,
+      "mode": "GPS"
+    }
+  ],
+  "camera": {
+    "t": 1792748171.9833753,
+    "near_ego_s": 1885.0,
+    "sha256": "8c9e9a5304ef4537e3d0ef340be53f14998b9b9b41955e4718ef44a6b3574223"
+  },
+  "limitations": [
+    "Within 4m of intended location, observed height >=0.2m; candidate association only",
+    "Footprints omit hidden body edges; not a ground-truth size or clearance measurement",
+    "Prescribed scene pose and preceding recorded s; no proof of official scoring or every actor identity"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "scope": "Unmodified compressed camera bytes from closed bags; no actor identity or clearance proof",
+  "images": [
+    {
+      "scene": "left-after",
+      "file": "left-after-approach.jpg",
+      "sha256": "f35f1a24e1a8e2eea64055178f4b5669b5f148c2a47cb29eaa7411c564bb20ed",
+      "original_camera": {
+        "t": 1792751989.1240826,
+        "near_ego_s": 1885.0,
+        "sha256": "f35f1a24e1a8e2eea64055178f4b5669b5f148c2a47cb29eaa7411c564bb20ed"
+      }
+    },
+    {
+      "scene": "center",
+      "file": "center-approach.jpg",
+      "sha256": "4f71650ca3d756b1988eea34eaed60c1978de28e951a0867e6d0cd882f89f30b",
+      "original_camera": {
+        "t": 1792752880.5226731,
+        "near_ego_s": 1885.0,
+        "sha256": "4f71650ca3d756b1988eea34eaed60c1978de28e951a0867e6d0cd882f89f30b"
+      }
+    },
+    {
+      "scene": "right",
+      "file": "right-approach.jpg",
+      "sha256": "6cd5df8b75cf34c71a6b68270a4f6d2e8ab32e66ebb95ccf6bc067a631a33ef0",
+      "original_camera": {
+        "t": 1792754383.0642362,
+        "near_ego_s": 1885.0,
+        "sha256": "6cd5df8b75cf34c71a6b68270a4f6d2e8ab32e66ebb95ccf6bc067a631a33ef0"
+      }
+    }
+  ]
+}

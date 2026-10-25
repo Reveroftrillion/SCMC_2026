@@ -1,0 +1,2 @@
+numpy==1.24.4
+onnxruntime-gpu==1.23.2   # CUDA 12 + cuDNN 9 (falls back to the CPU without them)

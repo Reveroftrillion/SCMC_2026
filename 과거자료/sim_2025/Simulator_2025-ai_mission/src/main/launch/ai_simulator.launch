@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="camera" name="traffic_light_node" type="traffic_yolo.py" output="screen" />
+    <node pkg="camera" name="traffic_sign_node" type="traffic_sign_node.py" output="screen" />
+    <node pkg="perception" name="abnormal_node" type="anom_depth_ros.py" output="screen" />
+    <include file="$(find planning)/launch/planner.launch" />
+    <include file="$(find control)/launch/control.launch" />
+    <node pkg="morai_udp" type="ego_vehicle_info_node.py" name="ego_vehicle_info_node" output="screen"/>
+    <node pkg="morai_udp" type="morai_cmd_controller_node.py" name="morai_cmd_controller" output="screen"/>
+</launch>

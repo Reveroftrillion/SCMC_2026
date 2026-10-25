@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-23",
+  "branch": "test/morai-ctrl-start-20261023",
+  "preflight": {
+    "passed": true,
+    "control_udp_packets": 0,
+    "launch_exit": 0,
+    "errors": []
+  },
+  "run_01": {
+    "completed_course": false,
+    "end_reason": "raw_vehicle_status_lost",
+    "max_s": 249.1028574093764,
+    "elapsed_s": 33.211097955703735,
+    "passed_CP": [
+      "1",
+      "2",
+      "3"
+    ],
+    "collision_packets": 1308,
+    "valid_collision_packets": 0,
+    "manual_park_evidence": {
+      "samples": 31,
+      "duration_s": 0.6653516292572021,
+      "maximum_abs_speed_mps": 0.009553200668758815,
+      "last": {
+        "time": 1792728128.2485242,
+        "port": 909,
+        "speed": -0.00033726230160229735,
+        "yaw": 1.1548385277159654,
+        "mode": 1,
+        "gear": 1,
+        "steer_deg": 0.0,
+        "link": "A2256W000213",
+        "stamp_hex": "40dcda6a002ec80e"
+      }
+    },
+    "child_exitcodes": [
+      0,
+      0,
+      0
+    ],
+    "source_unchanged": true,
+    "max_speed_kmh": 59.48766326904296,
+    "max_cross_track_m": 0.6665091078548255,
+    "maximum_target_gap_s": 0.08259439468383789
+  },
+  "capture_gap_s": {
+    "9297": 2.1481540203094482,
+    "1112": 2.146610975265503,
+    "9092": 2.1672680377960205,
+    "909": 2.167340040206909,
+    "1111": 2.294193983078003,
+    "2368": 2.2019269466400146,
+    "9093": 0.0402529239654541
+  },
+  "incoming_source_files": 929,
+  "changed_source_paths": [],
+  "remaining": [
+    "New launch full-course and end-run handoff unverified",
+    "Tunnel stop not reached; not resolved",
+    "Input interruption cause requires MORAI/operator state correlation",
+    "START reset and channel reconnect required before next trial"
+  ]
+}

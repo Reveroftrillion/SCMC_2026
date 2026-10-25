@@ -1,0 +1,79 @@
+{
+  "scope": "Two user-operated reported full completions; FINISH and near-zero final speed corroborated by follower CSV, not an independently supervised official score/collision/CP/handoff verification",
+  "date": "2026-10-23",
+  "publishing_branch": "release/ctrl-roundabout-20261023",
+  "runs": [
+    {
+      "run": "ctrl_start_foscar_7_2721071309784468473",
+      "follower": "ros1-port/docker/artifacts/ctrl_start_foscar_7_2721071309784468473/follower/follow_20261023_063028_731582.csv",
+      "follower_sha256": "99a8ba332f76b9a9383ba58573d437f8a7346d055b34bb45e684fa884234aec8",
+      "rows": 4105,
+      "finish_rows": 73,
+      "first_finish_elapsed_s": 201.65014793900082,
+      "final_elapsed_s": 205.25015506100135,
+      "final_state": "FINISH",
+      "final_reason": "route end reached; brake held",
+      "final_speed_mps": 1.174450719392755e-06,
+      "max_s_m": 2234.5517536449115,
+      "peak_follower_speed_kmh": 104.67216491699219,
+      "peak_at_s_m": 1488.2091076004704,
+      "no_target_episodes": [
+        {
+          "start_elapsed_s": 0.35129378600140626,
+          "last_elapsed_s": 0.8001455070007069,
+          "samples": 10,
+          "route_s": 1.7301161036521828,
+          "max_abs_speed_mps": 1.3615396407355243e-05
+        }
+      ],
+      "closed_bag_paths": [
+        "raw.bag",
+        "bags/run_20261023_063028.bag"
+      ],
+      "active_bags": []
+    },
+    {
+      "run": "ctrl_start_foscar_7_1396946192550344130",
+      "follower": "ros1-port/docker/artifacts/ctrl_start_foscar_7_1396946192550344130/follower/follow_20261023_063514_062580.csv",
+      "follower_sha256": "0a6ece274ffc73edd64d70eb4dcbc74968c613b0643887c79b5cb8f0b4a7c9da",
+      "rows": 4379,
+      "finish_rows": 145,
+      "first_finish_elapsed_s": 211.75011395,
+      "final_elapsed_s": 218.9501355100001,
+      "final_state": "FINISH",
+      "final_reason": "route end reached; brake held",
+      "final_speed_mps": 1.125074757308337e-06,
+      "max_s_m": 2234.5517536449115,
+      "peak_follower_speed_kmh": 116.82069396972658,
+      "peak_at_s_m": 1405.5415704245709,
+      "no_target_episodes": [
+        {
+          "start_elapsed_s": 0.3070431390005979,
+          "last_elapsed_s": 0.8501310009996814,
+          "samples": 12,
+          "route_s": 1.1012982593642544,
+          "max_abs_speed_mps": 4.027797331218608e-06
+        }
+      ],
+      "closed_bag_paths": [
+        "raw.bag",
+        "bags/run_20261023_063513.bag"
+      ],
+      "active_bags": []
+    }
+  ],
+  "not_verified": [
+    "Official line/signal/collision penalties and score",
+    "Each provided checkpoint from these CSVs",
+    "Manual/P handoff from these CSVs",
+    "Posted-speed exception boundary compliance",
+    "Frozen source throughout these two user runs",
+    "Changed scenario/weather/sensor-failure conditions"
+  ],
+  "prior_algorithm_result": {
+    "passed": 952,
+    "failed": 1,
+    "skipped": 0,
+    "failure": "Existing ROUNDABOUT fixed-height policy assertion conflicts with requested material-ground correction; expected values retained"
+  }
+}

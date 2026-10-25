@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- Host-specific transport overrides. All source tuning/algorithms remain unchanged. -->
+<launch>
+  <arg name="drive" default="false" />
+  <arg name="camera_port" default="9297" />
+  <arg name="bag" default="false" />
+  <arg name="bag_dir" default="$(dirname)/artifacts/bags" />
+  <param name="/sensor_bridge/sim_ip" value="127.0.0.1" type="str" />
+  <param name="/sensor_bridge/bind_ip" value="127.0.0.1" type="str" />
+  <param name="/sensor_bridge/ctrl_port" value="9093" type="int" />
+  <param name="/sensor_bridge/status_port" value="909" type="int" />
+  <param name="/sensor_bridge/gps_port" value="1111" type="int" />
+  <param name="/sensor_bridge/imu_port" value="1112" type="int" />
+  <param name="/camera_bridge/bind_ip" value="127.0.0.1" type="str" />
+  <param name="/lidar_bridge/bind_ip" value="127.0.0.1" type="str" />
+  <include file="$(find ctrl_bringup)/launch/ctrl_competition.launch">
+    <arg name="drive" value="$(arg drive)" />
+    <arg name="lidar_port" value="2368" />
+    <arg name="camera_port" value="$(arg camera_port)" />
+    <arg name="bag" value="$(arg bag)" />
+    <arg name="bag_dir" value="$(arg bag_dir)" />
+  </include>
+</launch>

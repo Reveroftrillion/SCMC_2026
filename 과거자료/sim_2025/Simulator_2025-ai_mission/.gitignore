@@ -1,0 +1,28 @@
+# 빌드 및 개발 관련 폴더
+build/
+devel/
+logs/
+install/
+
+# catkin_tools 관련 폴더 및 파일
+.catkin_tools/
+.catkin_workspace
+
+# 로그 파일
+*.log
+
+# IDE 및 편집기 설정 파일
+.vscode/
+.idea/
+*~
+*.swp
+
+*.pcd
+*.pyc
+
+engine/
+models/
+*.pyc
+
+*.jpg
+*.bag

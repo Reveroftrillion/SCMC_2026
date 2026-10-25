@@ -1,0 +1,32 @@
+test_background_callback_error_propagates_while_idle (test_adapter.AdapterTest) ... ok
+test_callback_error_propagates_to_main (test_adapter.AdapterTest) ... ok
+test_default_group_exclusion_and_independent_events_group (test_adapter.AdapterTest) ... ok
+test_ingress_thread_never_executes_application_callback (test_adapter.AdapterTest) ... ok
+test_keep_last_depth_and_take_at_execution (test_adapter.AdapterTest) ... ok
+test_native_timestamp_duration_and_latched_publisher (test_adapter.AdapterTest) ... ok
+test_parameter_file_and_server_preserve_types (test_adapter.AdapterTest) ... ok
+test_parameter_file_explicit_and_constructor_precedence (test_adapter.AdapterTest) ... ok
+test_ready_snapshot_timer_first_and_one_message_per_entity (test_adapter.AdapterTest) ... ok
+test_reentrant_entity_is_reserved_before_worker_takes_message (test_adapter.AdapterTest) ... ok
+test_ros_clock_notification_keeps_jump_before_next_timer_poll (test_adapter.AdapterTest) ... ok
+test_ros_clock_pause_backward_jump_and_missed_periods (test_adapter.AdapterTest) ... ok
+test_shutdown_waits_for_running_worker (test_adapter.AdapterTest) ... ok
+test_system_clock_backward_jump_does_not_add_ros_time_reset (test_adapter.AdapterTest) ... ok
+test_tf_updates_follow_executor_subscription_order (test_adapter.AdapterTest) ... ok
+test_time_and_duration_truncation_negative_values_and_int64_bounds (test_adapter.AdapterTest) ... ok
+test_timer_missed_deadline_equality_matches_rcl (test_adapter.AdapterTest) ... ok
+test_default_deleteall_identity_quaternion_inherited_wire_and_metadata (test_message_defaults.MarkerDefaultsTest) ... ok
+test_explicit_keyword_and_positional_pose_preserved (test_message_defaults.MarkerDefaultsTest) ... ok
+test_full_native_serialization_and_explicit_pose (test_message_defaults.NativeMarkerSerializationTest) ... ok
+test_big_endian_immutable_ros1_buffer_and_repeated_read_semantics (test_point_cloud2.PointCloudTest) ... ok
+test_create_wire_payload_fields_dtype_and_ros1_uint8_serializer (test_point_cloud2.PointCloudTest) ... ok
+test_field_order_dtype_and_padding_are_unchanged (test_point_cloud2.PointCloudTest) ... ok
+test_fixture_sha_and_git_blob_integrity (test_point_cloud2.PointCloudTest) ... ok
+test_nan_selection_dense_flag_and_empty_cloud (test_point_cloud2.PointCloudTest) ... ok
+test_organized_shape_flat_uvs_and_original_row_padding_behavior (test_point_cloud2.PointCloudTest) ... ok
+test_scalar_types_counts_validation_assertions_and_mixed_field_error (test_point_cloud2.PointCloudTest) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.037s
+
+OK

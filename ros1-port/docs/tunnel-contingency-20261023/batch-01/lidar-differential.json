@@ -1,0 +1,94 @@
+{
+  "left01-lidar-current": {
+    "scope": "Offline calculation/tracking with ROS doubles; no controls",
+    "input_manifest_sha256": "f108ea3ccf8d6ba8e49a10d54f014bb9caa9c71ec83da9ce295474c48d38398f",
+    "source_sha256": "c27fa25ccd2d9e98f5e997ae1c7c32e2dee506cdc0cff2d7db7a032ba8634a7f",
+    "source_ref": "working tree",
+    "source_unchanged": true,
+    "frames": 68,
+    "observed_frames": 12,
+    "published_frames": 25,
+    "limitations": [
+      "Bag record order, preceding mission/station; not native callback scheduling",
+      "No input older than the requested interval minus 3s is replayed",
+      "Parameter fallback transform [2,0,2.11]; native TF not replayed",
+      "Fresh recorded mission per scan; wall-clock transport freshness is not tested",
+      "Tracks warmed only from this short window; no planner or vehicle dynamics replay"
+    ],
+    "first_observed": {
+      "s": 1880.1834743228046,
+      "stamp": 1792749510.7878742,
+      "record_time": 1792749510.788934,
+      "elevated_near_actor": 27,
+      "elevated_paint_removed": 0,
+      "corrected_elevated_near_actor": 27
+    },
+    "first_published": {
+      "s": 1880.1834743228046,
+      "stamp": 1792749510.7878742,
+      "record_time": 1792749510.788934,
+      "elevated_near_actor": 27,
+      "elevated_paint_removed": 0,
+      "corrected_elevated_near_actor": 27
+    }
+  },
+  "left01-lidar-baseline": {
+    "scope": "Offline calculation/tracking with ROS doubles; no controls",
+    "input_manifest_sha256": "f108ea3ccf8d6ba8e49a10d54f014bb9caa9c71ec83da9ce295474c48d38398f",
+    "source_sha256": "eaf92ef29af4c7b90fe6d72f2245b0585f72474ce3c112c48bca7b7f4fdada25",
+    "source_ref": "52ebabe6c3dfadee980892bcfdf5a8c0b6ce6075",
+    "source_unchanged": true,
+    "frames": 68,
+    "observed_frames": 6,
+    "published_frames": 0,
+    "limitations": [
+      "Bag record order, preceding mission/station; not native callback scheduling",
+      "No input older than the requested interval minus 3s is replayed",
+      "Parameter fallback transform [2,0,2.11]; native TF not replayed",
+      "Fresh recorded mission per scan; wall-clock transport freshness is not tested",
+      "Tracks warmed only from this short window; no planner or vehicle dynamics replay"
+    ],
+    "first_observed": {
+      "s": 1881.8187102316397,
+      "stamp": 1792749510.9164226,
+      "record_time": 1792749510.917611,
+      "elevated_near_actor": 30,
+      "elevated_paint_removed": 7,
+      "corrected_elevated_near_actor": 30
+    },
+    "first_published": null
+  },
+  "left02-lidar-current": {
+    "scope": "Offline calculation/tracking with ROS doubles; no controls",
+    "input_manifest_sha256": "43bc03dc97834926d2635e64fb138b686820a0f875d437fdbbe83760a1572fbf",
+    "source_sha256": "c27fa25ccd2d9e98f5e997ae1c7c32e2dee506cdc0cff2d7db7a032ba8634a7f",
+    "source_ref": "working tree",
+    "source_unchanged": true,
+    "frames": 33,
+    "observed_frames": 7,
+    "published_frames": 12,
+    "limitations": [
+      "Bag record order, preceding mission/station; not native callback scheduling",
+      "No input older than the requested interval minus 3s is replayed",
+      "Parameter fallback transform [2,0,2.11]; native TF not replayed",
+      "Fresh recorded mission per scan; wall-clock transport freshness is not tested",
+      "Tracks warmed only from this short window; no planner or vehicle dynamics replay"
+    ],
+    "first_observed": {
+      "s": 1881.6257226052992,
+      "stamp": 1792750435.7393177,
+      "record_time": 1792750435.7408535,
+      "elevated_near_actor": 29,
+      "elevated_paint_removed": 0,
+      "corrected_elevated_near_actor": 29
+    },
+    "first_published": {
+      "s": 1881.6257226052992,
+      "stamp": 1792750435.7393177,
+      "record_time": 1792750435.7408535,
+      "elevated_near_actor": 29,
+      "elevated_paint_removed": 0,
+      "corrected_elevated_near_actor": 29
+    }
+  }
+}

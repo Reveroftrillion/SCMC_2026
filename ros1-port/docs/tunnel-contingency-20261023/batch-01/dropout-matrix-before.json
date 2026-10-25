@@ -1,0 +1,828 @@
+{
+  "scope": "Prescribed map-only single-outline/dropout/reappearance; no physical dynamics",
+  "cases": 108,
+  "eligible": 81,
+  "retained": 0,
+  "ineligible": 27,
+  "failures": [
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": -1.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 25.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 0.0,
+      "width": 2.1,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 0.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 20.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 1,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 4,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    },
+    {
+      "offset": 1.0,
+      "width": 1.0,
+      "kmh": 50.0,
+      "misses": 8,
+      "distance": 35.0,
+      "eligible": true,
+      "retained_during_dropout": false,
+      "decision_checks_passed": true
+    }
+  ],
+  "other_decision_failures": [],
+  "avoid_source_sha256": "923d6319e116847fac1e06bf39f2d0328c6b272141ec3af6b4069418c4a2e961",
+  "avoid_source": "verification/.work/tunnel-dropout-before-20261023-01/tree/src/foscar_planning/foscar_planning/states/avoid.py",
+  "source_unchanged": true,
+  "limitations": [
+    "Ego progresses at prescribed input speed, independent of output caps",
+    "No native wall corridor, raw returns, transport scheduling, braking or steering response",
+    "Retained curves may stop under guards; retention is not mobility or collision certification"
+  ]
+}

@@ -1,0 +1,198 @@
+[
+  {
+    "run": "20261006_145202",
+    "bag": "/home/foscar/foscar_logs/bags/run_20261006_145207",
+    "result": "PASS",
+    "lap": 174.0,
+    "before_highway_s": 105.746,
+    "after_highway_s": 28.7,
+    "max_ordinary_kmh": 60.186,
+    "over60_samples": 13,
+    "over60_first": [
+      [
+        1791266029.5886211,
+        939.0760465112011,
+        60.18583679199219
+      ],
+      [
+        1791266029.6245596,
+        939.747339261282,
+        60.18445205688476
+      ],
+      [
+        1791266029.6562588,
+        940.0285699645191,
+        60.16584014892579
+      ]
+    ],
+    "cruise_error_max_m": 0.9,
+    "cruise_tracking": {
+      "start": {
+        "max_m": 0.55,
+        "p95_m": 0.4
+      },
+      "signal1": {
+        "max_m": 0.2,
+        "p95_m": 0.19
+      },
+      "straight1": {
+        "max_m": 0.13,
+        "p95_m": 0.1
+      },
+      "static": {
+        "max_m": 0.22,
+        "p95_m": 0.198
+      },
+      "pedestrian": {
+        "max_m": 0.1,
+        "p95_m": 0.08
+      },
+      "straight2": {
+        "max_m": 0.37,
+        "p95_m": 0.28
+      },
+      "signal4": {
+        "max_m": 0.33,
+        "p95_m": 0.33
+      },
+      "middle": {
+        "max_m": 0.33,
+        "p95_m": 0.26
+      },
+      "roundabout": {
+        "max_m": 0.9,
+        "p95_m": 0.896
+      },
+      "pre_highway": {
+        "max_m": 0.82,
+        "p95_m": 0.7
+      },
+      "highway": {
+        "max_m": 0.08,
+        "p95_m": 0.08
+      },
+      "post_highway": {
+        "max_m": 0.12,
+        "p95_m": 0.11
+      },
+      "tunnel": {
+        "max_m": 0.21,
+        "p95_m": 0.19
+      },
+      "finish": {
+        "max_m": 0.38,
+        "p95_m": 0.33
+      }
+    },
+    "collisions": [],
+    "body_contacts": [],
+    "full_stops": [
+      202.4,
+      309.9,
+      430.9,
+      449.6,
+      600.9
+    ],
+    "sections": [
+      {
+        "section": "start",
+        "elapsed": 16.941,
+        "stopped": 0,
+        "moving": 16.941,
+        "min_kmh": 7.83
+      },
+      {
+        "section": "signal1",
+        "elapsed": 6.626,
+        "stopped": 0.5,
+        "moving": 6.126,
+        "min_kmh": -0.22
+      },
+      {
+        "section": "straight1",
+        "elapsed": 4.471,
+        "stopped": 0,
+        "moving": 4.471,
+        "min_kmh": 28.59
+      },
+      {
+        "section": "static",
+        "elapsed": 12.663,
+        "stopped": 0.3,
+        "moving": 12.362,
+        "min_kmh": -0.21
+      },
+      {
+        "section": "pedestrian",
+        "elapsed": 14.782,
+        "stopped": 0.951,
+        "moving": 13.831,
+        "min_kmh": -0.28
+      },
+      {
+        "section": "straight2",
+        "elapsed": 5.114,
+        "stopped": 0,
+        "moving": 5.114,
+        "min_kmh": 38.33
+      },
+      {
+        "section": "signal4",
+        "elapsed": 6.285,
+        "stopped": 0.4,
+        "moving": 5.884,
+        "min_kmh": -0.2
+      },
+      {
+        "section": "middle",
+        "elapsed": 15.498,
+        "stopped": 0,
+        "moving": 15.498,
+        "min_kmh": 17.01
+      },
+      {
+        "section": "roundabout",
+        "elapsed": 10.712,
+        "stopped": 0,
+        "moving": 10.712,
+        "min_kmh": 19.28
+      },
+      {
+        "section": "pre_highway",
+        "elapsed": 11.711,
+        "stopped": 0,
+        "moving": 11.711,
+        "min_kmh": 43.78
+      },
+      {
+        "section": "highway",
+        "elapsed": 35.74,
+        "stopped": 0,
+        "moving": 35.74,
+        "min_kmh": 50.73
+      },
+      {
+        "section": "post_highway",
+        "elapsed": 4.692,
+        "stopped": 0,
+        "moving": 4.692,
+        "min_kmh": 57.38
+      },
+      {
+        "section": "tunnel",
+        "elapsed": 13.335,
+        "stopped": 0,
+        "moving": 13.335,
+        "min_kmh": 28.99
+      },
+      {
+        "section": "finish",
+        "elapsed": 10.673,
+        "stopped": 0,
+        "moving": 10.673,
+        "min_kmh": 50.98
+      }
+    ],
+    "localization_resets": 0
+  }
+]

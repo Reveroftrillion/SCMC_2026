@@ -1,0 +1,41 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: map
+    Background Color: 32; 32; 32
+  Displays:
+    - Class: rviz/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane Cell Count: 100
+    - Class: rviz/Path
+      Name: Global Route
+      Enabled: true
+      Color: 30; 220; 80
+      Topic: /map/route
+      Queue Size: 1
+    - Class: rviz/Odometry
+      Name: Vehicle
+      Enabled: true
+      Keep: 1
+      Topic: /localization/odometry
+      Queue Size: 5
+    - Class: rviz/PointStamped
+      Name: Pursuit Target
+      Enabled: true
+      Color: 255; 150; 0
+      Radius: 0.25
+      Topic: /control/target
+      Queue Size: 1
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Target Frame: base_link
+      Scale: 12
+Window Geometry:
+  Width: 1200
+  Height: 800

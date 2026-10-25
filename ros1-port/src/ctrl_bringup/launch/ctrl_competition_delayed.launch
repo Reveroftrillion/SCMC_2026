@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="drive" />
+  <arg name="route" />
+  <arg name="config" />
+  <arg name="speed_kmh" />
+  <arg name="roundabout_control" />
+  <arg name="roundabout_local_entry" />
+  <arg name="pedestrian_yield" />
+  <arg name="visual_details" />
+  <arg name="mission_config" />
+  <arg name="link_set" />
+  <arg name="highway_config" />
+  <arg name="highway_checkpoints" />
+  <arg name="behavior_config" />
+  <arg name="states" />
+  <arg name="lidar" />
+  <arg name="bag_points" />
+  <arg name="lidar_port" />
+  <arg name="lidar_sim" />
+  <arg name="camera" />
+  <arg name="camera_port" />
+  <arg name="rviz" />
+  <arg name="view" />
+  <arg name="bag" />
+  <arg name="bag_dir" />
+  <group if="$(arg camera)">
+    <include file="$(find ctrl_camera)/launch/ctrl_yolo_signal.launch">
+      <arg name="port" value="$(arg camera_port)" />
+    </include>
+  </group>
+</launch>

@@ -1,0 +1,92 @@
+{
+  "scope": "Fresh independent map-only poses; no committed-curve or physical replan validation",
+  "cases": 30,
+  "passed": 22,
+  "failed": [
+    {
+      "gap": 20.0,
+      "kmh": 0.0,
+      "station": 1880.0,
+      "hit": {
+        "s": 1919.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    },
+    {
+      "gap": 20.0,
+      "kmh": 20.0,
+      "station": 1880.0,
+      "hit": {
+        "s": 1919.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    },
+    {
+      "gap": 30.0,
+      "kmh": 0.0,
+      "station": 1880.0,
+      "hit": {
+        "s": 1929.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    },
+    {
+      "gap": 30.0,
+      "kmh": 0.0,
+      "station": 1885.0,
+      "hit": {
+        "s": 1929.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    },
+    {
+      "gap": 30.0,
+      "kmh": 0.0,
+      "station": 1890.0,
+      "hit": {
+        "s": 1929.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    },
+    {
+      "gap": 30.0,
+      "kmh": 20.0,
+      "station": 1880.0,
+      "hit": {
+        "s": 1929.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    },
+    {
+      "gap": 30.0,
+      "kmh": 20.0,
+      "station": 1885.0,
+      "hit": {
+        "s": 1929.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    },
+    {
+      "gap": 30.0,
+      "kmh": 20.0,
+      "station": 1890.0,
+      "hit": {
+        "s": 1929.75,
+        "d": 1.75,
+        "body": "second"
+      }
+    }
+  ],
+  "limitations": [
+    "Each fresh pose starts at d=0; temporal replanning is untested",
+    "Whole returned path checked beyond current BEV horizon",
+    "Zero speed and finite stopping targets do not prove physical braking"
+  ]
+}

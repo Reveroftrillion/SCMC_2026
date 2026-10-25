@@ -1,0 +1,6 @@
+{"event": "RED", "intersection": "intersection_01", "s": 108.58068398154744, "v_kmh": 37.751529693603516, "lap": 0, "wall": 1791269415.3393004}
+{"event": "GO", "intersection": "intersection_01", "stop_s": 202.18415632569963, "hold_s": 0.0, "stop_error_m": -0.3008436743003813, "waited_s": 10.399931483028922, "lap": 0, "wall": 1791269425.750853}
+{"event": "RED", "intersection": "intersection_02", "s": 210.9242909300817, "v_kmh": 30.267175674438473, "lap": 0, "wall": 1791269428.0571685}
+{"event": "DEPARTED", "intersection": "intersection_01", "move_delay_s": 0.5000516080181114, "clear_line_s": 2.500028859009035, "lap": 0, "wall": 1791269428.2230496}
+{"event": "GO", "intersection": "intersection_02", "stop_s": 309.69747162376297, "hold_s": 0.0, "stop_error_m": -0.17602837623701362, "waited_s": 9.400023916037753, "lap": 0, "wall": 1791269437.4412098}
+{"event": "DEPARTED", "intersection": "intersection_02", "move_delay_s": 0.5999344929587096, "clear_line_s": 2.8999781729653478, "lap": 0, "wall": 1791269440.3373146}

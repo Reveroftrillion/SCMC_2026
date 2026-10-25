@@ -1,0 +1,317 @@
+[WARN] [1791872218.187930]: Auto/D handshake not answered for 5 s: still requesting
+[WARN] [1791872223.237804]: Auto/D handshake not answered for 5 s: still requesting
+[WARN] [1791872228.287977]: Auto/D handshake not answered for 5 s: still requesting
+[WARN] [1791872233.337765]: Auto/D handshake not answered for 5 s: still requesting
+[WARN] [1791872238.337791]: Auto/D handshake not answered for 5 s: still requesting
+[WARN] [1791872243.387783]: Auto/D handshake not answered for 5 s: still requesting
+[WARN] [1791872248.387819]: Auto/D handshake not answered for 5 s: still requesting
+[INFO] [1791872213.377593]: 도로 마스크: 링크 점 149211개 (도로밖 여유 0.0 m, 통로 반폭 1.5 m)
+[INFO] [1791872213.398790]: obstacle_node 시작: /sensors/lidar/points → /events | 라이다 장착 x=2.0 y=0.0 z=2.11 (use_tf=True) | ROI x<40.0 |y|<20.0 z -0.3~2.5, 지면 0.15
+[INFO] [1791872213.447134]: base_link→lidar TF 사용: (2.00, 0.00, 2.11)
+[INFO] [1791872213.462920]: 경로 수신: 점 4525개, 길이 2235 m → Event.s 채웁니다
+[INFO] [1791872218.522093]: 8.8 Hz | 처리 12.2 ms (최대 19.7) | 덩어리 2, 추적 2, 경로밖 제외 43, 도로밖 제외 43, 도로밖 점 85230
+[INFO] [1791872223.561596]: 8.5 Hz | 처리 11.8 ms (최대 20.3) | 덩어리 2, 추적 2, 경로밖 제외 43, 도로밖 제외 43, 도로밖 점 81442
+[INFO] [1791872228.673388]: 8.4 Hz | 처리 11.7 ms (최대 20.9) | 덩어리 2, 추적 2, 경로밖 제외 43, 도로밖 제외 43, 도로밖 점 81442
+[INFO] [1791872233.707907]: 8.5 Hz | 처리 11.8 ms (최대 19.9) | 덩어리 2, 추적 2, 경로밖 제외 43, 도로밖 제외 43, 도로밖 점 81442
+[INFO] [1791872238.728479]: 8.6 Hz | 처리 11.5 ms (최대 13.4) | 덩어리 2, 추적 2, 경로밖 제외 43, 도로밖 제외 43, 도로밖 점 81442
+[INFO] [1791872243.813099]: 8.5 Hz | 처리 11.4 ms (최대 18.1) | 덩어리 2, 추적 2, 경로밖 제외 43, 도로밖 제외 43, 도로밖 점 81442
+[INFO] [1791872248.917251]: 8.4 Hz | 처리 11.8 ms (최대 14.0) | 덩어리 2, 추적 2, 경로밖 제외 43, 도로밖 제외 43, 도로밖 점 81442
+[INFO] [1791872212.913416]: VLP-16 UDP :2368 → /sensors/lidar/points (frame=lidar) 수신 대기
+[INFO] [1791872215.913574]: 8.7 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872218.913480]: 8.7 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872221.913499]: 8.7 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872224.913547]: 8.3 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872227.913540]: 8.3 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872230.913541]: 8.7 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872233.913552]: 8.3 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872236.913568]: 8.7 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872239.913517]: 8.7 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872242.913579]: 8.3 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872245.913522]: 8.3 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872248.913539]: 8.7 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872251.913537]: 8.3 Hz | 회전당 7650 점 | 송신 127.0.0.1:2369
+[INFO] [1791872212.937482]: log=/tmp/rmt-home/foscar_logs/follow_20261013_061652_937285.csv
+[INFO] [1791872212.987692]: WAITING | waiting for a pose to pick the route | xy=(0.00,0.00) yaw=0.0deg v=0.00km/h s=0.00m error=0.00m
+[INFO] [1791872213.153840]: route 4525 points / 2234.6m, global-s offset 0.0m; profile 30.2-183.9 km/h
+[INFO] [1791872213.186600]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872214.137909]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872215.138018]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872216.187899]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872217.188171]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872218.189604]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872219.238003]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872220.287936]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872221.287998]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872222.337864]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872223.338032]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872224.387920]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872225.387998]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872226.438062]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872227.438021]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872228.438145]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872229.438134]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872230.487958]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872231.488052]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872232.537846]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872233.538163]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872234.587862]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872235.587970]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872236.638021]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872237.687901]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872238.687835]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872239.687891]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872240.738077]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872241.788040]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872242.838074]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872243.838141]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872244.888025]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872245.937828]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872246.987892]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872247.987999]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872249.038062]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872250.087913]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872251.088042]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872252.088196]: HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m
+[INFO] [1791872212.969724]: IMU yaw(진북) → UTM 격자북 보정 γ = -1.347° + 장착 오프셋 +0.00°
+[INFO] [1791872213.129977]: 첫 GPS fix: x=-131.3 y=-427.5
+[INFO] [1791872213.113644]: states: YIELD(80), AVOID(70), TUNNEL(40), CRUISE(0)
+[INFO] [1791872213.344933]: shadow prediction: 634 directed road links
+[INFO] [1791872213.644379]: 경로 수신: 4525점 2235 m
+[INFO] [1791872213.662389]: mission → CRUISE: initial localization
+[INFO] [1791872213.663547]: global-s offset 0.0 m
+[INFO] [1791872213.664314]: - → CRUISE  (s=0.9 v=0 km/h)
+[INFO] [1791872212.887500]: GPS :1111, IMU :1112, status :909; drive=False
+[INFO] [1791872215.887701]: RX={'gps': 30, 'imu': 125, 'status': 130} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.16, 'imu': 0.04, 'status': 0.01}
+[INFO] [1791872218.887692]: RX={'gps': 60, 'imu': 251, 'status': 256} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.14, 'imu': 0.03, 'status': 0.04}
+[INFO] [1791872221.887666]: RX={'gps': 90, 'imu': 377, 'status': 384} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.16, 'imu': 0.01, 'status': 0.02}
+[INFO] [1791872224.887659]: RX={'gps': 120, 'imu': 502, 'status': 513} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.13, 'imu': 0.01, 'status': 0.02}
+[INFO] [1791872227.887687]: RX={'gps': 150, 'imu': 631, 'status': 642} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.13, 'imu': 0.03, 'status': 0.05}
+[INFO] [1791872230.887712]: RX={'gps': 180, 'imu': 759, 'status': 772} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.14, 'imu': 0.03, 'status': 0.04}
+[INFO] [1791872233.887669]: RX={'gps': 210, 'imu': 886, 'status': 903} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.16, 'imu': 0.01, 'status': 0.01}
+[INFO] [1791872236.887670]: RX={'gps': 240, 'imu': 1013, 'status': 1033} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.16, 'imu': 0.01, 'status': 0.02}
+[INFO] [1791872239.887652]: RX={'gps': 270, 'imu': 1143, 'status': 1163} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.13, 'imu': 0.01, 'status': 0.02}
+[INFO] [1791872242.887640]: RX={'gps': 300, 'imu': 1268, 'status': 1290} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.17, 'imu': 0.01, 'status': 0.02}
+[INFO] [1791872245.887668]: RX={'gps': 330, 'imu': 1397, 'status': 1420} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.16, 'imu': 0.01, 'status': 0.01}
+[INFO] [1791872248.887656]: RX={'gps': 360, 'imu': 1524, 'status': 1548} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.14, 'imu': 0.03, 'status': 0.03}
+[INFO] [1791872251.887688]: RX={'gps': 390, 'imu': 1647, 'status': 1678} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.14, 'imu': 0.03, 'status': 0.01}
+[INFO] [1791872218.618383]: YOLO on CUDAExecutionProvider
+Traceback (most recent call last):
+  File "/workspace/ros1-port/devel/lib/foscar_camera/yolo_signal_node", line 15, in <module>
+    exec(compile(fh.read(), python_script, 'exec'), context)
+[INFO] [1791872218.244330]: 카메라 UDP :9297 → /sensors/camera/traffic/compressed (frame=camera_7, stamp=recv) 수신 대기
+[INFO] [1791872221.244469]: 26.0 Hz | 장당 54 KB | 송신 127.0.0.1:9090 | 비정상 패킷 78
+[INFO] [1791872224.244508]: 26.3 Hz | 장당 54 KB | 송신 127.0.0.1:9090 | 비정상 패킷 79
+[INFO] [1791872227.244483]: 26.7 Hz | 장당 55 KB | 송신 127.0.0.1:9090 | 비정상 패킷 80
+[INFO] [1791872230.244474]: 26.7 Hz | 장당 54 KB | 송신 127.0.0.1:9090 | 비정상 패킷 80
+[INFO] [1791872233.244486]: 26.7 Hz | 장당 55 KB | 송신 127.0.0.1:9090 | 비정상 패킷 80
+[INFO] [1791872236.244469]: 26.3 Hz | 장당 55 KB | 송신 127.0.0.1:9090 | 비정상 패킷 79
+[INFO] [1791872239.244503]: 26.0 Hz | 장당 55 KB | 송신 127.0.0.1:9090 | 비정상 패킷 78
+[INFO] [1791872242.244470]: 25.0 Hz | 장당 55 KB | 송신 127.0.0.1:9090 | 비정상 패킷 75
+[INFO] [1791872245.244543]: 26.0 Hz | 장당 55 KB | 송신 127.0.0.1:9090 | 비정상 패킷 78
+[INFO] [1791872248.244476]: 26.7 Hz | 장당 54 KB | 송신 127.0.0.1:9090 | 비정상 패킷 80
+[INFO] [1791872251.244527]: 26.3 Hz | 장당 55 KB | 송신 127.0.0.1:9090 | 비정상 패킷 79
+  File "/workspace/ros1-port/build/foscar_camera/python_scripts/yolo_signal_node", line 5, in <module>
+Traceback (most recent call last):
+  File "/workspace/ros1-port/devel/lib/foscar_camera/camera_bridge", line 15, in <module>
+    main()
+  File "/workspace/ros1-port/src/foscar_camera/./foscar_camera/yolo_signal_node.py", line 93, in main
+    exec(compile(fh.read(), python_script, 'exec'), context)
+  File "/workspace/ros1-port/build/foscar_camera/python_scripts/camera_bridge", line 5, in <module>
+    try:rclpy.spin(node)
+  File "<string>", line 10, in spin
+    main()
+  File "/workspace/ros1-port/src/foscar_camera/./foscar_camera/camera_bridge.py", line 189, in main
+    rclpy.spin(node)
+  File "<string>", line 10, in spin
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 113, in spin
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 113, in spin
+    self.spin_once()
+    self.spin_once()
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 124, in spin_once
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 124, in spin_once
+    entity = self._next(timeout_sec)
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 61, in _next
+    entity = self._next(timeout_sec)
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 61, in _next
+    raise ExternalShutdownException()
+    raise ExternalShutdownException()
+foscar_ros1.executors.ExternalShutdownException
+foscar_ros1.executors.ExternalShutdownException
+... logging to /tmp/rmt-home/.ros/log/ae69bcd0-c6cd-11f1-b45b-345a60692f67/roslaunch-foscar-84.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/workspace/ros1-port/src/foscar_bringup/launch/competition_delayed.launch
+[1mstarted roslaunch server http://127.0.0.1:34555/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /camera_bridge/frame_id: camera_7
+ * /camera_bridge/port: 9297
+ * /camera_bridge/stamp_source: recv
+ * /camera_bridge/topic: /sensors/camera/t...
+ * /rosdistro: noetic
+ * /rosversion: 1.17.4
+ * /yolo_signal_node/confidence: 0.4
+ * /yolo_signal_node/confirm_frames: 2
+ * /yolo_signal_node/detections_log: /tmp/rmt-home/fos...
+ * /yolo_signal_node/max_frame_age_s: 1.0
+ * /yolo_signal_node/model_file: /workspace/ros1-p...
+ * /yolo_signal_node/stoplines_file: /workspace/ros1-p...
+ * /yolo_signal_node/threads: 4
+
+NODES
+  /
+    camera_bridge (foscar_camera/camera_bridge)
+    yolo_signal_node (foscar_camera/yolo_signal_node)
+
+[1mROS_MASTER_URI=http://127.0.0.1:11311[0m
+]2;/workspace/ros1-port/src/foscar_bringup/launch/competition_delayed.launch http://127.0.0.1:11311
+[1mprocess[camera_bridge-1]: started with pid [333][0m
+[1mprocess[yolo_signal_node-2]: started with pid [334][0m
+[yolo_signal_node-2] killing on exit
+[camera_bridge-1] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m
+... logging to /tmp/rmt-home/.ros/log/ae69bcd0-c6cd-11f1-b45b-345a60692f67/roslaunch-foscar-44.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/workspace/ros1-port/docker/local.launch
+[1mstarted roslaunch server http://127.0.0.1:44181/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /behavior_node/_ros2_parameter_files: /workspace/ros1-p...
+ * /behavior_node/highway/checkpoint_file: /workspace/ros1-p...
+ * /behavior_node/highway/config: /workspace/ros1-p...
+ * /behavior_node/highway/path_file: /workspace/ros1-p...
+ * /behavior_node/mission/config: /workspace/ros1-p...
+ * /behavior_node/prediction/control_config: /workspace/ros1-p...
+ * /behavior_node/prediction/control_speed_kmh: 60.0
+ * /behavior_node/prediction/link_set: /workspace/ros1-p...
+ * /behavior_node/roundabout/enabled: True
+ * /behavior_node/roundabout/local_entry: True
+ * /behavior_node/states: cruise,avoid,yiel...
+ * /behavior_node/traffic/config: /workspace/ros1-p...
+ * /behavior_node/traffic/enabled: True
+ * /behavior_node/traffic/path_file: /workspace/ros1-p...
+ * /behavior_node/visualization/details: False
+ * /behavior_node/yield/pedestrian_enabled: True
+ * /camera_bridge/bind_ip: 127.0.0.1
+ * /lidar_bridge/bind_ip: 127.0.0.1
+ * /lidar_bridge/port: 2368
+ * /localization/_ros2_parameter_files: /workspace/ros1-p...
+ * /localization/path_file: /workspace/ros1-p...
+ * /localization/spawn_file: /workspace/ros1-p...
+ * /obstacle_node/chain_min_count: 3
+ * /obstacle_node/chain_span_m: 25.0
+ * /obstacle_node/chain_tol_m: 0.5
+ * /obstacle_node/confirm_frames: 3
+ * /obstacle_node/corridor_half_m: 1.5
+ * /obstacle_node/dbscan_eps: 0.5
+ * /obstacle_node/dbscan_min_samples: 5
+ * /obstacle_node/ground_slope_tol: 0.01
+ * /obstacle_node/ground_z: 0.15
+ * /obstacle_node/height_gate_m: 20.0
+ * /obstacle_node/highway/config: /workspace/ros1-p...
+ * /obstacle_node/highway/mission_config: /workspace/ros1-p...
+ * /obstacle_node/lidar_x: 2.0
+ * /obstacle_node/lidar_y: 0.0
+ * /obstacle_node/lidar_z: 2.11
+ * /obstacle_node/link_set: /workspace/ros1-p...
+ * /obstacle_node/max_block_width_m: 2.0
+ * /obstacle_node/max_misses: 15
+ * /obstacle_node/max_object_size_m: 5.0
+ * /obstacle_node/min_object_size_m: 0.05
+ * /obstacle_node/min_obstacle_top_m: 0.3
+ * /obstacle_node/min_road_user_height_m: 0.6
+ * /obstacle_node/min_road_user_width_m: 0.25
+ * /obstacle_node/min_straightness: 0.6
+ * /obstacle_node/moving_enter_mps: 0.8
+ * /obstacle_node/moving_exit_mps: 0.4
+ * /obstacle_node/path_predict_s: 2.0
+ * /obstacle_node/ped_max_size_m: 1.2
+ * /obstacle_node/ped_max_speed_mps: 3.0
+ * /obstacle_node/publish_markers: True
+ * /obstacle_node/road_margin_m: 0.0
+ * /obstacle_node/road_user_aspect_max: 4.0
+ * /obstacle_node/roi_x_max: 40.0
+ * /obstacle_node/roi_y_abs: 20.0
+ * /obstacle_node/roi_z_max: 2.5
+ * /obstacle_node/roi_z_min: -0.3
+ * /obstacle_node/small_min_top_m: 0.5
+ * /obstacle_node/small_size_m: 0.5
+ * /obstacle_node/use_road_mask: True
+ * /obstacle_node/use_route: True
+ * /obstacle_node/use_tf: True
+ * /obstacle_node/vehicle_min_size_m: 2.0
+ * /path_follower/_ros2_parameter_files: /workspace/ros1-p...
+ * /path_follower/continuous: True
+ * /path_follower/path_file: /workspace/ros1-p...
+ * /path_follower/require_target: True
+ * /path_follower/route: auto
+ * /path_follower/spawn_file: /workspace/ros1-p...
+ * /path_follower/speed_kmh: 60.0
+ * /path_follower/speed_policy_file: /workspace/ros1-p...
+ * /race_hud_node/code_version: 
+ * /race_hud_node/mission_config: /workspace/ros1-p...
+ * /ros1_port/competition/bag_name: run_20261013_061652
+ * /rosdistro: noetic
+ * /rosversion: 1.17.4
+ * /sensor_bridge/_ros2_parameter_files: /workspace/ros1-p...
+ * /sensor_bridge/bind_ip: 127.0.0.1
+ * /sensor_bridge/ctrl_port: 9093
+ * /sensor_bridge/drive: False
+ * /sensor_bridge/gps_port: 1111
+ * /sensor_bridge/imu_port: 1112
+ * /sensor_bridge/sim_ip: 127.0.0.1
+ * /sensor_bridge/status_port: 909
+
+NODES
+  /
+    behavior_node (foscar_planning/behavior_node)
+    competition_camera_delay (foscar_bringup/delay_wall)
+    lidar_bridge (foscar_lidar/lidar_bridge)
+    localization (foscar_control/localization)
+    obstacle_node (foscar_lidar/obstacle_node)
+    path_follower (foscar_control/path_follower)
+    race_hud_node (foscar_planning/race_hud_node)
+    sensor_bridge (foscar_control/sensor_bridge)
+    static_transform_publisher (tf2_ros/static_transform_publisher)
+
+auto-starting new master
+[1mprocess[master]: started with pid [55][0m
+[1mROS_MASTER_URI=http://127.0.0.1:11311[0m
+]2;/workspace/ros1-port/docker/local.launch http://127.0.0.1:11311
+[1msetting /run_id to ae69bcd0-c6cd-11f1-b45b-345a60692f67[0m
+[1mprocess[rosout-1]: started with pid [64][0m
+started core service [/rosout]
+[1mprocess[sensor_bridge-2]: started with pid [71][0m
+[1mprocess[localization-3]: started with pid [72][0m
+[1mprocess[path_follower-4]: started with pid [73][0m
+[1mprocess[behavior_node-5]: started with pid [74][0m
+[1mprocess[static_transform_publisher-6]: started with pid [75][0m
+[1mprocess[lidar_bridge-7]: started with pid [76][0m
+[1mprocess[obstacle_node-8]: started with pid [79][0m
+[1mprocess[race_hud_node-9]: started with pid [83][0m
+[1mprocess[competition_camera_delay-10]: started with pid [84][0m
+[competition_camera_delay-10] killing on exit
+[race_hud_node-9] killing on exit
+[obstacle_node-8] killing on exit
+[lidar_bridge-7] killing on exit
+[static_transform_publisher-6] killing on exit
+[behavior_node-5] killing on exit
+[path_follower-4] killing on exit
+[localization-3] killing on exit
+[sensor_bridge-2] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m

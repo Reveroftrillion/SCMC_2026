@@ -1,0 +1,14 @@
+[
+  {
+    "side": "center",
+    "name": "CTRL_tunnel_center_box_batch01.json",
+    "sha256": "5f3312f82c4b9253a6e017cd4e48a885d2e60e00806bcb0e1c6dac1de51e0eed",
+    "unchanged_source_scene": true
+  },
+  {
+    "side": "right",
+    "name": "CTRL_tunnel_right_box_batch01.json",
+    "sha256": "23f0037c0fdbf1c24b8d92ccda0fbc20965e8d3dcbbabacf2a32e1eb58f04bb6",
+    "unchanged_source_scene": true
+  }
+]

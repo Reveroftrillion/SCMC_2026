@@ -1,0 +1,53 @@
+# 신호등 데이터 수집 설정 (팀 1). 포트·임계값은 여기에서만 바꾼다 (코드에 숫자 하드코딩 금지).
+# 이 파일은 **수집 전용**이다. 대회 주행은 foscar_camera/config/traffic_light.yaml 을 쓴다.
+#
+# ⚠️ semantic 카메라(9210)는 주행 중 사용 금지다. 이 설정으로 뜨는 노드를 대회 때 띄우지 않는다.
+
+camera_bridge:
+  ros__parameters:
+    bind_ip: "0.0.0.0"
+    port: 9208                      # 자유 카메라 (상향, FOV 70°). 대회 주행의 전방 9202 와 별개
+    topic: "/sensors/camera/tele/compressed"
+    frame_id: "camera_tele"
+    aux_header_bytes: 16            # 'MOR' 뒤 sec/nsec/index/size
+    rcvbuf_bytes: 8388608
+    stamp_source: "morai"           # 두 카메라를 같은 시뮬 프레임끼리 짝짓는다 (명세서 §3-7)
+
+camera_bridge_semantic:
+  ros__parameters:
+    bind_ip: "0.0.0.0"
+    port: 9210                      # semantic. 자유 카메라와 같은 pose·FOV·해상도여야 한다
+    topic: "/sensors/camera/semantic/compressed"
+    frame_id: "camera_tele"         # 자유 카메라와 같은 프레임 — 정렬이 전제다
+    aux_header_bytes: 16
+    rcvbuf_bytes: 8388608
+    stamp_source: "morai"
+
+recorder_node:
+  ros__parameters:
+    rgb_topic: "/sensors/camera/tele/compressed"
+    sem_topic: "/sensors/camera/semantic/compressed"
+    s_topic: "/localization/s"
+    out_dir: "~/foscar_logs/dataset"
+    tag: ""                         # 조건 라벨. 런치 인자로 넘긴다 (sunny_11h 등)
+
+    step_m: 2.0                     # 이만큼 이동하면 저장 (주행 중)
+    interval_s: 2.0                 # 이만큼 지나면 저장 (정차 중 — 적→녹 전환을 놓치지 않으려고)
+    slop_s: 0.005                   # 동기화 허용 오차. stamp_source: morai 기준
+    queue_size: 20
+
+    min_box_px: 12                  # 이보다 작은 semantic 덩어리는 노이즈.
+                                    # extract.py 의 --min-box-px 와 같아야 진단 = 라벨링이 된다
+
+    check: false                    # true 면 저장 없이 진단만 (명세서 §7)
+    check_view: true                # check 모드에서 오버레이 창을 띄운다 (headless 면 자동으로 꺼짐)
+    check_seconds: 0.0              # >0 이면 이 시간 뒤 진단 요약을 찍고 종료
+
+collection_stop_node:
+  ros__parameters:
+    # stop_seconds는 런치 인자(기본 60초). 0이면 수집 정차 기능을 끈다.
+    stop_before_m: 0.0              # 기존 정지선에 앞바퀴 정지. 추가 이격은 실측 후 조절
+    reach_m: 0.5                    # 목표 앞바퀴 위치 허용 오차 (tracker는 0.3 m 안에서 정지 유지)
+    stopped_speed_mps: 0.1          # 이 속도 이하여야 정차 시간을 센다
+    sensor_timeout_s: 0.5           # 위치/속도 끊김·실행 정지 시간은 대기에 포함하지 않는다
+    max_lateral_m: 1.0              # foscar_camera의 정지선 경로 투영과 동일

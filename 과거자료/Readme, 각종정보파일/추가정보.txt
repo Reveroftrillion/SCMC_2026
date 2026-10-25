@@ -1,0 +1,22 @@
+https://github.com/MORAI-Autonomous/MORAI-ROS_morai_msgs/tree/beta_drive
+
+https://github.com/MORAI-EDU/beginner_tutorials_answer
+
+https://github.com/MORAI-Autonomous/MORAI-NetworkModule
+
+[Competiton Vehicle Status 정보]
+
+1) Ego Vehicle Status 대비 제공되지 않는 정보
+pos_x, pos_y, pos_z
+vel_y, vel_z
+accel_x, accel_y, accel_z
+tire_lateral_force_fr ~ rr
+side_slip_angle_fl ~ rr
+tire_cornering_stiffnesss_fl ~ rr
+
+2) UDP 데이터 수신 방법
+UDP 프로토콜 예제 자료 중 EgoVehicleStatus.py 활용
+(시뮬레이터 및 코드 내 PORT 번호 통일할것)
+우분투 환경에서 사용시 PORT 번호를 4자리로 변경후 사용할 것
+
+

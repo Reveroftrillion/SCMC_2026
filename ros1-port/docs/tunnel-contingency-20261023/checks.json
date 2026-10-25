@@ -1,0 +1,34 @@
+{
+  "new_regressions_host_before": {
+    "passed": 3,
+    "failed": 3,
+    "skipped": 0
+  },
+  "new_regressions_host_after": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "new_tool_tests_docker": {
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "algorithm_full_run": {
+    "passed": 955,
+    "failed": 4,
+    "skipped": 0,
+    "seconds": 343.62011675399845
+  },
+  "fixture_failure_rerun": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0
+  },
+  "remaining_algorithm_failure": "test_tunnel_intensity.py:75: existing ROUNDABOUT fixed-height policy conflicts with previously merged correction",
+  "notes": [
+    "Full run and targeted rerun are separate results, not one completely passing suite.",
+    "No existing expected values or reference resources changed.",
+    "No live ROS, MORAI, control transmission, Windows or catkin build tested."
+  ]
+}

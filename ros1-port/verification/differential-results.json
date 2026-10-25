@@ -1,0 +1,116 @@
+{
+  "scope": "Windows host-only algorithm/callback differential with common test doubles; not ROS integration",
+  "python": "3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit (AMD64)]",
+  "versions": {
+    "pytest": "8.4.2",
+    "numpy": "1.24.4",
+    "scipy": "1.10.1",
+    "PyYAML": "6.0.3",
+    "pyproj": "3.6.1",
+    "scikit-learn": "1.3.2",
+    "matplotlib": "3.7.5",
+    "opencv-python": "4.8.1.78"
+  },
+  "absolute_tolerance": 1e-12,
+  "relative_tolerance": 1e-12,
+  "original": {
+    "exitstatus": 0,
+    "statuses": {
+      "passed": 909
+    },
+    "failed": [],
+    "trace_count": 35608,
+    "operations": {
+      "Controller.step": 28394,
+      "PoseEstimator.update": 3458,
+      "Avoid.compute_target": 283,
+      "SignalStopPolicy.observe": 34,
+      "bev_stop_markers": 2,
+      "checkpoint_markers": 8,
+      "required_checkpoint_markers": 7,
+      "CircularGap.evaluate": 71,
+      "prediction_markers": 16,
+      "Yield.compute_target": 11,
+      "Behavior.tick": 84,
+      "HighwayRuntime.apply": 3180,
+      "highway_markers": 7,
+      "roundabout_markers": 8,
+      "mission_markers": 16,
+      "SignalStopPolicy.apply": 29
+    }
+  },
+  "port": {
+    "exitstatus": 0,
+    "statuses": {
+      "passed": 909
+    },
+    "failed": [],
+    "trace_count": 35608,
+    "operations": {
+      "Controller.step": 28394,
+      "PoseEstimator.update": 3458,
+      "Avoid.compute_target": 283,
+      "SignalStopPolicy.observe": 34,
+      "bev_stop_markers": 2,
+      "checkpoint_markers": 8,
+      "required_checkpoint_markers": 7,
+      "CircularGap.evaluate": 71,
+      "prediction_markers": 16,
+      "Yield.compute_target": 11,
+      "Behavior.tick": 84,
+      "HighwayRuntime.apply": 3180,
+      "highway_markers": 7,
+      "roundabout_markers": 8,
+      "mission_markers": 16,
+      "SignalStopPolicy.apply": 29
+    }
+  },
+  "identical_case_outcomes": true,
+  "trace_differences": [],
+  "numeric_comparison": {
+    "numbers": 3657429,
+    "max_abs_error": 0.0
+  },
+  "integer_timestamp_boolean_state_comparison": "exact",
+  "all_tests_passed": true,
+  "rerun_provenance": {
+    "original": {
+      "previous": {
+        "exitstatus": 1,
+        "failed": [
+          {
+            "id": "src/foscar_planning/test/test_highway_visualization.py::test_scene_shows_gap_lane_edges_and_nearest_vehicle_roles",
+            "phase": "call",
+            "outcome": "failed",
+            "details": "def test_scene_shows_gap_lane_edges_and_nearest_vehicle_roles():\n        run=SimpleNamespace(active=True,diagnostic=dict(state='WAIT_GAP',reason='CLEAR_CONFIRM',mode='control',\n            objects=[dict(id='rear',xy=[[0,0],[2,0],[2,1]],velocity=[5,0])],\n            scene=dict(lanes=[dict(target=True,edges=[[[0,0],[20,0]],[[0,3],[20,3]]])],\n                objects={'rear':dict(lane=4,role='REAR',speed_kmh=18.)},\n                gap=dict(polygon=[[3,0],[15,0],[15,3],[3,3]],length_m=12.,bounded=True,\n                         status='CLEAR_CONFIRM',front_id=None,rear_id='rear',occupied=False))))\n>       markers=highway_markers(run,Time()).markers\n\nsrc\\foscar_planning\\test\\test_highway_visualization.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\..\\pytest_bridge.py:70: in wrapped\n    result=_original(*args,**kwargs)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nruntime = namespace(active=True, diagnostic={'state': 'WAIT_GAP', 'reason': 'CLEAR_CONFIRM', 'mode': 'control', 'objects': [{'id...length_m': 12.0, 'bounded': True, 'status': 'CLEAR_CONFIRM', 'front_id': None, 'rear_id': 'rear', 'occupied': False}}})\nstamp = <ros_stubs.Stamp object at 0x000001F952346F80>\n\n    def highway_markers(runtime,stamp):\n        arr=MarkerArray();clear=Marker();clear.action=Marker.DELETEALL;arr.markers.append(clear)\n        if not runtime.active:return arr\n        data=runtime.diagnostic\n        def line(xy,color,ns,closed=False,width=.12):\n            if not xy:return None\n            m=Marker();m.header.frame_id='map';m.header.stamp=stamp;m.ns=ns;m.id=len(arr.markers)\n            m.type=Marker.LINE_STRIP;m.action=Marker.ADD;m.pose.orientation.w=1.;m.scale.x=width\n            m.color.r,m.color.g,m.color.b=color;m.color.a=.95\n            m.points=[Point(x=float(x),y=float(y),z=.3) for x,y in xy+([xy[0]] if closed else [])]\n            arr.markers.append(m);return m\n        def text_at(xy,value,ns,color=(1.,1.,1.),size=1.):\n            m=Marker();m.header.frame_id='map';m.header.stamp=stamp;m.ns=ns;m.id=len(arr.markers)\n            m.type=Marker.TEXT_VIEW_FACING;m.action=Marker.ADD;m.pose.orientation.w=1.\n            m.pose.position.x=float(xy[0]);m.pose.position.y=float(xy[1]);m.pose.position.z=1.4\n            m.scale.z=size;m.color.r,m.color.g,m.color.b=color;m.color.a=1.;m.text=value\n            arr.markers.append(m)\n        scene=data.get('scene',{});gap=scene.get('gap')\n        for lane in scene.get('lanes',[]):\n            for edge in lane['edges']:\n                line(edge,(.1,.65,1.) if lane['target'] else (.45,.45,.45),'highway_lane_edges',width=.07)\n        if gap and gap['polygon']:\n            polygon=gap['polygon'];n=len(polygon)\n>           fill=line(polygon,(.1,.65,1.),'highway_gap');fill.type=Marker.TRIANGLE_LIST\nE           AttributeError: type object 'Marker' has no attribute 'TRIANGLE_LIST'\n\nsrc\\foscar_planning\\foscar_planning\\highway_markers.py:30: AttributeError"
+          }
+        ]
+      },
+      "selected": [
+        "src/foscar_planning/test/test_highway_visualization.py::test_scene_shows_gap_lane_edges_and_nearest_vehicle_roles"
+      ],
+      "exitstatus": 0
+    },
+    "port": {
+      "previous": {
+        "exitstatus": 1,
+        "failed": [
+          {
+            "id": "src/foscar_planning/test/test_highway_visualization.py::test_scene_shows_gap_lane_edges_and_nearest_vehicle_roles",
+            "phase": "call",
+            "outcome": "failed",
+            "details": "def test_scene_shows_gap_lane_edges_and_nearest_vehicle_roles():\n        run=SimpleNamespace(active=True,diagnostic=dict(state='WAIT_GAP',reason='CLEAR_CONFIRM',mode='control',\n            objects=[dict(id='rear',xy=[[0,0],[2,0],[2,1]],velocity=[5,0])],\n            scene=dict(lanes=[dict(target=True,edges=[[[0,0],[20,0]],[[0,3],[20,3]]])],\n                objects={'rear':dict(lane=4,role='REAR',speed_kmh=18.)},\n                gap=dict(polygon=[[3,0],[15,0],[15,3],[3,3]],length_m=12.,bounded=True,\n                         status='CLEAR_CONFIRM',front_id=None,rear_id='rear',occupied=False))))\n>       markers=highway_markers(run,Time()).markers\n\nsrc\\foscar_planning\\test\\test_highway_visualization.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\..\\pytest_bridge.py:70: in wrapped\n    result=_original(*args,**kwargs)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nruntime = namespace(active=True, diagnostic={'state': 'WAIT_GAP', 'reason': 'CLEAR_CONFIRM', 'mode': 'control', 'objects': [{'id...length_m': 12.0, 'bounded': True, 'status': 'CLEAR_CONFIRM', 'front_id': None, 'rear_id': 'rear', 'occupied': False}}})\nstamp = <ros_stubs.Stamp object at 0x000001B969B12470>\n\n    def highway_markers(runtime,stamp):\n        arr=MarkerArray();clear=Marker();clear.action=Marker.DELETEALL;arr.markers.append(clear)\n        if not runtime.active:return arr\n        data=runtime.diagnostic\n        def line(xy,color,ns,closed=False,width=.12):\n            if not xy:return None\n            m=Marker();m.header.frame_id='map';m.header.stamp=stamp;m.ns=ns;m.id=len(arr.markers)\n            m.type=Marker.LINE_STRIP;m.action=Marker.ADD;m.pose.orientation.w=1.;m.scale.x=width\n            m.color.r,m.color.g,m.color.b=color;m.color.a=.95\n            m.points=[Point(x=float(x),y=float(y),z=.3) for x,y in xy+([xy[0]] if closed else [])]\n            arr.markers.append(m);return m\n        def text_at(xy,value,ns,color=(1.,1.,1.),size=1.):\n            m=Marker();m.header.frame_id='map';m.header.stamp=stamp;m.ns=ns;m.id=len(arr.markers)\n            m.type=Marker.TEXT_VIEW_FACING;m.action=Marker.ADD;m.pose.orientation.w=1.\n            m.pose.position.x=float(xy[0]);m.pose.position.y=float(xy[1]);m.pose.position.z=1.4\n            m.scale.z=size;m.color.r,m.color.g,m.color.b=color;m.color.a=1.;m.text=value\n            arr.markers.append(m)\n        scene=data.get('scene',{});gap=scene.get('gap')\n        for lane in scene.get('lanes',[]):\n            for edge in lane['edges']:\n                line(edge,(.1,.65,1.) if lane['target'] else (.45,.45,.45),'highway_lane_edges',width=.07)\n        if gap and gap['polygon']:\n            polygon=gap['polygon'];n=len(polygon)\n>           fill=line(polygon,(.1,.65,1.),'highway_gap');fill.type=Marker.TRIANGLE_LIST\nE           AttributeError: type object 'Marker' has no attribute 'TRIANGLE_LIST'\n\nsrc\\foscar_planning\\foscar_planning\\highway_markers.py:31: AttributeError"
+          }
+        ]
+      },
+      "selected": [
+        "src/foscar_planning/test/test_highway_visualization.py::test_scene_shows_gap_lane_edges_and_nearest_vehicle_roles"
+      ],
+      "exitstatus": 0
+    }
+  },
+  "trace_sha256": {
+    "original": "1c88a25cdec77b28a5a99ac8ce585660009a34b57d8b1fa91f57e15699e4c36a",
+    "port": "1c88a25cdec77b28a5a99ac8ce585660009a34b57d8b1fa91f57e15699e4c36a"
+  }
+}

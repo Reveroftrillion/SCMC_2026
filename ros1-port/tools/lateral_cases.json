@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "scope": "Synthetic kinematic bicycle validation only; not MORAI or a production calibration",
+  "dt_s": 0.02,
+  "tail_s": 2.0,
+  "config": {
+    "wheelbase_m": 2.8,
+    "lookahead_min_m": 4.0,
+    "lookahead_max_m": 12.0,
+    "lookahead_time_s": 0.6,
+    "max_angle_rad": 0.5,
+    "max_rate_rad_s": 0.8,
+    "max_tracking_error_m": 3.0,
+    "max_heading_error_rad": 1.2,
+    "pose_max_age_s": 0.15,
+    "reference_max_age_s": 0.5,
+    "future_tolerance_s": 0.02,
+    "max_step_s": 0.2
+  },
+  "scenarios": [
+    {"name": "straight_slow_left", "kind": "straight", "speed_mps": 2.0, "initial_error_m": 0.8, "duration_s": 12.0, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "straight_slow_right", "kind": "straight", "speed_mps": 2.0, "initial_error_m": -0.8, "duration_s": 12.0, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "straight_medium_left", "kind": "straight", "speed_mps": 6.0, "initial_error_m": 0.8, "duration_s": 12.0, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "straight_medium_right", "kind": "straight", "speed_mps": 6.0, "initial_error_m": -0.8, "duration_s": 12.0, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "straight_fast_left", "kind": "straight", "speed_mps": 12.0, "initial_error_m": 0.8, "duration_s": 12.0, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "straight_fast_right", "kind": "straight", "speed_mps": 12.0, "initial_error_m": -0.8, "duration_s": 12.0, "max_error_m": 1.0, "tail_rms_m": 0.1, "final_error_m": 0.1},
+    {"name": "circle_left", "kind": "circle", "direction": 1, "radius_m": 25.0, "speed_mps": 6.0, "initial_error_m": 0.5, "duration_s": 12.0, "max_error_m": 0.8, "tail_rms_m": 0.2, "final_error_m": 0.2},
+    {"name": "circle_right", "kind": "circle", "direction": -1, "radius_m": 25.0, "speed_mps": 6.0, "initial_error_m": -0.5, "duration_s": 12.0, "max_error_m": 0.8, "tail_rms_m": 0.2, "final_error_m": 0.2},
+    {"name": "sine_left", "kind": "sine", "amplitude_m": 3.0, "wavelength_m": 60.0, "speed_mps": 6.0, "initial_error_m": 0.8, "duration_s": 18.0, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35},
+    {"name": "sine_right", "kind": "sine", "amplitude_m": -3.0, "wavelength_m": 60.0, "speed_mps": 6.0, "initial_error_m": -0.8, "duration_s": 18.0, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35}
+  ]
+}

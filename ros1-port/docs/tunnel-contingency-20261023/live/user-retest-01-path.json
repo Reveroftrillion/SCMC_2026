@@ -1,0 +1,32 @@
+{
+  "scope": "Offline recorded center pose versus unchanged external audit map/departure rule; not collision ground truth",
+  "poses": 1067,
+  "outside_map_and_gt35m_frames": 0,
+  "departure_alarm_frames": 0,
+  "first_alarm": null,
+  "first_outside": null,
+  "last_outside": null,
+  "maximum_route_distance_m": 4.613742138292909,
+  "peak_lateral_pose": {
+    "t": 1792748177.1112754,
+    "s": 1910.6240462286348,
+    "projected_s": 1910.7708545592052,
+    "d": 4.613742138292909,
+    "speed_mps": 6.8444734149509,
+    "x": -5.724151374881421,
+    "y": -512.8568657451274
+  },
+  "last_pose": {
+    "t": 1792748187.051444,
+    "s": 2004.6382609185996,
+    "projected_s": 2005.1905137048261,
+    "d": -0.23855738753230973,
+    "speed_mps": 13.57092645433214,
+    "x": -92.54622029228356,
+    "y": -549.7898802450696
+  },
+  "limitations": [
+    "Recorded message times instead of native observer receipt time",
+    "Map/center-based guard is not full body wall or hidden-object clearance"
+  ]
+}

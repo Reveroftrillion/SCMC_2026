@@ -1,0 +1,50 @@
+{
+  "scope": "Offline feature sensitivity only: cumulative height, observed dimensions, structure, intensity history; not a full tracker/dynamic safety replay.",
+  "scans": 12214,
+  "tracks": 934,
+  "runs": 30,
+  "candidates": [
+    {
+      "threshold_m": 1.1,
+      "marked_feature_rows": {
+        "deer": 1479,
+        "person": 1528,
+        "other": 189,
+        "barricade": 170,
+        "cone": 26
+      },
+      "earliest_marked_range_min_by_class_m": {
+        "deer": 27.27,
+        "person": 21.05
+      }
+    },
+    {
+      "threshold_m": 1.15,
+      "marked_feature_rows": {
+        "deer": 1469,
+        "person": 1523,
+        "other": 189,
+        "barricade": 168,
+        "cone": 14
+      },
+      "earliest_marked_range_min_by_class_m": {
+        "deer": 27.27,
+        "person": 19.34
+      }
+    },
+    {
+      "threshold_m": 1.25,
+      "marked_feature_rows": {
+        "deer": 1443,
+        "person": 1512,
+        "other": 189,
+        "barricade": 158,
+        "cone": 14
+      },
+      "earliest_marked_range_min_by_class_m": {
+        "deer": 16.97,
+        "person": 17.15
+      }
+    }
+  ]
+}

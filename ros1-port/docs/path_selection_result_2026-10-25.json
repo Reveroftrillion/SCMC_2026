@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Offline request lifecycle + conversion + progress + steering",
+  "recorded_at_utc": "2026-10-25T03:26:13.416535+00:00",
+  "unit": {
+    "tests": 278,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  "scenarios": [
+    {
+      "name": "offset_complete_to_global",
+      "passed": true,
+      "measured": {
+        "max_error_m": 0.4,
+        "tail_rms_m": 0.05482168584154159,
+        "final_error_m": 0.044695497867671116,
+        "max_angle_rad": 0.10307610875113137,
+        "max_rate_rad_s": 0.8,
+        "geometry_objects": 2
+      },
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "modes": true,
+        "stable_geometry": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "modes": [
+        "offset",
+        "global"
+      ],
+      "steps": 1250,
+      "failure": null
+    },
+    {
+      "name": "reference_hold_and_release",
+      "passed": true,
+      "measured": {
+        "max_error_m": 0.4,
+        "tail_rms_m": 0.026461879833687925,
+        "final_error_m": 0.01761445198196582,
+        "max_angle_rad": 0.04902902406316817,
+        "max_rate_rad_s": 0.8,
+        "geometry_objects": 2
+      },
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "modes": true,
+        "stable_geometry": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "modes": [
+        "reference",
+        "global"
+      ],
+      "steps": 1250,
+      "failure": null
+    }
+  ],
+  "project_or_ros_imports": [
+    "ctrl_control",
+    "ctrl_control.ctrl_lateral",
+    "ctrl_control.ctrl_path_conversion",
+    "ctrl_control.ctrl_path_selection",
+    "ctrl_control.ctrl_progress"
+  ],
+  "source_sha256": {
+    "ros1-port/tools/validate_path_selection.py": "67b8a7146b7b97b84d014476dc774e75da035d537aca82dbd91f2ea9883e87c7",
+    "ros1-port/tools/path_selection_cases.json": "9334b9ecd2d376cc41144d438852eb4ec9df0b4107352e7e1164333208da3725",
+    "ros1-port/tools/lateral_cases.json": "f6feabe96c4348c0eedef775559688f709bc5eb514d9c0dc8881c1a6d7a0b4ce",
+    "ros1-port/tools/progress_cases.json": "f5391449059574517f02d1caaf83761bc46ed900792fe5190f9f600c248fa559",
+    "ros1-port/tools/validate_lateral.py": "f897f17531efa11c4310790470d6d75b38ac1049474e7aa8e0ebc043207775fd",
+    "ros1-port/src/ctrl_control/test/test_path_selection.py": "22be745b24cb7d976c9cabc1dc38297b9220bfe53d01247015b253f0d7b44d49",
+    "ros1-port/src/ctrl_control/test/test_path_conversion.py": "49ac7dc0f0ee31c5e48f0313d4d29d2360de5ec91096f7875de4e311a991e850",
+    "ros1-port/src/ctrl_control/test/test_progress.py": "a923fc4deb2f7724184df17f8fd8e0d09048b073b57eeaf299894fcbb897a964",
+    "ros1-port/src/ctrl_control/test/test_lateral.py": "9f7e3e596a56ed7d9f03ce93e33d2023824b888a1133a158eb0ffba10f1f4c15",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_path_selection.py": "a92c573597465c118047c903871a150c5db92718e5bd796c782182ecaf3e18fe",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_path_conversion.py": "fd65e6f7692784f5b58deadde88d91381582c977cfa748123019fa2b5c49fb2f",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_progress.py": "38c1fc7e8b254e0f8230b3ebec3295fa54c0579e77210b89c48f23eee9326366",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_lateral.py": "be3d533e9b163894a401b06b0d8021bc7d982f91aabb2cde192ca15777f74614",
+    "ros1-port/docs/PATH_SELECTION_CONTRACT_2026-10-25.md": "2c8e41210b6947db017a36ef50689b4fb9f61343d1da1c778e7fb9a7b2506705"
+  },
+  "limitations": [
+    "No production ROS wiring, control packets or MORAI driving",
+    "No sensor noise, actuator delay, collision or road constraints",
+    "Fail-closed results require longitudinal stop/handoff integration"
+  ]
+}

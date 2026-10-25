@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Vehicle Status Publisher Node -->
+    <node pkg="morai_udp" type="competition_info_node.py" name="vehicle_status_publisher" output="screen"/>
+    
+    <!-- MORAI Command Controller Node -->
+    <node pkg="morai_udp" type="morai_cmd_controller_node.py" name="morai_cmd_controller" output="screen"/>
+
+</launch>

@@ -1,0 +1,1214 @@
+{
+  "tests": {
+    "passed": 776,
+    "seconds": 118.14,
+    "log": "final_verified_tests.log"
+  },
+  "safe_scenario_completion": false,
+  "readme_record_updated": false,
+  "runs": [
+    {
+      "directory": "practice/sim/runs/20261006_163843",
+      "scenario": "ObstaclePedestrianDifficult",
+      "result": "STOPPED:CRUISE",
+      "s_end": 321.1,
+      "drive_s": 66.9,
+      "collisions": []
+    },
+    {
+      "directory": "practice/sim/runs/20261006_164751",
+      "scenario": "ObstaclePedestrianDifficult",
+      "result": "STOPPED:CRUISE",
+      "s_end": 321.3,
+      "drive_s": 67.4,
+      "collisions": []
+    },
+    {
+      "directory": "practice/sim/runs/20261006_165016",
+      "scenario": "ObstaclePedestrianDifficult",
+      "result": "STOPPED:AVOID|CRUISE",
+      "s_end": 309.7,
+      "drive_s": 70.5,
+      "collisions": []
+    },
+    {
+      "directory": "practice/sim/runs/20261006_165349",
+      "scenario": "DifficultTunnelCheck",
+      "result": "STOPPED:AVOID|TUNNEL|CRUISE",
+      "s_end": 1880.5,
+      "drive_s": 35.8,
+      "collisions": [
+        {
+          "t": 10.64,
+          "s": 1877.7576521369645,
+          "id": 13,
+          "type": 0,
+          "dist": 3.3,
+          "body_gap": null
+        }
+      ]
+    }
+  ],
+  "remaining": [
+    "Static mission: no feasible candidate at s309.7; assess conservative curvature and search horizon against actual road geometry.",
+    "Tunnel: collision ID13 at s1877.76; dynamic guard must be checked against avoidance path.",
+    "Small obstacle row was not reached in latest MORAI runs.",
+    "Initial candidate computation can exceed 100ms.",
+    "Remembered extent union can retain noisy enlargement."
+  ],
+  "historical_check_scripts": "Equivalence scripts retain pre-optimization snapshots. Later candidate-search changes can legitimately change plans; these scripts do not replace current pytest results.",
+  "user_observation_followup": {
+    "bag": "/home/foscar/foscar_logs/bags/run_20261006_165020",
+    "creep": {
+      "from_s": 294.1,
+      "through_s": 309.14,
+      "avoid_cap_kmh": 1.8,
+      "state": "AVOID|SIGNAL_STOP",
+      "cause": "STATIC_OBSTACLE lateral hold branch directly applies swerve_speed for post-line room. swerve_speed returns 0.5 m/s when curvature exceeds steering limit; no distance-based approach envelope in this branch.",
+      "status": "diagnosed, not yet corrected"
+    },
+    "inflation": {
+      "cause": "Lidar observed hull becomes base-frame AABB in Event, then event_box encloses rotated AABB in route coordinates; memory extent union can retain the oversized rectangle.",
+      "available_input": "Existing map-frame footprint polygons on lidar footprint topic.",
+      "status": "needs polygon-preserving collision constraints; not yet implemented"
+    }
+  },
+  "first_static_polygon_iteration": {
+    "safe_pass": false,
+    "tests_before_endpoint_and_seam": {
+      "passed": 808,
+      "seconds": 129.54,
+      "log": "polygon_tests.log"
+    },
+    "latest_targeted_tests": {
+      "passed": 22,
+      "seconds": 1.5
+    },
+    "changes": [
+      "Same-scan observed polygon delivery with callback order handling.",
+      "Static mission polygon SAT and same-ID convex observed history; no merging unrelated polygons.",
+      "Distance-based signal hold approach cap instead of 1.8km/h immediate cap.",
+      "Polygon entry candidates start from current position beyond previous front+4m endpoint ceiling.",
+      "Map internal seams filled only for explicitly adjacent same-direction links sharing boundary.",
+      "Planning and lidar static markers display measured polygon."
+    ],
+    "runs": [
+      {
+        "path": "practice/sim/runs/20261006_171202/results.jsonl",
+        "result": "STOPPED:AVOID|CRUISE",
+        "s_end": 309.7,
+        "drive_s": 60.6,
+        "collisions": [],
+        "truth_peaks": {
+          "ay": 4.97,
+          "slip": 12.58,
+          "lat_force": 5597.52,
+          "vy": 2.8
+        }
+      },
+      {
+        "path": "practice/sim/runs/20261006_171844/results.jsonl",
+        "result": "STOPPED:AVOID|CRUISE",
+        "s_end": 309.7,
+        "drive_s": 42.1,
+        "collisions": [],
+        "truth_peaks": {
+          "ay": 5.06,
+          "slip": 13.03,
+          "lat_force": 5717.37,
+          "vy": 2.79
+        }
+      },
+      {
+        "path": "practice/sim/runs/20261006_172301/results.jsonl",
+        "result": "STOPPED:AVOID|CRUISE",
+        "s_end": 317.5,
+        "drive_s": 48.5,
+        "collisions": [],
+        "truth_peaks": {
+          "ay": 31.03,
+          "slip": 50.62,
+          "lat_force": 5689.47,
+          "vy": 3.5
+        }
+      }
+    ],
+    "remaining": [
+      "No safe pass yet; last run restarted avoidance but stopped at s317.5.",
+      "No collision packet, but lateral acceleration31.03m/s2 at s317.4 is an impact-like event; not a safe-clear result.",
+      "Investigate transient size-only fallback causing path invalidation and changing observations during swerve.",
+      "Replanning must retain actual current heading/curvature; zero-slope restart may reject feasible continuation."
+    ],
+    "user_direction": "Prioritize short targeted checks and direct MORAI; user proposes BEV occupied/free/unknown grid. BEV conversion not implemented."
+  },
+  "bev_first_mission": {
+    "status": "not_passed",
+    "runs": [
+      "20261006_174018",
+      "20261006_174505"
+    ],
+    "latest": {
+      "run": 0,
+      "scenario": "ObstaclePedestrianDifficult",
+      "started": "2026-10-06T17:45:05",
+      "result": "STOPPED:AVOID|CRUISE",
+      "s_start": 6.4840645159113635,
+      "s_end": 311.4,
+      "drive_s": 54.9,
+      "min_kmh": -0.3,
+      "max_brake": 1.0,
+      "splits": {
+        "270.0": 27.28,
+        "310.0": 45.02
+      },
+      "full_stops": [
+        202.2,
+        296.2,
+        297.7,
+        298.6,
+        299.2,
+        300.1,
+        300.3,
+        303.2,
+        303.2,
+        309.3,
+        309.7,
+        311.4
+      ],
+      "collisions": [],
+      "pushed": [],
+      "moved_alone": [],
+      "collision_slots": [],
+      "far_collision_packets": [],
+      "speed_drops": [],
+      "truth_peaks": {
+        "ay": 5.04,
+        "slip": 21.2,
+        "lat_force": 5714.02,
+        "vy": 2.79
+      },
+      "truth_peaks_at": {
+        "ay": [
+          132.5,
+          30.7
+        ],
+        "slip": [
+          310.4,
+          6.6
+        ],
+        "lat_force": [
+          132.5,
+          30.7
+        ],
+        "vy": [
+          82.0,
+          29.5
+        ]
+      },
+      "ay_bins": {
+        "0": 0.19,
+        "10": 0.46,
+        "20": 0.2,
+        "30": 0.49,
+        "40": 0.49,
+        "50": 0.32,
+        "60": 3.48,
+        "70": 4.76,
+        "80": 4.85,
+        "90": 4.8,
+        "100": 1.95,
+        "110": 4.41,
+        "120": 4.88,
+        "130": 5.04,
+        "140": 1.99,
+        "150": 0.68,
+        "160": 0.64,
+        "170": 0.35,
+        "180": 0.29,
+        "190": 0.33,
+        "200": 0.28,
+        "210": 0.27,
+        "220": 0.25,
+        "230": 1.11,
+        "240": 1.7,
+        "250": 2.14,
+        "260": 2.13,
+        "270": 1.78,
+        "280": 1.98,
+        "290": 0.5,
+        "300": 0.78,
+        "310": 1.44
+      },
+      "ay_top": [
+        [
+          130,
+          5.04,
+          30.7
+        ],
+        [
+          120,
+          4.88,
+          31.0
+        ],
+        [
+          80,
+          4.85,
+          30.5
+        ],
+        [
+          90,
+          4.8,
+          30.6
+        ],
+        [
+          70,
+          4.76,
+          30.9
+        ],
+        [
+          110,
+          4.41,
+          31.9
+        ],
+        [
+          60,
+          3.48,
+          35.6
+        ],
+        [
+          250,
+          2.14,
+          57.7
+        ],
+        [
+          260,
+          2.13,
+          57.9
+        ],
+        [
+          140,
+          1.99,
+          32.4
+        ]
+      ],
+      "pose_error": {
+        "gps_offset_lon": -0.032,
+        "gps_offset_lat": 0.004,
+        "gps_samples": 2418,
+        "dr_samples": 0
+      },
+      "obstacles": {
+        "32": {
+          "type": 2,
+          "xy": [
+            -46.98,
+            -532.67
+          ],
+          "yaw": -1.524562252374467,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "27": {
+          "type": 2,
+          "xy": [
+            -46.45,
+            -533.58
+          ],
+          "yaw": -1.5239742264057774,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "26": {
+          "type": 2,
+          "xy": [
+            -46.38,
+            -534.69
+          ],
+          "yaw": -1.5235662301267774,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "16": {
+          "type": 2,
+          "xy": [
+            -29.81,
+            -520.62
+          ],
+          "yaw": -2.4054816124864415,
+          "l": 1.0800000429153442,
+          "w": 3.009999990463257,
+          "ahead": 0.5400000214576721
+        },
+        "33": {
+          "type": 2,
+          "xy": [
+            -45.75,
+            -535.58
+          ],
+          "yaw": -1.5238144367403728,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "15": {
+          "type": 2,
+          "xy": [
+            5.59,
+            -501.38
+          ],
+          "yaw": -2.645132821079947,
+          "l": 4.639999866485596,
+          "w": 2.109999895095825,
+          "ahead": 2.319999933242798
+        },
+        "2": {
+          "type": 2,
+          "xy": [
+            -59.91,
+            -141.63
+          ],
+          "yaw": -1.8772060596978544,
+          "l": 8.829000473022461,
+          "w": 3.1459999084472656,
+          "ahead": 4.4145002365112305
+        }
+      },
+      "min_body_gap_m": null,
+      "body_contacts": []
+    },
+    "targeted_tests": "29 passed in 0.45s",
+    "behavior_gaps_over_0_5_s_between_270_400": 0,
+    "limitations": [
+      "Footprint raster and silhouette visibility approximation, not raw lidar ray free-space evidence.",
+      "Region split/merge still causes uncertain motion and repeated predicted-occupancy braking.",
+      "Tunnel not migrated or validated."
+    ]
+  },
+  "bev_uninitialized_prior_fix": {
+    "change": "Skip unready-region future prediction; preserve current occupancy, unknown space and measured motion checks. No parameter changes.",
+    "tests": "32 passed in 0.43s",
+    "run": {
+      "run": 0,
+      "scenario": "ObstaclePedestrianDifficult",
+      "started": "2026-10-06T18:01:28",
+      "result": "STOPPED:AVOID|CRUISE",
+      "s_start": 6.486696445835984,
+      "s_end": 315.7,
+      "drive_s": 47.9,
+      "min_kmh": -0.1,
+      "max_brake": 1.0,
+      "splits": {
+        "270.0": 27.5,
+        "310.0": 33.6
+      },
+      "full_stops": [
+        202.2,
+        309.7,
+        311.9,
+        314.7,
+        315.1,
+        315.5,
+        315.5
+      ],
+      "collisions": [],
+      "pushed": [],
+      "moved_alone": [],
+      "collision_slots": [],
+      "far_collision_packets": [],
+      "speed_drops": [],
+      "truth_peaks": {
+        "ay": 4.91,
+        "slip": 21.75,
+        "lat_force": 5534.34,
+        "vy": 2.81
+      },
+      "truth_peaks_at": {
+        "ay": [
+          133.2,
+          30.9
+        ],
+        "slip": [
+          310.4,
+          6.5
+        ],
+        "lat_force": [
+          133.0,
+          30.9
+        ],
+        "vy": [
+          84.3,
+          29.3
+        ]
+      },
+      "ay_bins": {
+        "0": 0.17,
+        "10": 0.32,
+        "20": 0.37,
+        "30": 0.45,
+        "40": 0.4,
+        "50": 0.19,
+        "60": 3.29,
+        "70": 4.77,
+        "80": 4.84,
+        "90": 4.72,
+        "100": 1.81,
+        "110": 4.26,
+        "120": 4.87,
+        "130": 4.91,
+        "140": 1.85,
+        "150": 0.7,
+        "160": 0.53,
+        "170": 0.47,
+        "180": 0.4,
+        "190": 0.36,
+        "200": 0.28,
+        "210": 0.29,
+        "220": 0.1,
+        "230": 1.15,
+        "240": 1.74,
+        "250": 1.98,
+        "260": 2.02,
+        "270": 1.83,
+        "280": 1.9,
+        "290": 0.82,
+        "300": 0.72,
+        "310": 1.45
+      },
+      "ay_top": [
+        [
+          130,
+          4.91,
+          30.9
+        ],
+        [
+          120,
+          4.87,
+          31.8
+        ],
+        [
+          80,
+          4.84,
+          29.5
+        ],
+        [
+          70,
+          4.77,
+          31.0
+        ],
+        [
+          90,
+          4.72,
+          30.5
+        ],
+        [
+          110,
+          4.26,
+          31.9
+        ],
+        [
+          60,
+          3.29,
+          36.6
+        ],
+        [
+          260,
+          2.02,
+          57.8
+        ],
+        [
+          250,
+          1.98,
+          56.9
+        ],
+        [
+          280,
+          1.9,
+          53.5
+        ]
+      ],
+      "pose_error": {
+        "gps_offset_lon": -0.066,
+        "gps_offset_lat": 0.001,
+        "gps_samples": 2104,
+        "dr_samples": 0
+      },
+      "obstacles": {
+        "32": {
+          "type": 2,
+          "xy": [
+            -46.98,
+            -532.67
+          ],
+          "yaw": -1.524562252374467,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "27": {
+          "type": 2,
+          "xy": [
+            -46.45,
+            -533.58
+          ],
+          "yaw": -1.5239742264057774,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "26": {
+          "type": 2,
+          "xy": [
+            -46.38,
+            -534.69
+          ],
+          "yaw": -1.5235662301267774,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "16": {
+          "type": 2,
+          "xy": [
+            -29.81,
+            -520.62
+          ],
+          "yaw": -2.4054816124864415,
+          "l": 1.0800000429153442,
+          "w": 3.009999990463257,
+          "ahead": 0.5400000214576721
+        },
+        "33": {
+          "type": 2,
+          "xy": [
+            -45.75,
+            -535.58
+          ],
+          "yaw": -1.5238144367403728,
+          "l": 0.8100000023841858,
+          "w": 0.8100000023841858,
+          "ahead": 0.4050000011920929
+        },
+        "15": {
+          "type": 2,
+          "xy": [
+            5.59,
+            -501.38
+          ],
+          "yaw": -2.645132821079947,
+          "l": 4.639999866485596,
+          "w": 2.109999895095825,
+          "ahead": 2.319999933242798
+        },
+        "2": {
+          "type": 2,
+          "xy": [
+            -59.91,
+            -141.63
+          ],
+          "yaw": -1.8772060596978544,
+          "l": 8.829000473022461,
+          "w": 3.1459999084472656,
+          "ahead": 4.4145002365112305
+        }
+      },
+      "min_body_gap_m": null,
+      "body_contacts": []
+    },
+    "final_truth_obb_gap_m": 0.25690126089161697,
+    "status": "Early false stops removed in this run; first mission not passed."
+  },
+  "right_entry_iteration": {
+    "runs": [
+      {
+        "run": 0,
+        "scenario": "ObstaclePedestrianDifficult",
+        "started": "2026-10-06T18:44:20",
+        "result": "STOPPED:AVOID|CRUISE",
+        "s_start": 6.500721629585827,
+        "s_end": 315.7,
+        "drive_s": 49.2,
+        "min_kmh": -0.1,
+        "max_brake": 1.0,
+        "splits": {
+          "270.0": 27.22,
+          "310.0": 33.3
+        },
+        "full_stops": [
+          202.2,
+          309.7,
+          314.7,
+          315.1,
+          315.3,
+          315.3,
+          315.7
+        ],
+        "collisions": [],
+        "pushed": [],
+        "moved_alone": [],
+        "collision_slots": [],
+        "far_collision_packets": [],
+        "speed_drops": [],
+        "truth_peaks": {
+          "ay": 5.02,
+          "slip": 21.67,
+          "lat_force": 5713.68,
+          "vy": 2.79
+        },
+        "truth_peaks_at": {
+          "ay": [
+            88.9,
+            30.2
+          ],
+          "slip": [
+            310.3,
+            6.4
+          ],
+          "lat_force": [
+            88.9,
+            30.2
+          ],
+          "vy": [
+            89.0,
+            30.3
+          ]
+        },
+        "ay_bins": {
+          "0": 0.15,
+          "10": 0.65,
+          "20": 0.18,
+          "30": 0.7,
+          "40": 0.62,
+          "50": 0.34,
+          "60": 3.43,
+          "70": 4.84,
+          "80": 5.02,
+          "90": 4.67,
+          "100": 1.84,
+          "110": 4.5,
+          "120": 4.78,
+          "130": 4.94,
+          "140": 2.11,
+          "150": 0.65,
+          "160": 0.51,
+          "170": 0.32,
+          "180": 0.52,
+          "190": 0.45,
+          "200": 0.22,
+          "210": 0.34,
+          "220": 0.21,
+          "230": 1.14,
+          "240": 1.89,
+          "250": 1.99,
+          "260": 1.72,
+          "270": 1.97,
+          "280": 2.02,
+          "290": 0.89,
+          "300": 0.75,
+          "310": 0.98
+        },
+        "ay_top": [
+          [
+            80,
+            5.02,
+            30.2
+          ],
+          [
+            130,
+            4.94,
+            30.9
+          ],
+          [
+            70,
+            4.84,
+            31.5
+          ],
+          [
+            120,
+            4.78,
+            30.9
+          ],
+          [
+            90,
+            4.67,
+            30.5
+          ],
+          [
+            110,
+            4.5,
+            32.0
+          ],
+          [
+            60,
+            3.43,
+            36.3
+          ],
+          [
+            140,
+            2.11,
+            32.3
+          ],
+          [
+            280,
+            2.02,
+            54.0
+          ],
+          [
+            250,
+            1.99,
+            57.2
+          ]
+        ],
+        "pose_error": {
+          "gps_offset_lon": -0.045,
+          "gps_offset_lat": 0.019,
+          "gps_samples": 2159,
+          "dr_samples": 0
+        },
+        "obstacles": {
+          "32": {
+            "type": 2,
+            "xy": [
+              -46.98,
+              -532.67
+            ],
+            "yaw": -1.524562252374467,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "27": {
+            "type": 2,
+            "xy": [
+              -46.45,
+              -533.58
+            ],
+            "yaw": -1.5239742264057774,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "26": {
+            "type": 2,
+            "xy": [
+              -46.38,
+              -534.69
+            ],
+            "yaw": -1.5235662301267774,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "16": {
+            "type": 2,
+            "xy": [
+              -29.81,
+              -520.62
+            ],
+            "yaw": -2.4054816124864415,
+            "l": 1.0800000429153442,
+            "w": 3.009999990463257,
+            "ahead": 0.5400000214576721
+          },
+          "33": {
+            "type": 2,
+            "xy": [
+              -45.75,
+              -535.58
+            ],
+            "yaw": -1.5238144367403728,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "15": {
+            "type": 2,
+            "xy": [
+              5.59,
+              -501.38
+            ],
+            "yaw": -2.645132821079947,
+            "l": 4.639999866485596,
+            "w": 2.109999895095825,
+            "ahead": 2.319999933242798
+          },
+          "2": {
+            "type": 2,
+            "xy": [
+              -59.91,
+              -141.63
+            ],
+            "yaw": -1.8772060596978544,
+            "l": 8.829000473022461,
+            "w": 3.1459999084472656,
+            "ahead": 4.4145002365112305
+          }
+        },
+        "min_body_gap_m": null,
+        "body_contacts": []
+      },
+      {
+        "run": 0,
+        "scenario": "ObstaclePedestrianDifficult",
+        "started": "2026-10-06T18:50:28",
+        "result": "STOPPED:AVOID|CRUISE",
+        "s_start": 6.466259992587112,
+        "s_end": 315.8,
+        "drive_s": 47.0,
+        "min_kmh": -0.1,
+        "max_brake": 1.0,
+        "splits": {
+          "270.0": 27.61,
+          "310.0": 33.71
+        },
+        "full_stops": [
+          202.2,
+          309.7,
+          314.7,
+          315.1,
+          315.2,
+          315.2,
+          315.4,
+          315.6,
+          315.6
+        ],
+        "collisions": [],
+        "pushed": [],
+        "moved_alone": [],
+        "collision_slots": [
+          {
+            "t": 9.46,
+            "s": 6.4780874067055105,
+            "id": 44,
+            "type": 1,
+            "pos": [
+              65.93,
+              280.55,
+              28.61
+            ]
+          }
+        ],
+        "far_collision_packets": [
+          {
+            "t": 33.76,
+            "s": 220.88684534165128,
+            "id": 44,
+            "type": 1,
+            "dist": 299.4,
+            "body_gap": 291.52
+          },
+          {
+            "t": 33.76,
+            "s": 220.88684534165128,
+            "id": 44,
+            "type": 1,
+            "dist": 299.4,
+            "body_gap": 291.52
+          },
+          {
+            "t": 33.8,
+            "s": 221.4519692982758,
+            "id": 44,
+            "type": 1,
+            "dist": 298.5,
+            "body_gap": 290.65
+          },
+          {
+            "t": 33.82,
+            "s": 221.69287595331016,
+            "id": 44,
+            "type": 1,
+            "dist": 298.0,
+            "body_gap": 290.12
+          },
+          {
+            "t": 33.82,
+            "s": 221.69287595331016,
+            "id": 44,
+            "type": 1,
+            "dist": 298.0,
+            "body_gap": 290.12
+          }
+        ],
+        "speed_drops": [],
+        "truth_peaks": {
+          "ay": 4.93,
+          "slip": 12.54,
+          "lat_force": 5536.1,
+          "vy": 2.78
+        },
+        "truth_peaks_at": {
+          "ay": [
+            130.8,
+            30.8
+          ],
+          "slip": [
+            85.0,
+            29.6
+          ],
+          "lat_force": [
+            131.2,
+            30.8
+          ],
+          "vy": [
+            82.8,
+            29.5
+          ]
+        },
+        "ay_bins": {
+          "0": 0.11,
+          "10": 0.51,
+          "20": 0.28,
+          "30": 0.31,
+          "40": 0.4,
+          "50": 0.3,
+          "60": 3.7,
+          "70": 4.8,
+          "80": 4.86,
+          "90": 4.72,
+          "100": 2.02,
+          "110": 4.66,
+          "120": 4.72,
+          "130": 4.93,
+          "140": 2.07,
+          "150": 0.54,
+          "160": 0.55,
+          "170": 0.61,
+          "180": 0.31,
+          "190": 0.46,
+          "200": 0.37,
+          "210": 0.3,
+          "220": 0.24,
+          "230": 0.92,
+          "240": 1.83,
+          "250": 1.76,
+          "260": 2.03,
+          "270": 1.99,
+          "280": 1.87,
+          "290": 1.05,
+          "300": 0.33,
+          "310": 0.23
+        },
+        "ay_top": [
+          [
+            130,
+            4.93,
+            30.8
+          ],
+          [
+            80,
+            4.86,
+            30.3
+          ],
+          [
+            70,
+            4.8,
+            30.2
+          ],
+          [
+            90,
+            4.72,
+            30.5
+          ],
+          [
+            120,
+            4.72,
+            30.8
+          ],
+          [
+            110,
+            4.66,
+            32.4
+          ],
+          [
+            60,
+            3.7,
+            35.9
+          ],
+          [
+            140,
+            2.07,
+            32.2
+          ],
+          [
+            260,
+            2.03,
+            58.2
+          ],
+          [
+            100,
+            2.02,
+            37.4
+          ]
+        ],
+        "pose_error": {
+          "gps_offset_lon": -0.056,
+          "gps_offset_lat": 0.003,
+          "gps_samples": 2065,
+          "dr_samples": 0
+        },
+        "obstacles": {
+          "32": {
+            "type": 2,
+            "xy": [
+              -46.98,
+              -532.67
+            ],
+            "yaw": -1.524562252374467,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "27": {
+            "type": 2,
+            "xy": [
+              -46.45,
+              -533.58
+            ],
+            "yaw": -1.5239742264057774,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "26": {
+            "type": 2,
+            "xy": [
+              -46.38,
+              -534.69
+            ],
+            "yaw": -1.5235662301267774,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "16": {
+            "type": 2,
+            "xy": [
+              -29.81,
+              -520.62
+            ],
+            "yaw": -2.4054816124864415,
+            "l": 1.0800000429153442,
+            "w": 3.009999990463257,
+            "ahead": 0.5400000214576721
+          },
+          "33": {
+            "type": 2,
+            "xy": [
+              -45.75,
+              -535.58
+            ],
+            "yaw": -1.5238144367403728,
+            "l": 0.8100000023841858,
+            "w": 0.8100000023841858,
+            "ahead": 0.4050000011920929
+          },
+          "15": {
+            "type": 2,
+            "xy": [
+              5.59,
+              -501.38
+            ],
+            "yaw": -2.645132821079947,
+            "l": 4.639999866485596,
+            "w": 2.109999895095825,
+            "ahead": 2.319999933242798
+          },
+          "2": {
+            "type": 2,
+            "xy": [
+              -59.91,
+              -141.63
+            ],
+            "yaw": -1.8772060596978544,
+            "l": 8.829000473022461,
+            "w": 3.1459999084472656,
+            "ahead": 4.4145002365112305
+          }
+        },
+        "min_body_gap_m": null,
+        "body_contacts": []
+      }
+    ],
+    "tests": "43 passed in 8.16s before final additional test; additional real intersection entry test1 passed1.56s",
+    "candidate_seconds": 0.13825,
+    "status": "Right -3m selected in185028, stopped315.8; not passed",
+    "lidar_evidence": "braking_clusters.json; only5 scans; no intensity filter changes"
+  },
+  "first_obstacle_mission": {
+    "status": "PASS",
+    "run": "20261006_192311",
+    "s_start": 270.176,
+    "s_end": 370.1,
+    "full_stops": [
+      309.7
+    ],
+    "minimum_truth_separating_gap_m": 0.5274,
+    "target_max_gap_s": 0.1781,
+    "s310_to345_s": 6.06,
+    "previous_s310_to345_s": 7.04,
+    "scope": "First obstacle avoidance and return only; next pedestrian mission excluded",
+    "previous_run_192008": "First obstacle success per user; collision at s399.2 belongs to next pedestrian mission. Raw run collision retained.",
+    "repeat_verification": {
+      "run": "20261006_192741",
+      "status": "PASS",
+      "s_end": 370.1,
+      "drive_s": 17.6,
+      "stops": [
+        309.5,
+        309.7
+      ],
+      "stops_after_signal": 0,
+      "minimum_truth_separating_gap_m": 0.5262,
+      "target_max_gap_s": 0.1917,
+      "s310_to345_s": 5.92,
+      "code_changes": false
+    }
+  },
+  "tunnel_bev": {
+    "status": "UNRESOLVED",
+    "run": "20261006_192954",
+    "collision": {
+      "s": 1877.06,
+      "id": 13
+    },
+    "stopped_s": 1887.2,
+    "final_stop_reason": "YIELD PEDESTRIAN/OCCUPIED; BEV clear",
+    "max_target_gap_s": 1.526,
+    "tests_passed": 37,
+    "trial_20kmh": {
+      "run": "20261006_193152",
+      "result": "STOPPED",
+      "s_end": 1887.1,
+      "collisions": [],
+      "max_kmh": 20.038,
+      "max_target_gap_s": 0.0923,
+      "reason": "YIELD PEDESTRIAN/OCCUPIED, BEV clear",
+      "cap_retained": true
+    },
+    "latest": {
+      "run": "20261006_210423",
+      "result": "PASS",
+      "speed_cap_kmh": 20,
+      "drive_s": 40.9,
+      "collisions": [],
+      "stops": 3,
+      "crossing_wait_replans": [
+        0,
+        0
+      ],
+      "note": "Freeze works; lap time not improved, stationary misclassification remains"
+    },
+    "repeat_verification": {
+      "run": "20261006_194038",
+      "result": "COLLISION:16",
+      "s": 1931.408,
+      "drive_s": 36.5,
+      "cause_sequence": "Stopped for occupied path; complete footprint scans became empty; resumed and struck static ID16",
+      "max_target_gap_s": 0.1662,
+      "code_changes": false
+    }
+  }
+}

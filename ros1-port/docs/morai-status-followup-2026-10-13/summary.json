@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Seoul",
+  "scope": "follow-up reception diagnosis only, separate from first successful short drive",
+  "drive": false,
+  "additional_driving": false,
+  "expected_competition_transport": {
+    "source_ip": "127.0.0.1",
+    "source_port": 9088,
+    "destination_ip": "127.0.0.1",
+    "destination_port": 909
+  },
+  "simulator_source_9088_observed": false,
+  "receiver_909": {
+    "before_test": "unbound",
+    "during_live": "one bound socket at 127.0.0.1:909; bridge startup confirms status :909",
+    "after_shutdown": "unbound",
+    "host_ss_process_owner": "not displayed for container socket; PID ownership not independently proven"
+  },
+  "probe_seconds": 10.000032599000406,
+  "probe_competition_packets": 0,
+  "probe_counts": {
+    "competition_status": {
+      "packets": 0,
+      "valid": 0,
+      "errors": 0
+    },
+    "ego_status": {
+      "packets": 434,
+      "valid": 0,
+      "errors": 434
+    },
+    "gps": {
+      "packets": 100,
+      "valid": 100,
+      "errors": 0
+    },
+    "imu": {
+      "packets": 424,
+      "valid": 424,
+      "errors": 0
+    },
+    "lidar": {
+      "packets": 6510,
+      "valid": 6510,
+      "errors": 0
+    },
+    "front_camera": {
+      "packets": 597,
+      "valid": 597,
+      "errors": 0
+    },
+    "side_camera": {
+      "packets": 260,
+      "valid": 260,
+      "errors": 0
+    },
+    "opposite_camera": {
+      "packets": 290,
+      "valid": 290,
+      "errors": 0
+    },
+    "additional_camera": {
+      "packets": 532,
+      "valid": 266,
+      "errors": 266
+    }
+  },
+  "live_topic_counts": {
+    "/sensors/gps": 198,
+    "/sensors/imu": 538,
+    "/vehicle/status": 0,
+    "/sensors/lidar/points": 173,
+    "/sensors/camera/traffic/compressed": 398,
+    "/localization/odometry": 0,
+    "/localization/s": 0,
+    "/localization/mode": 0,
+    "/map/route": 0,
+    "/tf": 0,
+    "/tf_static": 1,
+    "/behavior/target": 0,
+    "/behavior/state": 0,
+    "/behavior/mission": 0,
+    "/control/request": 394,
+    "/control/state": 394,
+    "/perception/traffic_signal": 0,
+    "/events": 1002,
+    "/perception/footprints": 168
+  },
+  "control_udp_destination_9093_count": 0,
+  "live_passed_receive_and_decisions": false,
+  "launch_returncode": 0,
+  "conclusion": "Competition traffic absent at receiver; no 9088 sender socket observed. Port conflict and Competition parser rejection were not observed. MORAI UI Connect/Pause and configured destination need confirmation; root cause and recovery unverified.",
+  "historical_first_drive": "unchanged; its successful status reception and separate stationary confirmation remain distinct evidence",
+  "source_sensor_equivalence": "NOT VERIFIED; original camera and sensor-coordinate differences retained"
+}

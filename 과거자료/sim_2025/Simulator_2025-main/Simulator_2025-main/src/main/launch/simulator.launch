@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="camera" name="yolov8_node" type="traffic_yolo.py" output="screen" />
+    <node pkg="camera" name="lanenet_node" type="lanenet.py" output="screen" />
+    <include file="$(find gps)/launch/gps_to_utm.launch" />
+    <include file="$(find planning)/launch/planner.launch" />
+    <include file="$(find control)/launch/control.launch" />
+    <include file="$(find morai_udp)/launch/morai_udp_nodes.launch" />
+    <include file="$(find lidar_object_detection)/launch/object_detection_crossing.launch" />
+</launch>

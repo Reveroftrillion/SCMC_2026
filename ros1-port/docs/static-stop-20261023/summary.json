@@ -1,0 +1,54 @@
+{
+  "scope": "Docker Python3.10; calculation-only ROS doubles and recorded trajectory; no MORAI/native transport/vehicle actuation",
+  "branch": "fix/static-stop-replay-20261023",
+  "changed_existing_files": [
+    "ros1-port/src/foscar_lidar/foscar_lidar/ground.py"
+  ],
+  "added_regression": "ros1-port/src/foscar_lidar/test/test_material_ground_reference.py",
+  "cause": {
+    "scan_time": 1792730259,
+    "material_support_points": 833,
+    "old_median_reference_z": 0.7387260055541991,
+    "old_refit_intercept": -0.2965669569281357,
+    "existing_intercept_guard_abs_m": 0.25,
+    "retry_origin_reference_z": 0.43139294213153384
+  },
+  "failed_input": {
+    "clouds": 183,
+    "static_clouds": 99,
+    "plane_failures_before": 16,
+    "plane_failures_after": 0,
+    "zero_speed_caps_before": 77,
+    "zero_speed_caps_after": 0,
+    "real_box_preserved": true,
+    "unknown_region_braking_preserved": true
+  },
+  "successful_input": {
+    "clouds": 618,
+    "targets_exactly_equal": 618,
+    "zero_speed_caps_before": 0,
+    "zero_speed_caps_after": 0
+  },
+  "tests": {
+    "pre_fix_new_regressions_expected_failure": {
+      "failed": 1,
+      "passed": 3
+    },
+    "ground_focused_passed": 15,
+    "algorithm_passed": 950,
+    "algorithm_failed": 0,
+    "algorithm_skipped": 0,
+    "algorithm_warnings": 10,
+    "algorithm_elapsed_s": 333.93
+  },
+  "not_run": [
+    "MORAI live retest after this static fix",
+    "Windows",
+    "catkin rebuild/install deployment",
+    "official line/score and changed scenario tests"
+  ],
+  "known_failures_retained": [
+    "previous immutable resource/identifier/byte-equivalence baselines",
+    "plain git diff --check flags CR on added lines in existing CRLF source; CRLF-aware check used"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "scope": "Batch finished after user prepared right scene; all audit launches stopped",
+  "native_trials": 5,
+  "native_completed": 4,
+  "native_collision_aborted": 1,
+  "post_fix_completed": [
+    "left",
+    "center",
+    "right"
+  ],
+  "right_trial": "COMPLETED: route_end_stopped, raw collision0, stationary Manual-P verified",
+  "grid_cases": 1167,
+  "grid_passed": 1163,
+  "grid_failed": 4,
+  "dropout_cases": 108,
+  "dropout_initial_bypass_eligible": 81,
+  "dropout_retained_before": 0,
+  "dropout_retained_after": 81,
+  "dropout_initial_stop_ineligible": 27,
+  "regression_total": 979,
+  "regression_passed": 978,
+  "regression_prior_failed": 1,
+  "regression_skipped": 0,
+  "tool_tests_passed": 28,
+  "syntax_files": 24,
+  "frozen_source_files": 349,
+  "source_changes": [],
+  "reference_files": 530,
+  "reference_changes": [],
+  "plain_diff_check_exit": 2,
+  "cr_at_eol_diff_check_exit": 0,
+  "not_executed": [
+    "Windows",
+    "new catkin/native install build",
+    "official score",
+    "native tunnel pedestrian reentry/blocker release",
+    "committed path replanning for far second obstacle"
+  ],
+  "after_fix_raw_collision_packets": 45987,
+  "after_fix_collision_reports": 0,
+  "after_fix_source_changes": [],
+  "after_fix_callback_errors": []
+}

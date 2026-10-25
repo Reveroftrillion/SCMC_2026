@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "scope": "Synthetic path conversion + progress + steering only",
+  "recorded_at_utc": "2026-10-25T03:07:39.421213+00:00",
+  "unit": {
+    "tests": 221,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "exit_code": 0
+  },
+  "scenarios": [
+    {
+      "name": "general",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "global_progress_monotonic": true,
+        "station_roundtrip": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 9.734926156097562e-05,
+        "final_error_m": 6.38314444350614e-05,
+        "max_angle_rad": 0.0714710905159908,
+        "max_rate_rad_s": 0.8,
+        "max_station_roundtrip_error_m": 5.684341886080802e-14
+      },
+      "steps": 600,
+      "failure": null
+    },
+    {
+      "name": "spawn_connector",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "global_progress_monotonic": true,
+        "station_roundtrip": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.8,
+        "tail_rms_m": 9.734926156097562e-05,
+        "final_error_m": 6.38314444350614e-05,
+        "max_angle_rad": 0.0714710905159908,
+        "max_rate_rad_s": 0.8,
+        "max_station_roundtrip_error_m": 7.105427357601002e-15
+      },
+      "steps": 600,
+      "failure": null
+    },
+    {
+      "name": "entry_return_left",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "global_progress_monotonic": true,
+        "station_roundtrip": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.5,
+        "tail_rms_m": 0.007812118736314745,
+        "final_error_m": 0.002654325575587544,
+        "max_angle_rad": 0.09448484764577277,
+        "max_rate_rad_s": 0.8,
+        "max_station_roundtrip_error_m": 5.684341886080802e-14
+      },
+      "steps": 1000,
+      "failure": null
+    },
+    {
+      "name": "entry_return_right",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "global_progress_monotonic": true,
+        "station_roundtrip": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.5,
+        "tail_rms_m": 0.007812118736314745,
+        "final_error_m": 0.002654325575587544,
+        "max_angle_rad": 0.09448484764577277,
+        "max_rate_rad_s": 0.8,
+        "max_station_roundtrip_error_m": 5.684341886080802e-14
+      },
+      "steps": 1000,
+      "failure": null
+    },
+    {
+      "name": "multiple_moves",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "global_progress_monotonic": true,
+        "station_roundtrip": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.5254298176404115,
+        "tail_rms_m": 0.0069267047525952835,
+        "final_error_m": 0.0020201030061479473,
+        "max_angle_rad": 0.12158376847653031,
+        "max_rate_rad_s": 0.8,
+        "max_station_roundtrip_error_m": 6.394884621840902e-14
+      },
+      "steps": 1100,
+      "failure": null
+    },
+    {
+      "name": "lane_reference",
+      "passed": true,
+      "gates": {
+        "max_error_m": true,
+        "tail_rms_m": true,
+        "final_error_m": true,
+        "completed": true,
+        "global_progress_monotonic": true,
+        "station_roundtrip": true,
+        "angle_bound": true,
+        "rate_bound": true
+      },
+      "measured": {
+        "max_error_m": 0.5,
+        "tail_rms_m": 0.0066845268127085295,
+        "final_error_m": 0.00022241243796761154,
+        "max_angle_rad": 0.04047096376832867,
+        "max_rate_rad_s": 0.8,
+        "max_station_roundtrip_error_m": 9.237055564881302e-14
+      },
+      "steps": 1250,
+      "failure": null
+    }
+  ],
+  "project_or_ros_imports": [
+    "ctrl_control",
+    "ctrl_control.ctrl_lateral",
+    "ctrl_control.ctrl_path_conversion",
+    "ctrl_control.ctrl_progress"
+  ],
+  "source_sha256": {
+    "ros1-port/tools/validate_path_conversion.py": "e4a6548ea656838cdefc4ee1ed9c9d6b0549ad228ee2cea3f4217a522c38bcc9",
+    "ros1-port/tools/path_conversion_cases.json": "a652df613cf1f16ac928dbfaf0df69f87695ffe48f0e02a9066005850cbec347",
+    "ros1-port/tools/lateral_cases.json": "f6feabe96c4348c0eedef775559688f709bc5eb514d9c0dc8881c1a6d7a0b4ce",
+    "ros1-port/tools/progress_cases.json": "f5391449059574517f02d1caaf83761bc46ed900792fe5190f9f600c248fa559",
+    "ros1-port/tools/validate_lateral.py": "f897f17531efa11c4310790470d6d75b38ac1049474e7aa8e0ebc043207775fd",
+    "ros1-port/src/ctrl_control/test/test_path_conversion.py": "49ac7dc0f0ee31c5e48f0313d4d29d2360de5ec91096f7875de4e311a991e850",
+    "ros1-port/src/ctrl_control/test/test_progress.py": "a923fc4deb2f7724184df17f8fd8e0d09048b073b57eeaf299894fcbb897a964",
+    "ros1-port/src/ctrl_control/test/test_lateral.py": "9f7e3e596a56ed7d9f03ce93e33d2023824b888a1133a158eb0ffba10f1f4c15",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_path_conversion.py": "fd65e6f7692784f5b58deadde88d91381582c977cfa748123019fa2b5c49fb2f",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_progress.py": "38c1fc7e8b254e0f8230b3ebec3295fa54c0579e77210b89c48f23eee9326366",
+    "ros1-port/src/ctrl_control/ctrl_control/ctrl_lateral.py": "be3d533e9b163894a401b06b0d8021bc7d982f91aabb2cde192ca15777f74614",
+    "ros1-port/docs/PATH_CONVERSION_CONTRACT_2026-10-25.md": "b5c0866b43b407d4653d663996d9fb902b69c561a8397bb556fdaabc3020b5d1"
+  },
+  "limitations": [
+    "No ROS/catkin/MORAI execution or control packets",
+    "No road, collision, steering feasibility or sensor/actuator dynamics validation",
+    "Message lifecycle, mode conflicts and reference release not connected"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "run": "/home/foscar/Desktop/2026Morai/2026foscar-competition/practice/sim/runs/20261006_161105",
+  "states": [
+    {
+      "t": 1791270676.3030424,
+      "s": 1849.6236365684817,
+      "state": "CRUISE"
+    },
+    {
+      "t": 1791270678.7271194,
+      "s": 1861.067159460443,
+      "state": "AVOID"
+    },
+    {
+      "t": 1791270679.9331458,
+      "s": 1873.6198285549692,
+      "state": "YIELD"
+    },
+    {
+      "t": 1791270680.744565,
+      "s": 1877.0867025621628,
+      "state": "AVOID"
+    },
+    {
+      "t": 1791270684.1445625,
+      "s": 1889.5603586005464,
+      "state": "YIELD"
+    }
+  ],
+  "near_truth_event_counts": {
+    "(15, 'OBSTACLE')": 324,
+    "(13, 'PEDESTRIAN')": 11,
+    "(15, 'VEHICLE')": 259
+  },
+  "first_events": {
+    "13": {
+      "t": 1791270679.7375677,
+      "s": 1871.555937870012,
+      "id": 13,
+      "dist": 0.6370249131232919,
+      "kind": "PEDESTRIAN",
+      "speed": 2.076073172429053,
+      "key": "lidar:9885513109554a2d848b3cd00477ec1b:5"
+    },
+    "15": {
+      "t": 1791270678.6846373,
+      "s": 1860.6879923925785,
+      "id": 15,
+      "dist": 0.8196160912662467,
+      "kind": "OBSTACLE",
+      "speed": 0.3194321619843891,
+      "key": "lidar:9885513109554a2d848b3cd00477ec1b:9"
+    },
+    "59": null
+  },
+  "object13_points": {
+    "frames": 97,
+    "total": 3588,
+    "first_frames": [
+      {
+        "t": 1791270670.694928,
+        "n": 1,
+        "zero_fraction": 0.0,
+        "range": 31.164814584454195
+      },
+      {
+        "t": 1791270670.7983797,
+        "n": 1,
+        "zero_fraction": 0.0,
+        "range": 31.164816437980228
+      },
+      {
+        "t": 1791270670.8883293,
+        "n": 1,
+        "zero_fraction": 0.0,
+        "range": 31.16481887567599
+      },
+      {
+        "t": 1791270670.9942834,
+        "n": 1,
+        "zero_fraction": 0.0,
+        "range": 31.16481887567599
+      },
+      {
+        "t": 1791270671.1220546,
+        "n": 1,
+        "zero_fraction": 0.0,
+        "range": 31.16482128728503
+      }
+    ]
+  },
+  "notes": [
+    "Truth association is approximate nearest-center matching, not tracker identity.",
+    "Point selection uses yaw-only pose and expanded truth box, includes possible clutter; no claim of deer semantic identity.",
+    "No collision packet, but ay=40.06 at s1877: not a clean pass.",
+    "Stopped at s1892.8 while static ID15 vicinity remained VEHICLE."
+  ]
+}

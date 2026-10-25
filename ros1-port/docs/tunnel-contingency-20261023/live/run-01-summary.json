@@ -1,0 +1,271 @@
+{
+  "reason": "route_end_stopped",
+  "max_s": 2174.5518036732656,
+  "elapsed_s": 203.43557572364807,
+  "shutdown_at": 1792740684.3846757,
+  "source_unchanged": true,
+  "manual_park_stationary_evidence": {
+    "samples": 30,
+    "duration_s": 0.6411352157592773,
+    "maximum_abs_speed_mps": 0.001264970956577195,
+    "last": {
+      "time": 1792740685.8267348,
+      "port": 909,
+      "speed": 0.00014732751878909767,
+      "yaw": 1.1228254672004498,
+      "mode": 1,
+      "gear": 1,
+      "steer_deg": 0.0,
+      "link": "A2256W000748",
+      "stamp_hex": "4d0ddb6a80c23b31"
+    }
+  },
+  "last_raw_status": {
+    "time": 1792740687.5270019,
+    "port": 909,
+    "speed": 2.0147058737368045e-07,
+    "yaw": 1.122824934568232,
+    "mode": 1,
+    "gear": 1,
+    "steer_deg": 0.0,
+    "link": "A2256W000748",
+    "stamp_hex": "4f0ddb6a801f5a1f"
+  },
+  "collision_packets": 8540,
+  "collision_monitoring_verified": true,
+  "callback_errors": [],
+  "checkpoints": {
+    "1": {
+      "min_distance_m": 0.3362087968072628,
+      "closest_s": 72.62741488754682,
+      "closest_time": 1792740495.7856042,
+      "radius_m": 3.0,
+      "route_s": 72.6251459614467
+    },
+    "2": {
+      "min_distance_m": 0.06997459889812091,
+      "closest_s": 184.7505896167903,
+      "closest_time": 1792740506.9256828,
+      "radius_m": 3.0,
+      "route_s": 184.68443745880205
+    },
+    "3": {
+      "min_distance_m": 0.0817562224736145,
+      "closest_s": 235.9026854155491,
+      "closest_time": 1792740524.5052373,
+      "radius_m": 3.0,
+      "route_s": 235.8214959187009
+    },
+    "4": {
+      "min_distance_m": 0.1725783323366966,
+      "closest_s": 345.11414148250066,
+      "closest_time": 1792740557.3052685,
+      "radius_m": 3.0,
+      "route_s": 345.14052925086577
+    },
+    "5": {
+      "min_distance_m": 0.058668389981567114,
+      "closest_s": 469.4325255132064,
+      "closest_time": 1792740574.7453043,
+      "radius_m": 3.0,
+      "route_s": 469.49030505126484
+    },
+    "6": {
+      "min_distance_m": 0.33680497044648,
+      "closest_s": 576.3839073329495,
+      "closest_time": 1792740582.6252687,
+      "radius_m": 3.0,
+      "route_s": 576.378355947619
+    },
+    "7": {
+      "min_distance_m": 0.25644511799997405,
+      "closest_s": 629.3770473995805,
+      "closest_time": 1792740588.2665849,
+      "radius_m": 3.0,
+      "route_s": 629.1847021490814
+    },
+    "8": {
+      "min_distance_m": 0.0360527339547013,
+      "closest_s": 849.4256574708303,
+      "closest_time": 1792740602.7454965,
+      "radius_m": 3.0,
+      "route_s": 849.4347468161181
+    },
+    "9": {
+      "min_distance_m": 0.1570459740334776,
+      "closest_s": 920.4699401147325,
+      "closest_time": 1792740612.445349,
+      "radius_m": 3.0,
+      "route_s": 920.5785376953797
+    },
+    "10": {
+      "min_distance_m": 0.16555813884861487,
+      "closest_s": 1108.5614105041657,
+      "closest_time": 1792740624.305461,
+      "radius_m": 3.0,
+      "route_s": 1108.718040512252
+    },
+    "12": {
+      "min_distance_m": 0.8891521623210137,
+      "closest_s": 1583.628936027528,
+      "closest_time": 1792740642.2655628,
+      "radius_m": 3.0,
+      "route_s": 1583.5492586062828
+    },
+    "13": {
+      "min_distance_m": 0.08408217721832716,
+      "closest_s": 1731.7426453888304,
+      "closest_time": 1792740648.84528,
+      "radius_m": 3.0,
+      "route_s": 1731.6616559194642
+    },
+    "14": {
+      "min_distance_m": 0.04223250589702249,
+      "closest_s": 1849.6236366351056,
+      "closest_time": 1792740656.6658814,
+      "radius_m": 3.0,
+      "route_s": 1849.5816585772366
+    },
+    "15": {
+      "min_distance_m": 0.19124070036473215,
+      "closest_s": 1986.6772431433396,
+      "closest_time": 1792740666.845537,
+      "radius_m": 3.0,
+      "route_s": 1986.6708718684308
+    },
+    "0": {
+      "min_distance_m": 0.06950042530715929,
+      "closest_s": 0.009592717120979305,
+      "closest_time": 1792740678.8854508,
+      "radius_m": 3.0,
+      "route_s": 0.0
+    }
+  },
+  "mission_transitions": [
+    {
+      "time": 1792740489.0022364,
+      "s": 1.1821170215001904,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792740505.7517645,
+      "s": 167.79866945139815,
+      "mission": "SIGNAL_1"
+    },
+    {
+      "time": 1792740521.3034956,
+      "s": 204.61397478692763,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792740526.7535315,
+      "s": 270.9733610585248,
+      "mission": "STATIC_OBSTACLE"
+    },
+    {
+      "time": 1792740562.2514334,
+      "s": 388.57659032162843,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792740563.5547469,
+      "s": 403.80498033159455,
+      "mission": "PEDESTRIAN"
+    },
+    {
+      "time": 1792740576.4534578,
+      "s": 493.5876111481036,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792740581.553514,
+      "s": 565.6907244349752,
+      "mission": "SIGNAL_4"
+    },
+    {
+      "time": 1792740585.2076783,
+      "s": 603.0986665584654,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792740599.7750401,
+      "s": 801.4143483282035,
+      "mission": "ROUNDABOUT"
+    },
+    {
+      "time": 1792740611.3585207,
+      "s": 908.6006323472632,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792740623.878245,
+      "s": 1101.2018498271475,
+      "mission": "HIGHWAY"
+    },
+    {
+      "time": 1792740648.8551447,
+      "s": 1731.7426453888304,
+      "mission": "CRUISE"
+    },
+    {
+      "time": 1792740653.5840929,
+      "s": 1808.829755776325,
+      "mission": "TUNNEL"
+    },
+    {
+      "time": 1792740667.1541407,
+      "s": 1990.810173753045,
+      "mission": "CRUISE"
+    }
+  ],
+  "target_gaps_gt_1s": [],
+  "counts": {
+    "/rosout_agg": 809,
+    "/tf_static": 1,
+    "/sensors/imu": 5015,
+    "/control/telemetry": 3932,
+    "/control/state": 3932,
+    "/control/request": 3932,
+    "/vehicle/status": 5342,
+    "/map/route": 1,
+    "/localization/mode": 198,
+    "/sensors/lidar/points": 1685,
+    "/localization/s": 9819,
+    "/tf": 9819,
+    "/localization/odometry": 9819,
+    "/control/path": 3929,
+    "/sensors/gps": 1966,
+    "/behavior/signal_camera": 3877,
+    "/behavior/signal_stop": 3877,
+    "/behavior/state": 3867,
+    "/behavior/target": 3867,
+    "/behavior/mission": 3867,
+    "/behavior/markers": 3867,
+    "/perception/footprints": 1677,
+    "/perception/obstacle_markers": 1677,
+    "/behavior/prediction": 903,
+    "/behavior/prediction_markers": 903,
+    "/sensors/camera/traffic/compressed": 4797,
+    "/perception/road_users": 426,
+    "/events": 516,
+    "/behavior/highway_markers": 3671,
+    "/perception/traffic_light/debug/compressed": 886,
+    "/perception/traffic_signal": 839,
+    "/perception/clearance_queries": 976,
+    "/behavior/highway": 463
+  },
+  "wire_counts": {
+    "9092": 8540,
+    "909": 8536,
+    "9297": 5195,
+    "1112": 8361,
+    "2368": 120202,
+    "1111": 1960,
+    "9093": 9785
+  },
+  "child_exitcodes": [
+    0,
+    0,
+    0
+  ]
+}

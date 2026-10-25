@@ -1,0 +1,118 @@
+rrors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.13, 'imu': 0.02, 'status': 0.03}
+[INFO] [1791877834.256640]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877835.256668]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877836.208939]: 19.0 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 57
+[INFO] [1791877836.256778]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877836.878586]: 9.0 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877836.893223]: RX={'gps': 750, 'imu': 2967, 'status': 2992} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.09, 'imu': 0.05, 'status': 0.0}
+[INFO] [1791877837.306564]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877838.356603]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877838.511866]: 9.3 Hz | 처리 25.2 ms (최대 28.6) | 덩어리 14, 추적 14, 경로밖 제외 188, 도로밖 제외 376, 도로밖 점 53345
+[INFO] [1791877839.208937]: 18.7 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 56
+[INFO] [1791877839.406691]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877839.878640]: 9.3 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877839.893243]: RX={'gps': 780, 'imu': 3081, 'status': 3104} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.12, 'imu': 0.01, 'status': 0.03}
+[INFO] [1791877840.456744]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877841.506604]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877842.208875]: 18.7 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 56
+[INFO] [1791877842.556573]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877842.878569]: 9.3 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877842.893251]: RX={'gps': 810, 'imu': 3193, 'status': 3216} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.12, 'imu': 0.01, 'status': 0.03}
+[INFO] [1791877843.586437]: 9.3 Hz | 처리 25.4 ms (최대 30.1) | 덩어리 14, 추적 14, 경로밖 제외 188, 도로밖 제외 376, 도로밖 점 53345
+[INFO] [1791877843.606502]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877844.606543]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877845.208916]: 19.0 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 57
+[INFO] [1791877845.606524]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877845.878562]: 9.3 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877845.893248]: RX={'gps': 840, 'imu': 3305, 'status': 3328} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.14, 'imu': 0.03, 'status': 0.04}
+[INFO] [1791877846.606527]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877847.656697]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877848.208916]: 18.7 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 56
+[INFO] [1791877848.612249]: 9.4 Hz | 처리 24.5 ms (최대 29.2) | 덩어리 14, 추적 14, 경로밖 제외 188, 도로밖 제외 376, 도로밖 점 53345
+[INFO] [1791877848.656742]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877848.878608]: 9.3 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877848.893285]: RX={'gps': 870, 'imu': 3417, 'status': 3442} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.1, 'imu': 0.05, 'status': 0.01}
+[INFO] [1791877849.706660]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877850.706685]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877851.208940]: 18.7 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 56
+[INFO] [1791877851.756608]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877851.878574]: 9.7 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877851.893282]: RX={'gps': 900, 'imu': 3531, 'status': 3554} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.13, 'imu': 0.02, 'status': 0.03}
+[INFO] [1791877852.806676]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877853.700183]: 9.4 Hz | 처리 25.6 ms (최대 30.9) | 덩어리 14, 추적 14, 경로밖 제외 192, 도로밖 제외 384, 도로밖 점 54480
+[INFO] [1791877853.806674]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877854.208909]: 19.0 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 57
+[INFO] [1791877854.806715]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877854.878570]: 9.3 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877854.893281]: RX={'gps': 930, 'imu': 3645, 'status': 3668} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.11, 'imu': 0.01, 'status': 0.01}
+[INFO] [1791877855.856695]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877856.906644]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877857.208916]: 18.7 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 56
+[INFO] [1791877857.878608]: 9.3 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877857.893249]: RX={'gps': 960, 'imu': 3757, 'status': 3780} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.09, 'imu': 0.05, 'status': 0.05}
+[INFO] [1791877857.906593]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877858.782694]: 9.5 Hz | 처리 25.3 ms (최대 32.1) | 덩어리 14, 추적 14, 경로밖 제외 192, 도로밖 제외 384, 도로밖 점 54480
+[INFO] [1791877858.956615]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877860.006796]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877860.208904]: 18.7 Hz | 장당 57 KB | 송신 127.0.0.1:9090 | 비정상 패킷 56
+[INFO] [1791877860.878604]: 9.7 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877860.893293]: RX={'gps': 990, 'imu': 3871, 'status': 3894} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.1, 'imu': 0.04, 'status': 0.05}
+[INFO] [1791877861.056674]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877862.106636]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=-0.00km/h s=309.70m error=0.02m
+[INFO] [1791877863.106600]: CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m
+[INFO] [1791877863.208923]: 18.7 Hz | 장당 56 KB | 송신 127.0.0.1:9090 | 비정상 패킷 56
+[INFO] [1791877863.867583]: 9.4 Hz | 처리 24.5 ms (최대 31.3) | 덩어리 14, 추적 14, 경로밖 제외 192, 도로밖 제외 384, 도로밖 점 54480
+[INFO] [1791877863.878579]: 9.3 Hz | 회전당 7715 점 | 송신 127.0.0.1:2369
+[INFO] [1791877863.893339]: RX={'gps': 1020, 'imu': 3985, 'status': 4008} parse_errors={'gps': 0, 'imu': 0, 'status': 0} age_s={'gps': 0.11, 'imu': 0.01, 'status': 0.01}
+^C[competition_camera_delay-11] killing on exit
+[competition_bag-10] killing on exit
+[race_hud_node-9] killing on exit
+[obstacle_node-8] killing on exit
+[lidar_bridge-7] killing on exit
+[static_transform_publisher-6] killing on exit
+[behavior_node-5] killing on exit
+[path_follower-4] killing on exit
+[localization-3] killing on exit
+[sensor_bridge-2] killing on exit
+[yolo_signal_node-2] killing on exit
+[camera_bridge-1] killing on exit
+Traceback (most recent call last):
+  File "/workspace/ros1-port/devel/lib/foscar_camera/camera_bridge", line 15, in <module>
+    exec(compile(fh.read(), python_script, 'exec'), context)
+  File "/workspace/ros1-port/build/foscar_camera/python_scripts/camera_bridge", line 5, in <module>
+    main()
+  File "/workspace/ros1-port/src/foscar_camera/./foscar_camera/camera_bridge.py", line 189, in main
+    rclpy.spin(node)
+  File "<string>", line 10, in spin
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 113, in spin
+    self.spin_once()
+Traceback (most recent call last):
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 124, in spin_once
+  File "/workspace/ros1-port/devel/lib/foscar_camera/yolo_signal_node", line 15, in <module>
+    entity = self._next(timeout_sec)
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 61, in _next
+    raise ExternalShutdownException()
+foscar_ros1.executors.ExternalShutdownException
+    exec(compile(fh.read(), python_script, 'exec'), context)
+  File "/workspace/ros1-port/build/foscar_camera/python_scripts/yolo_signal_node", line 5, in <module>
+    main()
+  File "/workspace/ros1-port/src/foscar_camera/./foscar_camera/yolo_signal_node.py", line 93, in main
+    try:rclpy.spin(node)
+  File "<string>", line 10, in spin
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 113, in spin
+    self.spin_once()
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 124, in spin_once
+    entity = self._next(timeout_sec)
+  File "/workspace/ros1-port/src/foscar_ros1/./foscar_ros1/executors.py", line 61, in _next
+    raise ExternalShutdownException()
+foscar_ros1.executors.ExternalShutdownException
+shutdown handoff confirmed: Manual/P, brake released
+shutting down processing monitor...
+... shutting down processing monitor complete
+done
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+done
+foscar@foscar:~/RMT-ros1$ 

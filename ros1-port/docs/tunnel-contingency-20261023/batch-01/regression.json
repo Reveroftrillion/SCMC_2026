@@ -1,0 +1,146 @@
+{
+  "tunnel-dropout-before-20261023-01": {
+    "exit_code": 1,
+    "tests": 6,
+    "passed": 4,
+    "skipped": 0,
+    "elapsed_s": 1.1704401219976717,
+    "source_changes": [],
+    "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving",
+    "failures": [
+      {
+        "name": "test_initial_dropout_cannot_exit_just_before_the_curve_starts",
+        "classname": "test.test_tunnel_initial_dropout"
+      },
+      {
+        "name": "test_empty_scan_retains_adopted_entry_return_and_speed_cap",
+        "classname": "test.test_tunnel_initial_dropout"
+      }
+    ],
+    "evidence": {
+      "summary.json": "b4e033d9b439d581dd289987c5a066af34e580dca36fd1652664b885ad499291",
+      "sources.json": "1250709167b40078a26cd6cc148079491d00d366e0d37172547cf1a975d4021a",
+      "pytest.log": "8e8e1de9b01557189e6fd90b85f23a225d690e1623ab5a5892b1cf20d0ee364f",
+      "junit.xml": "c1f16458209c17d841f5a4831a5ceafcc48cecdb05a5f77021dc0259ff4462e2"
+    }
+  },
+  "tunnel-dropout-after-20261023-01": {
+    "exit_code": 1,
+    "tests": 6,
+    "passed": 5,
+    "skipped": 0,
+    "elapsed_s": 1.1776272900024196,
+    "source_changes": [],
+    "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving",
+    "failures": [
+      {
+        "name": "test_empty_scan_retains_adopted_entry_return_and_speed_cap",
+        "classname": "test.test_tunnel_initial_dropout"
+      }
+    ],
+    "evidence": {
+      "summary.json": "446d7983940ab3e8e1d6a07d82bad2148baed691ac2dc489ba86243efa1fec73",
+      "sources.json": "b8b5023685a0345236a53b51a738b973c5cc7129556929e79ee486ffad101ee3",
+      "pytest.log": "29430b0e053d0dd0e87822aada9fb9b864305c971aefaed37c5e12442a90a427",
+      "junit.xml": "351e0417d08948232d0d6c984e5620571573075fd49a33c04595eb6bfadfcd3c"
+    }
+  },
+  "tunnel-dropout-after-20261023-02": {
+    "exit_code": 0,
+    "tests": 6,
+    "passed": 6,
+    "skipped": 0,
+    "elapsed_s": 1.5722723729995778,
+    "source_changes": [],
+    "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving",
+    "failures": [],
+    "evidence": {
+      "summary.json": "d7ef8d3575dfbf789c3443cd2a4fbc8b78647457efb4b8f2926d4a6fe2f4ec07",
+      "sources.json": "564808472a9fc004f6034fda2c75895c728a1441cd905259d7598a09f356014c",
+      "pytest.log": "34e94c402f217f71a5c90049081e8e5f46bc22d91b9c2820a006080782de8d5f",
+      "junit.xml": "875bf6429030f6736ac79dc741956a0995354825f4c868fe40d6da75c7be11c1"
+    }
+  },
+  "tunnel-dropout-after-20261023-03": {
+    "exit_code": 1,
+    "tests": 7,
+    "passed": 6,
+    "skipped": 0,
+    "elapsed_s": 1.4768842890007363,
+    "source_changes": [],
+    "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving",
+    "failures": [
+      {
+        "name": "test_new_wall_corridor_cannot_validate_the_previous_wider_curve",
+        "classname": "test.test_tunnel_initial_dropout"
+      }
+    ],
+    "evidence": {
+      "summary.json": "69ee90a9ab6df96fc54bb2de89c96a9bf398fe53ff136ec6e9fef5eb837b457e",
+      "sources.json": "1d669916e55ed8f018a24062ffd620c9bccdf3e783653941b15c33b5a4cd7764",
+      "pytest.log": "1f73202cb6becb05b3f9a3e98839e91687d487358ed08364ac06ff3951f46f8c",
+      "junit.xml": "237628aa0c6a62c372e8748caf26bd6a9211d5802bba075ef38bb2214eec43f1"
+    }
+  },
+  "tunnel-dropout-after-20261023-04": {
+    "exit_code": 0,
+    "tests": 7,
+    "passed": 7,
+    "skipped": 0,
+    "elapsed_s": 1.491473414000211,
+    "source_changes": [],
+    "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving",
+    "failures": [],
+    "evidence": {
+      "summary.json": "683839c8876239fb28993e0858f236e6c2222c366183d49437df5c4ae6b9b6b5",
+      "sources.json": "e09e7a69735606077edc57de9e2756a032af4706853761b50640fe5005c55932",
+      "pytest.log": "7008f5f16da2dd38e3b009ee4e6dcb3332bcb052ade7beb69b30944f188fbf65",
+      "junit.xml": "2d5df656cb4acca2d39f098d5dfba3576e7deb3f5eee1d1b6290a1dbf274b1c9"
+    }
+  },
+  "tunnel-dropout-suite-20261023-01": {
+    "exit_code": 2,
+    "tests": 412,
+    "passed": 412,
+    "skipped": 0,
+    "elapsed_s": 149.9579634090005,
+    "source_changes": [],
+    "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving",
+    "failures": [],
+    "evidence": {
+      "summary.json": "d9eec6f59636d955a1955e90c0c4abf25028e1a6981a638a1120709ecd835ca1",
+      "sources.json": "b8b5023685a0345236a53b51a738b973c5cc7129556929e79ee486ffad101ee3",
+      "pytest.log": "0d4661fde3d76a505b931dff7090c35310ec9ecfb70da62858bb79523cc2a67d",
+      "junit.xml": "4160f124705b6f2e58266101a3b16276eca795328094868493669617d2b3190e"
+    }
+  },
+  "tunnel-dropout-suite-20261023-02": {
+    "exit_code": 1,
+    "tests": 979,
+    "passed": 978,
+    "skipped": 0,
+    "elapsed_s": 338.7786896489997,
+    "source_changes": [],
+    "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving",
+    "failures": [
+      {
+        "name": "test_elevated_asphalt_reference_removes_paint_but_keeps_low_box",
+        "classname": "verification..work.tunnel-dropout-suite-20261023-02.tree.src.foscar_lidar.test.test_tunnel_intensity.TunnelIntensityTest"
+      }
+    ],
+    "evidence": {
+      "summary.json": "312f88ca9c9ac360ebaba0da2c90069f1e0d7c39c54b417722aa273339e0499c",
+      "sources.json": "e09e7a69735606077edc57de9e2756a032af4706853761b50640fe5005c55932",
+      "pytest.log": "093bd70839dee4713681478c6c3d28235def360f41aea31090a02b7921f7ea03",
+      "junit.xml": "ae886d62a66748f54bfd20b9deb9bf66a1aadd87d776436b05c484b33dcd805c"
+    }
+  },
+  "notes": [
+    "Before: two production cancellation failures; existing tests untouched",
+    "After01: 5/6; new never-rise speed assertion contradicted existing held-speed policy",
+    "After02: 6/6; new speed contract compares continuous-observation control, source speed policy unchanged",
+    "After03: added wall-narrowing test failed on initial candidate; after04 preserves mapped body gate, 7/7",
+    "Suite01 intentionally interrupted after 411 passes to include new wall gate in final candidate",
+    "Suite02 final 979 tests / 978 pass / 1 prior ROUNDABOUT intensity expectation failure / skip0"
+  ]
+}

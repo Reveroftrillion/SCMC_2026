@@ -1,0 +1,16 @@
+{
+  "scope": "Final static/source/reference checks, user run stopped per confirmation",
+  "syntax_files": 15,
+  "document_links": 242,
+  "broken_links": [],
+  "public_json_files": 38,
+  "frozen_source_files": 348,
+  "source_changes": [],
+  "reference_files": 530,
+  "reference_changes": [],
+  "plain_diff_check_exit": 2,
+  "cr_at_eol_diff_check_exit": 0,
+  "whitespace_note": "Planning files preserve existing CRLF; plain diff checker reports CR-at-EOL, adjusted check passes",
+  "tests": "972 total / 971 PASS / 1 prior ROUNDABOUT expectation FAIL / skip0; 22 tool tests PASS",
+  "actual_result": "User-operated registered16 run: observed box, bypass, return, FINISH; visual no-collision and Manual/P reported by user; external collision packet audit absent"
+}

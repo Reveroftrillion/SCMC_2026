@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+"""ROS1 process equivalent of ROS2 TimerAction(period=5.0).
+
+Wait against monotonic time, without initializing a ROS node or waiting for
+/clock; then replace this process with the delayed child roslaunch.
+"""
+import math
+import os
+import signal
+import sys
+import time
+
+
+def main():
+    # roslaunch appends its name/log remappings to executable arguments. They
+    # belong to this helper, not the deferred application's argument scope.
+    args = [arg for arg in sys.argv[1:] if not arg.startswith('__')]
+    if len(args) < 3:
+        raise ValueError('delay_wall requires SECONDS PACKAGE FILE [ARG:=VALUE ...]')
+    delay = float(args[0])
+    if not math.isfinite(delay) or delay < 0:
+        raise ValueError('wall delay must be finite and >= 0')
+
+    def stop(signum, _frame):
+        raise SystemExit(128 + signum)
+
+    signal.signal(signal.SIGINT, stop)
+    signal.signal(signal.SIGTERM, stop)
+    deadline = time.monotonic() + delay
+    while True:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            break
+        time.sleep(remaining)
+    os.execvp('roslaunch', ['roslaunch'] + args[1:])
+
+
+if __name__ == '__main__':
+    main()
