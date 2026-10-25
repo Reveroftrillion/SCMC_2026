@@ -28,6 +28,7 @@ def follower(tmp_path, config=''):
     f.route = SimpleNamespace(points=((0., 0.), (60., 0.)))
     f.odom = SimpleNamespace(header=SimpleNamespace(stamp=Stamp(sec=100), frame_id='map'))
     f.shadow_recorder, f.shadow_request, f.shadow_request_stamp = None, None, None
+    f.shadow_request_error = ''
     f.shadow_failed = False
     return f
 
@@ -71,3 +72,16 @@ def test_snapshot_uses_accepted_target_and_marks_invalid_state(tmp_path):
     f.close()
     row = json.loads((tmp_path / 'follower.shadow.jsonl').read_text().splitlines()[1])
     assert not row['output']['valid'] and row['output']['reason'] == 'INVALID_TARGET'
+
+
+def test_snapshot_error_persists_when_worker_drops_first_frame(tmp_path):
+    f = follower(tmp_path, 'enabled')
+    frames = []
+    f.shadow_recorder = SimpleNamespace(error=None, push=frames.append)
+    f.target = Target(reference=SimpleNamespace())  # Missing reference fields.
+    output = Output('CRUISE', 'test', progress=510.)
+    for _ in range(2):
+        f.publish_output(output, 100., 10., 0., 0., 2.)
+    assert not f.shadow_failed
+    assert [row.input_error for row in frames] == ['target_snapshot_error'] * 2
+    assert len(f.command_pub.values) == 2

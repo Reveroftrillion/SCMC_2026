@@ -10,7 +10,7 @@
 | 경로 진행 구간 관리 | 신규 47 PASS | [결과](PROGRESS_RESULT_2026-10-25.md) |
 | 일반/회피/reference 변환 | 신규 59 PASS | [결과](PATH_CONVERSION_RESULT_2026-10-25.md) |
 | 요청 선택·유지·해제·만료 | 신규 57, 기존 포함 278 PASS | [최신 결과](PATH_SELECTION_RESULT_2026-10-25.md) |
-| follower 병행 계산·비교 기록·재생 | 신규 23, 기존 회귀 포함 369 PASS; 합성 600프레임 재생 일치 | [현재 결과](SHADOW_RESULT_2026-10-25.md) |
+| follower 병행 계산·비교 기록·재생 | 신규 24, 기존 회귀 포함 370 PASS; 합성 600프레임 재생 일치 | [현재 결과](SHADOW_RESULT_2026-10-25.md) |
 
 문서별 합성 장면과 step은 각각의 확인 범위를 나타낸다. 이를 합쳐 실제 주행 횟수로 세지 않는다. 현재 production launch에서 실행되는 것은 기존 ROS1 이식·수정 경로다.
 

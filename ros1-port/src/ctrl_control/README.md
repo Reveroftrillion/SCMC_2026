@@ -27,4 +27,4 @@
 & .\ros1-port\.python310\python.exe -X utf8 -B .\ros1-port\tools\validate_shadow.py
 ```
 
-[현재 결과](../../docs/SHADOW_RESULT_2026-10-25.md)에 369개 검사와 합성 기록 재생, 미검증 범위가 있다. 실행/재빌드는 [ROS1 안내](../../README.md)를 따른다. 새 모듈을 계산한다고 기존 주행 전체가 CTRL 독자 구현으로 교체된 것은 아니다.
+[현재 결과](../../docs/SHADOW_RESULT_2026-10-25.md)에 370개 검사와 합성 기록 재생, 미검증 범위가 있다. 실행/재빌드는 [ROS1 안내](../../README.md)를 따른다. 새 모듈을 계산한다고 기존 주행 전체가 CTRL 독자 구현으로 교체된 것은 아니다.

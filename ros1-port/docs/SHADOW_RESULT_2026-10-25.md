@@ -50,13 +50,13 @@ python3 -B ros1-port/tools/validate_shadow.py --example-config /tmp/ctrl-shadow-
 
 ## 확인 결과
 
-- Windows Python 3.10: **369 PASS**, 실패·오류·skip 0. 새 조향/진행/변환/선택 검사 278개, 신규 observer/연결 검사 23개, 기존 core·reference wire·route start 회귀 68개다.
+- Windows Python 3.10: **370 PASS**, 실패·오류·skip 0. 새 조향/진행/변환/선택 검사 278개, 신규 observer/연결 검사 24개, 기존 core·reference wire·route start 회귀 68개다.
 - 기존 라이브러리의 Pyparsing deprecation warning 10건이 있었다.
 - 일반·legacy offset·local reference 각 200프레임, 총 **600프레임**에서 후보 계산이 유효했고 저장/재생 결과가 일치했다. 고정된 합성 pose를 입력한 결정성 검사이며 폐루프 차량 성능 검사가 아니다.
 - recorder worker의 bounded queue/drop, 파일 충돌, worker 오류, 재생 변조 검출을 확인했다. ROS doubles에서 기본 비활성·정상 활성·설정 파일 없음·worker 오류 모두 기존 accel/brake/steering/state가 유지되었다.
 - 재생 도구는 기록된 입력을 다시 계산해 저장된 출력과 비교한다. 원래 출력이 invalid였던 기록도 같은 invalid 결과가 나오면 재생 일치에 포함되므로, 일치를 주행 성공으로 해석하지 않는다.
 
-현재 실행의 보존 보고서는 [SHADOW_VALIDATION_2026-10-25.json](SHADOW_VALIDATION_2026-10-25.json)이다. 소스 SHA256과 검사 수를 포함하며, 이전 단계 보고서는 변경하지 않았다.
+추가 점검에서 snapshot 오류가 첫 frame에만 실려 대기열 교체 시 누락될 수 있는 경우를 재현했다. 새 요청이 들어올 때까지 오류 표시를 유지하도록 수정하고 회귀 검사를 추가했다. 현재 실행의 보존 보고서는 [SHADOW_VALIDATION_SNAPSHOT_FIX_2026-10-25.json](SHADOW_VALIDATION_SNAPSHOT_FIX_2026-10-25.json)이다. 소스 SHA256과 검사 수를 포함하며, [직전 369개 검사 보고서](SHADOW_VALIDATION_2026-10-25.json)는 당시 기록으로 유지한다.
 
 ## 남은 범위
 

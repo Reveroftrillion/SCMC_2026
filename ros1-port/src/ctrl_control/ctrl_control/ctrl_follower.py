@@ -129,6 +129,7 @@ class Follower(Node):
         self.shadow_failed = False
         self.shadow_request_stamp = None
         self.shadow_request = None
+        self.shadow_request_error = ''
         self.create_timer(0.05, self.tick)
         self.get_logger().info(f'log={self.log_path}')
 
@@ -379,14 +380,15 @@ class Follower(Node):
                 self.get_logger().info(f'shadow comparison log={path}')
             if self.shadow_recorder.error:
                 raise RuntimeError(self.shadow_recorder.error)
-            error = ''
             if self.target_stamp != self.shadow_request_stamp:
                 self.shadow_request_stamp = self.target_stamp
+                self.shadow_request_error = ''
                 try:
                     self.shadow_request = request_from_target(self.target, self.target_stamp)
                 except (TypeError, ValueError, AttributeError, OverflowError):
                     self.shadow_request = None
-                    error = 'target_snapshot_error'
+                    self.shadow_request_error = 'target_snapshot_error'
+            error = self.shadow_request_error
             if self.target is not None and self.target.state in ('INVALID_TARGET', 'CLOCK_RESET'):
                 error = self.target.state
             stamp = self.odom.header.stamp
