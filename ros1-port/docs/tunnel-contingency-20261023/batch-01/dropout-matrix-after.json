@@ -1,0 +1,17 @@
+{
+  "scope": "Prescribed map-only single-outline/dropout/reappearance; no physical dynamics",
+  "cases": 108,
+  "eligible": 81,
+  "retained": 81,
+  "ineligible": 27,
+  "failures": [],
+  "other_decision_failures": [],
+  "avoid_source_sha256": "4a84ce1372ee2a942430fb8862d181288e579f2635d8805193c7e1c85d18ea4b",
+  "avoid_source": "/workspace/ros1-port/src/foscar_planning/foscar_planning/states/avoid.py",
+  "source_unchanged": true,
+  "limitations": [
+    "Ego progresses at prescribed input speed, independent of output caps",
+    "No native wall corridor, raw returns, transport scheduling, braking or steering response",
+    "Retained curves may stop under guards; retention is not mobility or collision certification"
+  ]
+}

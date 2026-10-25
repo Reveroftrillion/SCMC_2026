@@ -1,0 +1,53 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: map
+    Background Color: 32; 32; 32
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane Cell Count: 100
+    - Class: rviz_default_plugins/Path
+      Name: Global Route
+      Enabled: true
+      Color: 30; 220; 80
+      Topic:
+        Value: /map/route
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/Odometry
+      Name: Vehicle
+      Enabled: true
+      Keep: 1
+      Topic:
+        Value: /localization/odometry
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 5
+    - Class: rviz_default_plugins/PointStamped
+      Name: Pursuit Target
+      Enabled: true
+      Color: 255; 150; 0
+      Radius: 0.25
+      Topic:
+        Value: /control/target
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Target Frame: base_link
+      Scale: 12
+Window Geometry:
+  Width: 1200
+  Height: 800

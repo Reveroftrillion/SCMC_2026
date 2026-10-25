@@ -1,0 +1,31 @@
+{
+  "scope": "real MORAI UDP and ROS1 TCPROS, drive=false; current camera differs from source conditions",
+  "errors": [],
+  "drive_parameter": false,
+  "control_udp_destination_9093": [],
+  "launch_returncode": 0,
+  "passed_receive_and_decisions": false,
+  "topic_counts": {
+    "/sensors/gps": 250,
+    "/sensors/imu": 677,
+    "/vehicle/status": 0,
+    "/sensors/lidar/points": 209,
+    "/sensors/camera/traffic/compressed": 540,
+    "/localization/odometry": 0,
+    "/localization/s": 0,
+    "/localization/mode": 0,
+    "/map/route": 0,
+    "/tf": 0,
+    "/tf_static": 1,
+    "/behavior/target": 0,
+    "/behavior/state": 0,
+    "/behavior/mission": 0,
+    "/control/request": 498,
+    "/control/state": 498,
+    "/perception/traffic_signal": 0,
+    "/events": 1182,
+    "/perception/footprints": 204
+  },
+  "input_sha256": "1bf6633f475eedad66fd3e52a61a4fe3cdd211b099b45354ae0aabc362eb1cf9",
+  "classification": "No inputs while simulator paused; observed D on screen; no supervised trial started. Awaiting reset/Manual-P readiness."
+}

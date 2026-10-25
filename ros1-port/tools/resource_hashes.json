@@ -1,0 +1,94 @@
+{
+  "files": {
+    "foscar_bringup/config/low_speed.yaml": {
+      "sha256": "c309b72790bd20ca7ef77040f0b737b3cd92aa69208960e9787dbf17c53b89cd",
+      "size": 9212
+    },
+    "foscar_bringup/maps/link_set.json": {
+      "sha256": "5ce0fd57da07b83221c0a4d117b0606b2d9c094c8de476a7d1176c78a4dc5b0f",
+      "size": 9112815
+    },
+    "foscar_bringup/maps/link_set.seams.npz": {
+      "sha256": "3dd79353097b9f3c2e7fca0d0efc0920067f828638df95bc0a1c6707378fc62e",
+      "size": 2170326
+    },
+    "foscar_bringup/routes/checkpoints.txt": {
+      "sha256": "83f526989390173ec954121eb7f60fcc50feb5d9ea2323d4afe667ea6602329d",
+      "size": 1520
+    },
+    "foscar_bringup/routes/global_path.txt": {
+      "sha256": "a7fa4a89ff3840c7cc1be9b3b971572a67eb514f3ebee5a4a00ef535b73c64c3",
+      "size": 254118
+    },
+    "foscar_bringup/routes/spawn_path.json": {
+      "sha256": "e634a3e900c4fa4a807ebb52ec6f1aac9e2cd97ae1b0fafe5cbcfc9cbfbf74e8",
+      "size": 901
+    },
+    "foscar_bringup/routes/spawn_path.txt": {
+      "sha256": "4b9edccfd82414f1ea0d85e862370572d0d8c5510f5f91fcb9fc1a97ff4ce8f2",
+      "size": 266193
+    },
+    "foscar_camera/config/stop_lines.csv": {
+      "sha256": "9c021decd17b9f21aec2212c117ce20eeb7b5151b35c412d84f33492d37441a4",
+      "size": 900
+    },
+    "foscar_camera/config/yolo_stoplines.json": {
+      "sha256": "4025fe009f165bc026a3e05edda34e2ed957a0801bc9370e96007fe3055ff5f3",
+      "size": 1131
+    },
+    "foscar_camera/models/README.md": {
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb",
+      "size": 647
+    },
+    "foscar_camera/models/best.onnx": {
+      "sha256": "d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98",
+      "size": 38669688
+    },
+    "foscar_camera/requirements-onnx.txt": {
+      "sha256": "30687bef9694ea2c901ab93d0a40934875c94b8d1af2a9eb7377d9e506b8c1e4",
+      "size": 99
+    },
+    "foscar_camera_train/config/record.yaml": {
+      "sha256": "d72f57963eb5ffbc6623eae2df96e9d08f581eeebc5d39a2352fce8e4b4aad93",
+      "size": 3060
+    },
+    "foscar_interfaces/msg/ControlCommand.msg": {
+      "sha256": "529b0a7e421ab28b6293a2aaf138ab7c420bc68c34eb54cd0bbf868650d8e965",
+      "size": 157
+    },
+    "foscar_interfaces/msg/DrivingTarget.msg": {
+      "sha256": "ef1b153e42b031826d8f60bac67be7d29053340247a08652002b62c9ed621434",
+      "size": 1752
+    },
+    "foscar_interfaces/msg/Event.msg": {
+      "sha256": "1eeea8488b92f21a7ff59e25d1c13ce8eeb6d24ac746adc730dd14b7426b2c2a",
+      "size": 742
+    },
+    "foscar_interfaces/msg/VehicleStatus.msg": {
+      "sha256": "416f289cdc819350dee74879ea88c593a155d59c575deca09064b2c9b4d33141",
+      "size": 194
+    },
+    "foscar_planning/config/behavior.yaml": {
+      "sha256": "83d26bbe4e0b1185b710db72bdca9d9900b627d3fe3d5f01f7eede664b9bd48c",
+      "size": 6403
+    },
+    "foscar_planning/config/highway.yaml": {
+      "sha256": "9416ba81f9cbfbf8a61c4df9c0e98b23a810317a2b08b0154eb73a308920e60a",
+      "size": 11539
+    },
+    "foscar_planning/config/highway_kappa.npz": {
+      "sha256": "5b60ceb2aa4cac870f204fd4bea979eddfaf4cd070993c6c6f0b52fb22a6a477",
+      "size": 11146
+    },
+    "foscar_planning/config/missions.yaml": {
+      "sha256": "c9723d6452a1a54b617214b5b6d83d569d27673d3e4b8afda2071a520be3b185",
+      "size": 3927
+    },
+    "foscar_planning/config/roundabout_motion.json": {
+      "sha256": "4933ef9c60c1399313be2012f2abb6e8ece56527439968b10b45de3eb390eeb0",
+      "size": 30334
+    }
+  },
+  "format": 1,
+  "source": "2026foscar-competition"
+}

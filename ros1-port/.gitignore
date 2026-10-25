@@ -1,0 +1,4 @@
+.python310/
+.downloads/
+verification/.work/
+.catkin_workspace

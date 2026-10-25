@@ -1,0 +1,962 @@
+[
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.24193047147423385,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.24719192450854166,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.2499361774071076,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.21745711643649202,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.2748395287771359,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.23996344205980336,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.24874971262127588,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.2308536632647531,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.3671682720213596,
+    "peak_brake": 0.49732328805441034,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.18934418335283,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.26148531410444775,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.2038045572466558,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.2511106300542849,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.4123139284054389,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.1565032006403726,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.39997250656020356,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.27663827430231436,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.4680711158941051,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.2489555981581475,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.4503863740855536,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.20178210187395962,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.33416608997998765,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.13815738204976924,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.3261026321602003,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.19045366780051154,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.32240639518289527,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.15774022799624277,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.31396258986234216,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.13166082551992986,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.1557475609583605,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.11368606853568508,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 13.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.1579004110085407,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.25815482573412396,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.24598012609212105,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.24265775278180968,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.22088140813025348,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.2565197555137786,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.2402922998062138,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.2461173562536203,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.22728902949165786,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.4095084310439745,
+    "peak_brake": 0.5312465790554216,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.20999734287457272,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.21414948633429276,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.19148402671370945,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.18668809465449954,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.47124175933424794,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.23468916955459918,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.45650319789760374,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.22739415948356623,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.5107246368894778,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.33187106275835276,
+    "peak_brake": 0.44614963615282727,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.49768793246568066,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.14601802988801182,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.4019398510689882,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.19795393410259976,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.3853292772044483,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.14707017627128494,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.38118541067220235,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.14246357348685024,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.3703107963886225,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.4862677189147462,
+    "peak_brake": 0.4378547052746535,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.22877435416683056,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.5161483927819006,
+    "peak_brake": 0.42719513892642597,
+    "stopped": true
+  },
+  {
+    "gain": 15.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.22463396463331264,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.23143918061808222,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.24340289869439857,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.2428704234724819,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.24337084096103467,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.2555101798047019,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.23547831028406563,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.2667507039882082,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.075,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.23444682769536485,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.2197226914872772,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.19906550606603446,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.22627946371568441,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.21177371048830196,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.38775597275957807,
+    "peak_brake": 0.4884081265146063,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.4972938254516919,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.3888112925237692,
+    "peak_brake": 0.5557064323199986,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.125,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.4852610899219769,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.4566604406442707,
+    "peak_brake": 0.4523686239648867,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.524898465732349,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.41202591069338723,
+    "peak_brake": 0.7165049785717009,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.5164169444392428,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.1725617089311129,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.43885172647705417,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.2724880900274229,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.15,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.4231346643717018,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.15759612180556815,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.40936389413406005,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.2821373838173713,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.0,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.3923741753297918,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": false,
+    "error": -0.11459686352634435,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.0,
+    "nonlinear": true,
+    "error": -0.2721436008683611,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": false,
+    "error": -0.12076281870434968,
+    "peak_brake": 1.0,
+    "stopped": true
+  },
+  {
+    "gain": 16.0,
+    "delay": 0.2,
+    "lag": 0.05,
+    "noise": 0.08,
+    "nonlinear": true,
+    "error": -0.26189090745305066,
+    "peak_brake": 1.0,
+    "stopped": true
+  }
+]

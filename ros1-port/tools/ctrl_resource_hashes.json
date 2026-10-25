@@ -1,0 +1,99 @@
+{
+  "base_commit": "5fa6bd93503dcf25fae7d123541a3ebd08322302",
+  "scope": "Current CTRL deployment after explicit namespace rename; original resource_hashes.json retained unchanged",
+  "original_manifest_sha256": "5cd4e5b9b3a23114e5f6927ba7b1a61a703d8a257b02544c0c240adfdeb87693",
+  "preexisting_manifest_mismatches": [
+    "foscar_camera/config/yolo_stoplines.json",
+    "foscar_planning/config/behavior.yaml"
+  ],
+  "files": {
+    "ctrl_bringup/config/low_speed.yaml": {
+      "sha256": "c309b72790bd20ca7ef77040f0b737b3cd92aa69208960e9787dbf17c53b89cd",
+      "size": 9212
+    },
+    "ctrl_bringup/maps/link_set.json": {
+      "sha256": "5ce0fd57da07b83221c0a4d117b0606b2d9c094c8de476a7d1176c78a4dc5b0f",
+      "size": 9112815
+    },
+    "ctrl_bringup/maps/link_set.seams.npz": {
+      "sha256": "3dd79353097b9f3c2e7fca0d0efc0920067f828638df95bc0a1c6707378fc62e",
+      "size": 2170326
+    },
+    "ctrl_bringup/routes/checkpoints.txt": {
+      "sha256": "83f526989390173ec954121eb7f60fcc50feb5d9ea2323d4afe667ea6602329d",
+      "size": 1520
+    },
+    "ctrl_bringup/routes/global_path.txt": {
+      "sha256": "a7fa4a89ff3840c7cc1be9b3b971572a67eb514f3ebee5a4a00ef535b73c64c3",
+      "size": 254118
+    },
+    "ctrl_bringup/routes/spawn_path.json": {
+      "sha256": "e634a3e900c4fa4a807ebb52ec6f1aac9e2cd97ae1b0fafe5cbcfc9cbfbf74e8",
+      "size": 901
+    },
+    "ctrl_bringup/routes/spawn_path.txt": {
+      "sha256": "4b9edccfd82414f1ea0d85e862370572d0d8c5510f5f91fcb9fc1a97ff4ce8f2",
+      "size": 266193
+    },
+    "ctrl_camera/config/stop_lines.csv": {
+      "sha256": "9c021decd17b9f21aec2212c117ce20eeb7b5151b35c412d84f33492d37441a4",
+      "size": 900
+    },
+    "ctrl_camera/config/yolo_stoplines.json": {
+      "sha256": "15e25e6bda7392795c202724caa2084a32ef56de432c37c0b056f7b0ecdd279c",
+      "size": 1131
+    },
+    "ctrl_camera/models/README.md": {
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb",
+      "size": 647
+    },
+    "ctrl_camera/models/best.onnx": {
+      "sha256": "d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98",
+      "size": 38669688
+    },
+    "ctrl_camera/requirements-onnx.txt": {
+      "sha256": "30687bef9694ea2c901ab93d0a40934875c94b8d1af2a9eb7377d9e506b8c1e4",
+      "size": 99
+    },
+    "ctrl_camera_train/config/record.yaml": {
+      "sha256": "ce3bf79dfd714ed3f899daa2fea87c183ae594d9d15f3f2231b98e02514ebb16",
+      "size": 3061
+    },
+    "ctrl_interfaces/msg/ControlCommand.msg": {
+      "sha256": "529b0a7e421ab28b6293a2aaf138ab7c420bc68c34eb54cd0bbf868650d8e965",
+      "size": 157
+    },
+    "ctrl_interfaces/msg/DrivingTarget.msg": {
+      "sha256": "ef1b153e42b031826d8f60bac67be7d29053340247a08652002b62c9ed621434",
+      "size": 1752
+    },
+    "ctrl_interfaces/msg/Event.msg": {
+      "sha256": "1eeea8488b92f21a7ff59e25d1c13ce8eeb6d24ac746adc730dd14b7426b2c2a",
+      "size": 742
+    },
+    "ctrl_interfaces/msg/VehicleStatus.msg": {
+      "sha256": "416f289cdc819350dee74879ea88c593a155d59c575deca09064b2c9b4d33141",
+      "size": 194
+    },
+    "ctrl_planning/config/behavior.yaml": {
+      "sha256": "06a7592a56ee46db49ae4109ad691d104e2738edbfe115d1df6e2a11b1db468b",
+      "size": 6530
+    },
+    "ctrl_planning/config/highway.yaml": {
+      "sha256": "6cd65764143bef1c28deda961605d5c55a55a60f7610d5461302dc1d0884073d",
+      "size": 11547
+    },
+    "ctrl_planning/config/highway_kappa.npz": {
+      "sha256": "5b60ceb2aa4cac870f204fd4bea979eddfaf4cd070993c6c6f0b52fb22a6a477",
+      "size": 11146
+    },
+    "ctrl_planning/config/missions.yaml": {
+      "sha256": "feaf16077a50b8c31facc8165b4cbd315255b573718cbedd813a88ee8a118520",
+      "size": 3921
+    },
+    "ctrl_planning/config/roundabout_motion.json": {
+      "sha256": "4933ef9c60c1399313be2012f2abb6e8ece56527439968b10b45de3eb390eeb0",
+      "size": 30334
+    }
+  }
+}

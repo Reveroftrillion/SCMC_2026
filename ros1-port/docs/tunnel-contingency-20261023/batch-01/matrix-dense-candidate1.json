@@ -1,0 +1,9467 @@
+{
+  "scope": "Map-only synthetic calculation matrix, no raw sensors/ROS/dynamics/control",
+  "cases": 1167,
+  "frames": 1248,
+  "passed": 1163,
+  "failed": [
+    {
+      "name": "two-gap20-d-1-v0",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "two-gap20-d-1-v20",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "two-gap30-d-1-v0",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "two-gap30-d-1-v20",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "name": "static-s1905-d-1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1.8-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1.8-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1.8-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1.8-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1.8-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d-1-w1.8-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1.8-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1.8-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1.8-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1.8-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1.8-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d0-w1.8-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1.8-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1.8-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1.8-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1.8-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1.8-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1905-d1-w1.8-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1.8-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1.8-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1.8-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1.8-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1.8-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d-1-w1.8-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1.8-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1.8-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1.8-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1.8-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1.8-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d0-w1.8-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1.8-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1.8-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1.8-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1.8-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1.8-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "static-s1920-d1-w1.8-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "clear-s1870-v0-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1870-v0-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1870-v20-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1870-v20-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1870-v50-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1870-v50-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1880-v0-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1880-v0-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1880-v20-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1880-v20-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1880-v50-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1880-v50-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1920-v0-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1920-v0-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1920-v20-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1920-v20-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1920-v50-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1920-v50-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1960-v0-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1960-v0-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1960-v20-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1960-v20-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1960-v50-DR",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "clear-s1960-v50-GPS",
+      "contract": "move",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "blocked-gap8-v0-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap8-v0-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap8-v20-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap8-v20-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap8-v50-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap8-v50-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap15-v0-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap15-v0-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap15-v20-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap15-v20-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap15-v50-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap15-v50-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap25-v0-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap25-v0-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap25-v20-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap25-v20-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap25-v50-l1",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "blocked-gap25-v50-l3",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d-1-v0",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d-1-v20",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d-1-v50",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d0-v0",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d0-v20",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d0-v50",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d1-v0",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d1-v20",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap10-d1-v50",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d-1-v0",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d-1-v20",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d-1-v50",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d0-v0",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d0-v20",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d0-v50",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d1-v0",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d1-v20",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "person-reenter-gap20-d1-v50",
+      "contract": "reenter",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "stale-restored-d-1-v0",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "bypass",
+        "bypass",
+        "zero_speed_cap",
+        "bypass"
+      ]
+    },
+    {
+      "name": "stale-restored-d-1-v20",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "bypass",
+        "bypass",
+        "zero_speed_cap",
+        "bypass"
+      ]
+    },
+    {
+      "name": "stale-restored-d-1-v50",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "braking_target",
+        "braking_target",
+        "zero_speed_cap",
+        "braking_target"
+      ]
+    },
+    {
+      "name": "stale-restored-d0-v0",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "bypass",
+        "bypass",
+        "zero_speed_cap",
+        "bypass"
+      ]
+    },
+    {
+      "name": "stale-restored-d0-v20",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "bypass",
+        "bypass",
+        "zero_speed_cap",
+        "bypass"
+      ]
+    },
+    {
+      "name": "stale-restored-d0-v50",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "braking_target",
+        "braking_target",
+        "zero_speed_cap",
+        "braking_target"
+      ]
+    },
+    {
+      "name": "stale-restored-d1-v0",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "stale-restored-d1-v20",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "stale-restored-d1-v50",
+      "contract": "stale",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap",
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap12-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "two-gap12-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "two-gap12-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "two-gap12-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap12-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap12-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap20-d-1-v0",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "two-gap20-d-1-v20",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "two-gap20-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "two-gap20-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap20-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap20-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap30-d-1-v0",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "two-gap30-d-1-v20",
+      "contract": "static",
+      "passed": false,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "two-gap30-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "two-gap30-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap30-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "two-gap30-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap6-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap10-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist15-gap14-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap6-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap10-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist20-gap14-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap6-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap10-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d-1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d-1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d-1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d0-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d0-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d0-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "near-two-dist25-gap14-d1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d-1-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d-1-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d-1-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d0-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d0-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d0-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d1-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d1-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist8-d1-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d-1-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d-1-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d-1-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d0-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d0-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d0-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d1-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d1-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist15-d1-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d-1-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d-1-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d-1-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d0-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d0-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d0-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d1-v0",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d1-v20",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "missing-map-dist25-d1-v50",
+      "contract": "stop",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d-1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d0-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1885-d2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d-1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d0-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1905-d2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d-1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d0-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1930-d2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d-1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "bypass"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d0-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d1-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "moving"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "braking_target"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w0.5-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w1-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l0.5-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l0.5-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l0.5-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l0.5-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l0.5-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l1-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l1-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l1-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l1-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l1-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l3-v0",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l3-v10",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l3-v20",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l3-v35",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    },
+    {
+      "name": "dense-s1955-d2-w2-l3-v50",
+      "contract": "static",
+      "passed": true,
+      "outcomes": [
+        "zero_speed_cap"
+      ]
+    }
+  ],
+  "elapsed_s": 44.024152169000445,
+  "source_unchanged": true,
+  "limitations": [
+    "Stops and bypasses are separate outcomes; stop is not a mobility pass",
+    "Finite stop_s truncates at stop_s - FRONT_AXLE; no braking-distance proof",
+    "Sampled Frenet rectangles approximate body orientation; whole output path checked even beyond sensing horizon",
+    "Synthetic person semantics/position, no perception/classification or official scoring"
+  ]
+}

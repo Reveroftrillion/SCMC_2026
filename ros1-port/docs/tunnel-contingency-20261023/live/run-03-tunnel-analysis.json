@@ -1,0 +1,89 @@
+{
+  "run": "docker/artifacts/tunnel-contingency-live-20261023-162509/run-03",
+  "scene_sha256": "a20b0eafe2b8d55bb25bde94415b71092709ba0c6307e59b5b8d40313e12719c",
+  "expected_actor": {
+    "DataID": 40100001,
+    "UNIQUEID": 39,
+    "m_eobstacleObjType": 4,
+    "pos": {
+      "x": -2.3711730547994088,
+      "y": -506.93559575171656,
+      "z": 28.400100854380373,
+      "_x": "-2.371",
+      "_y": "-506.936",
+      "_z": "28.400"
+    },
+    "rot": {
+      "roll": "0.000",
+      "pitch": "0.000",
+      "yaw": "-151.547"
+    },
+    "scale": {
+      "x": 3.0,
+      "y": 1.0,
+      "z": 1.0,
+      "_x": "3.000",
+      "_y": "1.000",
+      "_z": "1.000"
+    },
+    "initPos": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "_x": "0.000",
+      "_y": "0.000",
+      "_z": "0.000"
+    },
+    "initRot": {
+      "roll": "0.000",
+      "pitch": "0.000",
+      "yaw": "0.000"
+    },
+    "isWaypointMode": true,
+    "moveSpeed": 0.0,
+    "activeDistance": 0.0,
+    "waypointEventList": []
+  },
+  "expected_station": 1905.0,
+  "matched_observations": 0,
+  "matched_ids": [],
+  "first_match": null,
+  "last_match": null,
+  "target_states": {
+    "CRUISE": 103,
+    "AVOID": 2,
+    "TUNNEL": 182
+  },
+  "avoidance_targets": 2,
+  "minimum_target_offset": 0.0,
+  "maximum_target_offset": 0.0,
+  "minimum_measured_d": -0.3121205877171924,
+  "maximum_measured_d": 0.17901016785306795,
+  "localization_modes": [
+    {
+      "t": 1792743500.7855346,
+      "s": 1810.2405895751995,
+      "mode": "GPS"
+    },
+    {
+      "t": 1792743505.3468537,
+      "s": 1873.5574982798735,
+      "mode": "DR"
+    },
+    {
+      "t": 1792743513.8268895,
+      "s": 1990.0853183929587,
+      "mode": "GPS"
+    }
+  ],
+  "camera": {
+    "t": 1792743506.1576235,
+    "near_ego_s": 1885.0,
+    "sha256": "3952c39367d07012a1185bccfccf0b39268bd503f227e273ba8fe68f31da6ba8"
+  },
+  "limitations": [
+    "Within 4m of intended location, observed height >=0.2m; candidate association only",
+    "Footprints omit hidden body edges; not a ground-truth size or clearance measurement",
+    "Prescribed scene pose and preceding recorded s; no proof of official scoring or every actor identity"
+  ]
+}

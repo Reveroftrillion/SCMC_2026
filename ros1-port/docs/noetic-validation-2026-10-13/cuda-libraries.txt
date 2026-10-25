@@ -1,0 +1,26 @@
+Python 3.10.12
+cuda-cudart-11-2	
+cuda-cudart-12-6	12.6.77-1
+libcublas-12-6	12.6.4.1-1
+libcublas.so.12	
+libcudnn9	
+libcudnn9-cuda-12	9.5.1.17-1
+libcufft-12-6	11.3.0.4-1
+libcufft.so.11	
+libcurand-12-6	10.3.7.77-1
+libcurand.so.10	
+	linux-vdso.so.1 (0x00007fff26b0b000)
+	libcublasLt.so.12 => /usr/local/cuda/targets/x86_64-linux/lib/libcublasLt.so.12 (0x00007f032d000000)
+	libcublas.so.12 => /usr/local/cuda/targets/x86_64-linux/lib/libcublas.so.12 (0x00007f0326600000)
+	libcurand.so.10 => /usr/local/cuda/targets/x86_64-linux/lib/libcurand.so.10 (0x00007f0320000000)
+	libcufft.so.11 => /usr/local/cuda/targets/x86_64-linux/lib/libcufft.so.11 (0x00007f030f000000)
+	libcudart.so.12 => /usr/local/cuda/targets/x86_64-linux/lib/libcudart.so.12 (0x00007f030ec00000)
+	libcudnn.so.9 => /usr/lib/x86_64-linux-gnu/libcudnn.so.9 (0x00007f030e800000)
+	libdl.so.2 => /usr/lib/x86_64-linux-gnu/libdl.so.2 (0x00007f034e889000)
+	librt.so.1 => /usr/lib/x86_64-linux-gnu/librt.so.1 (0x00007f034e884000)
+	libpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f034e87f000)
+	libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f030e5d4000)
+	libm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007f0326519000)
+	libgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f034e85d000)
+	libc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x00007f030e3ab000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f0368a30000)

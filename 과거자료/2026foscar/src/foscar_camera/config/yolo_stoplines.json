@@ -1,0 +1,59 @@
+{
+  "lines": [
+    {
+      "id": "intersection_01",
+      "start_s": 169.00780627548488,
+      "stop_rear_s": 204.0863158816818,
+      "maneuver": "straight",
+      "roi": [
+        0.25,
+        0.0,
+        0.95,
+        1.0
+      ],
+      "lamps": 3
+    },
+    {
+      "id": "intersection_02",
+      "start_s": 271.9907177985463,
+      "stop_rear_s": 311.47479257805134,
+      "maneuver": "straight",
+      "roi": [
+        0.0,
+        0.0,
+        0.9,
+        1.0
+      ],
+      "lamps": 3
+    },
+    {
+      "id": "intersection_03",
+      "start_s": 407.1605676319004,
+      "stop_rear_s": 432.5186678525136,
+      "maneuver": "straight",
+      "roi": [
+        0.1,
+        0.0,
+        0.95,
+        1.0
+      ],
+      "lamps": 4
+    },
+    {
+      "id": "intersection_04",
+      "start_s": 569.0563658150828,
+      "stop_rear_s": 605.321596342225,
+      "maneuver": "left",
+      "roi": [
+        0.1,
+        0.0,
+        0.95,
+        1.0
+      ],
+      "lamps": 4
+    }
+  ],
+  "route_sha256": "1505867bd056f51859adbf2d5dd4e8177343e1037b1588529d80661bc1929a3a",
+  "coordinate": "global route rear axle s",
+  "camera_pitch_deg": 335
+}

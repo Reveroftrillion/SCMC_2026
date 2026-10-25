@@ -1,0 +1,9 @@
+{
+  "packets": 12833,
+  "valid_collision_packets": 9,
+  "decode_errors": 0,
+  "colliding_ids": [
+    16
+  ],
+  "wire_sha256": "3c8cf537a5bfafc635869cd9e70c503866b3df24ce61141fda747f2412a701f2"
+}

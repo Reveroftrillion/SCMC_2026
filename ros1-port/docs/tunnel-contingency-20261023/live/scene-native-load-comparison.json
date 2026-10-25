@@ -1,0 +1,127 @@
+{
+  "scope": "Ubuntu MORAI 25.S4.MolitComp03 native load/save, Pause, no driving",
+  "cases": [
+    {
+      "scene": "CTRL_tunnel_left_box",
+      "id": 39,
+      "registered": false,
+      "ids_seen": [
+        2
+      ],
+      "native_roundtrip": "CTRL_tunnel_inspect_roundtrip_20261023.json"
+    },
+    {
+      "scene": "CTRL_tunnel_left_box_path39",
+      "id": 39,
+      "registered": true,
+      "ids_seen": [
+        2
+      ]
+    },
+    {
+      "scene": "CTRL_tunnel_left_box_id16",
+      "id": 16,
+      "registered": false,
+      "existing_16": true,
+      "ids_seen": [
+        2,
+        16
+      ]
+    },
+    {
+      "scene": "CTRL_tunnel_left_box_order",
+      "id": 39,
+      "registered": false,
+      "reversed_object_order": true,
+      "ids_seen": [
+        2
+      ]
+    },
+    {
+      "scene": "CTRL_tunnel_left_box_id16",
+      "id": 16,
+      "registered": false,
+      "existing_16": false,
+      "ids_seen": [
+        2
+      ]
+    },
+    {
+      "scene": "CTRL_tunnel_native_box_20261023",
+      "id": 16,
+      "registered": true,
+      "ids_seen": [
+        2,
+        16
+      ],
+      "note": "Native near-start CargoBox, excludes arbitrary appended actor file as sole cause"
+    },
+    {
+      "scene": "CTRL_tunnel_left_box_registered16",
+      "id": 16,
+      "registered": true,
+      "existing_16": false,
+      "ids_seen": [
+        2,
+        16
+      ],
+      "native_actor": {
+        "DataID": 40100001,
+        "UNIQUEID": 16,
+        "m_eobstacleObjType": 4,
+        "pos": {
+          "x": -2.371000051498413,
+          "y": -506.9360046386719,
+          "z": 28.408000946044922,
+          "_x": "-2.371",
+          "_y": "-506.936",
+          "_z": "28.408"
+        },
+        "rot": {
+          "roll": "-359.633",
+          "pitch": "359.797",
+          "yaw": "-150.201"
+        },
+        "scale": {
+          "x": 3.0,
+          "y": 1.0,
+          "z": 1.0,
+          "_x": "3.000",
+          "_y": "1.000",
+          "_z": "1.000"
+        },
+        "initPos": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "_x": "0.000",
+          "_y": "0.000",
+          "_z": "0.000"
+        },
+        "initRot": {
+          "roll": "0.000",
+          "pitch": "0.000",
+          "yaw": "0.000"
+        },
+        "isWaypointMode": true,
+        "moveSpeed": 0.0,
+        "activeDistance": 0.0,
+        "waypointEventList": []
+      }
+    }
+  ],
+  "generated_equals_loaded_candidate": true,
+  "generated_sha256": "4f0011853b1d95255c16084024e12e3a788a9e0d5da0e7bc1329a47ff4492606",
+  "loaded_candidate_sha256": "4f0011853b1d95255c16084024e12e3a788a9e0d5da0e7bc1329a47ff4492606",
+  "native_roundtrip_sha256": "c2203a92f7c03fcae4361b026ebfff5328edadd0190a9e7f5f4cfb354fca151e",
+  "original_sample_unchanged": true,
+  "limitations": [
+    "Native loader ID range/implementation is unknown; ID16 supported here is not a guarantee for arbitrary IDs",
+    "Native pose/scale persistence does not prove sensor visibility or avoidance",
+    "Initial max-ID-plus-one scene and run-03 evidence remain unchanged"
+  ],
+  "checks": {
+    "generator_tests_before": "5 passed / 9 failed (new actor_id unsupported)",
+    "generator_tests_after": "14 passed"
+  }
+}

@@ -1,0 +1,783 @@
+{
+  "scope": "real MORAI UDP and ROS1 TCPROS, drive=false; current camera differs from source conditions",
+  "topics": {
+    "/sensors/gps": {
+      "count": 398,
+      "observed_hz": 10.019556191479362,
+      "last": {
+        "type": "sensor_msgs/NavSatFix",
+        "frame_id": "gps_link",
+        "stamp_ns": 1791872252750805854
+      }
+    },
+    "/sensors/imu": {
+      "count": 1042,
+      "observed_hz": 26.08159217711428,
+      "last": {
+        "type": "sensor_msgs/Imu",
+        "frame_id": "imu_link",
+        "stamp_ns": 1791872252891138553
+      }
+    },
+    "/vehicle/status": {
+      "count": 1147,
+      "observed_hz": 28.727714275860414,
+      "last": {
+        "type": "foscar_interfaces/VehicleStatus",
+        "frame_id": "base_link",
+        "stamp_ns": 1791872252902331590,
+        "speed_mps": 7.987556374347251e-07,
+        "gear": 1
+      }
+    },
+    "/sensors/lidar/points": {
+      "count": 339,
+      "observed_hz": 8.498982728544604,
+      "last": {
+        "type": "sensor_msgs/PointCloud2",
+        "frame_id": "lidar",
+        "stamp_ns": 1791872252827403545,
+        "width": 7650,
+        "height": 1
+      }
+    },
+    "/sensors/camera/traffic/compressed": {
+      "count": 912,
+      "observed_hz": 26.278227473408297,
+      "last": {
+        "type": "sensor_msgs/CompressedImage",
+        "frame_id": "camera_7",
+        "stamp_ns": 1791872252966268301,
+        "decoded_shape": [
+          480,
+          640,
+          3
+        ]
+      }
+    },
+    "/localization/odometry": {
+      "count": 1989,
+      "observed_hz": 49.97668117217921,
+      "last": {
+        "type": "nav_msgs/Odometry",
+        "frame_id": "map",
+        "stamp_ns": 1791872252909793853
+      }
+    },
+    "/localization/s": {
+      "count": 1984,
+      "observed_hz": 49.974550511815124,
+      "last": {
+        "type": "std_msgs/Float64",
+        "data": 0.8690399793980625
+      }
+    },
+    "/localization/mode": {
+      "count": 40,
+      "observed_hz": 0.9883748222417431,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "GPS"
+      }
+    },
+    "/map/route": {
+      "count": 1,
+      "observed_hz": null,
+      "last": {
+        "type": "nav_msgs/Path",
+        "frame_id": "map",
+        "stamp_ns": 1791872213154568433
+      }
+    },
+    "/tf": {
+      "count": 1984,
+      "observed_hz": 49.97456010743712,
+      "last": {
+        "type": "tf2_msgs/TFMessage"
+      }
+    },
+    "/tf_static": {
+      "count": 1,
+      "observed_hz": null,
+      "last": {
+        "type": "tf2_msgs/TFMessage"
+      }
+    },
+    "/behavior/target": {
+      "count": 786,
+      "observed_hz": 20.000866397785448,
+      "last": {
+        "type": "foscar_interfaces/DrivingTarget",
+        "frame_id": "",
+        "stamp_ns": 1791872252912398099,
+        "state": "CRUISE",
+        "v_max": 16.666666666666668,
+        "stop_s": "NaN"
+      }
+    },
+    "/behavior/state": {
+      "count": 786,
+      "observed_hz": 20.001110400499826,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "CRUISE"
+      }
+    },
+    "/behavior/mission": {
+      "count": 786,
+      "observed_hz": 19.99987563287528,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "{\"mission\": \"CRUISE\", \"substate\": \"CRUISE\", \"reason\": \"\", \"yield_status\": {\"kind\": \"NONE\", \"phase\": \"INACTIVE\", \"reason\": \"\", \"target_type\": null, \"progress\": null}, \"transition\": \"initial localization\", \"speed_limit_kmh\": 60.00000000000001, \"pedestrian_yield_completed\": false, \"allowed_states\": [\"CRUISE\", \"STOP_LINE\"]}"
+      }
+    },
+    "/control/request": {
+      "count": 799,
+      "observed_hz": 19.99995609282842,
+      "last": {
+        "type": "foscar_interfaces/ControlCommand",
+        "frame_id": "base_link",
+        "stamp_ns": 1791872252887675762,
+        "state": "HANDSHAKE",
+        "accel": 0.0,
+        "brake": 1.0,
+        "steering_rad": 0.0
+      }
+    },
+    "/control/state": {
+      "count": 799,
+      "observed_hz": 20.000068172663443,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "HANDSHAKE | request Auto/D with brake held | xy=(-131.31,-427.55) yaw=63.8deg v=0.00km/h s=0.87m error=0.05m"
+      }
+    },
+    "/perception/traffic_signal": {
+      "count": 0,
+      "observed_hz": null,
+      "last": null
+    },
+    "/events": {
+      "count": 0,
+      "observed_hz": null,
+      "last": null
+    },
+    "/perception/footprints": {
+      "count": 336,
+      "observed_hz": 8.507050207041187,
+      "last": {
+        "type": "std_msgs/String",
+        "data": "{\"stamp\": 1791872252.8274035, \"frame\": \"map\", \"objects\": [{\"id\": \"lidar:0e3ec574b1d64fa0895d098a90e203d7:1\", \"xy\": [[-119.79681551938873, -397.4554065313302], [-120.59275480238625, -396.51283409265113], [-120.68039050471425, -396.4350814356458], [-120.7684339826202, -396.3575873144407], [-121.12364813507202, -396.04640425697085], [-120.13272743389042, -397.14245755145606], [-120.04865150929069, -397.22173672887726]], \"center\": [-120.44926984986087, -396.7422433147131], \"vx\": 2.625585322907778e-08, \"vy\": 5.3370695223562515e-08, \"kind\": \"OBSTACLE\", \"on_road\": true, \"height\": 0.5257903337478638, \"caution\": false}], \"cleared\": [], \"scan_valid\": true, \"sight\": null, \"boundary_evidence\": [], \"tunnel_walls\": []}"
+      }
+    }
+  },
+  "errors": [],
+  "control_udp_destination_9093": [],
+  "drive_parameter": false,
+  "transport_parameters": {
+    "sim_ip": "127.0.0.1",
+    "bind_ip": "127.0.0.1",
+    "gps_port": 1111,
+    "imu_port": 1112,
+    "status_port": 909,
+    "ctrl_port": 9093
+  },
+  "node_names": [
+    [
+      [
+        "/rosout_agg",
+        [
+          "/rosout"
+        ]
+      ],
+      [
+        "/rosout",
+        [
+          "/static_transform_publisher",
+          "/rmt_readonly_verification",
+          "/sensor_bridge",
+          "/path_follower",
+          "/lidar_bridge",
+          "/race_hud_node",
+          "/localization",
+          "/behavior_node",
+          "/obstacle_node",
+          "/camera_bridge",
+          "/yolo_signal_node"
+        ]
+      ],
+      [
+        "/tf_static",
+        [
+          "/static_transform_publisher"
+        ]
+      ],
+      [
+        "/sensors/gps",
+        [
+          "/sensor_bridge"
+        ]
+      ],
+      [
+        "/sensors/imu",
+        [
+          "/sensor_bridge"
+        ]
+      ],
+      [
+        "/vehicle/status",
+        [
+          "/sensor_bridge"
+        ]
+      ],
+      [
+        "/sensors/lidar/points",
+        [
+          "/lidar_bridge"
+        ]
+      ],
+      [
+        "/control/request",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/control/state",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/control/telemetry",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/control/target",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/control/path",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/map/route",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/hud/markers",
+        [
+          "/race_hud_node"
+        ]
+      ],
+      [
+        "/localization/odometry",
+        [
+          "/localization"
+        ]
+      ],
+      [
+        "/localization/mode",
+        [
+          "/localization"
+        ]
+      ],
+      [
+        "/localization/s",
+        [
+          "/localization"
+        ]
+      ],
+      [
+        "/tf",
+        [
+          "/localization"
+        ]
+      ],
+      [
+        "/behavior/signal_stop",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/signal_camera",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/events",
+        [
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/perception/road_users",
+        [
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/perception/footprints",
+        [
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/perception/obstacle_markers",
+        [
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/behavior/highway",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/highway_markers",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/roundabout_markers",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/prediction_markers",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/prediction",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/perception/clearance_queries",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/target",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/state",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/mission",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/markers",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/sensors/camera/traffic/compressed",
+        [
+          "/camera_bridge"
+        ]
+      ],
+      [
+        "/perception/traffic_signal",
+        [
+          "/yolo_signal_node"
+        ]
+      ],
+      [
+        "/perception/traffic_light/debug/compressed",
+        [
+          "/yolo_signal_node"
+        ]
+      ]
+    ],
+    [
+      [
+        "/rosout",
+        [
+          "/rosout"
+        ]
+      ],
+      [
+        "/tf",
+        [
+          "/rmt_readonly_verification",
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/tf_static",
+        [
+          "/rmt_readonly_verification",
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/control/request",
+        [
+          "/sensor_bridge",
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/localization/odometry",
+        [
+          "/path_follower",
+          "/rmt_readonly_verification",
+          "/obstacle_node",
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/vehicle/status",
+        [
+          "/path_follower",
+          "/localization",
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/behavior/target",
+        [
+          "/path_follower",
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/localization/mode",
+        [
+          "/path_follower",
+          "/rmt_readonly_verification",
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/mission",
+        [
+          "/race_hud_node",
+          "/obstacle_node",
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/behavior/signal_stop",
+        [
+          "/race_hud_node"
+        ]
+      ],
+      [
+        "/localization/s",
+        [
+          "/race_hud_node",
+          "/rmt_readonly_verification",
+          "/obstacle_node",
+          "/behavior_node",
+          "/yolo_signal_node"
+        ]
+      ],
+      [
+        "/sensors/gps",
+        [
+          "/localization",
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/sensors/imu",
+        [
+          "/localization",
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/sensors/lidar/points",
+        [
+          "/rmt_readonly_verification",
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/control/state",
+        [
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/map/route",
+        [
+          "/rmt_readonly_verification",
+          "/obstacle_node",
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/perception/traffic_signal",
+        [
+          "/behavior_node",
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/perception/clearance_queries",
+        [
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/events",
+        [
+          "/rmt_readonly_verification",
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/perception/footprints",
+        [
+          "/rmt_readonly_verification",
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/control/telemetry",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/perception/road_users",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior/state",
+        [
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/sensors/camera/traffic/compressed",
+        [
+          "/rmt_readonly_verification",
+          "/yolo_signal_node"
+        ]
+      ],
+      [
+        "/behavior/signal_camera",
+        [
+          "/yolo_signal_node"
+        ]
+      ]
+    ],
+    [
+      [
+        "/rosout/get_loggers",
+        [
+          "/rosout"
+        ]
+      ],
+      [
+        "/rosout/set_logger_level",
+        [
+          "/rosout"
+        ]
+      ],
+      [
+        "/static_transform_publisher/get_loggers",
+        [
+          "/static_transform_publisher"
+        ]
+      ],
+      [
+        "/static_transform_publisher/set_logger_level",
+        [
+          "/static_transform_publisher"
+        ]
+      ],
+      [
+        "/rmt_readonly_verification/get_loggers",
+        [
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/rmt_readonly_verification/set_logger_level",
+        [
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/rmt_readonly_verification/tf2_frames",
+        [
+          "/rmt_readonly_verification"
+        ]
+      ],
+      [
+        "/sensor_bridge/get_loggers",
+        [
+          "/sensor_bridge"
+        ]
+      ],
+      [
+        "/sensor_bridge/set_logger_level",
+        [
+          "/sensor_bridge"
+        ]
+      ],
+      [
+        "/path_follower/get_loggers",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/path_follower/set_logger_level",
+        [
+          "/path_follower"
+        ]
+      ],
+      [
+        "/lidar_bridge/get_loggers",
+        [
+          "/lidar_bridge"
+        ]
+      ],
+      [
+        "/lidar_bridge/set_logger_level",
+        [
+          "/lidar_bridge"
+        ]
+      ],
+      [
+        "/race_hud_node/get_loggers",
+        [
+          "/race_hud_node"
+        ]
+      ],
+      [
+        "/race_hud_node/set_logger_level",
+        [
+          "/race_hud_node"
+        ]
+      ],
+      [
+        "/localization/get_loggers",
+        [
+          "/localization"
+        ]
+      ],
+      [
+        "/localization/set_logger_level",
+        [
+          "/localization"
+        ]
+      ],
+      [
+        "/behavior_node/get_loggers",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/behavior_node/set_logger_level",
+        [
+          "/behavior_node"
+        ]
+      ],
+      [
+        "/obstacle_node/get_loggers",
+        [
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/obstacle_node/set_logger_level",
+        [
+          "/obstacle_node"
+        ]
+      ],
+      [
+        "/camera_bridge/get_loggers",
+        [
+          "/camera_bridge"
+        ]
+      ],
+      [
+        "/camera_bridge/set_logger_level",
+        [
+          "/camera_bridge"
+        ]
+      ],
+      [
+        "/yolo_signal_node/get_loggers",
+        [
+          "/yolo_signal_node"
+        ]
+      ],
+      [
+        "/yolo_signal_node/set_logger_level",
+        [
+          "/yolo_signal_node"
+        ]
+      ]
+    ]
+  ],
+  "tf": {
+    "map<-base_link": {
+      "translation": [
+        -131.31291704634535,
+        -427.5465988909935,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.5284744345234377,
+        0.8489492164170557
+      ]
+    },
+    "base_link<-lidar": {
+      "translation": [
+        2.0,
+        0.0,
+        2.11
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "launch_returncode_before_shutdown": null,
+  "launch_returncode": 0,
+  "passed_receive_and_decisions": true,
+  "source_sensor_equivalence": "NOT VERIFIED: Camera-7 resolution/pitch differ; original camera position/FOV and MORAI vehicle-origin to base_link/rear-axle transform unknown; actual LiDAR/GPS mounts differ numerically"
+}

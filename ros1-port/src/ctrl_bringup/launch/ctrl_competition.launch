@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="/ros1_port/competition/bag_name" command="python3 &quot;$(find ctrl_bringup)/scripts/ctrl_launch_info&quot; bag-name" />
+  <arg name="drive" default="true" />
+  <arg name="route" default="auto" />
+  <arg name="config" default="$(find ctrl_bringup)/config/low_speed.yaml" />
+  <arg name="speed_kmh" default="60.0" />
+  <arg name="roundabout_control" default="true" />
+  <arg name="roundabout_local_entry" default="true" />
+  <arg name="pedestrian_yield" default="true" />
+  <arg name="visual_details" default="false" />
+  <arg name="mission_config" default="$(find ctrl_planning)/config/missions.yaml" />
+  <arg name="link_set" default="$(find ctrl_bringup)/maps/link_set.json" />
+  <arg name="highway_config" default="$(find ctrl_planning)/config/highway.yaml" />
+  <arg name="highway_checkpoints" default="$(find ctrl_bringup)/routes/checkpoints.txt" />
+  <arg name="behavior_config" default="$(find ctrl_planning)/config/behavior.yaml" />
+  <arg name="states" default="cruise,avoid,yield,tunnel" />
+  <arg name="lidar" default="true" />
+  <arg name="bag_points" default="false" />
+  <arg name="lidar_port" default="9302" />
+  <arg name="lidar_sim" default="false" />
+  <arg name="camera" default="true" />
+  <arg name="camera_port" default="9208" />
+  <arg name="rviz" default="false" />
+  <arg name="view" default="false" />
+  <arg name="bag" default="true" />
+  <arg name="bag_dir" default="$(env HOME)/foscar_logs/bags" />
+  <node pkg="ctrl_control" type="ctrl_sensor_bridge" name="sensor_bridge" output="screen" required="true">
+    <param name="drive" value="$(arg drive)" type="bool" />
+    <param name="_ros2_parameter_files" value="$(arg config)" type="str" />
+  </node>
+  <node pkg="ctrl_control" type="ctrl_localization" name="localization" output="screen" required="true">
+    <param name="path_file" value="$(find ctrl_bringup)/routes/global_path.txt" type="str" />
+    <param name="spawn_file" value="$(find ctrl_bringup)/routes/spawn_path.txt" type="str" />
+    <param name="_ros2_parameter_files" value="$(arg config)" type="str" />
+  </node>
+  <node pkg="ctrl_control" type="ctrl_path_follower" name="path_follower" output="screen" required="true">
+    <param name="path_file" value="$(find ctrl_bringup)/routes/global_path.txt" type="str" />
+    <param name="spawn_file" value="$(find ctrl_bringup)/routes/spawn_path.txt" type="str" />
+    <param name="route" value="$(eval {'auto':'auto','spawn':'spawn','global':'global'}[arg('route')])" type="str" />
+    <param name="speed_kmh" value="$(arg speed_kmh)" type="double" />
+    <param name="speed_policy_file" value="$(arg mission_config)" type="str" />
+    <param name="continuous" value="true" type="bool" />
+    <param name="require_target" value="true" type="bool" />
+    <param name="_ros2_parameter_files" value="$(arg config)" type="str" />
+  </node>
+  <node pkg="ctrl_planning" type="ctrl_behavior_node" name="behavior_node" output="screen" required="true">
+    <param name="prediction/control_config" value="$(arg config)" type="str" />
+    <param name="prediction/link_set" value="$(arg link_set)" type="str" />
+    <param name="highway/config" value="$(arg highway_config)" type="str" />
+    <param name="highway/path_file" value="$(find ctrl_bringup)/routes/global_path.txt" type="str" />
+    <param name="highway/checkpoint_file" value="$(arg highway_checkpoints)" type="str" />
+    <param name="traffic/enabled" value="$(arg camera)" type="bool" />
+    <param name="traffic/config" value="$(find ctrl_camera)/config/yolo_stoplines.json" type="str" />
+    <param name="traffic/path_file" value="$(find ctrl_bringup)/routes/global_path.txt" type="str" />
+    <param name="prediction/control_speed_kmh" value="$(arg speed_kmh)" type="double" />
+    <param name="states" value="$(arg states)" type="str" />
+    <param name="mission/config" value="$(arg mission_config)" type="str" />
+    <param name="visualization/details" value="$(arg visual_details)" type="bool" />
+    <param name="roundabout/enabled" value="$(arg roundabout_control)" type="bool" />
+    <param name="roundabout/local_entry" value="$(arg roundabout_local_entry)" type="bool" />
+    <param name="yield/pedestrian_enabled" value="$(arg pedestrian_yield)" type="bool" />
+    <param name="_ros2_parameter_files" value="$(arg behavior_config)" type="str" />
+  </node>
+  <group if="$(arg lidar)">
+    <include file="$(find ctrl_lidar)/launch/ctrl_obstacle.launch">
+      <arg name="sim" value="$(arg lidar_sim)" />
+      <arg name="lidar_port" value="$(arg lidar_port)" />
+      <arg name="view" value="$(arg view)" />
+      <arg name="rviz" value="false" />
+      <arg name="link_set" value="$(arg link_set)" />
+      <arg name="highway_config" value="$(arg highway_config)" />
+      <arg name="highway_mission_config" value="$(arg mission_config)" />
+    </include>
+  </group>
+  <node pkg="ctrl_planning" type="ctrl_race_hud_node" name="race_hud_node" output="log">
+    <param name="mission_config" value="$(arg mission_config)" type="str" />
+    <param name="code_version" command="python3 &quot;$(find ctrl_bringup)/scripts/ctrl_launch_info&quot; code-version" />
+  </node>
+  <node pkg="ctrl_planning" type="ctrl_bev_node" name="bev_node" output="log" if="$(arg rviz)">
+    <param name="station_ticks" value="$(arg visual_details)" type="bool" />
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz" output="log" args="&quot;-d&quot; &quot;$(find ctrl_planning)/rviz/bev.rviz&quot;" if="$(arg rviz)" />
+  <node pkg="ctrl_bringup" type="ctrl_record_bag" name="competition_bag" output="log" args="--bag-dir &quot;$(arg bag_dir)&quot;" if="$(arg bag)" />
+  <node pkg="ctrl_bringup" type="ctrl_record_bag" name="competition_bag_points" output="log" args="--bag-dir &quot;$(arg bag_dir)&quot; --points" if="$(arg bag_points)" />
+  <node pkg="ctrl_bringup" type="ctrl_delay_wall" name="competition_camera_delay" output="screen" args="5.0 ctrl_bringup ctrl_competition_delayed.launch &quot;drive:=$(arg drive)&quot; &quot;route:=$(arg route)&quot; &quot;config:=$(arg config)&quot; &quot;speed_kmh:=$(arg speed_kmh)&quot; &quot;roundabout_control:=$(arg roundabout_control)&quot; &quot;roundabout_local_entry:=$(arg roundabout_local_entry)&quot; &quot;pedestrian_yield:=$(arg pedestrian_yield)&quot; &quot;visual_details:=$(arg visual_details)&quot; &quot;mission_config:=$(arg mission_config)&quot; &quot;link_set:=$(arg link_set)&quot; &quot;highway_config:=$(arg highway_config)&quot; &quot;highway_checkpoints:=$(arg highway_checkpoints)&quot; &quot;behavior_config:=$(arg behavior_config)&quot; &quot;states:=$(arg states)&quot; &quot;lidar:=$(arg lidar)&quot; &quot;bag_points:=$(arg bag_points)&quot; &quot;lidar_port:=$(arg lidar_port)&quot; &quot;lidar_sim:=$(arg lidar_sim)&quot; &quot;camera:=$(arg camera)&quot; &quot;camera_port:=$(arg camera_port)&quot; &quot;rviz:=$(arg rviz)&quot; &quot;view:=$(arg view)&quot; &quot;bag:=$(arg bag)&quot; &quot;bag_dir:=$(arg bag_dir)&quot;" if="$(arg camera)" />
+</launch>

@@ -1,0 +1,32 @@
+{
+  "scope": "Final read-only/source/document checks after right native trial",
+  "syntax_files": 24,
+  "document_links": 319,
+  "broken_links": [],
+  "public_batch_json_before_this_file": 30,
+  "frozen_source_files": 349,
+  "current_source_files": 349,
+  "source_changes": [],
+  "reference_files": 530,
+  "reference_changes": [],
+  "camera_sha_changes": [],
+  "active_bags": [],
+  "right_end_reason": "route_end_stopped",
+  "right_child_exitcodes": [
+    0,
+    0,
+    0
+  ],
+  "right_manual_park_verified": true,
+  "plain_diff_check_exit": 2,
+  "cr_at_eol_diff_check_exit": 0,
+  "whitespace_note": "Existing CRLF line endings preserved; CR-at-EOL allowed checker passes",
+  "tests": "Source unchanged since 979 total / 978 pass / 1 prior ROUNDABOUT expectation failure / skip0; 28 tool tests passed; no redundant suite rerun",
+  "not_executed": [
+    "Windows",
+    "new catkin/native install build",
+    "official scoring",
+    "native tunnel person reentry/blocker release",
+    "committed replan/braking for far second obstacle"
+  ]
+}

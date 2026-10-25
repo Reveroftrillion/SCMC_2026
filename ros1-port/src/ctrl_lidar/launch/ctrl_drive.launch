@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="drive" default="true" />
+  <arg name="speed_kmh" default="100.0" />
+  <arg name="continuous" default="true" />
+  <arg name="distance_m" default="20.0" />
+  <arg name="route" default="auto" />
+  <arg name="rviz" default="false" />
+  <arg name="config" default="$(find ctrl_bringup)/config/low_speed.yaml" />
+  <arg name="view" default="true" />
+  <arg name="cameras" default="true" />
+  <arg name="camera_port" default="9208" />
+  <arg name="camera_scale" default="0.5" />
+  <arg name="lidar_x" default="2.0" />
+  <arg name="lidar_y" default="0.0" />
+  <arg name="lidar_z" default="2.11" />
+  <arg name="lidar_port" default="9302" />
+  <arg name="roi_y_abs" default="20.0" />
+  <arg name="ground_z" default="0.15" />
+  <arg name="ground_slope_tol" default="0.01" />
+  <arg name="moving_enter_mps" default="0.8" />
+  <arg name="ped_max_size_m" default="1.2" />
+  <arg name="corridor_half_m" default="1.5" />
+  <arg name="use_route" default="true" />
+  <include file="$(find ctrl_bringup)/launch/ctrl_low_speed.launch">
+    <arg name="config" value="$(arg config)" />
+    <arg name="drive" value="$(arg drive)" />
+    <arg name="speed_kmh" value="$(arg speed_kmh)" />
+    <arg name="continuous" value="$(arg continuous)" />
+    <arg name="distance_m" value="$(arg distance_m)" />
+    <arg name="route" value="$(arg route)" />
+    <arg name="rviz" value="$(arg rviz)" />
+  </include>
+  <include file="$(find ctrl_lidar)/launch/ctrl_obstacle.launch">
+    <arg name="view" value="$(arg view)" />
+    <arg name="rviz" value="false" />
+    <arg name="lidar_x" value="$(arg lidar_x)" />
+    <arg name="lidar_y" value="$(arg lidar_y)" />
+    <arg name="lidar_z" value="$(arg lidar_z)" />
+    <arg name="lidar_port" value="$(arg lidar_port)" />
+    <arg name="roi_y_abs" value="$(arg roi_y_abs)" />
+    <arg name="ground_z" value="$(arg ground_z)" />
+    <arg name="ground_slope_tol" value="$(arg ground_slope_tol)" />
+    <arg name="moving_enter_mps" value="$(arg moving_enter_mps)" />
+    <arg name="ped_max_size_m" value="$(arg ped_max_size_m)" />
+    <arg name="corridor_half_m" value="$(arg corridor_half_m)" />
+    <arg name="use_route" value="$(arg use_route)" />
+  </include>
+  <node pkg="ctrl_bringup" type="ctrl_delay_wall" name="drive_camera_delay" output="screen" args="5.0 ctrl_lidar ctrl_drive_delayed.launch &quot;drive:=$(arg drive)&quot; &quot;speed_kmh:=$(arg speed_kmh)&quot; &quot;continuous:=$(arg continuous)&quot; &quot;distance_m:=$(arg distance_m)&quot; &quot;route:=$(arg route)&quot; &quot;rviz:=$(arg rviz)&quot; &quot;config:=$(arg config)&quot; &quot;view:=$(arg view)&quot; &quot;cameras:=$(arg cameras)&quot; &quot;camera_port:=$(arg camera_port)&quot; &quot;camera_scale:=$(arg camera_scale)&quot; &quot;lidar_x:=$(arg lidar_x)&quot; &quot;lidar_y:=$(arg lidar_y)&quot; &quot;lidar_z:=$(arg lidar_z)&quot; &quot;lidar_port:=$(arg lidar_port)&quot; &quot;roi_y_abs:=$(arg roi_y_abs)&quot; &quot;ground_z:=$(arg ground_z)&quot; &quot;ground_slope_tol:=$(arg ground_slope_tol)&quot; &quot;moving_enter_mps:=$(arg moving_enter_mps)&quot; &quot;ped_max_size_m:=$(arg ped_max_size_m)&quot; &quot;corridor_half_m:=$(arg corridor_half_m)&quot; &quot;use_route:=$(arg use_route)&quot;" if="$(arg cameras)" />
+</launch>

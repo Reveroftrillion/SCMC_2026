@@ -1,0 +1,183 @@
+[
+  {
+    "run": "20261006_150826",
+    "bag": "/home/foscar/foscar_logs/bags/run_20261006_150831",
+    "result": "PASS",
+    "lap": 171.4,
+    "before_highway_s": 112.72,
+    "after_highway_s": 29.287,
+    "max_ordinary_kmh": 59.581,
+    "over60_samples": 0,
+    "over60_first": [],
+    "cruise_error_max_m": 0.68,
+    "cruise_tracking": {
+      "start": {
+        "max_m": 0.68,
+        "p95_m": 0.509
+      },
+      "signal1": {
+        "max_m": 0.35,
+        "p95_m": 0.307
+      },
+      "straight1": {
+        "max_m": 0.17,
+        "p95_m": 0.16
+      },
+      "static": {
+        "max_m": 0.22,
+        "p95_m": 0.158
+      },
+      "pedestrian": {
+        "max_m": 0.1,
+        "p95_m": 0.08
+      },
+      "straight2": {
+        "max_m": 0.43,
+        "p95_m": 0.35
+      },
+      "signal4": {
+        "max_m": 0.4,
+        "p95_m": 0.39
+      },
+      "middle": {
+        "max_m": 0.43,
+        "p95_m": 0.3
+      },
+      "roundabout": {
+        "max_m": 0.58,
+        "p95_m": 0.566
+      },
+      "pre_highway": {
+        "max_m": 0.49,
+        "p95_m": 0.41
+      },
+      "highway": {
+        "max_m": 0.09,
+        "p95_m": 0.09
+      },
+      "post_highway": {
+        "max_m": 0.23,
+        "p95_m": 0.16
+      },
+      "tunnel": {
+        "max_m": 0.24,
+        "p95_m": 0.21
+      },
+      "finish": {
+        "max_m": 0.4,
+        "p95_m": 0.34
+      }
+    },
+    "collisions": [],
+    "body_contacts": [],
+    "full_stops": [
+      202.0,
+      309.5,
+      430.4,
+      449.4,
+      600.3,
+      600.6
+    ],
+    "sections": [
+      {
+        "section": "start",
+        "elapsed": 16.595,
+        "stopped": 0,
+        "moving": 16.595,
+        "min_kmh": 6.93
+      },
+      {
+        "section": "signal1",
+        "elapsed": 7.559,
+        "stopped": 0.3,
+        "moving": 7.259,
+        "min_kmh": -0.01
+      },
+      {
+        "section": "straight1",
+        "elapsed": 4.377,
+        "stopped": 0,
+        "moving": 4.377,
+        "min_kmh": 29.37
+      },
+      {
+        "section": "static",
+        "elapsed": 14.452,
+        "stopped": 0.45,
+        "moving": 14.002,
+        "min_kmh": -0.02
+      },
+      {
+        "section": "pedestrian",
+        "elapsed": 16.642,
+        "stopped": 1.05,
+        "moving": 15.591,
+        "min_kmh": -0.28
+      },
+      {
+        "section": "straight2",
+        "elapsed": 5.084,
+        "stopped": 0,
+        "moving": 5.084,
+        "min_kmh": 38.18
+      },
+      {
+        "section": "signal4",
+        "elapsed": 10.419,
+        "stopped": 0.45,
+        "moving": 9.969,
+        "min_kmh": -0.06
+      },
+      {
+        "section": "middle",
+        "elapsed": 15.114,
+        "stopped": 0,
+        "moving": 15.114,
+        "min_kmh": 18.36
+      },
+      {
+        "section": "roundabout",
+        "elapsed": 9.692,
+        "stopped": 0,
+        "moving": 9.692,
+        "min_kmh": 29.19
+      },
+      {
+        "section": "pre_highway",
+        "elapsed": 11.853,
+        "stopped": 0,
+        "moving": 11.853,
+        "min_kmh": 41.78
+      },
+      {
+        "section": "highway",
+        "elapsed": 25.557,
+        "stopped": 0,
+        "moving": 25.557,
+        "min_kmh": 57.69
+      },
+      {
+        "section": "post_highway",
+        "elapsed": 5.105,
+        "stopped": 0.25,
+        "moving": 4.855,
+        "min_kmh": 0.0
+      },
+      {
+        "section": "tunnel",
+        "elapsed": 13.683,
+        "stopped": 0,
+        "moving": 13.683,
+        "min_kmh": 28.92
+      },
+      {
+        "section": "finish",
+        "elapsed": 10.498,
+        "stopped": 0,
+        "moving": 10.498,
+        "min_kmh": 50.88
+      }
+    ],
+    "localization_resets": 0
+  }
+]

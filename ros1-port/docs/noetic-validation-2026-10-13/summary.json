@@ -1,0 +1,52 @@
+{
+  "date_kst": "2026-10-13",
+  "branch": "feat/ros1-port",
+  "start_head": "395c10276ecbfdbcb6eb81e0c742f4f1ad3333b7",
+  "image_id": "sha256:cb0e0d2d3937335e463bb4529ff8f195d866dcec2f1d40b743156dd10302c044",
+  "python": "3.10.12",
+  "numpy": "1.24.4",
+  "onnxruntime-gpu": "1.23.2",
+  "noetic_source_packages": 84,
+  "rosconsole_tests": {
+    "passed": 250,
+    "failed": 0,
+    "skipped": 0
+  },
+  "workspace": {
+    "devel_environment": 0,
+    "native_serialization": 0,
+    "adapter": 0,
+    "packaging": 0,
+    "devel_nodes": 0,
+    "install_environment": 0,
+    "install_nodes": 0
+  },
+  "adapter_tests": {
+    "passed": 27,
+    "skipped": 0
+  },
+  "packaging_tests": {
+    "passed": 8
+  },
+  "original_tests_passed": 909,
+  "port_tests_passed": 909,
+  "trace_count": 35608,
+  "numeric_values": 3657429,
+  "maximum_absolute_difference": 0,
+  "original_checkout_preservation": "FAIL: 497 LF/CRLF differences; no original files modified",
+  "restored_disposable_snapshot_preservation": "PASS: all 530 original file sizes/SHA256 match existing manifest",
+  "existing_preflight": "FAIL maintained: model README hash mismatch; raw checkout also line-ending resource/calibration failures",
+  "actual_gpu_inference": "PASS; CUDA profile kernels verified; exact original/port outputs for 3 synthetic frames and actual current Camera-7 frame",
+  "live_receive_tf_and_decisions": "PASS; 40 seconds; no sensor/time injections",
+  "drive_parameter": false,
+  "control_udp_packets_to_9093": 0,
+  "required_sensor_bridge_shutdown_during_camera_delay": "PASS",
+  "required_sensor_bridge_shutdown_after_camera_start": "PASS",
+  "camera_clean_shutdown": "NOT PASS: ExternalShutdownException tracebacks on SIGINT",
+  "sensor_input_and_mount_equivalence": "NOT VERIFIED: Camera-7 differs; MORAI-origin to base_link/rear-axle transform unknown",
+  "actual_signal_obstacle_scenario_outputs": "NOT VERIFIED: 0 traffic_signal and events in current stationary scenario",
+  "ros2_ros1_transport_clock_full_mission_equivalence": "NOT VERIFIED",
+  "driving_started": false,
+  "remote_push": false,
+  "platform": "linux/amd64"
+}

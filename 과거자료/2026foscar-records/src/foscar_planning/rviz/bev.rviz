@@ -1,0 +1,156 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: map
+    Background Color: 24; 24; 28
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 5
+      Plane Cell Count: 60
+      Color: 60; 60; 70
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Map (lanes)
+      Enabled: true
+      Topic:
+        Value: /bev/map
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/Path
+      Name: Route
+      Enabled: true
+      Color: 30; 220; 80
+      Alpha: 0.5
+      Topic:
+        Value: /map/route
+        Durability Policy: Transient Local
+        Reliability Policy: Reliable
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/Path
+      Name: Tracked Line (route + offset curve)
+      Enabled: true
+      Color: 30; 230; 60
+      Alpha: 0.95
+      Line Style: Billboards
+      Line Width: 0.18
+      Topic:
+        Value: /control/path
+        Durability Policy: Volatile
+        Reliability Policy: Reliable
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Ego + s ticks
+      Enabled: true
+      Topic:
+        Value: /bev/ego
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/PointCloud2
+      Name: LiDAR (intensity)
+      Enabled: true
+      Style: Points
+      Size (Pixels): 2
+      Color Transformer: Intensity
+      Channel Name: intensity
+      Use rainbow: false
+      Autocompute Intensity Bounds: false
+      Min Intensity: 0
+      Max Intensity: 120
+      Min Color: 70; 70; 80
+      Max Color: 255; 255; 255
+      Decay Time: 0
+      Topic:
+        Value: /sensors/lidar/points
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 5
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Debug - all lidar objects
+      Enabled: false
+      Topic:
+        Value: /perception/obstacle_markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Mission checkpoints + active control
+      Enabled: true
+      Topic:
+        Value: /behavior/markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Roundabout - active entry or following evidence
+      Enabled: true
+      Topic:
+        Value: /behavior/prediction_markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Roundabout - ring boxes, runs, decision
+      Enabled: true
+      Topic:
+        Value: /behavior/roundabout_markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Highway - current hulls and visibility
+      Enabled: true
+      Topic:
+        Value: /behavior/highway_markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Race records + signal status
+      Enabled: true
+      Topic:
+        Value: /hud/markers
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/PointStamped
+      Name: Pursuit Target
+      Enabled: true
+      Color: 255; 150; 0
+      Radius: 0.25
+      Topic:
+        Value: /control/target
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: false
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Target Frame: base_link
+      Scale: 14
+      Angle: -1.5708
+      X: 0
+      Y: 0
+Window Geometry:
+  Width: 1400
+  Height: 900

@@ -1,0 +1,16 @@
+{
+  "same_recorded_walls": true,
+  "same_left_fixture": true,
+  "left_before": false,
+  "left_after": true,
+  "unchanged_center_target": true,
+  "unchanged_right_target": true,
+  "source_differences": [
+    "src/foscar_planning/foscar_planning/tunnel_simple.py"
+  ],
+  "limitations": [
+    "Synthetic obstacle/ego poses, recorded walls only; no raw LiDAR or closed-loop simulation",
+    "Bag record order and preceding s, not native callback timing or exact live wall rebuild phase",
+    "Walls observed on one baseline lap, not proof that a changed obstacle cannot occlude them"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "python_syntax": 4,
+  "json_files": 9,
+  "internal_links": 210,
+  "broken_links": [],
+  "ordinary_diff_check_exit": 2,
+  "ordinary_diff_check_reason": "Existing CRLF preserved, CR reported on 13 added production lines",
+  "crlf_aware_diff_check_exit": 0,
+  "trailing_spaces_or_tabs": []
+}

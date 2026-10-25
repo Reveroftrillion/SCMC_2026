@@ -1,0 +1,41 @@
+{
+  "run": 3,
+  "preflight_passed": true,
+  "preflight_control_udp_packets": 0,
+  "fixed_candidate": true,
+  "reason": "no_progress_120s",
+  "completed_course": false,
+  "max_s": 315.64942686115063,
+  "elapsed_s": 222.53837203979492,
+  "passed_CP": [
+    "1",
+    "2",
+    "3"
+  ],
+  "collision_packets": 9340,
+  "valid_collision_packets": 0,
+  "manual_park_stationary_evidence": {
+    "samples": 31,
+    "duration_s": 0.658949613571167,
+    "maximum_abs_speed_mps": 4.394633934781369e-06,
+    "last": {
+      "time": 1792730381.1417222,
+      "port": 909,
+      "speed": 1.6317690349549391e-06,
+      "yaw": 1.4724407277321991,
+      "mode": 1,
+      "gear": 1,
+      "steer_deg": 0.0,
+      "link": "A2256W000111",
+      "stamp_hex": "0de5da6a407d6708"
+    }
+  },
+  "child_exitcodes": [
+    0,
+    0,
+    0
+  ],
+  "source_unchanged_during_drive": true,
+  "target_gaps_gt_1s": [],
+  "callback_errors": []
+}

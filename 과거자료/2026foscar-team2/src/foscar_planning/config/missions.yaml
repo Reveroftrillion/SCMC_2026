@@ -1,0 +1,70 @@
+# Global route station [m], rear axle. Intervals include preparation and recovery.
+# Exactly one owner; end_s is exclusive. null speed means no mission-imposed cap.
+geometry:
+  route: package://foscar_bringup/routes/global_path.txt
+  checkpoints: package://foscar_bringup/routes/checkpoints.txt
+# Only the states a mission needs (2026-09-26): NPC vehicles appear only in the
+# roundabout and highway, pedestrians only in the pedestrian mission.
+default:
+  name: CRUISE
+  allowed_states: [CRUISE, STOP_LINE]
+  speed_kmh: 60.0
+zones:
+  # signal: camera traffic-signal stop lines (foscar_camera/config/yolo_stoplines.json, from
+  # start_s to stop_rear_s + 2). YOLO runs only inside these zones (2026-09-29). Intersections
+  # 02 and 03 lie inside the obstacle and pedestrian missions, which carry the flag instead.
+  - name: SIGNAL_1
+    start_s: 169.0
+    end_s: 206.1
+    allowed_states: [CRUISE, STOP_LINE]
+    signal: true
+    speed_kmh: 60.0
+  # Provisional envelope around the measured box at s=329; tune checkpoints here.
+  # 272 (was 275): starts with the intersection-02 camera window.
+  - name: STATIC_OBSTACLE
+    start_s: 272.0
+    end_s: 390.0
+    allowed_states: [CRUISE, AVOID, STOP_LINE]
+    signal: true
+    speed_kmh: 60.0
+  - name: PEDESTRIAN
+    start_s: 405.0
+    end_s: 495.0
+    allowed_states: [CRUISE, YIELD, STOP_LINE]   # YIELD: pedestrians only (vehicles ignored here)
+    pedestrian: true
+    signal: true
+    speed_kmh: 20.0
+    after_pedestrian_yield_kmh: 60.0  # observed passage after yielding; other guards remain
+  - name: SIGNAL_4   # left turn
+    start_s: 569.1
+    end_s: 607.3
+    allowed_states: [CRUISE, STOP_LINE]
+    signal: true
+    speed_kmh: 60.0
+  - name: ROUNDABOUT
+    # 830 (was 860): at ~48 km/h the ring was first seen with ~25 m to the entry and the gate
+    # braked 0.5 to wait (2026-09-27, TuningPoint #1). Lidar ring observation starts here too.
+    start_s: 823.55
+    end_s: 911.27   # 2 m earlier (user 2026-09-29)
+    allowed_states: [CRUISE, YIELD]
+    roundabout: true
+    # No roundabout-specific cap (2026-09-27): the ordinary 60 km/h rule limit only. Entry
+    # waiting, lead following and path curvature still set the speed. null would fall back
+    # to the legacy cruise.zone table (20 km/h from s860), so the rule limit is explicit.
+    speed_kmh: 60.0
+  - name: HIGHWAY
+    start_checkpoint: 10
+    # The FSM takes over where the post-roundabout curve (R 40-235 m, s995-1110) ends; the 60 km/h
+    # exemption still starts at CP10 (user 2026-09-28).
+    approach_s: 1103.23
+    end_checkpoint: 13
+    allowed_states: [CRUISE]
+    speed_kmh: null
+  # Tunnel preparation is separate from the CP13 highway exit. 1817.5 (was 1875): a barricade at s1889
+  # was seen while the default mission (no AVOID) still owned the car, leaving 14 m to swerve once the
+  # tunnel FSM took over; 1760 then switched on too early, so halfway (user 2026-09-29). CP13 is s1741.7.
+  - name: TUNNEL
+    start_s: 1810.64
+    end_s: 1993.14
+    allowed_states: [CRUISE, AVOID, TUNNEL]
+    speed_kmh: null  # no tunnel-specific cap

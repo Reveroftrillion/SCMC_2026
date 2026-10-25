@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-22",
+  "environment": "Ubuntu host Python3.8 syntax; Docker rmt-noetic-py310:local Python3.10 Noetic offline/native checks",
+  "artifact_directory": "ros1-port/verification/.work/unused-cleanup-20261022-120150",
+  "results": {
+    "packaging": {
+      "exit_code": 1,
+      "seconds": 0.03
+    },
+    "packaging-unit": {
+      "exit_code": 1,
+      "seconds": 0.15
+    },
+    "identifier-ast": {
+      "exit_code": 1,
+      "seconds": 0.08
+    },
+    "boundary": {
+      "exit_code": 1,
+      "seconds": 0.05
+    },
+    "preflight": {
+      "exit_code": 1,
+      "seconds": 0.54
+    },
+    "catkin-build": {
+      "exit_code": 0,
+      "seconds": 4.07
+    },
+    "catkin-install": {
+      "exit_code": 0,
+      "seconds": 3.94
+    },
+    "native-environment": {
+      "exit_code": 1,
+      "seconds": 1.27
+    },
+    "native-serialization": {
+      "exit_code": 0,
+      "seconds": 0.33
+    },
+    "adapter": {
+      "exit_code": 0,
+      "seconds": 0.2
+    },
+    "launch-nodes-default": {
+      "exit_code": 0,
+      "seconds": 0.34
+    },
+    "launch-files": {
+      "exit_code": 0,
+      "seconds": 0.34
+    },
+    "install-environment": {
+      "exit_code": 1,
+      "seconds": 0.97
+    },
+    "algorithm-regression": {
+      "exit_code": 0,
+      "seconds": 297.69
+    },
+    "replay-tools": {
+      "exit_code": 0,
+      "seconds": 3.03
+    },
+    "entrypoint-imports": {
+      "exit_code": 0,
+      "seconds": 0.68
+    }
+  },
+  "algorithm": {
+    "passed": 927,
+    "failed": 0,
+    "skipped": 0,
+    "trace_count": 35609,
+    "scope": "common ROS test doubles, isolated source copy; not MORAI or middleware transport"
+  },
+  "replay_and_audit_tools": {
+    "passed": 11,
+    "failed": 0
+  },
+  "adapter": {
+    "passed": 27,
+    "failed": 0,
+    "native_serialization_separately_passed": true
+  },
+  "packaging_unit": {
+    "passed": 7,
+    "errors": 1,
+    "preexisting_reason": "incoming behavior.yaml differs from frozen original resource size/hash"
+  },
+  "known_failures": [
+    "packaging raw original/port msg bytes differ by LF/CRLF (observed before deletion)",
+    "packaging-unit and devel/install resource guard: incoming behavior.yaml differs from frozen original resource hashes",
+    "identifier AST and boundary guards: incoming ground.py/avoid.py fixes differ from old source-only-refactor expectations",
+    "preflight includes unchanged original model README SHA mismatch and boundary/packaging failures"
+  ],
+  "expectations_or_manifests_changed": false,
+  "modes_not_executed": [
+    "MORAI",
+    "drive=true",
+    "control UDP",
+    "ROS node initialization",
+    "ROS master",
+    "original ROS2 middleware",
+    "legacy sim_2025 native C++ build",
+    "Windows Python3.10 execution"
+  ],
+  "notes": [
+    "native environment summaries each had 9 PASS, 1 resource FAIL, 1 KNOWN_SOURCE_ISSUE; not reported as all PASS",
+    "same existing highway timing case passed on this run; no timing fix or stability claim",
+    "old regression test expectations and historical artifacts preserved"
+  ]
+}

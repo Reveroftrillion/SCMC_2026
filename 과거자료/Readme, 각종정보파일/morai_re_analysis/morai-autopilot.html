@@ -1,0 +1,891 @@
+<title>MORAI 내장 자율주행 해부</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap">
+
+<style>
+:root{
+  --paper:#f1f3f2;
+  --surface:#fcfcfb;
+  --surface-2:#e9edeb;
+  --ink:#14191a;
+  --ink-2:#41504f;
+  --ink-3:#6c7a78;
+  --line:#d5dcda;
+  --line-strong:#b6c1be;
+  --accent:#00736a;
+  --accent-soft:#d8ebe8;
+  --warn:#b04a12;
+  --warn-soft:#f6e5d9;
+  --info:#2f5caf;
+  --info-soft:#dfe7f7;
+  --code-bg:#f6f7f6;
+
+  --f-sans:"IBM Plex Sans KR","IBM Plex Sans",system-ui,-apple-system,"Noto Sans KR",sans-serif;
+  --f-cond:"IBM Plex Sans Condensed","IBM Plex Sans KR",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
+
+  --measure:74ch;
+  --pad:clamp(18px,4vw,44px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0e1211;
+    --surface:#161b1a;
+    --surface-2:#1d2423;
+    --ink:#e7eceb;
+    --ink-2:#adbab8;
+    --ink-3:#7e8c8a;
+    --line:#2a3231;
+    --line-strong:#3b4544;
+    --accent:#39c9bc;
+    --accent-soft:#12332f;
+    --warn:#e8925a;
+    --warn-soft:#3a2415;
+    --info:#7ea6f0;
+    --info-soft:#182740;
+    --code-bg:#111716;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0e1211;
+  --surface:#161b1a;
+  --surface-2:#1d2423;
+  --ink:#e7eceb;
+  --ink-2:#adbab8;
+  --ink-3:#7e8c8a;
+  --line:#2a3231;
+  --line-strong:#3b4544;
+  --accent:#39c9bc;
+  --accent-soft:#12332f;
+  --warn:#e8925a;
+  --warn-soft:#3a2415;
+  --info:#7ea6f0;
+  --info-soft:#182740;
+  --code-bg:#111716;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-sans);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 var(--pad) 96px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding:56px 0 22px;
+  margin-bottom:38px;
+}
+.eyebrow{
+  font-family:var(--f-cond);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 14px;
+}
+h1{
+  font-size:clamp(30px,5.4vw,46px);
+  line-height:1.14;font-weight:700;letter-spacing:-.02em;
+  margin:0 0 14px;text-wrap:balance;
+}
+.standfirst{
+  font-size:clamp(16px,2.1vw,18.5px);
+  color:var(--ink-2);max-width:62ch;margin:0 0 26px;
+}
+.meta{
+  display:grid;gap:2px 26px;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  font-family:var(--f-mono);font-size:12.5px;color:var(--ink-3);
+  border-top:1px solid var(--line);padding-top:16px;
+}
+.meta div{display:flex;gap:10px;justify-content:space-between;padding:2px 0}
+.meta b{font-weight:500;color:var(--ink-2);text-align:right;overflow-wrap:anywhere}
+
+/* ---------- structure ---------- */
+section{margin:0 0 54px;scroll-margin-top:20px}
+h2{
+  font-size:clamp(20px,3vw,25px);font-weight:600;letter-spacing:-.015em;
+  margin:0 0 6px;text-wrap:balance;
+  display:flex;align-items:baseline;gap:12px;
+}
+h2 .num{
+  font-family:var(--f-cond);font-size:12px;letter-spacing:.12em;
+  color:var(--accent);flex:none;padding-top:2px;
+}
+h3{
+  font-size:16.5px;font-weight:600;margin:30px 0 8px;
+  letter-spacing:-.01em;
+}
+.sechead{border-top:1px solid var(--line-strong);padding-top:16px;margin-bottom:20px}
+p{margin:0 0 14px;max-width:var(--measure)}
+ul,ol{margin:0 0 14px;padding-left:20px;max-width:var(--measure)}
+li{margin:0 0 6px}
+a{color:var(--accent)}
+strong{font-weight:600}
+em{font-style:normal;font-weight:500;color:var(--accent)}
+
+/* ---------- contents ---------- */
+.toc{
+  background:var(--surface);border:1px solid var(--line);
+  padding:20px 22px;margin:0 0 48px;
+}
+.toc p{font-family:var(--f-cond);font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+.toc ol{
+  list-style:none;padding:0;margin:0;max-width:none;
+  display:grid;gap:2px 30px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  counter-reset:t;
+}
+.toc li{margin:0;counter-increment:t;display:flex;gap:10px;font-size:14.5px}
+.toc li::before{
+  content:counter(t,decimal-leading-zero);
+  font-family:var(--f-mono);font-size:12px;color:var(--ink-3);
+  flex:none;padding-top:3px;
+}
+.toc a{text-decoration:none;color:var(--ink-2)}
+.toc a:hover{color:var(--accent);text-decoration:underline}
+
+/* ---------- key findings ---------- */
+.keys{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 34px}
+.key{background:var(--surface);padding:18px 20px;display:grid;gap:5px}
+.key .k{
+  font-family:var(--f-cond);font-size:11.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.key .v{font-size:15.5px;line-height:1.55;max-width:70ch}
+.key .v code{font-size:.92em}
+
+/* ---------- badges ---------- */
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--f-cond);font-size:11px;letter-spacing:.09em;
+  text-transform:uppercase;padding:2px 8px;border:1px solid;
+  vertical-align:2px;white-space:nowrap;
+}
+.b-hard{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.b-soft{color:var(--info);border-color:var(--info);background:var(--info-soft)}
+.b-guess{color:var(--warn);border-color:var(--warn);background:var(--warn-soft)}
+
+/* ---------- code ---------- */
+pre{
+  font-family:var(--f-mono);font-size:12.7px;line-height:1.62;
+  background:var(--code-bg);border:1px solid var(--line);
+  padding:16px 18px;margin:0 0 18px;overflow-x:auto;
+  color:var(--ink);
+}
+pre .c{color:var(--ink-3)}
+pre .hl{color:var(--accent);font-weight:500}
+pre .w{color:var(--warn);font-weight:500}
+code{
+  font-family:var(--f-mono);font-size:.9em;
+  background:var(--surface-2);padding:1px 5px;border-radius:2px;
+}
+pre code{background:none;padding:0;font-size:inherit}
+
+.caption{
+  font-size:13px;color:var(--ink-3);margin:-8px 0 22px;max-width:var(--measure);
+}
+
+/* ---------- formula ---------- */
+.formula{
+  border-left:3px solid var(--accent);
+  background:var(--surface);
+  padding:14px 18px;margin:0 0 18px;
+  font-family:var(--f-mono);font-size:13.5px;line-height:1.9;
+  overflow-x:auto;
+}
+.formula .lbl{
+  font-family:var(--f-cond);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:6px;
+}
+
+/* ---------- table ---------- */
+.tablewrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--surface)}
+th,td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{
+  font-family:var(--f-cond);font-size:11.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:600;
+  background:var(--surface-2);white-space:nowrap;
+}
+tr:last-child td{border-bottom:none}
+td.num,th.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td code{font-size:12.4px}
+
+/* ---------- charts ---------- */
+.charts{
+  display:grid;gap:18px;margin:6px 0 10px;
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+}
+.chart{background:var(--surface);border:1px solid var(--line);padding:16px 16px 10px}
+.chart h4{
+  font-size:14px;font-weight:600;margin:0 0 2px;letter-spacing:-.01em;
+}
+.chart .sub{font-size:12.5px;color:var(--ink-3);margin:0 0 10px;font-family:var(--f-mono)}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+
+/* ---------- callout ---------- */
+.callout{
+  border:1px solid var(--warn);background:var(--warn-soft);
+  padding:16px 20px;margin:0 0 20px;
+}
+.callout .t{
+  font-family:var(--f-cond);font-size:11.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--warn);margin:0 0 8px;font-weight:600;
+}
+.callout p:last-child{margin-bottom:0}
+
+.note{
+  border-left:2px solid var(--line-strong);padding:2px 0 2px 16px;
+  margin:0 0 18px;color:var(--ink-2);font-size:14.5px;max-width:var(--measure);
+}
+.note p:last-child{margin-bottom:0}
+
+footer{
+  border-top:2px solid var(--ink);margin-top:60px;padding-top:20px;
+  font-size:13.5px;color:var(--ink-3);
+}
+footer p{max-width:var(--measure)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">리버스 엔지니어링 노트 · 2026 국토부 자율주행 경진대회</p>
+  <h1>MORAI 내장 자율주행 해부</h1>
+  <p class="standfirst">
+    시뮬레이터에 기본 탑재된 자율주행(Ego Cruise) 기능이 실제로 어떤 수식으로
+    차를 움직이는지, 난독화된 <code>Assembly-CSharp.dll</code>의 IL을 직접 디스어셈블해
+    복원한 기록.
+  </p>
+  <div class="meta">
+    <div><span>빌드</span><b>Simulator_v.S4.251001.MolitComp03_Linux</b></div>
+    <div><span>Unity</span><b>2020.3.6f1</b></div>
+    <div><span>어셈블리</span><b>Assembly-CSharp.dll · 34,745,856 B</b></div>
+    <div><span>TypeDef</span><b>6,710 타입</b></div>
+    <div><span>덤프한 메서드</span><b>753개 (제어 네임스페이스)</b></div>
+    <div><span>조사일</span><b>2026-09-07</b></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <p>목차</p>
+  <ol>
+    <li><a href="#s1">한눈에 보기</a></li>
+    <li><a href="#s2">조사 방법과 난독화 우회</a></li>
+    <li><a href="#s3">아키텍처 지도</a></li>
+    <li><a href="#s4">횡방향 제어 법칙</a></li>
+    <li><a href="#s5">종방향 제어 법칙</a></li>
+    <li><a href="#s6">Decision 계층과 임계값</a></li>
+    <li><a href="#s7">사용하는 데이터 구조</a></li>
+    <li><a href="#s8">차량 동역학 레퍼런스 데이터</a></li>
+    <li><a href="#s9">Q 키의 정체</a></li>
+    <li><a href="#s10">신뢰도·한계·주의</a></li>
+    <li><a href="#s11">재현 방법</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section id="s1">
+  <div class="sechead"><h2><span class="num">01</span>한눈에 보기</h2></div>
+
+  <div class="keys">
+    <div class="key">
+      <span class="k">본질</span>
+      <span class="v">인지 기반 자율주행이 <strong>아니다.</strong> HD맵(MGeo) 링크 경로를 정답으로 놓고
+        그 위의 waypoint를 기하학적으로 추종하는 <strong>규칙 기반 주행</strong>이다.
+        인지 결과는 <code>perceptionResult</code>로 이미 주어진 것을 소비할 뿐, 만들지 않는다.</span>
+    </div>
+    <div class="key">
+      <span class="k">횡방향</span>
+      <span class="v">Pure Pursuit 계열이되 교과서 공식이 아니다. 방위 오차 θ에 대해
+        <code>steer = −(θ + ½·sin2θ)</code> — 작은 θ에서 이득 2배로 동작하는 변형.</span>
+    </div>
+    <div class="key">
+      <span class="k">종방향</span>
+      <span class="v">목표 가속도에 <strong>시그모이드로 게이팅된 적분 보정</strong>을 더해
+        가속/제동 분기를 결정한 뒤, 각각 별도의 맵 함수로 페달값을 만든다.</span>
+    </div>
+    <div class="key">
+      <span class="k">속도–조향 결합</span>
+      <span class="v">속도 지령이 <code>거리 / cosh(π·θ)</code> 형태다. 방위가 틀어질수록
+        속도가 <strong>쌍곡선으로 급감</strong>한다 — 코너에서 자동으로 감속되는 구조.</span>
+    </div>
+    <div class="key">
+      <span class="k">정지 임계값</span>
+      <span class="v">비신호 교차로 정지선은 노드 <strong>3&nbsp;m</strong> 앞,
+        일반 정지 타겟은 <strong>7&nbsp;m</strong> 앞에서 잡는다.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="sechead"><h2><span class="num">02</span>조사 방법과 난독화 우회</h2></div>
+
+  <p>
+    시뮬레이터 로직은 전부 <code>Simulator_Data/Managed/Assembly-CSharp.dll</code>에 들어 있다.
+    타입명·메서드명·필드명은 <code>[[]][][]…</code> 형태로 난독화돼 있어 소스 복원은 불가능하다.
+    다만 세 가지가 살아남았고, 그 틈으로 구조가 전부 드러난다.
+  </p>
+  <ul>
+    <li><strong>네임스페이스</strong> — <code>MORAI.ControlAlgorithm</code>, <code>MORAI.Decision</code> 등은 그대로다.</li>
+    <li><strong>enum 멤버명</strong> — 직렬화 대상이라 이름이 유지된다. 상태기 전체가 여기서 나왔다.</li>
+    <li><strong>Unity/BCL 호출 대상</strong> — <code>Mathf.Atan2</code>, <code>Mathf.Exp</code> 같은 외부 호출은 난독화가 불가능하다. 수식의 뼈대가 여기서 나온다.</li>
+  </ul>
+
+  <h3>결정적 관문: 위조 상수 복제본</h3>
+  <p>
+    난독화기는 <em>같은 구조에 가짜 상수를 채운 복제 메서드</em>를 다량 생성해 둔다.
+    종방향 제어 메서드는 <strong>16개 사본</strong>이 존재하고 그중 진짜는 하나뿐이다.
+    구조만 보고 읽으면 100% 틀린 결론에 도달한다.
+  </p>
+  <p>
+    판별 기준은 <strong>상수의 물리적 타당성</strong>이다. 진짜 메서드에는
+    <code>0.017453</code>(π/180), <code>57.29578</code>(180/π), <code>0.27778</code>(km/h→m/s),
+    <code>±180</code> 같은 값이 나오고, 복제본에는 <code>1537.0</code>, <code>611.0</code>,
+    <code>893.0</code>처럼 아무 의미 없는 수백~수천대 정수가 들어간다.
+  </p>
+
+  <div class="tablewrap">
+    <table>
+      <caption class="sr-only"></caption>
+      <thead><tr><th>메서드</th><th>역할</th><th class="num">사본 수</th><th>진짜를 가른 상수</th></tr></thead>
+      <tbody>
+        <tr><td class="num">#420</td><td>횡방향 제어</td><td class="num">3</td><td><code>57.295780</code>, <code>±180.0</code>, <code>0.01</code></td></tr>
+        <tr><td class="num">#644</td><td>종방향 제어</td><td class="num">16</td><td><code>0.277780</code>, <code>0.5</code>, <code>5.436563</code></td></tr>
+        <tr><td class="num">#203</td><td>Decision 틱</td><td class="num">5</td><td><code>3.0</code>, <code>7.0</code></td></tr>
+        <tr><td class="num">#363</td><td>각도 wrap 헬퍼</td><td class="num">1</td><td><code>0.017453292</code>, <code>360.0</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">
+    메서드 번호는 아래 재현 절차의 덤프 파일 <code>ctrl_only.txt</code> 기준 일련번호다.
+  </p>
+
+  <div class="callout">
+    <p class="t">이 문서를 다시 검증할 때</p>
+    <p>
+      빌드가 바뀌면 난독화 시드가 바뀌어 <strong>메서드 번호는 전부 달라진다.</strong>
+      번호가 아니라 <em>상수 패턴</em>으로 다시 찾아야 한다. 11절의 스크립트가 그 작업을 자동화한다.
+    </p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="sechead"><h2><span class="num">03</span>아키텍처 지도</h2></div>
+
+  <p>제어 관련 네임스페이스는 넷이고, 역할이 깔끔하게 갈린다.</p>
+
+<pre><span class="c">MORAI.Decision            종방향 거동 상태기 (6 타입)</span>
+  └ enum { CruiseControl, AdaptiveCruiseControl, EmergencyBraking }
+
+<span class="c">MORAI.Decision.Lateral    횡방향 거동 상태기 (1 타입)</span>
+  └ enum { LaneKeeping,
+           LaneChangeInitialize, LaneChangeGapApproach,
+           LaneChangeInProgress, LaneChangeEnd }
+
+<span class="c">MORAI.ControlAlgorithm    실제 제어 수식 (5 타입 / 약 400 메서드)</span>
+  ├ <span class="hl">#420</span>  횡방향: 목표점 기하 → (속도지령, 조향지령)
+  ├ <span class="hl">#644</span>  종방향: 목표가속도 → (accel, brake)
+  └ <span class="hl">#363</span>  각도 wrap + deg→rad 헬퍼
+
+<span class="c">MORAI.Vehicle             차량·센서 모델 (23 타입)</span></pre>
+
+  <p>
+    상위에는 <code>EgoCruiseType</code> 열거형이 있고 <code>EGO_CRUISE_TYPE_LINK</code>와
+    <code>EGO_CRUISE_TYPE_CONSTANT</code> 두 모드를 갖는다.
+    <code>UpdateEgoCruiseLinkPath</code>, <code>InitMgeoLinkPath</code>, <code>AddMgeoLinkPath</code>가
+    함께 존재하는 것으로 보아 <strong>LINK 모드가 HD맵 경로 추종</strong>,
+    CONSTANT가 정속 주행이다.
+  </p>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <div class="sechead"><h2><span class="num">04</span>횡방향 제어 법칙 <span class="badge b-hard">코드 확인</span></h2></div>
+
+  <p>
+    입력은 목표점 위치, 현재 위치, 현재 yaw(도) 세 개. 출력은 <strong>(속도 지령, 조향 지령)</strong> 쌍이다.
+    IL을 그대로 옮기면 이렇다.
+  </p>
+
+<pre><span class="c">// MORAI.ControlAlgorithm.&lt;obf&gt; :: &lt;obf&gt;   [메서드 #420]</span>
+<span class="c">// wrapRad(x,lo,hi) = deg2rad(wrap360(x,lo,hi))  ← 헬퍼 #363, 라디안 반환</span>
+
+if (!this.enabled) return (0, 0);
+
+curPos.y = 0;                                    <span class="c">// 평면 투영</span>
+Vector3 d    = this.targetPos - curPos;          <span class="c">// 목표점까지 벡터</span>
+float   dPsi = wrapRad(this.targetYaw - yawDeg, -180, 180);
+float   dist = round(|d|, 3);                    <span class="c">// 목표점까지 거리 [m]</span>
+float   th   = wrapRad(atan2(d.x, d.z)*57.29578 - yawDeg, -180, 180);
+                                                 <span class="c">// ↑ 방위 오차 θ [rad]</span>
+if (dist &gt; 0.01) {
+    <span class="hl">A = clamp(dist, 0, this.maxRange) / cosh(PI * th);</span>
+    <span class="hl">B = -clamp( sin(th)*cos(th) + th, -maxSteer, maxSteer );</span>
+} else {
+    A = 0;
+    B = -clamp( dPsi, -maxSteer, maxSteer );     <span class="c">// 도착 시 헤딩만 정렬</span>
+}
+return (A, B);</pre>
+
+  <div class="formula">
+    <span class="lbl">정리하면</span>
+    θ  = wrap<sub>±π</sub>( atan2(Δx, Δz) − yaw )<br>
+    조향  B(θ) = −( θ + ½·sin 2θ )<br>
+    속도  A(θ, d) = clamp(d, 0, R) ⁄ cosh(π·θ)
+  </div>
+
+  <p>
+    <code>sin θ·cos θ</code>는 <code>½·sin 2θ</code>와 같다. 따라서 작은 θ에서
+    <strong>B ≈ −2θ</strong> — 순수 비례 조향의 두 배 이득으로 시작해
+    θ가 커질수록 이득이 완만해지는, 부드럽게 포화되는 곡선이다.
+    부호가 음수인 것은 MORAI의 조향 부호 규약 때문이다.
+  </p>
+
+  <div class="charts">
+    <div class="chart">
+      <h4>조향 지령</h4>
+      <p class="sub">B = −(θ + ½·sin2θ)</p>
+      <svg id="c1" viewBox="0 0 300 190" role="img" aria-label="방위 오차에 따른 조향 지령 곡선. 원점에서 기울기 약 -2로 시작해 완만하게 포화된다."></svg>
+    </div>
+    <div class="chart">
+      <h4>속도 게이트</h4>
+      <p class="sub">1 / cosh(π·θ)</p>
+      <svg id="c2" viewBox="0 0 300 190" role="img" aria-label="방위 오차에 따른 속도 감쇠 곡선. 0도에서 1이고 30도에서 약 0.4, 60도에서 약 0.09로 급격히 떨어진다."></svg>
+    </div>
+  </div>
+  <p class="caption">
+    가로축은 방위 오차 θ(도). 속도 게이트는 θ=30°에서 이미 <strong>40%</strong>,
+    60°에서 <strong>9%</strong>까지 떨어진다 — 경로에서 벗어나면 사실상 멈춘다.
+  </p>
+
+  <div class="note">
+    <p>
+      <strong>참고할 점:</strong> 별도의 속도 계획기 없이 <em>조향 오차 하나로 속도를 깎는</em> 구조다.
+      곡률이 큰 구간에서 목표점 방위 오차가 자연히 커지므로, 코너 감속이 공짜로 따라온다.
+      우리 쪽 EKF·경로추종에 그대로 쓰긴 어렵지만, 속도 프로파일의 폴백 로직으로는 참고할 만하다.
+    </p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <div class="sechead"><h2><span class="num">05</span>종방향 제어 법칙 <span class="badge b-hard">코드 확인</span></h2></div>
+
+  <p>
+    목표 가속도를 받아 <strong>accel / brake 페달값</strong>으로 배분한다.
+    16개 사본 중 물리 상수를 가진 진짜 하나가 아래다.
+  </p>
+
+<pre><span class="c">// MORAI.ControlAlgorithm.&lt;obf&gt; :: &lt;obf&gt;   [메서드 #644]</span>
+<span class="c">// 인자: basis(Vector3), aDes(float), vel(Vector3, km/h), aux, gear</span>
+
+if (gear == 2) { vel = -vel; aDes = -aDes; basis = -basis; }   <span class="c">// 후진(R)</span>
+
+vel.z = 0;
+vel  *= 0.27778;                       <span class="c">// km/h → m/s</span>
+float spd = |vel|;
+
+float v = vel.x*basis.z + vel.y*basis.x;
+v = (v != 0 &amp;&amp; spd &gt; 0) ? v / spd : 0;  <span class="c">// 헤딩 방향 정규화 성분</span>
+
+<span class="c">// 1 km/h 이하에서 감속 요구 → 적분 리셋 후 무출력 (정지 유지)</span>
+if (spd &lt;= 0.27778 &amp;&amp; aDes &lt; 0) { this.integ = 0; return (0, 0); }
+if (this.flagA == 1 || this.flagB == 1) return (0, 0);
+
+float err = this.targetSpeed - v;
+float u   = (this.k &gt; 0) ? 0 : (1 - this.k);
+float z   = <span class="hl">5.436563</span> * (u - 0.5);
+float g   = exp(z) / (exp(z) + exp(-z));   <span class="hl">// = sigmoid(2z), 0‥1</span>
+<span class="hl">this.integ += err * g;</span>                     <span class="c">// 게이팅된 적분</span>
+
+if (aDes + this.integ &gt;= 0) accel = MapAccel(aDes, v, aux);
+else                        brake = MapBrake(aDes, v, aux);
+
+return (accel, brake);</pre>
+
+  <p>
+    핵심은 두 가지다. 첫째, <strong>적분항이 페달값에 직접 더해지지 않는다.</strong>
+    적분기는 오직 <em>가속이냐 제동이냐</em>의 분기만 결정하고,
+    실제 페달값은 <code>aDes</code> 원본을 맵 함수에 넣어 얻는다.
+    가·감속 전환 근처의 채터링을 막는 히스테리시스로 동작한다.
+  </p>
+  <p>
+    둘째, 적분 이득이 상수가 아니라 <strong>시그모이드 게이트</strong>다.
+    <code>5.436563 × 2 ≈ 10.87</code>이 시그모이드의 기울기이고,
+    <code>u = 0.5</code>가 중심점이다. u가 0/1일 때 게이트는 각각 0.004 / 0.996으로,
+    사실상 부드러운 on–off 스위치다.
+  </p>
+
+  <div class="note">
+    <p>
+      <code>MapAccel</code>과 <code>MapBrake</code>는 서로 다른 메서드이며 시그니처는 같다
+      <code>(aDes, v, aux)</code>. 내부까지는 복원하지 않았다 —
+      가속도→페달 역모델(속도 의존 룩업)일 가능성이 높다. <span class="badge b-guess">추정</span>
+    </p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <div class="sechead"><h2><span class="num">06</span>Decision 계층과 임계값 <span class="badge b-hard">코드 확인</span></h2></div>
+
+  <p>
+    Decision 계층에서는 <strong>필드명이 난독화를 피해 남아 있다.</strong>
+    <code>perceptionResult</code>, <code>currWaypointInfo</code>, <code>pointIdx</code>,
+    <code>m_MgeoVehicleData</code>, <code>m_listMgeoLink</code>,
+    <code>UnsignalizedJunctionLink</code>, <code>bIsInUnsignalizedJunction</code>,
+    <code>toNode</code>, <code>m_vCurPosition</code> — 덕분에 의미가 거의 그대로 읽힌다.
+  </p>
+
+<pre><span class="c">// [메서드 #203] 메인 결정 틱</span>
+int  pointIdx = ctx.perceptionResult.currWaypointInfo.pointIdx;
+var  links    = this.vehData.m_MgeoVehicleData.m_listMgeoLink;
+
+this.targetSpeed = round( min(reqSpeed, this.speedLimit), 2 );
+
+decision = (mode == 2) ? DecideWithExtra(..., Extra(ctx))
+                       : Decide(...);
+
+<span class="c">// 좌표 변환: Unity(x,y,z) → (-x, -z, y)</span>
+Vector3 p = new Vector3(-curPos.x, -curPos.z, curPos.y);
+
+if (link.UnsignalizedJunctionLink &amp;&amp; !link.bIsInUnsignalizedJunction) {
+    if (NodeReached(links[0].toNode.pos)) {
+        this.stopTarget = (0, distance(p, links[0].toNode.pos) - <span class="w">3.0</span>);
+        decision = 0;                       <span class="c">// 정지 / 양보</span>
+    }
+} else if (CondA() &amp;&amp; CondB()) {
+    this.stopTarget = (0, distance(this.target, p) - <span class="w">7.0</span>);
+    decision = Decide(...);
+}</pre>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>값</th><th class="num">크기</th><th>쓰이는 곳</th></tr></thead>
+      <tbody>
+        <tr><td>비신호 교차로 정지 오프셋</td><td class="num">3.0 m</td><td><code>toNode</code> 기준 앞쪽</td></tr>
+        <tr><td>일반 정지 타겟 오프셋</td><td class="num">7.0 m</td><td>정지 판정(<code>#208</code>)에도 동일 사용</td></tr>
+        <tr><td>정지 간주 속도</td><td class="num">1 km/h</td><td>0.27778 m/s 이하 + 감속요구</td></tr>
+        <tr><td>목표점 도달 판정</td><td class="num">0.01 m</td><td>횡방향 분기 전환</td></tr>
+        <tr><td>목표속도 반올림</td><td class="num">소수 2자리</td><td>지령 양자화</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    좌표 변환 <code>(x, y, z) → (−x, −z, y)</code>가 반복적으로 나온다.
+    Unity 좌상 좌표계와 MORAI 내부(맵) 좌표계를 잇는 규약이며,
+    <strong>HD맵 좌표를 직접 다룰 때 반드시 맞춰야 하는 부분</strong>이다.
+  </p>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <div class="sechead"><h2><span class="num">07</span>사용하는 데이터 구조</h2></div>
+
+  <p>
+    자율주행 로직이 소비하는 입력은 전부 <strong>이미 만들어진 것</strong>이다.
+    인지 파이프라인이 없다는 점이 우리 과제와의 결정적 차이다.
+  </p>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>구조체 / 필드</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td><code>perceptionResult.currWaypointInfo.pointIdx</code></td><td>현재 추종 중인 waypoint 인덱스</td></tr>
+        <tr><td><code>m_MgeoVehicleData.m_listMgeoLink</code></td><td>주행할 MGeo 링크 리스트 (경로 그 자체)</td></tr>
+        <tr><td><code>link.toNode</code></td><td>링크 끝 노드 — 교차로 정지 기준점</td></tr>
+        <tr><td><code>link.UnsignalizedJunctionLink</code></td><td>비신호 교차로 진입 링크 여부</td></tr>
+        <tr><td><code>bIsInUnsignalizedJunction</code></td><td>이미 교차로 안인지</td></tr>
+        <tr><td><code>m_vCurPosition</code></td><td>자차 현재 위치 (Unity 좌표)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    관련 식별자로 <code>lookAhead</code>, <code>curvature</code>, <code>curvatureTimeGap</code>,
+    <code>curvatureRearDistanceOffset</code>, <code>GetFrontDistance</code>, <code>GetRearDistance</code>,
+    <code>GetNearWaypoint</code>, <code>GetChangeLaneWayPointIndex</code>가 함께 존재한다.
+    앞뒤 거리 함수는 ACC와 차선변경 gap 판단에 쓰인다. <span class="badge b-soft">유력</span>
+  </p>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <div class="sechead"><h2><span class="num">08</span>차량 동역학 레퍼런스 데이터 <span class="badge b-hard">코드 확인</span></h2></div>
+
+  <p>
+    <code>data.unity3d</code>에 <strong>54개 TextAsset</strong>이 들어 있고,
+    그중 일부는 MORAI가 차량 모델을 검증할 때 쓰는 개루프 입력·응답 데이터다.
+    포맷은 CSV이고 헤더가 그대로 살아 있다.
+  </p>
+
+<pre><span class="c">// HillTest_ControlInput_Example  (48,271 B)</span>
+Time [sec],SWA [deg],ARPos [%],BRPos [%]
+0,31.2,0,14
+0.0199999,31.3,0,14
+0.0399999,31.3,0,14
+...
+
+<span class="c">// SWA  = Steering Wheel Angle   [deg]</span>
+<span class="c">// ARPos = Accelerator Pedal Position [%]</span>
+<span class="c">// BRPos = Brake Pedal Position       [%]</span>
+<span class="c">// 샘플 주기 20 ms (50 Hz)</span></pre>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>에셋</th><th class="num">크기</th><th>성격</th></tr></thead>
+      <tbody>
+        <tr><td><code>Stinger_Coast_Down_Refer</code></td><td class="num">3,954,531 B</td><td>타행 감속 기준 응답 — 주행저항·공력 모델</td></tr>
+        <tr><td><code>Stinger_Accel_Refer</code></td><td class="num">1,974,684 B</td><td>가속 기준 응답 — 파워트레인 모델</td></tr>
+        <tr><td><code>HillTest_ControlInput_Example</code></td><td class="num">48,271 B</td><td>경사로 개루프 입력</td></tr>
+        <tr><td><code>SineWeave_20deg_0.5Hz</code></td><td class="num">5,999 B</td><td>사인 위빙 — 횡방향 응답 시험</td></tr>
+        <tr><td><code>RampSteer_to45deg_in0.2sec</code></td><td class="num">2,225 B</td><td>스텝 조향 응답</td></tr>
+        <tr><td><code>ConstantAccel_0.5</code> / <code>RampAccel_to0.5_in0.1sec</code></td><td class="num">~2,220 B</td><td>정상·램프 가속 입력</td></tr>
+        <tr><td><code>NoSteer</code> / <code>NoAccel</code> / <code>NoBrake</code></td><td class="num">~1,970 B</td><td>널 입력 기준선</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>왜 유용한가.</strong> 이 데이터는 <em>페달 입력 → 차량 응답</em>의 실제 관계를 담고 있다.
+    우리 종방향 제어기의 가속도→페달 역모델을 세울 때,
+    시뮬레이터가 스스로 기준으로 삼는 곡선을 그대로 참조할 수 있다.
+    차종은 Stinger 기준이라 Ioniq5에 그대로 쓸 수는 없지만, <strong>형태와 스케일</strong>은 참고가 된다.
+  </p>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <div class="sechead"><h2><span class="num">09</span>Q 키의 정체 <span class="badge b-guess">미확정</span></h2></div>
+
+  <p>
+    어셈블리 전체에서 <code>Input.GetKeyDown</code> 호출 <strong>44곳</strong>을 전수 조사했다.
+    Q를 쓰는 곳은 전부 카메라 컨트롤러와 서드파티 데모 에셋이었다 —
+    <code>freeCamera</code>, <code>ExtendedFlycam</code>, <code>SimpleCameraController</code>,
+    RTG 튜토리얼, OnlineMaps 데모. <strong>자율주행 토글은 여기 없다.</strong>
+  </p>
+  <p>
+    대신 시뮬레이터는 데이터 기반 단축키 시스템을 쓴다:
+    <code>HotKeyDataSet</code>, <code>HotKeyInfo</code>, <code>_keyMappings</code>,
+    <code>InitHotKeyDatas</code>, <code>GetHotKeyDatas</code>.
+    UI 쪽에는 <code>DlgHotKeyCategory</code>, <code>Dlg_HotKeyItem</code>이 있으므로
+    <strong>인앱 단축키 목록 다이얼로그가 존재</strong>한다.
+  </p>
+  <p>
+    한편 <code>OnClickCruiseMode</code>, <code>ChangeEgoCruiseMode</code>,
+    <code>IsEgoCruiseMode</code>, <code>m_toggleCruise</code>가 있어
+    자율주행 진입점은 <strong>Ego Cruise Mode 토글</strong>로 보인다.
+    Q가 이 토글에 매핑돼 있는지는 단축키 테이블을 열어야 확정된다.
+  </p>
+  <div class="note">
+    <p>확인 방법: 시뮬레이터 실행 → 단축키 목록 창을 열어 Q 항목을 직접 확인하는 것이 가장 빠르다.</p>
+  </div>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <div class="sechead"><h2><span class="num">10</span>신뢰도·한계·주의</h2></div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>항목</th><th>신뢰도</th><th>근거</th></tr></thead>
+      <tbody>
+        <tr><td>횡방향 수식 B, A</td><td><span class="badge b-hard">코드 확인</span></td><td>IL 전량 해독, 물리 상수 일치</td></tr>
+        <tr><td>종방향 적분·분기 구조</td><td><span class="badge b-hard">코드 확인</span></td><td>IL 전량 해독</td></tr>
+        <tr><td>3 m / 7 m 임계값</td><td><span class="badge b-hard">코드 확인</span></td><td>비난독 필드명과 함께 확인</td></tr>
+        <tr><td>상태기 구성</td><td><span class="badge b-hard">코드 확인</span></td><td>enum 멤버명 원형 보존</td></tr>
+        <tr><td>#420이 Ego 전용인지</td><td><span class="badge b-soft">유력</span></td><td>NPC 제어와 공유될 가능성 배제 못 함</td></tr>
+        <tr><td>MapAccel / MapBrake 내부</td><td><span class="badge b-guess">추정</span></td><td>미복원</td></tr>
+        <tr><td>Q → Ego Cruise 매핑</td><td><span class="badge b-guess">추정</span></td><td>단축키 테이블 미확인</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>알려진 한계</h3>
+  <ul>
+    <li><strong>필드 의미는 대부분 미상.</strong> <code>maxSteer</code>, <code>maxRange</code>,
+      <code>targetSpeed</code> 같은 이름은 사용 맥락에서 붙인 것이고, 실제 필드명은 난독화돼 있다.</li>
+    <li><strong>실측 파라미터 값 없음.</strong> 게인·lookahead 거리의 구체적 수치는
+      MonoBehaviour 직렬화 데이터에 있으나 필드명도 난독화돼 있어 어느 값이 무엇인지 대응이 안 된다.</li>
+    <li><strong>#420이 어디서 호출되는지 미추적.</strong> 호출 그래프를 따라가면
+      Ego 전용인지 NPC 공용인지 확정할 수 있다.</li>
+  </ul>
+
+  <div class="callout">
+    <p class="t">규정 관련 — 반드시 확인할 것</p>
+    <p>
+      시뮬레이터 내장 로직을 <strong>분석해 참고하는 것</strong>과,
+      내장 주행 기능이나 그 MGeo 링크 경로를 <strong>대회 주행에 직접 이용하는 것</strong>은
+      전혀 다른 문제다. 이 문서는 전자를 위한 기록이다.
+      HD맵은 대회측이 제공한 것을 쓰되, 여기 적힌 수식·임계값을 그대로 이식하기 전에
+      규정의 해당 조항을 확인할 것.
+    </p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <div class="sechead"><h2><span class="num">11</span>재현 방법</h2></div>
+
+  <p>시뮬레이터 파일은 <strong>일절 수정하지 않았다.</strong> 전부 읽기 전용 분석이다.</p>
+
+<pre><span class="c"># 1. 격리 설치 (시스템 오염 없음, python 3.10 필요)</span>
+/home/foscar/anaconda3/bin/python -m pip install \
+    --target=&lt;작업디렉토리&gt;/pylibs UnityPy dnfile dncil
+
+<span class="c"># 2. 어셈블리 경로</span>
+SIM=".../Project/Simulator/Simulator_v.S4.251001.MolitComp03_Linux/\
+Simulator_Data/Managed/Assembly-CSharp.dll"
+
+<span class="c"># 3. 제어 네임스페이스 IL 전량 덤프 → ctrl_only.txt</span>
+PYTHONPATH=pylibs python il_all.py "$SIM" ctrl_only.txt \
+    MORAI.ControlAlgorithm MORAI.Decision MORAI.Decision.Lateral
+
+<span class="c"># 4. 위조 상수 복제본 걸러내기 (핵심 단계)</span>
+<span class="c">#    → 모든 ldc.r4 상수의 절대값이 100 미만인 메서드만 진짜</span></pre>
+
+  <p>사용한 스크립트는 세 개다.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>스크립트</th><th>역할</th></tr></thead>
+      <tbody>
+        <tr><td><code>il_all.py</code></td><td>네임스페이스별 IL 전량 덤프, 토큰·문자열 복원</td></tr>
+        <tr><td><code>find_ident.py</code></td><td>식별자(enum 멤버·비난독 필드)로 타입 역추적</td></tr>
+        <tr><td><code>bundle_scan.py</code> / <code>ta.py</code></td><td><code>data.unity3d</code> 오브젝트 목록·TextAsset 추출</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">
+    스크립트는 세션 스크래치패드에 있다. 영구 보관하려면 프로젝트 저장소로 옮길 것.
+  </p>
+</section>
+
+<footer>
+  <p>
+    2026-09-07 조사 · MORAI SIM Drive <code>S4.251001.MolitComp03</code> Linux 빌드 기준.
+    빌드가 갱신되면 난독화 시드가 바뀌므로 메서드 번호는 무효가 되고, 상수 패턴 기반 탐색만 유효하다.
+  </p>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var css = getComputedStyle(document.documentElement);
+  function tok(n) { return css.getPropertyValue(n).trim(); }
+
+  // plot area inside the 300x190 viewBox
+  var L = 40, R = 288, T = 14, B = 152;
+
+  function el(name, attrs) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  function draw(id, fn, yMin, yMax, yTicks, yFmt) {
+    var svg = document.getElementById(id);
+    if (!svg) return;
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var ink3 = tok("--ink-3") || "#6c7a78";
+    var ink2 = tok("--ink-2") || "#41504f";
+    var line = tok("--line") || "#d5dcda";
+    var acc  = tok("--accent") || "#00736a";
+
+    var degMin = -90, degMax = 90;
+    var x = function (d) { return L + (d - degMin) / (degMax - degMin) * (R - L); };
+    var y = function (v) { return B - (v - yMin) / (yMax - yMin) * (B - T); };
+
+    // horizontal gridlines + y labels
+    yTicks.forEach(function (v) {
+      svg.appendChild(el("line", {
+        x1: L, x2: R, y1: y(v), y2: y(v),
+        stroke: line, "stroke-width": 1
+      }));
+      var t = el("text", {
+        x: L - 7, y: y(v) + 3.5, "text-anchor": "end",
+        fill: ink3, "font-size": "9.5",
+        "font-family": "IBM Plex Mono, monospace"
+      });
+      t.textContent = yFmt(v);
+      svg.appendChild(t);
+    });
+
+    // zero vertical
+    svg.appendChild(el("line", {
+      x1: x(0), x2: x(0), y1: T, y2: B,
+      stroke: line, "stroke-width": 1
+    }));
+
+    // x labels
+    [-90, -45, 0, 45, 90].forEach(function (d) {
+      var t = el("text", {
+        x: x(d), y: B + 15, "text-anchor": "middle",
+        fill: ink3, "font-size": "9.5",
+        "font-family": "IBM Plex Mono, monospace"
+      });
+      t.textContent = d + "°";
+      svg.appendChild(t);
+    });
+
+    // axis title
+    var ax = el("text", {
+      x: (L + R) / 2, y: B + 32, "text-anchor": "middle",
+      fill: ink2, "font-size": "10",
+      "font-family": "IBM Plex Sans Condensed, sans-serif",
+      "letter-spacing": "0.08em"
+    });
+    ax.textContent = "방위 오차 θ";
+    svg.appendChild(ax);
+
+    // curve
+    var pts = [];
+    for (var d = degMin; d <= degMax + 0.001; d += 1.5) {
+      var th = d * Math.PI / 180;
+      var v = fn(th);
+      if (v > yMax) v = yMax;
+      if (v < yMin) v = yMin;
+      pts.push(x(d).toFixed(2) + "," + y(v).toFixed(2));
+    }
+    svg.appendChild(el("polyline", {
+      points: pts.join(" "),
+      fill: "none", stroke: acc, "stroke-width": 2,
+      "stroke-linecap": "round", "stroke-linejoin": "round"
+    }));
+  }
+
+  function render() {
+    // steering: B = -(th + 0.5*sin(2th))
+    draw("c1", function (th) { return -(th + 0.5 * Math.sin(2 * th)); },
+      -1.6, 1.6, [-1.5, -0.75, 0, 0.75, 1.5],
+      function (v) { return v.toFixed(2); });
+
+    // speed gate: 1/cosh(pi*th)
+    draw("c2", function (th) { return 1 / Math.cosh(Math.PI * th); },
+      0, 1, [0, 0.25, 0.5, 0.75, 1],
+      function (v) { return v.toFixed(2); });
+  }
+
+  render();
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    if (mq.addEventListener) mq.addEventListener("change", render);
+  }
+})();
+</script>

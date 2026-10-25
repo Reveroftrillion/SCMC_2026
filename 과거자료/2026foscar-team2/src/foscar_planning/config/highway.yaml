@@ -1,0 +1,136 @@
+# Planning assumptions; controller settings further constrain acceleration and braking.
+mode: control
+mission: HIGHWAY
+route:
+  start_checkpoint: 10
+  hold_checkpoint: null            # CP11 (lane 4, s1286) dropped from the rules 2026-09-30: no wait in lane 4
+  rejoin_checkpoint: 12
+  end_checkpoint: 13
+  excluded_lanes:
+  - 1
+vehicle:
+  source: existing Ioniq5 geometry in prediction.py
+  length_m: 4.635
+  width_m: 1.892
+  rear_axle_to_front_m: 3.8
+policy:
+  history_s: 0.6
+  min_history_s: 0.2
+  max_scan_age_s: 0.25
+  max_observation_gap_s: 0.3
+  velocity_error_mps: 0.5
+  clear_hold_s: 0.3
+  settle_s: 0.3
+  settle_error_m: 0.3
+  settle_heading_rad: 0.05235987756
+  settle_window_s: 1.8               # SETTLE ends only after this long within settle_error/heading: one period of the
+                                     # post-change sway (1.76 s measured at 100 km/h, 2026-09-29 21:32 lap). A single
+                                     # 0.3 s pass through the centre let a 0.73 m sway carry on to CP12 at 100 km/h.
+  margin_m: 0.5
+  standstill_gap_m: 2.0   # was 3.0; following gap roughly halved (user, 2026-09-28)
+  min_change_length_m: 15.0
+  min_change_speed_mps: 1.0
+  min_merge_speed_mps: 8.0             # below this, speed up before merging (slow merges are the hard ones)
+  change_time_s: 2.5                  # 3.5 m shift in 2.5 s peaks ~3.2 m/s2 (a_lat 4.5); 3.0 left too little room to pass first
+  path_step_m: 0.5
+  lookahead_m: 10.0
+  reference_back_m: 5.0
+  reference_ahead_m: 100.0
+  projection_jump_margin_m: 5.0      # GPS corrections step ~2-3 m at 70 km/h; a respawn moves tens of m
+  front_roi_m: 100.0                 # lidar ROI ahead on the highway (60 m met a car in the merged lane at
+                                     # 24-31 m at 110 km/h, 2026-09-28 00:25; no speed cap by user choice)
+  rear_roi_m: 40.0
+  lateral_roi_m: 20.0
+  # Lane-5 cut-in: start only while the lane centres are this far apart (no tiny curve in the taper).
+  cut_in_min_sep_m: 2.0
+  safe_headway_s: 0.4                 # ordinary following: open the gap gently to standstill + 0.4 s x lead speed;
+                                      # mid-change drops it and tucks in (user 2026-09-28)
+  sensor_lead_in_m: 60.0              # lidar highway ROI starts this far before CP10 (tracks and speeds ready on arrival)
+bounds:
+  min_brake_mps2: 1.5
+  lat_accel_mps2: 2.5
+  latency_s: 0.25
+  front_range_m: 100.0
+  rear_range_m: 40.0
+  npc_speed_bound_mps: 20.0
+  follow_brake_mps2: 4.0   # lead-vehicle stopping-distance cap only (sim brake 0.5 ~ 5 m/s2); comfort stays decel_mps2
+  position_error_m: 0.2
+  velocity_error_mps: 0.5
+boxes:                               # target-lane boxes (OCCUPIED / FREE / UNKNOWN from the current scan) and the slot planner
+  length_m: 2.0
+  rear_m: 60.0                       # boxes searched this far behind (30 missed a 20 m/s car 40 m back)
+  front_m: 100.0                     # = front_roi_m: speeds come from box edges, and a car past 40 m had none, read as
+                                     # standing and held us at 65-73 km/h for 180 m (2026-09-30 run 4)
+  intrusion_m: 0.5                   # a body occupies a box once it is this far inside the lane
+  sensor_forward_m: 1.0              # line-of-sight origin ahead of the rear axle
+  shadow_pad_rad: 0.02
+  max_length_m: 5.0                  # boxes grow with distance up to this
+  # A run's hidden end reaches over the boxes behind it only up to a plausible vehicle length (user 2026-10-01:
+  # "no 11 m cars in this world"). NPC truth, 5 HW980 runs: cars 4.09-5.20 m long and <= 1.93 m tall; trucks and
+  # buses 6.19-8.83 m, 2.51-3.95 m tall (lidar heights clip at roi_z_max 2.5). Seen longer than that, it is
+  # several cars nose to tail -- one body, no room between them. Hidden boxes past it are not that car's.
+  car_max_length_m: 5.2
+  large_vehicle_height_m: 2.2
+  large_max_length_m: 8.9
+  angular_res_rad: 0.0035            # lidar horizontal step (0.2 deg, assumed): edge error ~ res*d^2/lateral
+  lateral_ref_m: 3.5                 # lateral offset of the neighbouring lane
+  # Slot planner (exp/box-planner, user 2026-09-28): the target-lane bodies move at their own speeds (NPCs do not
+  # brake for a cut-in: rear-end hits 08:10 s1315, 08:24 s1438), the ego ramps to one goal speed; from where our
+  # body enters the target lane to tail_s after the change, the body behind stays this far from our rear bumper:
+  rear_min_gap_m: 3.0                # ...while it is faster than us at that moment
+  pass_rear_min_gap_m: 2.1           # ...while it is not (we are passing it)
+  pass_front_gap_m: 1.4   # cut-in stop gap behind the target-lane car ahead (any slot, 2026-09-30: stopping distance only): it
+                          # will not stop, so tuck in right behind it (user 2026-09-28 "앞차 엉덩이를 물고 들어간다")
+  edge_window_s: 1.0                 # nose-motion fit window (0.6 s: lead speed swung +-5 km/h, the follow cap with it and
+                                     # the brake pumped 0-0.47, 2026-09-30; slope noise ~ window^-1.5)
+  closing_error_mps: 0.5             # added to the measured closing speed (median error 0.5-0.9 m/s vs the tracker;
+  closing_error_per_m: 0.03          #  the p90 margin 1.5 + 0.05/m kept out of a clear gap, user 00:53 lap 3)
+  rear_accel_mps2: 0.5               # a car beside / just behind may start speeding up this hard (NPCs accelerate to their own speed)
+  rear_accel_near_m: 5.0             # ...if its nose is within this of our rear bumper (or past it) when we decide
+  unknown_speed_mps: 5.0             # a body without measured speed: this much faster than us behind, slower ahead
+  yield_brake_mps2: 2.5              # planned easing-off to let a car by (following already brakes about this hard)
+  rejoin_lat_mps2: 4.0               # bends from CP12 (rejoin) to CP13. Sweep 2026-09-29: 2.5 dropped 67 -> 59 km/h,
+                                     # 3.5 78 -> 71 (ay 3.67); 4.0 no dip at 60-72 km/h, |ct| <= 0.22 m, ay <= 2.9
+  # lane-change curves: steeper than ordinary bends (2.5 made ~90 m curves at 100 km/h). Speed-dependent
+  # (user 2026-09-29): 4.5 m/s2 at 40 km/h .. 3.0 at 100 km/h, linear between, held beyond.
+  change_lat_slow_kmh: 40.0
+  change_lat_slow_mps2: 4.5
+  change_lat_fast_kmh: 100.0
+  change_lat_fast_mps2: 3.0
+  # Cap on the above, from measurement (2026-09-29): tracking error 0.08 + 0.053 a (tunnel swerve sweep) stays within
+  # settle_error_m 0.3 up to a = 4.15 m/s2 commanded, and the command peaked at 1.27x the design lateral
+  # acceleration over 9 lane changes -> design at most 4.15 / 1.27 = 3.27. At 76 km/h a 3.6 design commanded 4.56
+  # and left a 0.79 m sway into lane 2.
+  change_lat_max_mps2: 3.27
+  brake_jerk_mps3: 4.0               # braking builds up and eases off at this jerk...
+  brake_max_mps2: 8.0                # ...up to the braking finally needed (user: reach it for sure; brake 1.0 ~ 9 m/s2)
+  accel_mps2: 3.5                    # planned speed-up: measured 3.58 m/s2 median while passing (reference_accel 6)
+  max_speed_mps: 33.3                # highest goal speed the planner tries (120 km/h); bends cap it lower
+  tail_s: 1.0                        # the checks run on this long after the change ends
+  start_step_s: 0.5                  # change start times tried: now, +0.5 s, ...
+  max_start_s: 6.0                   # ...up to this far ahead
+  last_change_max_start_s: 15.0      # ...and for the last change (3->2) up to this: wait in lane 3 to pass a slow lane-2 car
+                                     # and land ahead of it (A-1, 2026-10-01). 15 s ~ lane 3 from the 4->3 landing (~s1300) to
+                                     # the 3->2 deadline s1548 at 60 km/h; past the deadline the planner drops a start anyway.
+  max_enter_s: 3.0                   # a change starting now must put our body into the target lane within this
+  speed_cost_s: 0.25                 # per slot: each m/s of speed change counts as landing this much later
+  progress_horizon_s: 15.0           # slots compared by distance covered in this long (behind the slot's front car after landing)
+following:                           # gap to the car ahead (user 2026-09-30: one rule, few knobs)
+  # One rule, its values per highway phase (user 2026-09-30: each situation tuned on its own, no cross effects):
+  #   cruise  -- nothing to change into (lane 2, rejoin)        scout -- a change wanted, no slot chosen yet
+  #   yield   -- landing behind a target-lane car               pass  -- speeding up to land ahead of one
+  #   change  -- on the lane-change curve                       settle -- lead-in before the curve, settling after it
+  # target gap = standstill_m + time_gap x lead speed.
+  # Farther: lead speed + min(sqrt(2 x approach_decel x (gap - target)), gain x (gap - target)) (closing speed shed at
+  # approach_decel, the last metres at gain so the cap does not jump with gap noise).
+  # Closer: lead speed + gain x (gap - target) (slower than the lead, reopening). Always under the safety cap: able
+  # to stop standstill_m behind a lead braking at bounds.follow_brake_mps2 after bounds.latency_s. Braking itself is
+  # jerk-limited (boxes.brake_jerk_mps3 / brake_max_mps2) except inside emergency range.
+  # Initial values = the gaps measured 2026-09-29: 9.0 m / 0.59 s at 57 km/h in lane 2, 5.8 m / 0.51 s mid-change.
+  standstill_m: 2.2                  # common to every phase (also the stop gap of the safety cap)
+  cruise: {time_gap_s: 0.4, approach_decel_mps2: 2.0, gain_hz: 0.5}
+  scout:  {time_gap_s: 0.4, approach_decel_mps2: 2.0, gain_hz: 0.5}
+  yield:  {time_gap_s: 0.4, approach_decel_mps2: 2.0, gain_hz: 0.5}
+  pass:   {time_gap_s: 0.4, approach_decel_mps2: 2.0, gain_hz: 0.5}
+  change: {time_gap_s: 0.2, approach_decel_mps2: 3.0, gain_hz: 0.5}   # keep the speed through the cut-in, approach under control (a stopping cap alone ran to 0.01 m, 2026-09-30)
+  settle: {time_gap_s: 0.4, approach_decel_mps2: 2.0, gain_hz: 0.5}

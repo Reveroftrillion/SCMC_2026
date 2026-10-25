@@ -1,0 +1,36 @@
+{
+  "spawn": [
+    -12.692728042602539,
+    -221.46871948242188,
+    62.351287841796875
+  ],
+  "start_link": "A2256W000172",
+  "spawn_link_s_m": 33.332168234227225,
+  "spawn_cross_track_m": 0.024683156263312342,
+  "connector_remaining_m": 374.50511972276144,
+  "connector_links": [
+    "A2256W000172",
+    "A2256W000361",
+    "A2256W000189",
+    "A2256W000358",
+    "A2256W000004",
+    "A2256W000256",
+    "A2256W000031",
+    "A2256W000255",
+    "A2256W000099",
+    "A2256W000234",
+    "A2256W000342",
+    "A2256W000348",
+    "A2256W000216"
+  ],
+  "official_merge_index": 478,
+  "official_merge_xyz": [
+    -79.9685367429629,
+    -230.3942881319672,
+    28.401036010337744
+  ],
+  "points": 5214,
+  "total_length_m": 2592.06324122069,
+  "max_gap_m": 0.7970706884650554,
+  "note": "Road geometry only; traffic lights and obstacles along connector are not handled."
+}

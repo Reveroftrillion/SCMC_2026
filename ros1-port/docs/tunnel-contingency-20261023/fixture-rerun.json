@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "tests": 3,
+  "passed": 3,
+  "skipped": 0,
+  "elapsed_s": 9.975357903000258,
+  "source_changes": [],
+  "scope": "Only the three FileNotFoundError cases, with unchanged preserved reference helpers in a fresh isolated copy"
+}

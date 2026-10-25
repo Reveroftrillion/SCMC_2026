@@ -1,0 +1,38 @@
+{
+  "scenario": "ObstaclePedestrianDifficult",
+  "run": "20261006_154205",
+  "bag": "/home/foscar/foscar_logs/bags/run_20261006_154210",
+  "result": "STOPPED:AVOID|CRUISE",
+  "drive_s": 66.2,
+  "end_s": 319.5,
+  "reached_tunnel": false,
+  "code_changed": false,
+  "readme_records_updated": false,
+  "manual_review": {
+    "collision_object_id": 2,
+    "collision_station_m": 317.6,
+    "evidence": [
+      "collision packet for id2",
+      "uncommanded speed drop 23.4 to10.2 km/h",
+      "truth lateral acceleration peak68.57 m/s2; prolonged near-zero forward motion with throttle1/brake0"
+    ],
+    "runner_misclassification": "Static/pedestrian flags farther than5m from reference point are treated as latched; this object reference was10.5m away. collisions=[] is not a valid clean-run result.",
+    "object_dimensions_m": [
+      8.829,
+      3.146,
+      3.47
+    ],
+    "avoid_plan": {
+      "lat_offset_m": 0.75,
+      "entry_s": 317.124,
+      "entry_length_m": 6.0,
+      "return_s": 329.957,
+      "v_max_kmh": 60
+    },
+    "tunnel_code_findings": [
+      "missions.yaml allows CRUISE,AVOID,TUNNEL but not YIELD in tunnel",
+      "avoid.py observe sets movers=() for tunnel and assimilates PEDESTRIAN/VEHICLE/DYNAMIC_UNKNOWN into static boxes"
+    ],
+    "unverified": "This lap did not reach pedestrians/highway/tunnel. Dynamic tunnel behavior cannot be evaluated from it."
+  }
+}

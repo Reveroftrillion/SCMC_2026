@@ -1,0 +1,134 @@
+{
+  "scope": "short actual MORAI driving trial; no whole-mission/input-extrinsic equivalence claim",
+  "launch_arguments": [
+    "drive:=true",
+    "bag:=true"
+  ],
+  "stop_reason": "trial_speed_stop_8mps",
+  "shutdown_at": 4.801603142999738,
+  "launch_returncode": 0,
+  "counts": {
+    "udp_status": 300,
+    "udp_imu": 289,
+    "udp_gps": 72,
+    "launch": 1,
+    "udp_control": 214,
+    "status": 79,
+    "imu": 76,
+    "request": 57,
+    "control_state": 57,
+    "telemetry": 57,
+    "gps": 28,
+    "odom": 141,
+    "s": 141,
+    "shutdown_requested": 1
+  },
+  "errors": [],
+  "parse_errors": {},
+  "control_states": {
+    "WAITING": 1,
+    "CRUISE": 56
+  },
+  "udp_control_packets": 214,
+  "udp_control_first": {
+    "t": 1.9241286129999935,
+    "wall_time": 1791874215.2125084,
+    "kind": "udp_control",
+    "value": {
+      "source_ip": "127.0.0.1",
+      "source_port": 40667,
+      "destination_ip": "127.0.0.1",
+      "destination_port": 9093,
+      "mode": 2,
+      "gear": 4,
+      "command_type": 1,
+      "accel": 0.0,
+      "brake": 1.0,
+      "steering": 0.0
+    }
+  },
+  "udp_control_last": {
+    "t": 6.2218011709992425,
+    "wall_time": 1791874219.510181,
+    "kind": "udp_control",
+    "value": {
+      "source_ip": "127.0.0.1",
+      "source_port": 40667,
+      "destination_ip": "127.0.0.1",
+      "destination_port": 9093,
+      "mode": 1,
+      "gear": 1,
+      "command_type": 1,
+      "accel": 0.0,
+      "brake": 0.0,
+      "steering": 0.0
+    }
+  },
+  "auto_d_feedback_count": 180,
+  "auto_d_first": {
+    "t": 1.9574461349993726,
+    "wall_time": 1791874215.2458258,
+    "kind": "udp_status",
+    "value": {
+      "speed": -1.0579236055087272e-07,
+      "yaw": 1.1367545986498913,
+      "mode": 2,
+      "gear": 4,
+      "steer_deg": 0.0,
+      "link": "A2256W000748",
+      "source_ip": "127.0.0.1",
+      "source_port": 9088,
+      "destination_ip": "127.0.0.1",
+      "stamp_hex": "a7d4cd6a40679a0e"
+    }
+  },
+  "maximum_speed_mps": 9.23092418246799,
+  "initial_status": {
+    "t": 0.050442757999917376,
+    "wall_time": 1791874213.3388228,
+    "kind": "udp_status",
+    "value": {
+      "speed": 3.937975887108931e-06,
+      "yaw": 1.1367548649660004,
+      "mode": 2,
+      "gear": 1,
+      "steer_deg": 0.0,
+      "link": "A2256W000748",
+      "source_ip": "127.0.0.1",
+      "source_port": 9088,
+      "destination_ip": "127.0.0.1",
+      "stamp_hex": "a5d4cd6a80782514"
+    }
+  },
+  "final_status": {
+    "t": 7.092191982999793,
+    "wall_time": 1791874220.3805716,
+    "kind": "udp_status",
+    "value": {
+      "speed": -0.0015156714814818567,
+      "yaw": 1.08121943412236,
+      "mode": 1,
+      "gear": 1,
+      "steer_deg": 0.0,
+      "link": "A2256W000748",
+      "source_ip": "127.0.0.1",
+      "source_port": 9088,
+      "destination_ip": "127.0.0.1",
+      "stamp_hex": "acd4cd6a0057a616"
+    }
+  },
+  "actual_zero_speed_confirmed": false,
+  "initial_s": 0.8690398676513491,
+  "final_s": 9.378466247687422,
+  "delta_s": 8.509426380036073,
+  "maximum_path_error_m": 0.08,
+  "maximum_ros_header_age_s": {
+    "gps": 0.0005872249603271484,
+    "imu": 0.0005319118499755859,
+    "status": 0.000308990478515625,
+    "odom": 0.0007829666137695312,
+    "request": 0.0005939006805419922
+  },
+  "bag_files": [],
+  "short_trial_passed": false
+}

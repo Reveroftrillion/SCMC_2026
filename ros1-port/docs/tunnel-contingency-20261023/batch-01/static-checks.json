@@ -1,0 +1,12 @@
+{
+  "document_links": 310,
+  "broken_links": [],
+  "public_batch_json": 24,
+  "syntax_files": 24,
+  "frozen_source_files": 349,
+  "source_changes": [],
+  "reference_files": 530,
+  "reference_changes": [],
+  "plain_diff_check_exit": 2,
+  "cr_at_eol_diff_check_exit": 0
+}

@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "repository": "Reveroftrillion/SCMC_2026",
+  "target_main": "f83e18c013453e45454a4afb050a2f8be17263b4",
+  "imported_commit": "412c47a6d54b8fff4d69b8ad90e759994e71fe2d",
+  "original_target_files_preserved": 290,
+  "original_target_exceptions": [
+    ".gitattributes",
+    ".gitignore",
+    "README.md"
+  ],
+  "imported_production_and_reference_git_blobs_unchanged": true,
+  "snapshots_verified": 18,
+  "current_document_links_verified": 205,
+  "old_readme_preserved_exactly": true,
+  "source_manifest_files_verified": 14,
+  "publication_validation": {
+    "schema_version": 1,
+    "passed": true,
+    "scope": "Offline request lifecycle + conversion + progress + steering",
+    "recorded_at_utc": "2026-10-25T04:04:59.638882+00:00",
+    "unit": {
+      "tests": 278,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "scenarios": [
+      {
+        "name": "offset_complete_to_global",
+        "passed": true,
+        "measured": {
+          "max_error_m": 0.4,
+          "tail_rms_m": 0.05482168584154159,
+          "final_error_m": 0.044695497867671116,
+          "max_angle_rad": 0.10307610875113137,
+          "max_rate_rad_s": 0.8,
+          "geometry_objects": 2
+        },
+        "gates": {
+          "max_error_m": true,
+          "tail_rms_m": true,
+          "final_error_m": true,
+          "completed": true,
+          "modes": true,
+          "stable_geometry": true,
+          "angle_bound": true,
+          "rate_bound": true
+        },
+        "modes": [
+          "offset",
+          "global"
+        ],
+        "steps": 1250,
+        "failure": null
+      },
+      {
+        "name": "reference_hold_and_release",
+        "passed": true,
+        "measured": {
+          "max_error_m": 0.4,
+          "tail_rms_m": 0.026461879833687925,
+          "final_error_m": 0.01761445198196582,
+          "max_angle_rad": 0.04902902406316817,
+          "max_rate_rad_s": 0.8,
+          "geometry_objects": 2
+        },
+        "gates": {
+          "max_error_m": true,
+          "tail_rms_m": true,
+          "final_error_m": true,
+          "completed": true,
+          "modes": true,
+          "stable_geometry": true,
+          "angle_bound": true,
+          "rate_bound": true
+        },
+        "modes": [
+          "reference",
+          "global"
+        ],
+        "steps": 1250,
+        "failure": null
+      }
+    ],
+    "project_or_ros_imports": [
+      "ctrl_control",
+      "ctrl_control.ctrl_lateral",
+      "ctrl_control.ctrl_path_conversion",
+      "ctrl_control.ctrl_path_selection",
+      "ctrl_control.ctrl_progress"
+    ],
+    "source_sha256": {
+      "ros1-port/tools/validate_path_selection.py": "67b8a7146b7b97b84d014476dc774e75da035d537aca82dbd91f2ea9883e87c7",
+      "ros1-port/tools/path_selection_cases.json": "9334b9ecd2d376cc41144d438852eb4ec9df0b4107352e7e1164333208da3725",
+      "ros1-port/tools/lateral_cases.json": "f6feabe96c4348c0eedef775559688f709bc5eb514d9c0dc8881c1a6d7a0b4ce",
+      "ros1-port/tools/progress_cases.json": "f5391449059574517f02d1caaf83761bc46ed900792fe5190f9f600c248fa559",
+      "ros1-port/tools/validate_lateral.py": "f897f17531efa11c4310790470d6d75b38ac1049474e7aa8e0ebc043207775fd",
+      "ros1-port/src/ctrl_control/test/test_path_selection.py": "22be745b24cb7d976c9cabc1dc38297b9220bfe53d01247015b253f0d7b44d49",
+      "ros1-port/src/ctrl_control/test/test_path_conversion.py": "49ac7dc0f0ee31c5e48f0313d4d29d2360de5ec91096f7875de4e311a991e850",
+      "ros1-port/src/ctrl_control/test/test_progress.py": "a923fc4deb2f7724184df17f8fd8e0d09048b073b57eeaf299894fcbb897a964",
+      "ros1-port/src/ctrl_control/test/test_lateral.py": "9f7e3e596a56ed7d9f03ce93e33d2023824b888a1133a158eb0ffba10f1f4c15",
+      "ros1-port/src/ctrl_control/ctrl_control/ctrl_path_selection.py": "a92c573597465c118047c903871a150c5db92718e5bd796c782182ecaf3e18fe",
+      "ros1-port/src/ctrl_control/ctrl_control/ctrl_path_conversion.py": "fd65e6f7692784f5b58deadde88d91381582c977cfa748123019fa2b5c49fb2f",
+      "ros1-port/src/ctrl_control/ctrl_control/ctrl_progress.py": "38c1fc7e8b254e0f8230b3ebec3295fa54c0579e77210b89c48f23eee9326366",
+      "ros1-port/src/ctrl_control/ctrl_control/ctrl_lateral.py": "be3d533e9b163894a401b06b0d8021bc7d982f91aabb2cde192ca15777f74614",
+      "ros1-port/docs/PATH_SELECTION_CONTRACT_2026-10-25.md": "2c8e41210b6947db017a36ef50689b4fb9f61343d1da1c778e7fb9a7b2506705"
+    },
+    "limitations": [
+      "No production ROS wiring, control packets or MORAI driving",
+      "No sensor noise, actuator delay, collision or road constraints",
+      "Fail-closed results require longitudinal stop/handoff integration"
+    ]
+  },
+  "published_asset_hashes": [
+    {
+      "path": "ros1-port/src/ctrl_bringup/config/low_speed.yaml",
+      "source_observed_sha256": "c309b72790bd20ca7ef77040f0b737b3cd92aa69208960e9787dbf17c53b89cd",
+      "published_sha256": "c309b72790bd20ca7ef77040f0b737b3cd92aa69208960e9787dbf17c53b89cd",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_bringup/maps/link_set.json",
+      "source_observed_sha256": "5ce0fd57da07b83221c0a4d117b0606b2d9c094c8de476a7d1176c78a4dc5b0f",
+      "published_sha256": "5ce0fd57da07b83221c0a4d117b0606b2d9c094c8de476a7d1176c78a4dc5b0f",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_bringup/maps/link_set.seams.npz",
+      "source_observed_sha256": "3dd79353097b9f3c2e7fca0d0efc0920067f828638df95bc0a1c6707378fc62e",
+      "published_sha256": "3dd79353097b9f3c2e7fca0d0efc0920067f828638df95bc0a1c6707378fc62e",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_bringup/routes/checkpoints.txt",
+      "source_observed_sha256": "83f526989390173ec954121eb7f60fcc50feb5d9ea2323d4afe667ea6602329d",
+      "published_sha256": "83f526989390173ec954121eb7f60fcc50feb5d9ea2323d4afe667ea6602329d",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_bringup/routes/global_path.txt",
+      "source_observed_sha256": "a7fa4a89ff3840c7cc1be9b3b971572a67eb514f3ebee5a4a00ef535b73c64c3",
+      "published_sha256": "a7fa4a89ff3840c7cc1be9b3b971572a67eb514f3ebee5a4a00ef535b73c64c3",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_bringup/routes/spawn_path.json",
+      "source_observed_sha256": "e634a3e900c4fa4a807ebb52ec6f1aac9e2cd97ae1b0fafe5cbcfc9cbfbf74e8",
+      "published_sha256": "e634a3e900c4fa4a807ebb52ec6f1aac9e2cd97ae1b0fafe5cbcfc9cbfbf74e8",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_bringup/routes/spawn_path.txt",
+      "source_observed_sha256": "4b9edccfd82414f1ea0d85e862370572d0d8c5510f5f91fcb9fc1a97ff4ce8f2",
+      "published_sha256": "4b9edccfd82414f1ea0d85e862370572d0d8c5510f5f91fcb9fc1a97ff4ce8f2",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/config/stop_lines.csv",
+      "source_observed_sha256": "9c021decd17b9f21aec2212c117ce20eeb7b5151b35c412d84f33492d37441a4",
+      "published_sha256": "9c021decd17b9f21aec2212c117ce20eeb7b5151b35c412d84f33492d37441a4",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/config/yolo_stoplines.json",
+      "source_observed_sha256": "15e25e6bda7392795c202724caa2084a32ef56de432c37c0b056f7b0ecdd279c",
+      "published_sha256": "15e25e6bda7392795c202724caa2084a32ef56de432c37c0b056f7b0ecdd279c",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_camera/models/best.onnx",
+      "source_observed_sha256": "d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98",
+      "published_sha256": "d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/config/behavior.yaml",
+      "source_observed_sha256": "06a7592a56ee46db49ae4109ad691d104e2738edbfe115d1df6e2a11b1db468b",
+      "published_sha256": "06a7592a56ee46db49ae4109ad691d104e2738edbfe115d1df6e2a11b1db468b",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/config/highway.yaml",
+      "source_observed_sha256": "6cd65764143bef1c28deda961605d5c55a55a60f7610d5461302dc1d0884073d",
+      "published_sha256": "6cd65764143bef1c28deda961605d5c55a55a60f7610d5461302dc1d0884073d",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/config/highway_kappa.npz",
+      "source_observed_sha256": "5b60ceb2aa4cac870f204fd4bea979eddfaf4cd070993c6c6f0b52fb22a6a477",
+      "published_sha256": "5b60ceb2aa4cac870f204fd4bea979eddfaf4cd070993c6c6f0b52fb22a6a477",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/config/missions.yaml",
+      "source_observed_sha256": "feaf16077a50b8c31facc8165b4cbd315255b573718cbedd813a88ee8a118520",
+      "published_sha256": "feaf16077a50b8c31facc8165b4cbd315255b573718cbedd813a88ee8a118520",
+      "newline_only_difference": false
+    },
+    {
+      "path": "ros1-port/src/ctrl_planning/config/roundabout_motion.json",
+      "source_observed_sha256": "4933ef9c60c1399313be2012f2abb6e8ece56527439968b10b45de3eb390eeb0",
+      "published_sha256": "4933ef9c60c1399313be2012f2abb6e8ece56527439968b10b45de3eb390eeb0",
+      "newline_only_difference": false
+    }
+  ],
+  "inherited_whitespace": "Previous README retains its original Markdown two-space hard line break",
+  "scope": "Branch publication only; target main not merged; no ROS/MORAI driving"
+}

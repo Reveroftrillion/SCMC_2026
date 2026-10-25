@@ -1,0 +1,45 @@
+{
+  "scope": "User-reported completion and follower CSV inspection; not supervised official collision/line/score/handoff verification",
+  "branch": "feat/host-roslaunch-20261023",
+  "user_run": {
+    "follower": "ros1-port/docker/artifacts/ctrl_start_foscar_44_8710809407992363305/follower/follow_20261023_053529_052846.csv",
+    "follower_sha256": "320bd94f50800c617ee1b2543ece6f5d160e7d831b8eeeef46059c7cb24f60e9",
+    "rows": 3563,
+    "first_finish_elapsed_s": 173.5501704010003,
+    "finish_rows": 93,
+    "final_speed_mps": 1.1860293448585758e-06,
+    "peak_follower_speed_kmh": 116.46341705322266
+  },
+  "tests": {
+    "docker_python310_tools": {
+      "passed": 15,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "host_python38_tools": {
+      "passed": 12,
+      "overlap_with_docker": true
+    },
+    "pre_fix_metadata": {
+      "failed": 2
+    },
+    "pre_fix_camera_normal_external_shutdown": {
+      "errored_subcases": 2
+    }
+  },
+  "not_run": [
+    "Actual Docker launch through new host shortcut",
+    "Actual camera process SIGINT after fix",
+    "New real bag recording after metadata fix",
+    "Full algorithm regression in this task",
+    "Windows",
+    "catkin rebuild/install",
+    "Official collision/line/score verification"
+  ],
+  "known_failures_retained": [
+    "previous immutable identifier/resource/byte-equivalence checks",
+    "unexplained input gap",
+    "YOLO log persistence"
+  ]
+}

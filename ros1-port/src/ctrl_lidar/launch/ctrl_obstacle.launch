@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="sim" default="false" />
+  <arg name="bridge" default="true" />
+  <arg name="lidar_port" default="9302" />
+  <arg name="view" default="true" />
+  <arg name="rviz" default="false" />
+  <arg name="lidar_x" default="2.0" />
+  <arg name="lidar_y" default="0.0" />
+  <arg name="lidar_z" default="2.11" />
+  <arg name="use_tf" default="true" />
+  <arg name="static_tf" default="true" />
+  <arg name="highway_config" default="" />
+  <arg name="highway_mission_config" default="" />
+  <arg name="roi_x_max" default="40.0" />
+  <arg name="roi_y_abs" default="20.0" />
+  <arg name="roi_z_min" default="-0.3" />
+  <arg name="roi_z_max" default="2.5" />
+  <arg name="ground_z" default="0.15" />
+  <arg name="ground_slope_tol" default="0.01" />
+  <arg name="dbscan_eps" default="0.5" />
+  <arg name="dbscan_min_samples" default="5" />
+  <arg name="max_object_size_m" default="5.0" />
+  <arg name="min_object_size_m" default="0.05" />
+  <arg name="min_obstacle_top_m" default="0.30" />
+  <arg name="small_size_m" default="0.5" />
+  <arg name="small_min_top_m" default="0.5" />
+  <arg name="chain_min_count" default="3" />
+  <arg name="chain_tol_m" default="0.5" />
+  <arg name="chain_span_m" default="25.0" />
+  <arg name="min_road_user_width_m" default="0.25" />
+  <arg name="road_user_aspect_max" default="4.0" />
+  <arg name="moving_enter_mps" default="0.8" />
+  <arg name="moving_exit_mps" default="0.4" />
+  <arg name="min_straightness" default="0.6" />
+  <arg name="min_road_user_height_m" default="0.6" />
+  <arg name="height_gate_m" default="20.0" />
+  <arg name="ped_max_size_m" default="1.2" />
+  <arg name="ped_max_speed_mps" default="3.0" />
+  <arg name="vehicle_min_size_m" default="2.0" />
+  <arg name="confirm_frames" default="3" />
+  <arg name="max_misses" default="15" />
+  <arg name="markers" default="true" />
+  <arg name="use_route" default="true" />
+  <arg name="max_block_width_m" default="2.0" />
+  <arg name="corridor_half_m" default="1.5" />
+  <arg name="path_predict_s" default="2.0" />
+  <arg name="use_road_mask" default="true" />
+  <arg name="link_set" default="$(find ctrl_bringup)/maps/link_set.json" />
+  <arg name="road_margin_m" default="0.0" />
+  <arg name="ego_speed" default="3.0" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" output="log" args="$(arg lidar_x) $(arg lidar_y) $(arg lidar_z) 0 0 0 1 base_link lidar" if="$(arg static_tf)" />
+  <node pkg="ctrl_lidar" type="ctrl_lidar_bridge" name="lidar_bridge" output="screen" if="$(eval ((not arg('sim')) and arg('bridge')))">
+    <param name="port" value="$(arg lidar_port)" type="int" />
+  </node>
+  <node pkg="ctrl_lidar" type="ctrl_fake_cloud" name="fake_cloud" output="screen" if="$(arg sim)">
+    <param name="lidar_x" value="$(arg lidar_x)" type="double" />
+    <param name="lidar_y" value="$(arg lidar_y)" type="double" />
+    <param name="lidar_z" value="$(arg lidar_z)" type="double" />
+    <param name="ego_speed_mps" value="$(arg ego_speed)" type="double" />
+  </node>
+  <node pkg="ctrl_lidar" type="ctrl_obstacle_node" name="obstacle_node" output="screen">
+    <param name="lidar_x" value="$(arg lidar_x)" type="double" />
+    <param name="lidar_y" value="$(arg lidar_y)" type="double" />
+    <param name="lidar_z" value="$(arg lidar_z)" type="double" />
+    <param name="use_tf" value="$(arg use_tf)" type="bool" />
+    <param name="roi_x_max" value="$(arg roi_x_max)" type="double" />
+    <param name="roi_y_abs" value="$(arg roi_y_abs)" type="double" />
+    <param name="roi_z_min" value="$(arg roi_z_min)" type="double" />
+    <param name="roi_z_max" value="$(arg roi_z_max)" type="double" />
+    <param name="ground_z" value="$(arg ground_z)" type="double" />
+    <param name="ground_slope_tol" value="$(arg ground_slope_tol)" type="double" />
+    <param name="dbscan_eps" value="$(arg dbscan_eps)" type="double" />
+    <param name="dbscan_min_samples" value="$(arg dbscan_min_samples)" type="int" />
+    <param name="max_object_size_m" value="$(arg max_object_size_m)" type="double" />
+    <param name="min_object_size_m" value="$(arg min_object_size_m)" type="double" />
+    <param name="min_obstacle_top_m" value="$(arg min_obstacle_top_m)" type="double" />
+    <param name="small_size_m" value="$(arg small_size_m)" type="double" />
+    <param name="small_min_top_m" value="$(arg small_min_top_m)" type="double" />
+    <param name="chain_min_count" value="$(arg chain_min_count)" type="int" />
+    <param name="chain_tol_m" value="$(arg chain_tol_m)" type="double" />
+    <param name="chain_span_m" value="$(arg chain_span_m)" type="double" />
+    <param name="min_road_user_width_m" value="$(arg min_road_user_width_m)" type="double" />
+    <param name="road_user_aspect_max" value="$(arg road_user_aspect_max)" type="double" />
+    <param name="moving_enter_mps" value="$(arg moving_enter_mps)" type="double" />
+    <param name="moving_exit_mps" value="$(arg moving_exit_mps)" type="double" />
+    <param name="min_straightness" value="$(arg min_straightness)" type="double" />
+    <param name="min_road_user_height_m" value="$(arg min_road_user_height_m)" type="double" />
+    <param name="height_gate_m" value="$(arg height_gate_m)" type="double" />
+    <param name="ped_max_size_m" value="$(arg ped_max_size_m)" type="double" />
+    <param name="ped_max_speed_mps" value="$(arg ped_max_speed_mps)" type="double" />
+    <param name="vehicle_min_size_m" value="$(arg vehicle_min_size_m)" type="double" />
+    <param name="confirm_frames" value="$(arg confirm_frames)" type="int" />
+    <param name="max_misses" value="$(arg max_misses)" type="int" />
+    <param name="publish_markers" value="$(arg markers)" type="bool" />
+    <param name="use_route" value="$(arg use_route)" type="bool" />
+    <param name="max_block_width_m" value="$(arg max_block_width_m)" type="double" />
+    <param name="corridor_half_m" value="$(arg corridor_half_m)" type="double" />
+    <param name="path_predict_s" value="$(arg path_predict_s)" type="double" />
+    <param name="use_road_mask" value="$(arg use_road_mask)" type="bool" />
+    <param name="link_set" value="$(arg link_set)" type="str" />
+    <param name="highway/config" value="$(arg highway_config)" type="str" />
+    <param name="highway/mission_config" value="$(arg highway_mission_config)" type="str" />
+    <param name="road_margin_m" value="$(arg road_margin_m)" type="double" />
+  </node>
+  <node pkg="ctrl_lidar" type="ctrl_lidar_view" name="lidar_view" output="log" if="$(arg view)">
+    <param name="lidar_x" value="$(arg lidar_x)" type="double" />
+    <param name="lidar_y" value="$(arg lidar_y)" type="double" />
+    <param name="lidar_z" value="$(arg lidar_z)" type="double" />
+    <param name="roi_x_max" value="$(arg roi_x_max)" type="double" />
+    <param name="roi_y_abs" value="$(arg roi_y_abs)" type="double" />
+    <param name="roi_z_min" value="$(arg roi_z_min)" type="double" />
+    <param name="roi_z_max" value="$(arg roi_z_max)" type="double" />
+    <param name="ground_z" value="$(arg ground_z)" type="double" />
+    <param name="ground_slope_tol" value="$(arg ground_slope_tol)" type="double" />
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz" output="log" args="&quot;-d&quot; &quot;$(find ctrl_lidar)/rviz/obstacle.rviz&quot;" if="$(arg rviz)" />
+</launch>

@@ -1,0 +1,3 @@
+{"event": "RED", "intersection": "intersection_02", "s": 269.99832847513164, "v_kmh": -0.0008993152878247201, "lap": 0, "wall": 1791281330.1990595}
+{"event": "GO", "intersection": "intersection_02", "stop_s": 309.6978125213218, "hold_s": 0.0, "stop_error_m": -0.17568747867818502, "waited_s": 14.599982654035557, "lap": 0, "wall": 1791281344.8477414}
+{"event": "INCOMPLETE", "intersection": "intersection_02", "phase": "go", "lap": 0, "wall": 1791281359.7617188}

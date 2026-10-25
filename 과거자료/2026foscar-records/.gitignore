@@ -1,0 +1,12 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+.vscode/
+.pytest_cache/
+practice/**/*.log
+practice/sim/runs/
+
+.camera-deps/
+.camera-deps

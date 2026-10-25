@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+from ctrl_camera.ctrl_gps_logger import main
+
+if __name__ == "__main__":
+    main()

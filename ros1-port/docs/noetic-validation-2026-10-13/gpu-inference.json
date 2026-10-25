@@ -1,0 +1,73 @@
+{
+  "scope": "actual CUDA inference; synthetic and current non-equivalent Camera-7 frame",
+  "numpy": "1.24.4",
+  "onnxruntime": "1.23.2",
+  "sample_shape": [
+    480,
+    640,
+    3
+  ],
+  "sample_sha256": "f5451cb3b07ce917423e39644a6d5b51e6652ed55704be6a1713c4c4c44b6006",
+  "available_providers": [
+    "TensorrtExecutionProvider",
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "runs": [
+    {
+      "label": "original",
+      "model_sha256": "d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98",
+      "provider": "CUDAExecutionProvider",
+      "detections": []
+    },
+    {
+      "label": "port",
+      "model_sha256": "d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98",
+      "provider": "CUDAExecutionProvider",
+      "detections": []
+    }
+  ],
+  "cases": [
+    {
+      "index": 0,
+      "raw_equal": true,
+      "max_abs_diff": 0.0,
+      "decoded_equal": true,
+      "signal_equal": true
+    },
+    {
+      "index": 1,
+      "raw_equal": true,
+      "max_abs_diff": 0.0,
+      "decoded_equal": true,
+      "signal_equal": true
+    },
+    {
+      "index": 2,
+      "raw_equal": true,
+      "max_abs_diff": 0.0,
+      "decoded_equal": true,
+      "signal_equal": true
+    },
+    {
+      "index": 3,
+      "raw_equal": true,
+      "max_abs_diff": 0.0,
+      "decoded_equal": true,
+      "signal_equal": true
+    }
+  ],
+  "profile_file": "/results/rmt-gpu-validation/cuda-profile_2026-10-13_05-42-20.json",
+  "executed_node_providers": {
+    "CUDAExecutionProvider": 1644
+  },
+  "inference_ms": [
+    23.65856200003691,
+    27.419742999882146,
+    18.518734999815933,
+    21.359627000038017,
+    28.593020999778673
+  ],
+  "median_ms": 23.65856200003691,
+  "passed": true
+}

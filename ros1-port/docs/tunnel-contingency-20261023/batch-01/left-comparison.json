@@ -1,0 +1,116 @@
+[
+  {
+    "run": "live-left-01",
+    "reason": "route_end_stopped",
+    "first_avoid": {
+      "t": 1792749510.964972,
+      "ego_s": 1882.6370076019748,
+      "mission": "TUNNEL",
+      "state": "AVOID",
+      "v_max": 9.433168624967434,
+      "stop_s": 1918.500369845209,
+      "offset": 4.25,
+      "chain": [
+        [
+          4.25,
+          1881.000369845209,
+          19.145662813437184
+        ],
+        [
+          0.0,
+          1908.1460326586462,
+          42.49505120949975
+        ]
+      ]
+    },
+    "early_non_avoid_targets": 0,
+    "early_target_count": 46,
+    "largest_early_outline_gap": {
+      "seconds": 0.2694666385650635,
+      "from_s": 1882.0913536772791,
+      "to_s": 1885.5272557365724
+    },
+    "near_s1903": {
+      "s": 1902.9407661568623,
+      "d": 4.155946517216545,
+      "speed_mps": 6.288331349690755
+    },
+    "source_unchanged": true
+  },
+  {
+    "run": "live-left-02",
+    "reason": "collision_packet_alarm",
+    "first_avoid": {
+      "t": 1792750435.8682976,
+      "ego_s": 1883.478116756329,
+      "mission": "TUNNEL",
+      "state": "AVOID",
+      "v_max": 8.807227519027741,
+      "stop_s": 1920.1685497133944,
+      "offset": 4.25,
+      "chain": [
+        [
+          4.25,
+          1882.4185497133944,
+          17.62678884019988
+        ],
+        [
+          0.0,
+          1949.0929328165998,
+          35.23706718340017
+        ]
+      ]
+    },
+    "early_non_avoid_targets": 10,
+    "early_target_count": 36,
+    "largest_early_outline_gap": {
+      "seconds": 0.5672347545623779,
+      "from_s": 1881.890329769307,
+      "to_s": 1889.6022586645906
+    },
+    "near_s1903": {
+      "s": 1903.0066642700856,
+      "d": 1.6075654788099167,
+      "speed_mps": 6.4581786261664496
+    },
+    "source_unchanged": true
+  },
+  {
+    "run": "live-left-03-after-dropout",
+    "reason": "follower_finish",
+    "first_avoid": {
+      "t": 1792751988.885393,
+      "ego_s": 1882.1089337660019,
+      "mission": "TUNNEL",
+      "state": "AVOID",
+      "v_max": 9.608766043006572,
+      "stop_s": 1918.7997703926605,
+      "offset": 4.0,
+      "chain": [
+        [
+          4.0,
+          1881.0497703926605,
+          18.99556816093377
+        ],
+        [
+          0.0,
+          1908.0453385535943,
+          40.00078188177441
+        ]
+      ]
+    },
+    "early_non_avoid_targets": 0,
+    "early_target_count": 42,
+    "largest_early_outline_gap": {
+      "seconds": 0.23380637168884277,
+      "from_s": 1890.0259613439287,
+      "to_s": 1891.8983603979311
+    },
+    "near_s1903": {
+      "s": 1902.9486589204716,
+      "d": 4.308628288497152,
+      "speed_mps": 6.126335991753472
+    },
+    "source_unchanged": true
+  }
+]

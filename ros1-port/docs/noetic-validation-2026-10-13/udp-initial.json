@@ -1,0 +1,203 @@
+{
+  "scope": "actual receive-only UDP; no ROS or control transmission",
+  "elapsed_seconds": 20.00708161600005,
+  "channels": {
+    "909": {
+      "channel": "competition_status",
+      "packets": 0,
+      "valid": 0,
+      "errors": 0,
+      "lengths": {},
+      "sources": {}
+    },
+    "9111": {
+      "channel": "ego_status",
+      "packets": 740,
+      "valid": 0,
+      "errors": 740,
+      "lengths": {
+        "229": 740
+      },
+      "sources": {
+        "('127.0.0.1', 9100)": 740
+      },
+      "first_header_hex": "234d6f726169496e666f24c80000000000000000000000000000003bc2cd6a00",
+      "last_error": "not Competition Vehicle Status (181 bytes)"
+    },
+    "1111": {
+      "channel": "gps",
+      "packets": 200,
+      "valid": 200,
+      "errors": 0,
+      "lengths": {
+        "77": 100,
+        "69": 100
+      },
+      "sources": {
+        "('127.0.0.1', 1110)": 200
+      },
+      "first_header_hex": "244750524d432c3134333133392e392c412c333731342e333434322c4e2c3132",
+      "last_parsed": [
+        {
+          "valid": true,
+          "utc": "143159.7",
+          "kind": "GGA",
+          "lat": 37.23907,
+          "lon": 126.77305333333334,
+          "alt": 30.1
+        }
+      ]
+    },
+    "1112": {
+      "channel": "imu",
+      "packets": 740,
+      "valid": 740,
+      "errors": 0,
+      "lengths": {
+        "115": 740
+      },
+      "sources": {
+        "('127.0.0.1', 1113)": 740
+      },
+      "first_header_hex": "23494d554461746124580000000000000000000000000000003bc2cd6a404fa8",
+      "last_parsed": {
+        "quaternion": [
+          -0.8426511699915125,
+          -0.0027997560654029053,
+          -0.0028237520566756985,
+          -0.5384451629481242
+        ],
+        "angular": [
+          -9.799477993510664e-07,
+          -8.290039659186732e-07,
+          -5.407291041592543e-07
+        ],
+        "linear": [
+          -0.017371954396367073,
+          0.07616819441318512,
+          9.809697151184082
+        ],
+        "stamp": [
+          1791869519,
+          869000000
+        ]
+      }
+    },
+    "2368": {
+      "channel": "lidar",
+      "packets": 13800,
+      "valid": 13800,
+      "errors": 0,
+      "lengths": {
+        "1206": 13800
+      },
+      "sources": {
+        "('127.0.0.1', 2369)": 13800
+      },
+      "first_header_hex": "ffeeee02000000000000000000000000000000000000fb130a0000007e190b00",
+      "return_mode": 55,
+      "sensor_model": 34
+    },
+    "9291": {
+      "channel": "front_camera",
+      "packets": 1110,
+      "valid": 1110,
+      "errors": 0,
+      "lengths": {
+        "65000": 1110
+      },
+      "sources": {
+        "('127.0.0.1', 9290)": 1110
+      },
+      "first_header_hex": "4d4f523bc2cd6ac0d3c63600000000d3fd0000ffd8ffe000104a464946000101",
+      "last_fragment": {
+        "sec": 1791869519,
+        "nsec": 872000000,
+        "index": 2,
+        "size": 30543
+      },
+      "image_shape": [
+        720,
+        1280,
+        3
+      ],
+      "complete_frames": 370
+    },
+    "9293": {
+      "channel": "side_camera",
+      "packets": 370,
+      "valid": 370,
+      "errors": 0,
+      "lengths": {
+        "65000": 370
+      },
+      "sources": {
+        "('127.0.0.1', 9292)": 370
+      },
+      "first_header_hex": "4d4f523bc2cd6a404fa8360000000036e90000ffd8ffe000104a464946000101",
+      "last_fragment": {
+        "sec": 1791869519,
+        "nsec": 869000000,
+        "index": 0,
+        "size": 59756
+      },
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "complete_frames": 370
+    },
+    "9295": {
+      "channel": "opposite_camera",
+      "packets": 401,
+      "valid": 401,
+      "errors": 0,
+      "lengths": {
+        "65000": 401
+      },
+      "sources": {
+        "('127.0.0.1', 9294)": 401
+      },
+      "first_header_hex": "4d4f523bc2cd6a404fa836000000004efa0000ffd8ffe000104a464946000101",
+      "last_fragment": {
+        "sec": 1791869519,
+        "nsec": 871000000,
+        "index": 0,
+        "size": 64095
+      },
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "complete_frames": 370
+    },
+    "9297": {
+      "channel": "additional_camera",
+      "packets": 740,
+      "valid": 370,
+      "errors": 370,
+      "lengths": {
+        "65000": 740
+      },
+      "sources": {
+        "('127.0.0.1', 9090)": 740
+      },
+      "first_header_hex": "4d4f523bc2cd6a000d993600000000c3db0000ffd8ffe000104a464946000101",
+      "last_fragment": {
+        "sec": 1791869519,
+        "nsec": 869000000,
+        "index": 0,
+        "size": 56343
+      },
+      "image_shape": [
+        480,
+        640,
+        3
+      ],
+      "complete_frames": 370,
+      "last_error": "not MOR camera fragment"
+    }
+  }
+}

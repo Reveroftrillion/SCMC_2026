@@ -1,0 +1,110 @@
+sensor_bridge:
+  ros__parameters:
+    bind_ip: "0.0.0.0"
+    sim_ip: "192.168.1.2"  # 시뮬 PC 주소. 이 한 줄이 유일한 설정이다 (주행 코드 + practice 도구 전부 여기서 읽음). 노트북 주소는 코드에 없음 (2026-10-08 192.168.1.2/노트북 1.3)
+    ctrl_port: 9093
+    status_port: 9099
+    gps_port: 9102
+    imu_port: 9104
+    command_timeout: 0.25
+    accel_limit: 1.0            # bridge rejects commands above this; 0.8 silently dropped accel_max 0.9/1.0 (car crept to 2 km/h and stopped, 2026-09-28)
+    # IMU/status older than this -> brake. GPS is not part of this watchdog (tunnel blackout, see localization).
+    # 0.5 ended a run on a 0.5 s simulator hitch (2026-09-19, graphics High is mandated); the venue is slower.
+    sensor_timeout: 1.5
+    steering_angles_deg: [0.0, 15.2, 34.9]
+    steering_commands: [0.0, 0.5, 1.0]
+
+localization:
+  ros__parameters:
+    origin_east: 302595.0
+    origin_north: 4124145.0
+    # GPS antenna offset from rear axle, vehicle x=forward, y=left (metres).
+    gps_offset_x: 0.0
+    gps_offset_y: 0.0
+    # IMU mounting yaw relative to vehicle, degrees CCW. (UTM grid convergence, -1.35 deg at K-City,
+    # is computed automatically from origin_east/north and is NOT part of this number.)
+    imu_yaw_offset_deg: 0.0
+    sensor_timeout: 1.5         # IMU/status older than this -> stop publishing odom (tracker HOLDs)
+    gps_timeout: 0.3            # no valid fix for this long -> dead reckoning (IMU yaw + status speed)
+    gps_blend_s: 2.0            # on GPS return, remove the DR error over this long (no jump)
+    gps_frozen_s: 0.5           # moving (>1 m/s) but lat/lon unchanged this long -> treat GPS as lost
+    stale_hold_s: 0.3           # IMU/status older than this -> integrate with speed 0 (sim froze, car did too)
+
+path_follower:
+  ros__parameters:
+    # Mission hook: set true once a behavior/FSM node publishes /behavior/target; the tracker then
+    # holds the car if no DrivingTarget arrives within target_timeout seconds.
+    require_target: false
+    target_timeout: 0.5
+    # 2026-09-12: user confirmed rear axle origin; 2026foscarGPSIMU.json has all-zero GPS/IMU pose.
+    sensor_mount_confirmed: true
+    transition_time_s: 1.5      # 회피 진입: 장애물에 더 접근한 뒤 공간 곡선을 시작
+                                # behavior.yaml avoid.transition_time_s와 동일
+    return_time_s: 2.0          # 복귀: C2 연속 곡선·적분 고정·가속 목표 램프와 함께 검증
+    transition_min_m: 6.0       # 저속 하한 (10 km/h 에서 5.6 m 가 되지 않게)
+    lookahead_m: 7.0            # 저속 진입 오버슈트·반대 조향 완화; 공간 곡선 미리보기와 함께 사용
+    lateral_ki: 0.03            # slow cross-track integral (rad/(m*s)), bounded +-1.5 deg; 0.06 diverged at 60 km/h in sim
+    steer_tau: 0.05             # steering low-pass (s). Sim actuator lags ~0.3 s already; 0.3 here diverged at 24 km/h
+    lookahead_gain: 1.0             # longer = smoother and more stable at 50-60 km/h; straight-line offset ~0.2 m
+    lookahead_max_m: 14.0           # 10 m swayed at 88 km/h; 20 m drifted lane-to-lane (2026-09-27). Offline 90 km/h: 10/14/16/18/20 m -> 0.27/0.44/0.68/1.41/FAULT m
+    reference_lookahead_max_m: 0.0  # highway lane/change references only; 0 = lookahead_max_m (sweep 2026-10-01: 18-30 m tracked worse)
+    steer_predict_s: 0.0            # steer from the pose this far ahead (actuator lag compensation); 0 = off
+    # Highway lane/change references (-1 = as above). Steering kick 1 deg x 0.3 s at ~114 km/h, HW980 without NPCs
+    # (2026-10-01): ki 0.03 / no prediction -> 2nd swing larger than the 1st (0.45 -> 0.60 m), sway kept going, steer
+    # rate 2.3 deg/s; ki 0 -> 0.46 -> 0.30 m, still swinging; ki 0 + 0.1 s -> 0.55-0.58 -> 0.12-0.19 m, steer rate
+    # 1.3-1.4 deg/s, RMS cross-track above 90 km/h 0.14 m (0.2 s: calmer, 0.16-0.18 m). The ~2 s sway was the sim's
+    # ~0.3 s steering lag at a fixed 14 m preview plus the integral's slow swing. Blended in from 80 to 95 km/h
+    # (core.Controller fast): used at all speeds they tracked 42-65 km/h lane changes worse (0.34-0.71 vs 0.27-0.48 m).
+    reference_lateral_ki: 0.0
+    reference_steer_predict_s: 0.1
+    steer_kick_deg: 0.0             # TEST ONLY: steering step added to the command once past steer_kick_at_s; 0 = off
+    steer_kick_at_s: 1450.0
+    steer_kick_duration_s: 0.3
+    max_cross_track_m: 1.5
+    # Curvature-based speed profile: v = sqrt(a_lat / kappa), braking at decel before corners.
+    # speed_kmh is the ordinary-road cap; competition exempts configured HIGHWAY stations.
+    a_lat_mps2: 4.5                 # 2026-09-27 sweep 3.0/3.5/4.0/4.5: max |cross-track| <= 0.51 m outside avoid sections, no lane-touch proxy
+    # Per-section a_lat, swept 4.5/5.5/6.0/6.5/7.0 section by section (2026-09-28, sunny, 2 runs each):
+    #   start s0-275:        7.0 touched the lane (|ct| 0.90-1.01 m); 6.0 -> |ct| <= 0.59 m, -1.4 s
+    #   after pedestrian 495-830: 7.0 at the line (0.80-0.84 m); 6.0 -> <= 0.50 m, -2.5 s
+    #   after tunnel 1997-2185 (R 40-57 m): 7.0 still 0.46 m; 6.5 -> <= 0.37 m, -1.4 s
+    # Chosen with >= 0.2 m margin to the 0.8 m lane-touch proxy. Actual ay saturates ~5.5-6 m/s2
+    # (tyre limit): higher commands only add tracking error. Mission sections keep 4.5.
+    #   roundabout exit 920-1118: 4.5 11.05-11.1 s, 6.5 10.35 s |ct| <= 0.48 m; 7.0 no faster (60 km/h cap binds)
+    #   roundabout 820.92-910.41: 6.0 to come in faster (user 2026-10-03; was the mission default 4.5)
+    #   roundabout way out 898-920: 6.5 (user 2026-10-04; at 6.0 the route's curvature 0.054 held us to 38 km/h while
+    #   the curve driven (~0.043) took only 4.4-4.7 m/s2; 7.5 changed nothing, the launch out limits it)
+    a_lat_zones: [0.0, 273.40, 6.0, 493.40, 820.92, 6.0, 820.92, 898.0, 6.0, 898.0, 920.0, 6.5, 920.0, 1108.36, 6.5, 1108.36, 1987.33, 6.5, 1987.33, 2185.0, 6.5]
+    # Cross END at speed: the loop's first 60 m (straight) are appended as runout and the route-end
+    # stop uses 4 m/s2 (35 m from 60 km/h). Stop lines keep their own 1 m/s2 ramp (2026-09-27).
+    finish_runout_m: 60.0
+    finish_decel_mps2: 4.0
+    # Braking inside the highway zone (its bends and its end at CP13) at highway_decel_mps2 instead of decel_mps2: late
+    # and hard (user 2026-10-04: comfort is not scored; at 2.5 the ramp to the ordinary cap began ~s1600). 0 = off.
+    highway_decel_mps2: 6.0
+    # ...but CP12 -> CP13 (the zone's last exit_decel_m) at exit_decel_mps2 (user 2026-10-05: at 6 the car swayed braking on
+    # the bending rejoin). 0 = off.
+    exit_decel_mps2: 3.0
+    exit_decel_m: 150.0
+    # Less path steering while braking (core.Controller): divided by 1 + brake_steer x brake (user 2026-10-05: sway braking
+    # CP12 -> CP13). HW980 2 runs each, sway RMS braking CP12 -> CP13 (none: 2.0-4.3 deg/s): 1 -> 1.9-3.3, 2 -> 1.7-2.7,
+    # 4 -> 1.6/1.6 (max 2.6-2.7, as at 2.5 m/s2 braking), highway time unchanged. Highway only: on the whole route the
+    # roundabout entry (steering -3.4..-4.9 deg braking 0.3-0.5) got a third of its steering and touched a ring car
+    # (2026-10-05 01:58 lap, s878).
+    brake_steer: 0.0
+    brake_steer_zones: [1108.36, 1745.0]
+    decel_mps2: 2.5             # brake later into corners (brake 0.2 alone measured 3.1 m/s2); highway gaps keep 1.5
+    accel_mps2: 4.0             # profile rise rate out of corners; matters only with full pedal (2.0 -> 4.0 changed nothing at pedal 0.8)
+    # Highway local references only (the policy's lane/change paths). Passing in lane 5 reached only 2.4 m/s2
+    # (median best 1 s of 76 runs, 2026-09-28) against 3.4 at full pedal: the 4 m/s2 target ramp stays
+    # too close for the P-only pedal. A steeper ramp keeps the pedal near full while overtaking (user: highway
+    # may speed up much harder). Other sections keep accel_mps2.
+    reference_accel_mps2: 6.0
+    # 2026-09-15 measured: accel 0.3 -> 1.3 m/s2, brake 0.2 -> 3.1 m/s2, brake 1.0 -> 9 m/s2.
+    accel_max: 1.0              # full pedal: start -1.4 s, post-pedestrian ~-0.5 s, post-tunnel -0.5 s vs 0.8, no lane touch/overspeed (2026-09-28 sweep)
+    accel_rise_per_s: 3.0       # normalized pedal increase/sec; braking remains immediate
+    entry_accel_max: 1.0         # roundabout entry launch at full pedal (bridge accel_limit 1.0; 0.6 took ~1.9 m/s2 over the first 1 s, 2026-09-29)
+    boost_zones: [0.0, 0.0]    # disabled: ordinary cruise predicts throttle response; exit-only full pedal reached 60.19 km/h (2026-10-06)
+    sensor_timeout: 1.5         # odom/status gap beyond this -> HOLD (steering held, gentle brake), never FAULT
+    hold_brake: 0.15            # brake while HOLDing (0.2 measured 3.1 m/s2)
+    dr_speed_kmh: 0.0           # no extra speed cap during dead reckoning

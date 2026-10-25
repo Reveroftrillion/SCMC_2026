@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-22",
+  "scope": "Current right-static/pedestrian source; offline/native checks, no driving during publication",
+  "algorithm": {
+    "passed": 944,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 337.38
+  },
+  "replay_tools": {
+    "passed": 13
+  },
+  "adapter": {
+    "passed": 27
+  },
+  "checks": {
+    "packaging": {
+      "exit_code": 1,
+      "seconds": 0.03
+    },
+    "packaging-unit": {
+      "exit_code": 1,
+      "seconds": 0.16
+    },
+    "identifier-ast": {
+      "exit_code": 1,
+      "seconds": 0.09
+    },
+    "boundary": {
+      "exit_code": 1,
+      "seconds": 0.05
+    },
+    "preflight": {
+      "exit_code": 1,
+      "seconds": 0.62
+    },
+    "catkin-build": {
+      "exit_code": 0,
+      "seconds": 4.25
+    },
+    "catkin-install": {
+      "exit_code": 0,
+      "seconds": 4.4
+    },
+    "native-environment": {
+      "exit_code": 1,
+      "seconds": 1.11
+    },
+    "native-serialization": {
+      "exit_code": 0,
+      "seconds": 0.35
+    },
+    "adapter": {
+      "exit_code": 0,
+      "seconds": 0.21
+    },
+    "launch-nodes-default": {
+      "exit_code": 0,
+      "seconds": 0.37
+    },
+    "launch-files": {
+      "exit_code": 0,
+      "seconds": 0.38
+    },
+    "install-environment": {
+      "exit_code": 1,
+      "seconds": 1.05
+    },
+    "algorithm-regression": {
+      "exit_code": 0,
+      "seconds": 338.81
+    },
+    "replay-tools": {
+      "exit_code": 0,
+      "seconds": 3.37
+    },
+    "entrypoint-imports": {
+      "exit_code": 0,
+      "seconds": 0.77
+    }
+  },
+  "limits": [
+    "Packaging/resource/identifier baseline guards remain failed; original expectations unchanged",
+    "Manual run has no raw CollisionData proof or post-shutdown Manual/P evidence",
+    "Latest console wrapper validated without starting nodes; long-run recording load unverified"
+  ]
+}

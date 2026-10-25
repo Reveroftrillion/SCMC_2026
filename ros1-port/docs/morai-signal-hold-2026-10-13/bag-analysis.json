@@ -1,0 +1,584 @@
+{
+  "scope": "offline original user drive bag; no ROS master or command transmission",
+  "bag": "docker/artifacts/bags/run_20261013_074921\n.bag",
+  "size_bytes": 78261352,
+  "start": 1791877762.183525,
+  "end": 1791877864.1008394,
+  "selected_topic_counts": {
+    "/vehicle/status": 2383,
+    "/localization/s": 5096,
+    "/control/state": 2038,
+    "/behavior/signal_camera": 2028,
+    "/behavior/signal_stop": 2028,
+    "/behavior/target": 2024,
+    "/behavior/mission": 2024,
+    "/perception/traffic_signal": 437
+  },
+  "signal_counts": {
+    "intersection_01": {
+      "red": 95,
+      "green": 26
+    },
+    "intersection_02": {
+      "red": 316
+    }
+  },
+  "transitions": [
+    {
+      "t": 1791877762.7138865,
+      "time_kst": "2026-10-13T16:49:22.713886+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": false,
+        "decision": "OFF",
+        "mission": "CRUISE",
+        "intersection": "intersection_01",
+        "color": null,
+        "maneuver": null,
+        "age_s": null,
+        "last_seen": null,
+        "rear_s": 0.8690399561920628,
+        "stop_rear_s": null,
+        "stop_front_s": null
+      }
+    },
+    {
+      "t": 1791877762.9138253,
+      "time_kst": "2026-10-13T16:49:22.913825+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "CRUISE",
+        "substate": "CRUISE",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "initial localization",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877779.9640455,
+      "time_kst": "2026-10-13T16:49:39.964046+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "SIGNAL_1",
+        "substate": "CRUISE",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877779.9641056,
+      "time_kst": "2026-10-13T16:49:39.964106+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "UNKNOWN",
+        "mission": "SIGNAL_1",
+        "intersection": "intersection_01",
+        "color": null,
+        "maneuver": "straight",
+        "age_s": null,
+        "last_seen": null,
+        "rear_s": 168.9230788011723,
+        "stop_rear_s": 202.485,
+        "stop_front_s": null
+      }
+    },
+    {
+      "t": 1791877780.3739767,
+      "time_kst": "2026-10-13T16:49:40.373977+09:00",
+      "topic": "/perception/traffic_signal",
+      "data": {
+        "id": "intersection_01",
+        "color": "red",
+        "stamp": 1791877780.3220632
+      }
+    },
+    {
+      "t": 1791877780.4134858,
+      "time_kst": "2026-10-13T16:49:40.413486+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "STOP",
+        "mission": "SIGNAL_1",
+        "intersection": "intersection_01",
+        "color": "red",
+        "maneuver": "straight",
+        "age_s": 0.08867835998535156,
+        "last_seen": 1791877780.3220632,
+        "rear_s": 174.97905485094046,
+        "stop_rear_s": 202.485,
+        "stop_front_s": 205.485
+      }
+    },
+    {
+      "t": 1791877780.4135182,
+      "time_kst": "2026-10-13T16:49:40.413518+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "SIGNAL_1",
+        "substate": "CRUISE|SIGNAL_STOP",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877785.7206607,
+      "time_kst": "2026-10-13T16:49:45.720661+09:00",
+      "topic": "/perception/traffic_signal",
+      "data": {
+        "id": "intersection_01",
+        "color": "green",
+        "stamp": 1791877785.6732478
+      }
+    },
+    {
+      "t": 1791877785.7638474,
+      "time_kst": "2026-10-13T16:49:45.763847+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "SIGNAL_1",
+        "substate": "CRUISE",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877785.763861,
+      "time_kst": "2026-10-13T16:49:45.763861+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "GO",
+        "mission": "SIGNAL_1",
+        "intersection": "intersection_01",
+        "color": "green",
+        "maneuver": "straight",
+        "age_s": 0.08797550201416016,
+        "last_seen": 1791877785.6732478,
+        "rear_s": 202.25236769059026,
+        "stop_rear_s": 202.485,
+        "stop_front_s": null
+      }
+    },
+    {
+      "t": 1791877787.1126916,
+      "time_kst": "2026-10-13T16:49:47.112692+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": false,
+        "decision": "OFF",
+        "mission": "CRUISE",
+        "intersection": "intersection_02",
+        "color": null,
+        "maneuver": null,
+        "age_s": null,
+        "last_seen": null,
+        "rear_s": 204.59480809497308,
+        "stop_rear_s": null,
+        "stop_front_s": null
+      }
+    },
+    {
+      "t": 1791877787.1154203,
+      "time_kst": "2026-10-13T16:49:47.115420+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "CRUISE",
+        "substate": "CRUISE",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877792.512754,
+      "time_kst": "2026-10-13T16:49:52.512754+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "UNKNOWN",
+        "mission": "STATIC_OBSTACLE",
+        "intersection": "intersection_02",
+        "color": null,
+        "maneuver": "straight",
+        "age_s": null,
+        "last_seen": null,
+        "rear_s": 270.8326065990543,
+        "stop_rear_s": 309.8735,
+        "stop_front_s": null
+      }
+    },
+    {
+      "t": 1791877792.5130143,
+      "time_kst": "2026-10-13T16:49:52.513014+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "STATIC_OBSTACLE",
+        "substate": "CRUISE",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "AVOID",
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877792.6080527,
+      "time_kst": "2026-10-13T16:49:52.608053+09:00",
+      "topic": "/perception/traffic_signal",
+      "data": {
+        "id": "intersection_02",
+        "color": "red",
+        "stamp": 1791877792.5645485
+      }
+    },
+    {
+      "t": 1791877792.6113064,
+      "time_kst": "2026-10-13T16:49:52.611306+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "STATIC_OBSTACLE",
+        "substate": "CRUISE|SIGNAL_STOP",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "AVOID",
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877792.6113362,
+      "time_kst": "2026-10-13T16:49:52.611336+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "STOP",
+        "mission": "STATIC_OBSTACLE",
+        "intersection": "intersection_02",
+        "color": "red",
+        "maneuver": "straight",
+        "age_s": 0.04609274864196777,
+        "last_seen": 1791877792.5645485,
+        "rear_s": 272.0460683899779,
+        "stop_rear_s": 309.8735,
+        "stop_front_s": 312.8735
+      }
+    },
+    {
+      "t": 1791877792.800282,
+      "time_kst": "2026-10-13T16:49:52.800282+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "STATIC_OBSTACLE",
+        "substate": "AVOID|SIGNAL_STOP",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "AVOID",
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877792.8003416,
+      "time_kst": "2026-10-13T16:49:52.800342+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "STOP",
+        "mission": "STATIC_OBSTACLE",
+        "intersection": "intersection_02",
+        "color": "red",
+        "maneuver": "straight",
+        "age_s": 0.0390932559967041,
+        "last_seen": 1791877792.7218356,
+        "rear_s": 274.64861766492965,
+        "stop_rear_s": 309.8735,
+        "stop_front_s": 304.39861766492965
+      }
+    },
+    {
+      "t": 1791877792.8549528,
+      "time_kst": "2026-10-13T16:49:52.854953+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "STOP",
+        "mission": "STATIC_OBSTACLE",
+        "intersection": "intersection_02",
+        "color": "red",
+        "maneuver": "straight",
+        "age_s": 0.08886218070983887,
+        "last_seen": 1791877792.7218356,
+        "rear_s": 275.12997841039737,
+        "stop_rear_s": 309.8735,
+        "stop_front_s": 304.37997841039737
+      }
+    },
+    {
+      "t": 1791877792.8613102,
+      "time_kst": "2026-10-13T16:49:52.861310+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "STOP",
+        "mission": "STATIC_OBSTACLE",
+        "intersection": "intersection_02",
+        "color": "red",
+        "maneuver": "straight",
+        "age_s": 0.08935666084289551,
+        "last_seen": 1791877792.7713585,
+        "rear_s": 276.09923881773506,
+        "stop_rear_s": 309.8735,
+        "stop_front_s": 312.8735
+      }
+    },
+    {
+      "t": 1791877792.861366,
+      "time_kst": "2026-10-13T16:49:52.861366+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "STATIC_OBSTACLE",
+        "substate": "CRUISE|SIGNAL_STOP",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "AVOID",
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    {
+      "t": 1791877793.9984982,
+      "time_kst": "2026-10-13T16:49:53.998498+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "STATIC_OBSTACLE",
+        "substate": "AVOID|SIGNAL_STOP",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "AVOID",
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    }
+  ],
+  "first_intersection02_hold": {
+    "t": 1791877797.4565597,
+    "time_kst": "2026-10-13T16:49:57.456560+09:00",
+    "topic": "/control/state",
+    "data": "CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.97) yaw=86.9deg v=0.31km/h s=309.73m error=0.02m"
+  },
+  "last": {
+    "/vehicle/status": {
+      "t": 1791877864.1008394,
+      "time_kst": "2026-10-13T16:51:04.100839+09:00",
+      "topic": "/vehicle/status",
+      "data": {
+        "speed_mps": 1.908116347395763e-06,
+        "ctrl_mode": 2,
+        "gear": 4
+      }
+    },
+    "/localization/s": {
+      "t": 1791877864.0903087,
+      "time_kst": "2026-10-13T16:51:04.090309+09:00",
+      "topic": "/localization/s",
+      "data": 309.6967397001854
+    },
+    "/control/state": {
+      "t": 1791877864.0565841,
+      "time_kst": "2026-10-13T16:51:04.056584+09:00",
+      "topic": "/control/state",
+      "data": "CRUISE | holding at stop_s=312.9 | xy=(-60.07,-159.99) yaw=86.9deg v=0.00km/h s=309.70m error=0.02m"
+    },
+    "/behavior/signal_camera": {
+      "t": 1791877864.0850961,
+      "time_kst": "2026-10-13T16:51:04.085096+09:00",
+      "topic": "/behavior/signal_camera",
+      "data": true
+    },
+    "/behavior/signal_stop": {
+      "t": 1791877864.0874786,
+      "time_kst": "2026-10-13T16:51:04.087479+09:00",
+      "topic": "/behavior/signal_stop",
+      "data": {
+        "camera": true,
+        "decision": "STOP",
+        "mission": "STATIC_OBSTACLE",
+        "intersection": "intersection_02",
+        "color": "red",
+        "maneuver": "straight",
+        "age_s": 0.06413650512695312,
+        "last_seen": 1791877863.9965417,
+        "rear_s": 309.69673962729246,
+        "stop_rear_s": 309.8735,
+        "stop_front_s": 312.8735
+      }
+    },
+    "/behavior/target": {
+      "t": 1791877864.0851061,
+      "time_kst": "2026-10-13T16:51:04.085106+09:00",
+      "topic": "/behavior/target",
+      "data": {
+        "state": "AVOID|SIGNAL_STOP",
+        "v_max": 0.0,
+        "stop_s": 312.8735,
+        "lat_offset": 0.0,
+        "reference_id": ""
+      }
+    },
+    "/behavior/mission": {
+      "t": 1791877864.0873365,
+      "time_kst": "2026-10-13T16:51:04.087337+09:00",
+      "topic": "/behavior/mission",
+      "data": {
+        "mission": "STATIC_OBSTACLE",
+        "substate": "AVOID|SIGNAL_STOP",
+        "reason": "",
+        "yield_status": {
+          "kind": "NONE",
+          "phase": "INACTIVE",
+          "reason": "",
+          "target_type": null,
+          "progress": null
+        },
+        "transition": "checkpoint handoff",
+        "speed_limit_kmh": 60.00000000000001,
+        "pedestrian_yield_completed": false,
+        "allowed_states": [
+          "AVOID",
+          "CRUISE",
+          "STOP_LINE"
+        ]
+      }
+    },
+    "/perception/traffic_signal": {
+      "t": 1791877864.0961053,
+      "time_kst": "2026-10-13T16:51:04.096105+09:00",
+      "topic": "/perception/traffic_signal",
+      "data": {
+        "id": "intersection_02",
+        "color": "red",
+        "stamp": 1791877864.0518258
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ctrl_camera</name>
+  <version>0.1.0</version>
+  <description>MORAI camera UDP bridge and traffic light color recognition publishing Event(TRAFFIC_LIGHT)</description>
+  <maintainer email="team@example.com">FOSCAR</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>ctrl_bringup</exec_depend>
+  <exec_depend>ctrl_control</exec_depend>
+  <exec_depend>ctrl_interfaces</exec_depend>
+  <exec_depend>ctrl_ros1</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-pyproj</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+</package>

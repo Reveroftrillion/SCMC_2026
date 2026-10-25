@@ -1,0 +1,74 @@
+# behavior_node 파라미터. 상태별 값은 "<상태파일이름>.<키>" — 키 목록은 각 states/<이름>.py 의 defaults.
+# 여기 없는 키는 그 defaults 값을 쓴다. 모르는 키를 적으면 노드가 시작하면서 죽는다 (오타 방지).
+behavior_node:
+  ros__parameters:
+    states: "cruise,avoid,yield,tunnel"   # 돌릴 상태. 카메라 붙이면 뒤에 ",stop_line"
+    mission.enabled: true           # ownership / speeds: missions.yaml (launch mission_config)
+    rate_hz: 20.0
+    event_timeout_s: 0.5              # 마지막 발행 후 이만큼 지나면 없어진 것 (개발계획서 §2-1)
+    markers: true                     # /behavior/markers (RViz BEV)
+
+    # GPS-calibrated waiting rear-axle position (2026-09-25).
+    roundabout.stop_at_s: 885.7120563151248
+    roundabout.rear_uncertainty_mps: 0.175
+    roundabout.rear_margin_m: 0.30
+    # No roundabout speed cap (2026-09-27): lead following and imminent-conflict braking stay.
+    roundabout.max_speed_kmh: 60.0
+    roundabout.end_s: 918.0          # with the mission end, 2 m earlier (user 2026-09-29)
+    roundabout.approach_s: 830.0     # with the mission start: decide the approach earlier (TuningPoint #1)
+    # Ring not visible yet: brake for the entry only from the last point a 4 m/s2 stop still makes
+    # (brake 0.5 ~ 5 m/s2), instead of the comfort stop profile from s830 (TuningPoint, 2026-09-28).
+    roundabout.late_brake_mps2: 4.0
+    # Ego speed in the ring for following and departure prediction (was 20). The R 11 m ring corners
+    # allow ~25 km/h at a_lat 4.5, so curvature governs; not higher, because the departure model
+    # ignores curvature and would over-promise clearing a gap (2026-09-27).
+    prediction.max_speed_kmh: 25.0
+
+    # Legacy standalone fallback only; mission.enabled=true uses missions.yaml.
+    # --- CRUISE: 구간별 속도 상한 (규정 60 km/h, 예외구간 s=1119~1878 만 초과 허용) ---
+    # 세 리스트는 같은 자리끼리 한 구간. 겹치면 앞의 것이 이긴다.
+    #   430~470  보행자(s=460, 감지 ~11 m 실측): 48 km/h 면 0.6 s 뒤 충돌 (2026-09-19). 20 km/h 면 4 m 에 선다
+    #   860~900  회전교차로 NPC 끼어들기
+    #   1119~1878 고속도로 예외구간 (60 초과 주행은 미검증, README §3)
+    cruise.default_kmh: 60.0
+    cruise.zone_s_from: [430.0, 860.0, 1119.0]
+    cruise.zone_s_to:   [470.0, 900.0, 1878.0]
+    cruise.zone_kmh:    [20.0,  20.0,  60.0]
+
+    # --- AVOID: 정적 장애물 회피 (s=329 상자 2×3 m) ---
+    avoid.enter_distance_m: 40.0      # 라이다 ROI 40 m. 인식은 일찍, 선회 시작은 entry_buffer·공간 곡선으로 결정
+    avoid.entry_preview_m: 10.0       # 최대 주시거리 전에 공간 곡선 전달; 전달 즉시 횡이동하지 않음
+    avoid.entry_buffer_m: 0.5         # 진입 곡선을 이전보다 1m 늦춤; front_m·곡선 길이로 시작 위치 계산
+    avoid.hidden_length_m: 3.0     # 박스 최소 길이 (앞면만 보여도 이만큼 있다고 봄)
+    avoid.dynamic_hold_s: 5.0         # PEDESTRIAN/VEHICLE 로 분류된 자리를 이만큼 정적 장애물로 보지 않는다
+    avoid.dynamic_match_m: 3.0        # 같은 자리로 볼 거리
+    avoid.tail_m: 0.5              # 뒤 범퍼가 박스 뒤를 이만큼 지나면 복귀 (tracker의 연속 곡선으로 복귀)
+    avoid.car_length_m: 4.635         # Ioniq5. 후륜축→뒤 범퍼 = 4.635 − front_m 3.8
+    avoid.on_path_d_m: 1.5
+    avoid.margin_m: 0.5               # 차폭 바깥 여유: 저속 뒤 범퍼 통과 여유 확보
+    avoid.pad_m: 0.2
+    avoid.d_max_m: 3.0                # tracker 클립 ±3 m
+    avoid.return_lead_m: 2.0        # 회전 차체 + 마진 sweep 통과 시에만 복귀 시작을 앞당김
+    avoid.return_min_m: 12.0       # 저속 출발 후 가속해도 복귀 곡선 길이 여유 확보
+    avoid.return_time_s: 2.0        # 복귀 곡선 미리보기: 진입 속도로 길이를 정해 끝까지 유지
+    avoid.transition_time_s: 1.5    # tracker 전이 곡선 시간 — low_speed.yaml transition_time_s 와 같게
+    avoid.transition_min_m: 6.0     # tracker 전이 곡선 최소 길이 — low_speed.yaml transition_min_m 와 같게
+
+    # --- YIELD: 보행자(460)·NPC(890) 앞 정지 ---
+    # Fixed competition mission; include enter_distance_m approach/departure buffer.
+    yield.pedestrian_zone_s_from: [430.0]
+    yield.pedestrian_zone_s_to: [470.0]
+    yield.enter_distance_m: 25.0
+    yield.cross_d_m: 2.5
+    yield.predict_s: 2.0
+    yield.stop_gap_m: 6.0
+
+    # --- TUNNEL ---
+    tunnel.s_from: 1875.0
+    tunnel.s_to: 2000.0
+    tunnel.v_max_kmh: 0.0  # no fixed tunnel cap
+
+    # practice sweep (2026-09-29): one fixed swerve lateral acceleration at every speed
+    avoid.swerve_accel_mps2: 8.0
+    avoid.swerve_accel_slow_mps2: 8.0
+    avoid.max_curvature_per_m: 0.23

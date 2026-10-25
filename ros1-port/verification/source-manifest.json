@@ -1,0 +1,2126 @@
+{
+  "git_head": "a1ea82efbf8d5f165201b7f51bf8a141439fb8c7",
+  "reference": "2026foscar-competition",
+  "files": {
+    ".gitignore": {
+      "bytes": 141,
+      "sha256": "c5c02f162e20d95679d6ed54e2705b806b4be47bfa2357ea5f210e06b54329df"
+    },
+    "CLAUDE.md": {
+      "bytes": 3415,
+      "sha256": "252ae8027135f266c3b19fd4c31c62e2f3dc06d0e3ca7a19acf1611bdf356c30"
+    },
+    "docs/superpowers/plans/2026-10-06-bev-avoidance.md": {
+      "bytes": 1392,
+      "sha256": "b8674ce691fd03687ee8207d79cc2fa1a316d610e2d343a917d659dda412cf2d"
+    },
+    "docs/superpowers/plans/2026-10-06-obstacle-path-validation.md": {
+      "bytes": 2664,
+      "sha256": "7833cd1dcf4964e68084e521fa8fceb6b9e08c3f3faf6d95a90792aba38e1215"
+    },
+    "docs/superpowers/specs/2026-10-06-bev-avoidance-design.md": {
+      "bytes": 1695,
+      "sha256": "1c8d4012f35bbb740647c1184f842f02c65b0522ef304097b0ac76e6d61eb988"
+    },
+    "HANDOFF_AVOID.md": {
+      "bytes": 22326,
+      "sha256": "1c00cdd3fee5fc3563583e80ca3b64d02f846e688a5f7d34635f7002f6d07995"
+    },
+    "practice/avoid_test/analyze_avoid.py": {
+      "bytes": 4803,
+      "sha256": "361dae64d740950e228484ed877904739bc0fdd148f59d986899c6dd2e3104e9"
+    },
+    "practice/avoid_test/avoid_mon.py": {
+      "bytes": 5917,
+      "sha256": "9920e6697d112bb5b802af9962b082e1b8cc9a6db4f138d2155622dda0e94a68"
+    },
+    "practice/avoid_test/run_avoid_test.sh": {
+      "bytes": 2674,
+      "sha256": "a2975834c1b2f0252c99254d1cc9e924acda4566f8c5c981e51626617738dc4e"
+    },
+    "practice/check_submission.sh": {
+      "bytes": 1033,
+      "sha256": "62bb40a2ec9fd7837f2876c653200bfd9604adc583878caa1b36c5c4ee7f63c7"
+    },
+    "practice/COLCON_IGNORE": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "practice/CompetitionPractice3.json": {
+      "bytes": 49148,
+      "sha256": "fe57c3882d410c9b51531f85dcfeec4f9125fa82b500afec9e0baca58880e05b"
+    },
+    "practice/HANDOFF.md": {
+      "bytes": 13911,
+      "sha256": "2e050eb60393376a5fb1c76d950cd7214705abdac2f36fc8ffcaa0f965377579"
+    },
+    "practice/HIGHWAY_PIPELINE.md": {
+      "bytes": 6982,
+      "sha256": "dc4c8e67a66d13049a5d17353a1f28ed277accbd7d996377cd5dd2f0d918708c"
+    },
+    "practice/README.md": {
+      "bytes": 1886,
+      "sha256": "db4aecf44a0e26ab695cb5c689d1d1181ea9ea346d58618ab9b67f60895f4c5c"
+    },
+    "practice/scenarios/DifficultObstacle_CP13.json": {
+      "bytes": 105174,
+      "sha256": "313b02e809a33020f152d364e54d738f81297a3f9f73a73fd6b90f365d558d0f"
+    },
+    "practice/scenarios/DifficultObstacle_TUN.json": {
+      "bytes": 141964,
+      "sha256": "ee5bdef5bfdbab4fdc0b7aaf2b67c1c2468f3d1cf6d340072c7b78fbdf7da610"
+    },
+    "practice/scenarios/DifficultObstacleCheck.json": {
+      "bytes": 105513,
+      "sha256": "7baafe95a131c3ff8369d55a132b946fe449e3de11550f56086e52eeca6a3070"
+    },
+    "practice/scenarios/EgoNetwork_template_MN.json": {
+      "bytes": 66194,
+      "sha256": "b529bb3679c48f3e8b52028ac69a90243afd4bc16f24231f1061978e72166498"
+    },
+    "practice/scenarios/make_checkpoint_scenarios.py": {
+      "bytes": 4774,
+      "sha256": "6ff31d17030dff74a783ab07b31b5e28e4e8577b80567fa1b65ceeab806c1700"
+    },
+    "practice/scenarios/NewBoxTunnel_CP14.json": {
+      "bytes": 138537,
+      "sha256": "8490dc7d8e6c2475c4dab69d68a8639975751a292645d4f51d81af3bc42d151d"
+    },
+    "practice/scenarios/NewBoxTunnel_START.json": {
+      "bytes": 46658,
+      "sha256": "417850df062af6f5f3abb958b3b0905b428301b8177bcbdb24304cae650ce78d"
+    },
+    "practice/scenarios/newtunnelavoid.json": {
+      "bytes": 113839,
+      "sha256": "a89517ee665e68c31fb661414547b1f3fd5b9b5f9e1da9ed18a44469090931b7"
+    },
+    "practice/scenarios/newtunnelavoid_R1790.json": {
+      "bytes": 146505,
+      "sha256": "729f05c6c9ed8e8b50fdb898c8a56bb93ca781de5289e5ae9e00b96ecd7afd8e"
+    },
+    "practice/scenarios/Practice3_CP01.json": {
+      "bytes": 45273,
+      "sha256": "fb8d5a5973446a8065e860145f5249af5338f12a861d36183c105155b20ac4ba"
+    },
+    "practice/scenarios/Practice3_CP02.json": {
+      "bytes": 45276,
+      "sha256": "6d35990066575188a13dbc9f0f21d0c1a8cf31700049ec0a234f5c22446f1efb"
+    },
+    "practice/scenarios/Practice3_CP03.json": {
+      "bytes": 45272,
+      "sha256": "ddefbaea37e07ead5c06a80164d54a5d37fe8f67ff33d8d2166c761eac73e799"
+    },
+    "practice/scenarios/Practice3_CP04.json": {
+      "bytes": 45273,
+      "sha256": "b5869a0018b4a835a858e1865b9af3f6080f4770c503fed1579bfcfb5d4a5310"
+    },
+    "practice/scenarios/Practice3_CP05.json": {
+      "bytes": 45273,
+      "sha256": "0c119c53b77f611b94f296f5fbbbe7ff4021442fe9280274413ac4872bd9cfc1"
+    },
+    "practice/scenarios/Practice3_CP06.json": {
+      "bytes": 45268,
+      "sha256": "c9323d3710bbaaf6cc28266685730364d0ed78277458a7c2e33ad6d7670ebd68"
+    },
+    "practice/scenarios/Practice3_CP07.json": {
+      "bytes": 45268,
+      "sha256": "1a90e5ef8afa2d27d19b8e738745a346942c24e4948e68cbd0258a4e2f45fed1"
+    },
+    "practice/scenarios/Practice3_CP08.json": {
+      "bytes": 45271,
+      "sha256": "d0d83cdf5e274c80e573b179e2e868d403a6b126fc4949850eb9ff2062ac1012"
+    },
+    "practice/scenarios/Practice3_CP08_L4.json": {
+      "bytes": 45277,
+      "sha256": "4416550511c140b27e1795a28d691963ebe9eb1873fffece4e50572ae3d673dc"
+    },
+    "practice/scenarios/Practice3_CP08_SAME.json": {
+      "bytes": 45295,
+      "sha256": "1fef56fd45d215d0469d942b72dd5ebdb392b3ba6376717522c254bed4eda02e"
+    },
+    "practice/scenarios/Practice3_CP09.json": {
+      "bytes": 45269,
+      "sha256": "e264892c9013482789f29a6e75114d295b5e84d87f49b64efdffeb842e333f38"
+    },
+    "practice/scenarios/Practice3_CP10.json": {
+      "bytes": 45271,
+      "sha256": "258dc78d64f422c94a0fd4ab4ae34615d32f629ec6fad300ae5f9f3bfdd6229f"
+    },
+    "practice/scenarios/Practice3_CP11.json": {
+      "bytes": 45269,
+      "sha256": "9cc35a069a7ab98cebe7158a99d1eebc1b514482e813a2b14e124b0713e33e5f"
+    },
+    "practice/scenarios/Practice3_CP12.json": {
+      "bytes": 45271,
+      "sha256": "6f02bad56c0d0ff40835ecd0a0367a9d4dd24025a42797066b4c409e57c70279"
+    },
+    "practice/scenarios/Practice3_CP13.json": {
+      "bytes": 45273,
+      "sha256": "e4eb82424df7ca1e5bbfef1ed0eae1dd93ed7ec0b854d91d24ab41e9e56a11bf"
+    },
+    "practice/scenarios/Practice3_CP14.json": {
+      "bytes": 45274,
+      "sha256": "8ba93465fab86133bbd0c1780ee28188e38ff3f52eb30c12287f4bb8b1b0ae91"
+    },
+    "practice/scenarios/Practice3_CP15.json": {
+      "bytes": 45275,
+      "sha256": "031277cf2a7b63f4d8b4e34d57583c540309fbbc2abbea0cc0996cd54f34b5f8"
+    },
+    "practice/scenarios/Practice3_HW930D.json": {
+      "bytes": 45269,
+      "sha256": "feae79ecc0fa87914a7ae5dd7668b55323cb6034bc4045e109999a8ebed1c576"
+    },
+    "practice/scenarios/Practice3_HW980.json": {
+      "bytes": 21421,
+      "sha256": "c708bf565d95fd36d5bdf7cd22888e230eec600bb544a93352c536e4d987ddf7"
+    },
+    "practice/scenarios/Practice3_HW_END.json": {
+      "bytes": 21409,
+      "sha256": "152d4617b5c18c4afa15427cfbdaacf687b5fc20c47ee8e1d49ab0c1af6e23e5"
+    },
+    "practice/scenarios/Practice3_L3END.json": {
+      "bytes": 65401,
+      "sha256": "774e9abe8ea43803d268d76facb9560351272167cc7357683fbc35ebe22ea820"
+    },
+    "practice/scenarios/Practice3_PD500.json": {
+      "bytes": 45269,
+      "sha256": "bf8c57f8e577d0092001bf7c970c49233a6e711bfd760ce17d59494c1fd10c71"
+    },
+    "practice/scenarios/Practice3_RB700.json": {
+      "bytes": 45274,
+      "sha256": "e5937a19605a8c628bacd67e4d7c2ee17717a7cacb5043d3702d6ddaaa76da09"
+    },
+    "practice/scenarios/Practice3_RB700S.json": {
+      "bytes": 65403,
+      "sha256": "4f66f34ff9cf4589e8248ba826ecc2a9169bc23677aae11796987110f7d14a9b"
+    },
+    "practice/scenarios/Practice3_RB700S_L2D.json": {
+      "bytes": 65403,
+      "sha256": "75e16669e52002055b17fa1d331360f8fdc1320b7159b8ac48d85b851fbcd813"
+    },
+    "practice/scenarios/Practice3_RB700S_L2DD.json": {
+      "bytes": 65403,
+      "sha256": "97cfee4d48982c44689348b60ecfb6421d6790aa1f1b057bc94f22864e7e11ea"
+    },
+    "practice/scenarios/Practice3_RB700S_L4D.json": {
+      "bytes": 65403,
+      "sha256": "5b1a7060e4187ae1c4769290396f27e5c0ae4c77d9a8d06c819b2b5ccd794cd3"
+    },
+    "practice/scenarios/Practice3_RB700S_P15V20.json": {
+      "bytes": 48973,
+      "sha256": "306fb4dae033a4fb0fd8cbd5d637e39acc003e1bc7f473e0869ff95d010c39a9"
+    },
+    "practice/scenarios/Practice3_RB700S_P1V10.json": {
+      "bytes": 48973,
+      "sha256": "24fbf0c2062785914c8829bb0e9af07683e626e923204c6c190b4a4a4608a07b"
+    },
+    "practice/scenarios/Practice3_RB830.json": {
+      "bytes": 28681,
+      "sha256": "b5df046cd98ce183a8c9f5dac978af8cbd3f880e30de403cea7173ba2f9711ab"
+    },
+    "practice/scenarios/Practice3_RB885.json": {
+      "bytes": 28680,
+      "sha256": "b2b74d65b98a88b0772da1ac5959f21ba243f8fc5de45b4fab9077e4c06da541"
+    },
+    "practice/scenarios/Practice3_RB_DENSE.json": {
+      "bytes": 45271,
+      "sha256": "6ded430b55b4f21d2129650759a9fcf2aae63920b6b10488710239c3f84aaa94"
+    },
+    "practice/scenarios/Practice3_RB_FAR.json": {
+      "bytes": 45273,
+      "sha256": "e6c63710fb8fb84fa524525726d2eab74a1679bf01dde7cf4fb42440e414809d"
+    },
+    "practice/scenarios/Practice3_RB_FAR_20.json": {
+      "bytes": 28812,
+      "sha256": "1b315b84c9cec7b007a22440bebad7c25faff45bccc4779ace5b2fec7bca8fe5"
+    },
+    "practice/scenarios/Practice3_RB_FAR_SLOW.json": {
+      "bytes": 28824,
+      "sha256": "eabdee3ad1a0c441398147f511cae665cf78003fe947085fc26c8a731f18d81f"
+    },
+    "practice/scenarios/Practice3_RB_LINE.json": {
+      "bytes": 21408,
+      "sha256": "c0e47d976243d2bc17466a0e6fec59c30b0531715410fbab85bdc56816e1d3bd"
+    },
+    "practice/scenarios/Practice3_RB_LINE_SLOW.json": {
+      "bytes": 28809,
+      "sha256": "b96df443508f15f6efa7413007850f34f3914f0f5316ea8c395097b1595071f0"
+    },
+    "practice/scenarios/Practice3_SIG4_RB.json": {
+      "bytes": 21441,
+      "sha256": "93ce9df0ae9d128412b517249235051e9744debb20cff827399268e270b3dcf3"
+    },
+    "practice/scenarios/Practice3_START.json": {
+      "bytes": 21464,
+      "sha256": "2198efd5d105bdb44d73e0b5085f7b3ddc05e3b19466a18659d4b15ce4b887a5"
+    },
+    "practice/scenarios/Tunnel_LongBar_CP14.json": {
+      "bytes": 101823,
+      "sha256": "d193b94f01381b796d9622538c7f43abb3bd0602536827424ce0d1dc895f5a81"
+    },
+    "practice/scenarios/Tunnel_T1850.json": {
+      "bytes": 125129,
+      "sha256": "42a25c5cb899af1deb7eb468152c0aaafa6b0ddffd1929603bb44e3f25613327"
+    },
+    "practice/scenarios/TunnelObstaclePractice.json": {
+      "bytes": 99260,
+      "sha256": "a52563a6c1fb4ecd77632b38196565bb737bcccc2ab0a459fa203b024a788925"
+    },
+    "practice/sim/analysis/change_starts.py": {
+      "bytes": 1649,
+      "sha256": "ed0e8f900307ae6a3f22f9740e300c7697a0fc230986dbf58a875626e26ba5dc"
+    },
+    "practice/sim/analysis/cp_splits.py": {
+      "bytes": 1751,
+      "sha256": "e8ce39f6071d9f249578851679134119bc27b48190146f11adf9b8f4406cab33"
+    },
+    "practice/sim/analysis/highway_admission.py": {
+      "bytes": 1467,
+      "sha256": "2b756793be3f78befb7be0d4d6edcf42b8330224aebd5a16869a60f048a997ef"
+    },
+    "practice/sim/analysis/highway_follow.py": {
+      "bytes": 1839,
+      "sha256": "29628b7f555ef07e873e0abbdccc273efc477cf05ff30405d9a5cdeaf9e1f215"
+    },
+    "practice/sim/analysis/highway_trace.py": {
+      "bytes": 2360,
+      "sha256": "86b124d817baae89b2c0c60d2c0cd4061e22673011cd0c771684ed7a9a3b32ff"
+    },
+    "practice/sim/analysis/hw_safety.py": {
+      "bytes": 4737,
+      "sha256": "e72a6634542a07479f0fcf2a8a3d9f72015ee158254831f08af7741b615d6051"
+    },
+    "practice/sim/analysis/kick_report.py": {
+      "bytes": 3190,
+      "sha256": "8b40ea8406b8f32af3e4e0fe52d19c6b2bdc0e2420d440dab42e6bd5113e00f8"
+    },
+    "practice/sim/analysis/phantom_check.py": {
+      "bytes": 3098,
+      "sha256": "ea1488e4a6c2d2d94c1c87f723e060f2c0c91758fad25f0b9f629c9e62e2fe3f"
+    },
+    "practice/sim/analysis/read_bag.py": {
+      "bytes": 1358,
+      "sha256": "0d0b8e537fc736fea908cdf9bf3b2cdf9172bc6ca37c434bccc401587487f146"
+    },
+    "practice/sim/analysis/section_report.py": {
+      "bytes": 1609,
+      "sha256": "541129bb308bc83d7d45fe05893ceccc7756794c4311471b148bffbd7ffc6cf2"
+    },
+    "practice/sim/analysis/speed_limit_check.py": {
+      "bytes": 1309,
+      "sha256": "3210729c643371d60715f03885138355cde23c305457b2bdb0aec36c093afa02"
+    },
+    "practice/sim/analysis/speed_truth.py": {
+      "bytes": 3815,
+      "sha256": "b24a3d9fff197048583b21df2df8f11d5ada1fd64c447374e77e453a0c6a5a15"
+    },
+    "practice/sim/analysis/speed_why.py": {
+      "bytes": 1914,
+      "sha256": "6597df0305d0594cc9704c04bf7c947f6ad5b9145de5545cd3c12f4e8208e802"
+    },
+    "practice/sim/analysis/steer_report.py": {
+      "bytes": 2834,
+      "sha256": "a5e48c7a2e790f10ee37d77b77d1fbc5e06eda3c17f835fbced9869f6693cabd"
+    },
+    "practice/sim/analysis/stop_decel.py": {
+      "bytes": 1759,
+      "sha256": "11b2b0c4469788882d8aa3a49bcd3b708c8592c599ac1e35fdaaf2c972eb4b70"
+    },
+    "practice/sim/analysis/sway.py": {
+      "bytes": 3169,
+      "sha256": "35e4f0b3144f581772244578937ab0677725995d49d36ac44ca87ca33d799e61"
+    },
+    "practice/sim/analysis/tick_gaps.py": {
+      "bytes": 2061,
+      "sha256": "cc3f6d10a70442b52941549ad565d5d5c9bdcb7b2fea87983cae795fb82c577e"
+    },
+    "practice/sim/bend_sweep_report.py": {
+      "bytes": 2396,
+      "sha256": "ba885dbae4c0246ef3c5d7bb2a310bcd8536c08d7d24f1f38718a6a4e629723c"
+    },
+    "practice/sim/box_error.py": {
+      "bytes": 7057,
+      "sha256": "566d8e18b819b973f21a2855d4fe0e4bc3a554bc9db25e5b34eb8e2d94b7ab34"
+    },
+    "practice/sim/cut_in_cases.py": {
+      "bytes": 8673,
+      "sha256": "a5f7ceac2b5bcd5572ed0079d62f983d7c2e2aa86fbae05c69c1b7e031c59c5d"
+    },
+    "practice/sim/cut_in_log.py": {
+      "bytes": 6563,
+      "sha256": "c2fb3ade27bc0f3bbeed9ca9df7830b44e7332b403738c76bf78614913ee8309"
+    },
+    "practice/sim/cut_in_precedents.json": {
+      "bytes": 10640,
+      "sha256": "80af3221e785cb22c5790490a755014c84583385692fa54f163bfba7a3c93a0f"
+    },
+    "practice/sim/cut_in_records.jsonl": {
+      "bytes": 68667,
+      "sha256": "41a7e78c3bc7ba6094876407dd306b80b20253429c92334cb5515fbf160afc91"
+    },
+    "practice/sim/difficult_baseline/DifficultTunnelCheck.json": {
+      "bytes": 105638,
+      "sha256": "8a57b617ca8d0367ce071d8f44485681352311abbf5c4852b287b3bdf577aead"
+    },
+    "practice/sim/difficult_baseline/inspect_tunnel.py": {
+      "bytes": 3779,
+      "sha256": "a976e13a06a58b5578cd665609288ee39696dc2e1493d86f6f3af3c1ee83ddd5"
+    },
+    "practice/sim/difficult_baseline/network.json": {
+      "bytes": 46342,
+      "sha256": "add704a0fbb16818bd826b495de30d749cca95d2a5c1b86e83410fac2bcaa0d0"
+    },
+    "practice/sim/difficult_baseline/repeat_signals.jsonl": {
+      "bytes": 1031,
+      "sha256": "0a7bc0cbb3364b2d4ff7cb502a688a3b1d9bbb024d66e009dc131f4cca84c24c"
+    },
+    "practice/sim/difficult_baseline/scenario.json": {
+      "bytes": 105998,
+      "sha256": "8822513b48951e28315ae6e992a453ccf0740006186f947b414178daef55c044"
+    },
+    "practice/sim/difficult_baseline/summary.json": {
+      "bytes": 1432,
+      "sha256": "ed89c712f348f34b763df4e3755328d9297557355b52137f6eef7707db09dd9f"
+    },
+    "practice/sim/difficult_baseline/tunnel_evidence.json": {
+      "bytes": 2487,
+      "sha256": "cd75fb723a0aeef37bff22d3dba6962db1159cffdb4b6121278797e3e45dd014"
+    },
+    "practice/sim/difficult_baseline/two_category_result.json": {
+      "bytes": 4777,
+      "sha256": "3f135d55d3d3a51156c253019f3b3a78eb801239cabd08733eee7536f39dd662"
+    },
+    "practice/sim/difficult_baseline/working_network.json": {
+      "bytes": 66210,
+      "sha256": "2b2776e5bf3bd3fe2a603fa34c600a09f6af27aa9cecc14fd4bd5d6c48fd8bf2"
+    },
+    "practice/sim/hw_lat_sweep/highway_lat3.5.yaml": {
+      "bytes": 7498,
+      "sha256": "d86798e9969b81c91e9c89ca94c4094eafc32b3524867568fe558b712ae21342"
+    },
+    "practice/sim/hw_lat_sweep/highway_lat4.0.yaml": {
+      "bytes": 7498,
+      "sha256": "f16176db70870b106cbc5047141c39f65294b32b2d21547c1dbedb688948e1a0"
+    },
+    "practice/sim/hw_lat_sweep/highway_lat4.5.yaml": {
+      "bytes": 7498,
+      "sha256": "cf411edd45e086631f35a18e50ed62f21f0baff36008ffd1eea5e4028f8748a2"
+    },
+    "practice/sim/lat_sweep/ls_tau0.05_la14.0.yaml": {
+      "bytes": 6096,
+      "sha256": "93c700f3a0b2f7a41b6f67337db52c0899584fc940643a89d0aff67b254c180e"
+    },
+    "practice/sim/lat_sweep/ls_tau0.05_la16.0.yaml": {
+      "bytes": 6096,
+      "sha256": "6f5d5da55d9bc56904ff1df219d734b06b6e34b96e01adc75b4ee54766aefb31"
+    },
+    "practice/sim/lat_sweep/ls_tau0.1_la14.0.yaml": {
+      "bytes": 6095,
+      "sha256": "d320c8ed0ffedd0b8c52c842338dfead9ad8ae787a25b1a00da4a421f04e90b7"
+    },
+    "practice/sim/lat_sweep/ls_tau0.1_la16.0.yaml": {
+      "bytes": 6095,
+      "sha256": "65040b52084f4e8338a226dcb6f04bf6a827a68bc79af2cd8a0ffa547c97c985"
+    },
+    "practice/sim/launch_report.py": {
+      "bytes": 2462,
+      "sha256": "78148c46dada8215ffdedbf97c0cb903fb98211b66cbb4175ed79862aecfff0b"
+    },
+    "practice/sim/lidar_intensity.py": {
+      "bytes": 3664,
+      "sha256": "951db62d284762660db59e33d0271a048784636d06ed542fe36f95800cf02e67"
+    },
+    "practice/sim/lookahead_sweep.sh": {
+      "bytes": 1306,
+      "sha256": "5fd99921c60ccef314f449d93a3fa186f73989e47cbc7e3a1ee3f97928e8750e"
+    },
+    "practice/sim/loop_runner.py": {
+      "bytes": 34145,
+      "sha256": "2ee37a80852c924046a8611a612ae548c55b1b4947c15e47b9fe5e5359950a2a"
+    },
+    "practice/sim/morai_api.desc": {
+      "bytes": 17953,
+      "sha256": "46323cad84d793d4b4f2209feacbdfe4edee1644d9e12e0cf7bf89e51c18caab"
+    },
+    "practice/sim/morai_rpc.py": {
+      "bytes": 3733,
+      "sha256": "95c39992ce06bd6d40b7ca4dad3620fb23d3a0da3b661766fac9fac2fba7d025"
+    },
+    "practice/sim/obstacle_paths/benchmark.py": {
+      "bytes": 740,
+      "sha256": "b13fc5f4979fe554fa3df884a31b34512aa5c72bc89d9655c3aa634725716451"
+    },
+    "practice/sim/obstacle_paths/benchmark_result.txt": {
+      "bytes": 161,
+      "sha256": "d702fcd4d62ae849da4a63ee93b96c5de05b8f3a0d1ef3b65ceb5d1dcdd9bf30"
+    },
+    "practice/sim/obstacle_paths/bev_clearance.json": {
+      "bytes": 42532,
+      "sha256": "f3acb63b0aeb1442431f6ede02ec689d65eb23b596ce2e92c42cb4ddde66faf2"
+    },
+    "practice/sim/obstacle_paths/BEV_CLEARANCE.md": {
+      "bytes": 2065,
+      "sha256": "81f4fee22eb9992f5809832bf5166f0a08102c915bd4b14188332085c2f95e5a"
+    },
+    "practice/sim/obstacle_paths/bev_clearance.svg": {
+      "bytes": 66194,
+      "sha256": "51fe83ea9909c390c38f6fba5c26736e88a56940cd8206a26ec87938a63ba0f1"
+    },
+    "practice/sim/obstacle_paths/bev_signals.jsonl": {
+      "bytes": 1748,
+      "sha256": "ded5f676a591507731ceabb665268b61b935bc55d453c569418515ab2e2d6ecb"
+    },
+    "practice/sim/obstacle_paths/bev_simple_clearance.json": {
+      "bytes": 5275,
+      "sha256": "8109340553a470523d0a542dafd75e4245a4b30ab4b8701043e92e9382ba00e8"
+    },
+    "practice/sim/obstacle_paths/bev_simple_signals.jsonl": {
+      "bytes": 973,
+      "sha256": "cd557e626d08adf2570e12c5a2b61e3fc1f2f88c305e36ef4e50f81e3dea4549"
+    },
+    "practice/sim/obstacle_paths/braking_clusters.json": {
+      "bytes": 19778,
+      "sha256": "fbf8bc4db421ddeb8494d3172c20482c330196f7bcae447fb1c8fb2965d261e9"
+    },
+    "practice/sim/obstacle_paths/check_radius_sat_equivalence.py": {
+      "bytes": 1298,
+      "sha256": "35c148f67f0dd9f3b1873676dfcb931521b4e77e60a59d3f7cbd33413900a9be"
+    },
+    "practice/sim/obstacle_paths/check_return_prune_equivalence.py": {
+      "bytes": 1590,
+      "sha256": "c4d42d318834a6a0f566e5f6ddd1e20813209328e3d8936b4baca1454f6fa5ee"
+    },
+    "practice/sim/obstacle_paths/fragments_replay.jsonl": {
+      "bytes": 978227,
+      "sha256": "dffbe9ae5afab6f0d31f82277f3211033a695677b9480521725ea048f4bc5f07"
+    },
+    "practice/sim/obstacle_paths/inspect_bev_clearance.py": {
+      "bytes": 6307,
+      "sha256": "0e06b01feed652abfbde8977e39550980089873a3e9b2f4565906d28b9901333"
+    },
+    "practice/sim/obstacle_paths/inspect_braking_clusters.py": {
+      "bytes": 1953,
+      "sha256": "533928f2df3144f371f44a53f0473a077595644e66616685e6cee36af054b308"
+    },
+    "practice/sim/obstacle_paths/inspect_static_polygons.py": {
+      "bytes": 2203,
+      "sha256": "ca0aa539e1252eefa295ada49c4270a409bd32dbaee865587584fb994f3e973f"
+    },
+    "practice/sim/obstacle_paths/motion_stop_scans.json": {
+      "bytes": 78447,
+      "sha256": "44e9cb2f45566304bb82cc4a2db26f26622feeb130674048a76f71d20c29221c"
+    },
+    "practice/sim/obstacle_paths/polygon_signals.jsonl": {
+      "bytes": 2919,
+      "sha256": "8d47bb54a5af5dd18dd9aa1571b784440e816a8b7aad8faa0a4150e8f52f1926"
+    },
+    "practice/sim/obstacle_paths/profile_stall.py": {
+      "bytes": 1269,
+      "sha256": "806ec1fbfd6e10d550b19d6d9111a0113b9429c0b4ac651aaf6a7ba1d289ac87"
+    },
+    "practice/sim/obstacle_paths/recorded_fragment.json": {
+      "bytes": 1688,
+      "sha256": "026341b95df6137e734627c8e025d4c6ec1891f3c0ec17be0f7b84b446060c02"
+    },
+    "practice/sim/obstacle_paths/replay_fragments.py": {
+      "bytes": 1511,
+      "sha256": "b5af21ce60ffa000a03f3354c65d2fa05331fadc778fd6da30fdbeb672d3a91a"
+    },
+    "practice/sim/obstacle_paths/report_first_deer.py": {
+      "bytes": 1897,
+      "sha256": "658282f3f205400be999ee126c7a221cdaae2a3ba409ea67bd4dbda0ff0b96e7"
+    },
+    "practice/sim/obstacle_paths/report_sector.py": {
+      "bytes": 2386,
+      "sha256": "9c08227f35754a8556411e1227cd155e2f751114ba85b02e50edfde4bbee3b75"
+    },
+    "practice/sim/obstacle_paths/report_tunnel_yield.py": {
+      "bytes": 2782,
+      "sha256": "34dff3ef32e3b56048488946488a6a39ca457ffacd714676a3ce5854c1a573d4"
+    },
+    "practice/sim/obstacle_paths/results.json": {
+      "bytes": 30077,
+      "sha256": "2df6d7b55df2fed135a0c5ecce8749aea62be53aa1ca028896701d43ebf77de2"
+    },
+    "practice/sim/obstacle_paths/right_entry_map.svg": {
+      "bytes": 5003234,
+      "sha256": "d7165ef53bccc29a1d6940f1c203d8a93fc99a2cb322f8c13f838dbba562e6a2"
+    },
+    "practice/sim/obstacle_paths/right_entry_signals.jsonl": {
+      "bytes": 1945,
+      "sha256": "42c53f304f89c63b782f659e6d53dae1e6742a0ae48b4412bbd113f2ebf4b254"
+    },
+    "practice/sim/obstacle_paths/right_stop_clearance.json": {
+      "bytes": 22647,
+      "sha256": "d4d73e0cb2a0454fb88dcb20f91de8829b8a9010845e26e08aca81146c280150"
+    },
+    "practice/sim/obstacle_paths/signals.jsonl": {
+      "bytes": 3075,
+      "sha256": "d60d1dc5eb3c77e3ed372152415ccaa72f4fc831a0ad7d060414e59a9c39994b"
+    },
+    "practice/sim/obstacle_paths/signals_edge_confirmation.jsonl": {
+      "bytes": 776,
+      "sha256": "6194f6a6ef955bdc1225e12db39d035087349788138a837c392bc711c00b5b40"
+    },
+    "practice/sim/obstacle_paths/signals_latest.jsonl": {
+      "bytes": 466,
+      "sha256": "3bd6f223ba3f2894a4264ce664d3d5318498b1780b0e2974f64fcd551e548653"
+    },
+    "practice/sim/obstacle_paths/signals_repeat.jsonl": {
+      "bytes": 776,
+      "sha256": "7d469b89ff9566cd071e26c905c2ddb4094d83c557696a8a457099e08ffe092e"
+    },
+    "practice/sim/obstacle_paths/signals_shadow.jsonl": {
+      "bytes": 775,
+      "sha256": "a96937b1021a4ef15f47ce15b35d0a35e68f11d07e9c4c078a3a1b3b5c517839"
+    },
+    "practice/sim/obstacle_paths/stall_snapshot.json": {
+      "bytes": 1307,
+      "sha256": "2f9112110614b4730dff2cb40e188f7a64aab166502f9a3ebebe6a8914265b19"
+    },
+    "practice/sim/obstacle_paths/static_fixed_replay.jsonl": {
+      "bytes": 540696,
+      "sha256": "d2656fef0c5cb342250496b04711f312bbed8d8d39981a25f713c33ca7f9da33"
+    },
+    "practice/sim/obstacle_paths/static_fragments_replay.jsonl": {
+      "bytes": 368205,
+      "sha256": "2e244749e2d402434cbc322f85736399de846f7a039fbd328911f1ae38b1d204"
+    },
+    "practice/sim/obstacle_paths/static_polygon_snapshot.json": {
+      "bytes": 248345,
+      "sha256": "beadb36a1df50137293793b41f41f934920c1aefe15e0ecadaac96ef175580d9"
+    },
+    "practice/sim/obstacle_paths/stop_visual_signals.jsonl": {
+      "bytes": 972,
+      "sha256": "ff30eefac122e1df75b870b2bbb51da3de61d23ba1141e56b5d977a4ab73e00c"
+    },
+    "practice/sim/obstacle_paths/timing_probe/sitecustomize.py": {
+      "bytes": 1061,
+      "sha256": "eb517b6bd0603b947106818087913085e31ba5a2c2ce7a5b04932e92bc406088"
+    },
+    "practice/sim/obstacle_paths/tunnel_on_footprints.prof": {
+      "bytes": 25056,
+      "sha256": "122a1e573c2decd512eec2d0cd363e0d0f293c3511a3b5e1467b717f5a317dd2"
+    },
+    "practice/sim/obstacle_paths/tunnel_slalom_before_radius_sat.py": {
+      "bytes": 20245,
+      "sha256": "dca98e5670a7c4b345770357b62e8028d27a943396a33b2e34ef873ba52be3f8"
+    },
+    "practice/sim/obstacle_paths/tunnel_slalom_before_return_prune.py": {
+      "bytes": 19055,
+      "sha256": "ca4a1d5ae5990121c16399b2660dae7e2958b3a786cd60470a1d83aaf5fd1473"
+    },
+    "practice/sim/obstacle_paths/tunnel_tick.prof": {
+      "bytes": 95813,
+      "sha256": "61bc25b55d8b8c35ca7bb254ca9a07934fd10954c02d73055b5acb9c9279d2ec"
+    },
+    "practice/sim/ordinary_speed/baseline_144029.npy": {
+      "bytes": 171152,
+      "sha256": "54fe631fcb48aef951660a88af3181ed6b79f597afbd2783907465d7d208b40f"
+    },
+    "practice/sim/ordinary_speed/brake_fit.json": {
+      "bytes": 5017,
+      "sha256": "f3cc11e46fe84ab56dfa1c8e41efa7ad9f39d52409e8d26c6d59e4d2179d097b"
+    },
+    "practice/sim/ordinary_speed/brake_fit.py": {
+      "bytes": 1741,
+      "sha256": "021e7b4fade7e413ae50a3528728f4ab1a1986e3af7c88261dbc9a2066f6c949"
+    },
+    "practice/sim/ordinary_speed/brake_margin015_review.json": {
+      "bytes": 137458,
+      "sha256": "770487fd82d579c80cd9a2784bbee34dbc26323b1480d7b01f90de643fbd8445"
+    },
+    "practice/sim/ordinary_speed/brake_margin015_review.py": {
+      "bytes": 2278,
+      "sha256": "8c0514345ab9a166bb3a35067f626fb9e6e61e35e62b3efdfbd1db861b4e502e"
+    },
+    "practice/sim/ordinary_speed/brake_margin_review.json": {
+      "bytes": 139018,
+      "sha256": "a1269dede921ee0713d4f5c4b8696c9c5ad8f04862d67d908417a2de3f1c5cdc"
+    },
+    "practice/sim/ordinary_speed/brake_margin_review.py": {
+      "bytes": 2286,
+      "sha256": "577d4e8dd28279318f417766c47fd703d6d9ba4cc9228d30fa671ecadcf5c0a8"
+    },
+    "practice/sim/ordinary_speed/brake_reference_core.txt": {
+      "bytes": 57181,
+      "sha256": "33311ee1d857f9c1982c0ed3fd9b56e4a7bef92e4fc67fcfbfb685f8dc69f5a8"
+    },
+    "practice/sim/ordinary_speed/brake_sweep.json": {
+      "bytes": 18601,
+      "sha256": "ccbbe5ca7ac5001bc16bad2c60d10aee806c2b982a710bc996166a461d41ee02"
+    },
+    "practice/sim/ordinary_speed/brake_sweep.py": {
+      "bytes": 1573,
+      "sha256": "8b2fffebb5ac5c7e65af3e10f5ee59abcefd7d6597f04c56cb002e01cfb052ef"
+    },
+    "practice/sim/ordinary_speed/brake_threshold_review.json": {
+      "bytes": 204909,
+      "sha256": "5f9bf540a471fb830eaa5b35416f6264cc2bd93e699303d2e188cc269da0c334"
+    },
+    "practice/sim/ordinary_speed/brake_threshold_review.py": {
+      "bytes": 2190,
+      "sha256": "6cc6962a4928d4749bc05848ad1f86cb25d4fc7f4bebc241a4520e1dcbafa73c"
+    },
+    "practice/sim/ordinary_speed/model.py": {
+      "bytes": 665,
+      "sha256": "a82ee6e8f388e5f86924d69097003ffb095e21d0b1be515d8472daac337fae47"
+    },
+    "practice/sim/ordinary_speed/model_results.json": {
+      "bytes": 2050,
+      "sha256": "b9f6ab7fbf21a2ba7dea9b6dc8c20b5e80fd716c2c3042245f8bc809b31f6fae"
+    },
+    "practice/sim/ordinary_speed/nominal_recovery.json": {
+      "bytes": 946,
+      "sha256": "9f2663bac482bb38d43d84bd598bed14e6da119eb7d7e75361d8435de627522d"
+    },
+    "practice/sim/ordinary_speed/nominal_recovery.py": {
+      "bytes": 1590,
+      "sha256": "d83067a8834e54357a72eed49b0ef3f364ffcfbec83793c0f5a972cbffee8722"
+    },
+    "practice/sim/ordinary_speed/prediction_results.json": {
+      "bytes": 1955,
+      "sha256": "516bbac78af5979bd6453e1c7234cc39b45c88f44b95f5467bb979f36737cc43"
+    },
+    "practice/sim/ordinary_speed/recovery_results.json": {
+      "bytes": 2270,
+      "sha256": "6c1f05ab719a31916501a757b73ee9714dfd9860b7be11b4f88de7ec34152008"
+    },
+    "practice/sim/ordinary_speed/test_model.py": {
+      "bytes": 422,
+      "sha256": "0aae1b635a95caa182e6ccf9da122968b3b9a43932a8bba8b4e7501e304027e0"
+    },
+    "practice/sim/ordinary_speed/uncertainty_20hz.json": {
+      "bytes": 152193,
+      "sha256": "85f3bea684a1b9e6130942d1393aa67d0123933ac0cd35ff651147b5c412e27c"
+    },
+    "practice/sim/ordinary_speed/uncertainty_sweep.py": {
+      "bytes": 1968,
+      "sha256": "6bc4a439fead048a2555ccb356b56fd477ec48c39adb7ff3beefefe0b02d08f9"
+    },
+    "practice/sim/ordinary_tuning/baseline_config.txt": {
+      "bytes": 8890,
+      "sha256": "f356b8532670c80e736d61912909ce41ef4a8fd414c91381a12548fdea0b0bc7"
+    },
+    "practice/sim/ordinary_tuning/baseline_core.txt": {
+      "bytes": 54184,
+      "sha256": "f62f8094562b2a872e09ca1c3d8899399c5161685aa5f07c4653436fa750f877"
+    },
+    "practice/sim/ordinary_tuning/baseline_report.json": {
+      "bytes": 4136,
+      "sha256": "be4b155009ed0dc62f2aada6197ba8bba64076c1ee7b3b3bf5f9804845d8b6f8"
+    },
+    "practice/sim/ordinary_tuning/candidate_a_report.json": {
+      "bytes": 3826,
+      "sha256": "fde3e56f4e3abc43cb1ef3dda394ed5d591ea41cf8e5f57048d80cb4cec585e9"
+    },
+    "practice/sim/ordinary_tuning/candidate_b_report.json": {
+      "bytes": 3846,
+      "sha256": "add22f989aea16e216f04a4f836798ffcb698240e2dcedd6b9105f1fc89bc3a4"
+    },
+    "practice/sim/ordinary_tuning/candidate_c_report.json": {
+      "bytes": 3498,
+      "sha256": "94148ecf23dc3f3e817a219ce333d25583fe923718bb009a20ba67b7913e8677"
+    },
+    "practice/sim/ordinary_tuning/candidate_d_report.json": {
+      "bytes": 3856,
+      "sha256": "2cfc73d21bf859d9c4aa11c7f05163eea9b893542f8f5d002b54cc735134886e"
+    },
+    "practice/sim/ordinary_tuning/candidate_e_report.json": {
+      "bytes": 3830,
+      "sha256": "33d2041892168b021c0d7462793891890c298d4fd6fa4e726634d8a0d67f0f2a"
+    },
+    "practice/sim/ordinary_tuning/cruise_stats.jsonl": {
+      "bytes": 829,
+      "sha256": "7298d020df261b8d77c1d5bbbaa1126bcc088f1876fb96b69c4b024327678ab2"
+    },
+    "practice/sim/ordinary_tuning/cruise_stats.py": {
+      "bytes": 646,
+      "sha256": "91868afe361fe011901c0a488c12949975bd4213362978bb5d4c0b87c9bd0ae0"
+    },
+    "practice/sim/ordinary_tuning/highway_review.md": {
+      "bytes": 8291,
+      "sha256": "66663a734843ed2f044ea5eaa19ef232c9db97f2cb69704141676aa3c6cf85e4"
+    },
+    "practice/sim/ordinary_tuning/plan.md": {
+      "bytes": 4021,
+      "sha256": "08cb03ebe804a11a63bf82ee5da1396573a5f8cb26165746913f3d3db17d0137"
+    },
+    "practice/sim/ordinary_tuning/previous_report.json": {
+      "bytes": 3822,
+      "sha256": "f682b0a3701735fbd44821c00dabb3c6b568f90caa8e96745d80e13c98dbf603"
+    },
+    "practice/sim/ordinary_tuning/report.py": {
+      "bytes": 4921,
+      "sha256": "0c17d0fc86172c885f9b6fa92529c564ade6df0beef1491bacfd02c6c2269bbc"
+    },
+    "practice/sim/ordinary_tuning/RESULTS.md": {
+      "bytes": 8177,
+      "sha256": "bd118f2a13b1b679c8730d00a86306df92d0f331fe1ca486835496c43a94ec6f"
+    },
+    "practice/sim/ordinary_tuning/signals.jsonl": {
+      "bytes": 13451,
+      "sha256": "f3178e2b00f8da1580f35ca74cb94253eb61535899ac5acb3fa97bc08c013d64"
+    },
+    "practice/sim/ordinary_tuning/tracking.jsonl": {
+      "bytes": 1682,
+      "sha256": "93f56575036652398c0673edc05bd272014339ba2ae24cdce3c5d8cb22cd936b"
+    },
+    "practice/sim/ordinary_tuning/tracking.py": {
+      "bytes": 853,
+      "sha256": "ad9501f1459cef6125af4a4a7ab5bf3f3cbc8a92e43f46dca3a80a29e1dde623"
+    },
+    "practice/sim/param_sweep.sh": {
+      "bytes": 1281,
+      "sha256": "db45ec41caed0c2cf1954cc5f57102196c955b82f5c1334e5a4b3b36b02800fb"
+    },
+    "practice/sim/pass_log.py": {
+      "bytes": 24566,
+      "sha256": "87199f07a799909a994aa67594192d4ef75e258bbd1004a80be009cfbd1db67c"
+    },
+    "practice/sim/pass_records.jsonl": {
+      "bytes": 3168809,
+      "sha256": "c2bdcb2dd4194830abd6966c8ab235997b2bcd13774c004eaa8fee84c29cb705"
+    },
+    "practice/sim/rb_rear_log.py": {
+      "bytes": 9079,
+      "sha256": "8733a00466cf4b275bfdeb9b9664f9d3aa88f956ceedbe96c12cf915f619080f"
+    },
+    "practice/sim/rb_rear_records.jsonl": {
+      "bytes": 400885,
+      "sha256": "b0d3e66dcf135276687181c08cfbfd4d86413fe40dee3bfbfc81d50056c0730f"
+    },
+    "practice/sim/rb_speed_replay.py": {
+      "bytes": 7363,
+      "sha256": "b3d0426d7672d6781d9947c7f3681feb442b5e4feb9439d4063c678f59de5395"
+    },
+    "practice/sim/record_collision.py": {
+      "bytes": 2368,
+      "sha256": "81ef266e763b34b87d7a8e5d127101a0f79243a9af601e3d4c78f6fbeaf50158"
+    },
+    "practice/sim/records_readme.py": {
+      "bytes": 4130,
+      "sha256": "14d4c6bb73f3c0a8f460c4e98f6171c9989936ef57fb0085aaf958aa2fdaf1e8"
+    },
+    "practice/sim/signal_director.py": {
+      "bytes": 8310,
+      "sha256": "d1d643be002a3f04b3aaa2f7af67911fbfd82ba2daf4fcf70f40cb51d2fec616"
+    },
+    "practice/sim/sim_scenario.py": {
+      "bytes": 3154,
+      "sha256": "ab1ce50454fd0ee9aa2e0c9d434d6922cbe4dd7b09fca52887eb33d1d828ea07"
+    },
+    "practice/sim/slot_replay.py": {
+      "bytes": 8133,
+      "sha256": "8c634053454272df5521c4d06cc9b3c841c07ddc9571636b37fff0b64bbd7bca"
+    },
+    "practice/sim/slot_stress.py": {
+      "bytes": 6097,
+      "sha256": "7dba772317995bc0d472d44014eb52cd57f5bb4a771564e59e63bc5f9b14805e"
+    },
+    "practice/sim/sweep_a_lat.sh": {
+      "bytes": 1310,
+      "sha256": "0e8c28030abca830815eb75485d952860dfc39f54088107baada2c64c1500f29"
+    },
+    "practice/sim/sweep_sections.py": {
+      "bytes": 4699,
+      "sha256": "10f49d84772c40522dddfd1dd038321082b45093cb627114e7830d4920b68897"
+    },
+    "practice/sim/swerve_analysis.py": {
+      "bytes": 8427,
+      "sha256": "6cb10ae2c61675cf88d392d0553013a86b276f05a1e5cfebb5d47d55ccaee7d6"
+    },
+    "practice/sim/swerve_sweep/behavior_a10.yaml": {
+      "bytes": 4957,
+      "sha256": "229852ae00a3f55d230c68e8b2755244b03270b0f1ed41a08780a125e37a1ca8"
+    },
+    "practice/sim/swerve_sweep/behavior_a3.yaml": {
+      "bytes": 4955,
+      "sha256": "a5855a13d551f0b5cfaea258cc400deb1b68f5468b2065ee77c86d66f3bf01d0"
+    },
+    "practice/sim/swerve_sweep/behavior_a4.yaml": {
+      "bytes": 4955,
+      "sha256": "f280bdca2fc6ca8ab53c5b5e246b24279b60464137daa81b71aa21400145f1eb"
+    },
+    "practice/sim/swerve_sweep/behavior_a5.yaml": {
+      "bytes": 4955,
+      "sha256": "077da8e03263fe884628245f5d048f78ac2e3471513db32a1bb15873d22a58cb"
+    },
+    "practice/sim/swerve_sweep/behavior_a6.yaml": {
+      "bytes": 4955,
+      "sha256": "cf7ed0455a4dd26139ffe93871aa447bd725c40c41c4e5b479479c5277f3edc6"
+    },
+    "practice/sim/swerve_sweep/behavior_a8.yaml": {
+      "bytes": 4955,
+      "sha256": "dfea6c1d48b33f4ceed88dbe79d0ffdbdd2755846d3d497ecd1eb561ed9ec085"
+    },
+    "practice/sim/tunnel_tuning/detection_metrics.txt": {
+      "bytes": 2839,
+      "sha256": "60656612f441a55e84625ce08403a0444fa853cc293f7541bd5fd6ae0ceafcb8"
+    },
+    "practice/sim/tunnel_tuning/feature_summary.txt": {
+      "bytes": 3598,
+      "sha256": "3b1e429eb1352af4be0aa4f1993a1f77c4293cdb548ac96175ea32fb864c700f"
+    },
+    "practice/sim/tunnel_tuning/full_suite.txt": {
+      "bytes": 1249,
+      "sha256": "874735df1debe999a9fbfab76b3d84baf860757fd91ecb59f33049c74a89c9be"
+    },
+    "practice/sim/tunnel_tuning/latency_metrics.txt": {
+      "bytes": 920,
+      "sha256": "5d19d2d566d30969e5b2cb0873d9b91cac8ec975b1bc030afe901427b0ed9842"
+    },
+    "practice/sim/tunnel_tuning/plan.md": {
+      "bytes": 5061,
+      "sha256": "c0cff4225852d855abde0f0fe41458834418f5c9626b28f791fc19540d859202"
+    },
+    "practice/sim/tunnel_tuning/results.md": {
+      "bytes": 4351,
+      "sha256": "6ff6477447138077d648fe15808420f783cc81661d652ef1cfad50411378b6ec"
+    },
+    "practice/sim/tunnel_tuning/safety_metrics.txt": {
+      "bytes": 2317,
+      "sha256": "1e1bad78d1d2a39eccaec2354a79b4d99d9e793d09aca688b174a1714cd678ce"
+    },
+    "practice/sim/tunnel_tuning/static_scope_metrics.json": {
+      "bytes": 593,
+      "sha256": "f60c9044af5857b62a494ce5ac4d9a36cec9f958b4be5029a6cc94d6495497c9"
+    },
+    "practice/sim/tunnel_tuning/target_publish_metrics.json": {
+      "bytes": 575,
+      "sha256": "66590db557ee1d8156461f4c71df793eef70d4e356075ac122ab17e7b90a2db7"
+    },
+    "practice/sim/tunnel_tuning/threshold_sensitivity.json": {
+      "bytes": 1171,
+      "sha256": "d6e244eb5018159a9de54710215a92decafe959186107834211ec435b33af16b"
+    },
+    "practice/sim/weather_matrix.sh": {
+      "bytes": 1857,
+      "sha256": "81f445fddd130a8d63295c6c1ca8cfe6de395457b0a1a700938f441e51e9f489"
+    },
+    "practice/TuningPoint.md": {
+      "bytes": 10114,
+      "sha256": "2de1338d3ab17cb8e7c462df7fea68ee20645696372ee12e7e9755ecf6c950ec"
+    },
+    "practice/일어나면_먼저_볼것.md": {
+      "bytes": 5060,
+      "sha256": "75b8b33313a4b53ae562aabb317b98b9169696702ea35afd26ccc15d330b0812"
+    },
+    "README.md": {
+      "bytes": 18032,
+      "sha256": "12e50245b5af8862a43239b8bee63d9e8d78b33c5147b9492505f25ae39d251f"
+    },
+    "run_camera.sh": {
+      "bytes": 492,
+      "sha256": "b909b251c71387fba561f7e13c7ab2c8a4fbf717ba275c18b8383da2b224073c"
+    },
+    "run_competition.sh": {
+      "bytes": 1030,
+      "sha256": "68e34cc9a6a57047226582e952fd0db7cc4c47c4d5b340008b62f4183d11ef6a"
+    },
+    "run_low_speed.sh": {
+      "bytes": 365,
+      "sha256": "80199735941be4c187eafd86502467eb0af41a72a0aff3b201edcf29d68020ea"
+    },
+    "rviz.sh": {
+      "bytes": 646,
+      "sha256": "ddf18d069d9a17de289afd11aa12612eaf32a9a7694ffcb2743136717f28dc60"
+    },
+    "src/foscar_bringup/config/low_speed.yaml": {
+      "bytes": 9212,
+      "sha256": "c309b72790bd20ca7ef77040f0b737b3cd92aa69208960e9787dbf17c53b89cd"
+    },
+    "src/foscar_bringup/foscar_bringup/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_bringup/launch/competition.launch.py": {
+      "bytes": 12110,
+      "sha256": "e4d4f7540cbb1c84468e7badc776ead9c0106ccb366816ede6f5a9b5a7c1c03c"
+    },
+    "src/foscar_bringup/launch/low_speed.launch.py": {
+      "bytes": 3077,
+      "sha256": "08718f5ae25bf5597a332e31cb3f281bcfbccb03dbc4a310716d00d33fc7b35b"
+    },
+    "src/foscar_bringup/maps/link_set.json": {
+      "bytes": 9112815,
+      "sha256": "5ce0fd57da07b83221c0a4d117b0606b2d9c094c8de476a7d1176c78a4dc5b0f"
+    },
+    "src/foscar_bringup/maps/link_set.seams.npz": {
+      "bytes": 2170326,
+      "sha256": "3dd79353097b9f3c2e7fca0d0efc0920067f828638df95bc0a1c6707378fc62e"
+    },
+    "src/foscar_bringup/package.xml": {
+      "bytes": 597,
+      "sha256": "bd7e55cd920a35a6731a78e33f7f46b5bb21b67f59155c134a230bfe8dbc19bf"
+    },
+    "src/foscar_bringup/resource/foscar_bringup": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_bringup/routes/checkpoints.txt": {
+      "bytes": 1520,
+      "sha256": "83f526989390173ec954121eb7f60fcc50feb5d9ea2323d4afe667ea6602329d"
+    },
+    "src/foscar_bringup/routes/global_path.txt": {
+      "bytes": 254118,
+      "sha256": "a7fa4a89ff3840c7cc1be9b3b971572a67eb514f3ebee5a4a00ef535b73c64c3"
+    },
+    "src/foscar_bringup/routes/spawn_path.json": {
+      "bytes": 901,
+      "sha256": "e634a3e900c4fa4a807ebb52ec6f1aac9e2cd97ae1b0fafe5cbcfc9cbfbf74e8"
+    },
+    "src/foscar_bringup/routes/spawn_path.txt": {
+      "bytes": 266193,
+      "sha256": "4b9edccfd82414f1ea0d85e862370572d0d8c5510f5f91fcb9fc1a97ff4ce8f2"
+    },
+    "src/foscar_bringup/rviz/low_speed.rviz": {
+      "bytes": 1374,
+      "sha256": "10f2b2d978a2e7c83f6e73f017ebbdb1d0a1f5c46f24077696942638cbb9cd6e"
+    },
+    "src/foscar_bringup/setup.cfg": {
+      "bytes": 101,
+      "sha256": "3cd94a6b6c56dffb8de127eaa833786970e3055fe47a37956122cc6b50250e55"
+    },
+    "src/foscar_bringup/setup.py": {
+      "bytes": 628,
+      "sha256": "19664297ac3de3f8f6e33b4589b18b7dfdddecc9237ae7ede7729740db340ee5"
+    },
+    "src/foscar_camera/config/stop_lines.csv": {
+      "bytes": 900,
+      "sha256": "9c021decd17b9f21aec2212c117ce20eeb7b5151b35c412d84f33492d37441a4"
+    },
+    "src/foscar_camera/config/yolo_stoplines.json": {
+      "bytes": 1131,
+      "sha256": "4025fe009f165bc026a3e05edda34e2ed957a0801bc9370e96007fe3055ff5f3"
+    },
+    "src/foscar_camera/foscar_camera/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_camera/foscar_camera/camera_bridge.py": {
+      "bytes": 9022,
+      "sha256": "c4da9837baa61037d34580cb27f2c3f345d61ccc8c0af72effb7578b2a231f9e"
+    },
+    "src/foscar_camera/foscar_camera/camera_view.py": {
+      "bytes": 4154,
+      "sha256": "90ae878f5385c9459759e69a10c027e009b3e5dd40e0abc6f31dffc5c8262074"
+    },
+    "src/foscar_camera/foscar_camera/gps.py": {
+      "bytes": 2677,
+      "sha256": "869bc26f99f85c87e318661252cab4e8ab3a0986302bad67e178ea1fa0d7e632"
+    },
+    "src/foscar_camera/foscar_camera/gps_logger.py": {
+      "bytes": 7137,
+      "sha256": "a9acf3946517238a13aabb58fa422d5002e56d1c89806212a6e8e7613dca6e56"
+    },
+    "src/foscar_camera/foscar_camera/stop_lines.py": {
+      "bytes": 5528,
+      "sha256": "c02220c1c2190a6fa765ca1f690fa70eda87e285b11cd1880a7c4afd63feaaf3"
+    },
+    "src/foscar_camera/foscar_camera/yolo_onnx.py": {
+      "bytes": 3230,
+      "sha256": "3414d3f617f1d12cb70b4883572c3a509b10c180cf10eea4a0f45065d382890c"
+    },
+    "src/foscar_camera/foscar_camera/yolo_signal_node.py": {
+      "bytes": 5755,
+      "sha256": "c9515dfc6caafe07d03a53579678c04c1eaf0f049797ba22120826f8d87491a7"
+    },
+    "src/foscar_camera/launch/gps_record.launch.py": {
+      "bytes": 3062,
+      "sha256": "a1afc6f11e47db777982d7c1008afacdb8b3ed5179cd383b057f80705d6cf93a"
+    },
+    "src/foscar_camera/launch/yolo_signal.launch.py": {
+      "bytes": 1761,
+      "sha256": "d33e6c8b19746fffd7beef81546d9d9ee1d096f0c360c505e10d5faf7492dd9c"
+    },
+    "src/foscar_camera/models/best.onnx": {
+      "bytes": 38669688,
+      "sha256": "d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98"
+    },
+    "src/foscar_camera/models/README.md": {
+      "bytes": 647,
+      "sha256": "6010dc3ecf781784100257322c304aefa135fe7af924e83ccaf536b33c675fdb"
+    },
+    "src/foscar_camera/package.xml": {
+      "bytes": 799,
+      "sha256": "fe42454cfd7e324c0e91c3e4d1257ad9833d54e991acf7ebfb107a249d992f1b"
+    },
+    "src/foscar_camera/README.md": {
+      "bytes": 3339,
+      "sha256": "ec335fae238e48585135275cc81d6e00c16bf3b23953fe69bd43a53b936dac8d"
+    },
+    "src/foscar_camera/requirements-onnx.txt": {
+      "bytes": 99,
+      "sha256": "30687bef9694ea2c901ab93d0a40934875c94b8d1af2a9eb7377d9e506b8c1e4"
+    },
+    "src/foscar_camera/resource/foscar_camera": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_camera/setup.cfg": {
+      "bytes": 99,
+      "sha256": "874f24c6ee153e5700687840aae51fc595e82f7706d3fe42f6f96fec86e11015"
+    },
+    "src/foscar_camera/setup.py": {
+      "bytes": 828,
+      "sha256": "52f37d7fcb99acae9978bcbb899b5fd5230c6671fb0fc1a34ef88d79a479c7fb"
+    },
+    "src/foscar_camera/test/test_yolo_onnx.py": {
+      "bytes": 779,
+      "sha256": "dc0de34a00fc58958a03506ff19e70b7fdb1d626e9cd13ee66a656f9677efc8a"
+    },
+    "src/foscar_camera/YOLO_STOPLINE_2026-09-28.md": {
+      "bytes": 5528,
+      "sha256": "13373e60a40f2643a437b3afc62fd62a21461fddd8b4709f3b4449953e0a82f6"
+    },
+    "src/foscar_camera_train/config/record.yaml": {
+      "bytes": 3060,
+      "sha256": "d72f57963eb5ffbc6623eae2df96e9d08f581eeebc5d39a2352fce8e4b4aad93"
+    },
+    "src/foscar_camera_train/foscar_camera_train/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_camera_train/foscar_camera_train/collect_label.py": {
+      "bytes": 9918,
+      "sha256": "e59e6256c5c2e151d8fe46fdf0ca9d433710bc9d1c6a180885966af9c2dcc56b"
+    },
+    "src/foscar_camera_train/foscar_camera_train/dwell.py": {
+      "bytes": 3281,
+      "sha256": "96d7530af1cab62952ee78215a894e91ae9e435bd77218b172ec5ae548c381f9"
+    },
+    "src/foscar_camera_train/foscar_camera_train/dwell_node.py": {
+      "bytes": 4897,
+      "sha256": "c63feeb665a855eb909a4373d8c1e9055ebbb12621a0a91017734a3e187fa231"
+    },
+    "src/foscar_camera_train/foscar_camera_train/evaluate.py": {
+      "bytes": 10651,
+      "sha256": "c5a08dd8adc781c6075bdd01f8cac96ae42a646ad9623d0b95820a40672901de"
+    },
+    "src/foscar_camera_train/foscar_camera_train/extract.py": {
+      "bytes": 25867,
+      "sha256": "9aedb658943d9cbff2597a91acb9e5435197bd31d3af3de4594439363836f322"
+    },
+    "src/foscar_camera_train/foscar_camera_train/palette.py": {
+      "bytes": 6688,
+      "sha256": "e80c80aa48061e5a3a3d9a0ecfa99edf7d744af18bc60201d211ef1a718b69d8"
+    },
+    "src/foscar_camera_train/foscar_camera_train/recorder_node.py": {
+      "bytes": 22988,
+      "sha256": "259c7b2bc45f30efaabc33c2fe28545bac82a027f75e5625feb724247b5f3b6d"
+    },
+    "src/foscar_camera_train/foscar_camera_train/roboflow_io.py": {
+      "bytes": 14845,
+      "sha256": "86d0dec52cb6c4c3b0ac1ead47628b2cfee2122eda6de3ffd52c415476b6e1f2"
+    },
+    "src/foscar_camera_train/foscar_camera_train/stoplines.py": {
+      "bytes": 4808,
+      "sha256": "6fbc8a7ced339295bf3955144c4d86da9c026985096a28ba6f21d1725614ad4d"
+    },
+    "src/foscar_camera_train/foscar_camera_train/survey.py": {
+      "bytes": 10371,
+      "sha256": "5160bfe74da13a55589587d1fcf2b8710516c661042a578844f049ce110de6be"
+    },
+    "src/foscar_camera_train/foscar_camera_train/train.py": {
+      "bytes": 7593,
+      "sha256": "12c1ddf49ca50c8f805725eae160b3a46f6cafde3cdc2ffe7e115d0b2e3cc65d"
+    },
+    "src/foscar_camera_train/launch/record.launch.py": {
+      "bytes": 8459,
+      "sha256": "a8363d80a4ec1ad97b8b590ad1bab7b56f3b993fc57b2d4d5ba365942daa1ac2"
+    },
+    "src/foscar_camera_train/package.xml": {
+      "bytes": 931,
+      "sha256": "f9304995a0d29b380bd54fcd5725ec3adc22716d68e1e745292e315466822514"
+    },
+    "src/foscar_camera_train/resource/foscar_camera_train": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_camera_train/setup.cfg": {
+      "bytes": 111,
+      "sha256": "8f2572f4f61b6bb7087a703fffe1b8076dfa595ca315182d37e9958457c99fa2"
+    },
+    "src/foscar_camera_train/setup.py": {
+      "bytes": 1011,
+      "sha256": "5bb4e00b379a2ace5bf0178f95de2e8bce136c2178c5095d9fab218dc9dbfdec"
+    },
+    "src/foscar_camera_train/test/conftest.py": {
+      "bytes": 213,
+      "sha256": "5da3e096492d1e5f182f0a37cef3bc1e4e0734f60ac5c7988c710db86d43e567"
+    },
+    "src/foscar_camera_train/test/synth.py": {
+      "bytes": 1899,
+      "sha256": "b3604ee111feec80032d04b70b3d6d880f9977a76201de89a697a972a39de1c4"
+    },
+    "src/foscar_camera_train/test/test_collect_label.py": {
+      "bytes": 9626,
+      "sha256": "eda8e8bb91ca27a76491465f3ef0dd8f214694132ba79b9b3e27b5b6e7da788b"
+    },
+    "src/foscar_camera_train/test/test_dwell.py": {
+      "bytes": 4641,
+      "sha256": "14718f4660caf569545d4eaf38517437d4a1915a488df40a2da2325f9148560c"
+    },
+    "src/foscar_camera_train/test/test_extract.py": {
+      "bytes": 10774,
+      "sha256": "8628bc64f21731c28332a09552c0d796d4303e0acb1d770fcaec36a9039a5290"
+    },
+    "src/foscar_camera_train/test/test_record_launch.py": {
+      "bytes": 5440,
+      "sha256": "d6efd5db521699fdd7850303a13f9a0492939c2607434b825fab940326171037"
+    },
+    "src/foscar_camera_train/test/test_roboflow_io.py": {
+      "bytes": 7627,
+      "sha256": "81b108657f3e5eb17b846182172025be1dd6f5dfe673e6c90dcbd0c104cfd01a"
+    },
+    "src/foscar_camera_train/test/test_survey.py": {
+      "bytes": 690,
+      "sha256": "ee3529b758ed42414bffbc9f1a22003ce059956559eff079ff61adefa790b9cb"
+    },
+    "src/foscar_camera_train/개발구조.md": {
+      "bytes": 41618,
+      "sha256": "dd472fefaa9d6ff35a6ceca36f8665e38a2e84a7bf10754d1de85ffc2229665b"
+    },
+    "src/foscar_camera_train/개발명세서.md": {
+      "bytes": 31035,
+      "sha256": "6c2641475e23b1bdc3f9d637348cc3f13085c654bde7ea3534e62bc92bb14e1d"
+    },
+    "src/foscar_camera_train/사용법.md": {
+      "bytes": 7630,
+      "sha256": "25e3105bcb6d2f360ff962328929f094656e8663d54e9003353d5098dc42611a"
+    },
+    "src/foscar_control/foscar_control/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_control/foscar_control/bridge.py": {
+      "bytes": 12448,
+      "sha256": "fe29d4e1a955291ac8c5b4d0b66d72ddfbfdfe5d9a29e95d2f5ad25a29ade856"
+    },
+    "src/foscar_control/foscar_control/core.py": {
+      "bytes": 58241,
+      "sha256": "b77e33e082215ff6195d817c72d4c7119628dccddfe827856fb90b8eef2e0440"
+    },
+    "src/foscar_control/foscar_control/follower.py": {
+      "bytes": 23619,
+      "sha256": "082707d5db5b7df9afc912f4a7b590e98e20597b8784a9d7a64b79863d3a26e2"
+    },
+    "src/foscar_control/foscar_control/localization.py": {
+      "bytes": 11017,
+      "sha256": "b91ed8d90cd1e9e3abf958dee3905d1fc9f8f58990ab1c5a87012bb901e75b95"
+    },
+    "src/foscar_control/foscar_control/mission_config.py": {
+      "bytes": 3100,
+      "sha256": "1e8f2bf1b41d381f37e33e7b7d5b63c4ef757d2df91d817f0c57936c593960e9"
+    },
+    "src/foscar_control/foscar_control/reference.py": {
+      "bytes": 1657,
+      "sha256": "a444fa299bbb1e4181a1782afc45e861a2d90300d73144284786cb48669b05aa"
+    },
+    "src/foscar_control/foscar_control/reference_control.py": {
+      "bytes": 6125,
+      "sha256": "b816d888129b2bdc66ef2ed3de91c23f5d79bcdecda2f371a4b2b9720951708b"
+    },
+    "src/foscar_control/foscar_control/speed_policy.py": {
+      "bytes": 726,
+      "sha256": "c28a9334fd6aca9fd6fa77b71e01d5e44acc6f6c7c628dab0171ebd33da19153"
+    },
+    "src/foscar_control/foscar_control/telemetry.py": {
+      "bytes": 831,
+      "sha256": "1311a98d423a1f94ec30dca4839abeb931c2408bbad9eb2e719fba897bfbff45"
+    },
+    "src/foscar_control/package.xml": {
+      "bytes": 803,
+      "sha256": "e4d23a9bb38d3597d90858d8db91a3d7d19c7f830e3719218410e595e2ebc3eb"
+    },
+    "src/foscar_control/resource/foscar_control": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_control/setup.cfg": {
+      "bytes": 101,
+      "sha256": "b16c029d2c86be3b8f28065992771d9a6466a03e79b27730a1028d3abe0f4e80"
+    },
+    "src/foscar_control/setup.py": {
+      "bytes": 783,
+      "sha256": "6be5f624646a939f68726d2bc60032ffdbc099eef5ff7955595964d7a08b013e"
+    },
+    "src/foscar_control/test/integration_udp.py": {
+      "bytes": 7769,
+      "sha256": "6d27501a8bf84b3822b789e429ab4548aa9b7708b86a9a76bb9bcb506f8d54c3"
+    },
+    "src/foscar_control/test/sensor_samples.json": {
+      "bytes": 778,
+      "sha256": "a564b597118d94166fa3ae21524e0dac6a0a75dad9a32e46539e98d558284e0a"
+    },
+    "src/foscar_control/test/test_core.py": {
+      "bytes": 49465,
+      "sha256": "0f92af0ed1ffc30f3d4446625cd7790da97557386ae98d528b21db911edcc265"
+    },
+    "src/foscar_control/test/test_cruise_feedback.py": {
+      "bytes": 2588,
+      "sha256": "e01c628337d5b408e4ffb85a1b4dbaed389c736a8cc35753a5d34440d82e747f"
+    },
+    "src/foscar_control/test/test_cruise_response.py": {
+      "bytes": 6591,
+      "sha256": "1905ad6b07cb2a02c575644de836af466aaaf909228a5bcc9c3ceb53716768b6"
+    },
+    "src/foscar_control/test/test_highway_speed.py": {
+      "bytes": 2506,
+      "sha256": "56bc4684c1811707ca58656c3e233da824003814e7aa3ec0a463cd51e80c9a57"
+    },
+    "src/foscar_control/test/test_mission_geometry.py": {
+      "bytes": 1992,
+      "sha256": "e70448abe93cd60305deae09d6a9e64c59b843fe370bd85b8e0ecbae2d96a669"
+    },
+    "src/foscar_control/test/test_reference.py": {
+      "bytes": 7173,
+      "sha256": "fa99cf4e695ece35c0439610e279715ac2ed8062b2e2a7a48479a095d667cb21"
+    },
+    "src/foscar_control/test/test_reference_wire.py": {
+      "bytes": 1746,
+      "sha256": "d261aa6aebb1520237661a19f2b9a1ef34cf122faf08ce71ca687a68ae01d046"
+    },
+    "src/foscar_control/test/test_telemetry.py": {
+      "bytes": 1003,
+      "sha256": "68dd8029fbbe5e8a25d75e7e8d264955c073b678d90c25620b1ab7469e36eeac"
+    },
+    "src/foscar_interfaces/CMakeLists.txt": {
+      "bytes": 408,
+      "sha256": "f3439d878da5c4c100cbf8f3fba40ab18ca6ce6dad8ba3a48cf6bf7ba7e6e643"
+    },
+    "src/foscar_interfaces/msg/ControlCommand.msg": {
+      "bytes": 157,
+      "sha256": "529b0a7e421ab28b6293a2aaf138ab7c420bc68c34eb54cd0bbf868650d8e965"
+    },
+    "src/foscar_interfaces/msg/DrivingTarget.msg": {
+      "bytes": 1752,
+      "sha256": "ef1b153e42b031826d8f60bac67be7d29053340247a08652002b62c9ed621434"
+    },
+    "src/foscar_interfaces/msg/Event.msg": {
+      "bytes": 742,
+      "sha256": "1eeea8488b92f21a7ff59e25d1c13ce8eeb6d24ac746adc730dd14b7426b2c2a"
+    },
+    "src/foscar_interfaces/msg/VehicleStatus.msg": {
+      "bytes": 194,
+      "sha256": "416f289cdc819350dee74879ea88c593a155d59c575deca09064b2c9b4d33141"
+    },
+    "src/foscar_interfaces/package.xml": {
+      "bytes": 548,
+      "sha256": "313398558c7f948035de6c5caafd7e39b1811fc3d3a1dc30fec92d012f01dc42"
+    },
+    "src/foscar_lidar/foscar_lidar/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_lidar/foscar_lidar/clearance.py": {
+      "bytes": 6242,
+      "sha256": "c2244474548ae80e560ddb045710a50a2d90e8c3754f5612e8445d79326ad462"
+    },
+    "src/foscar_lidar/foscar_lidar/fake_cloud.py": {
+      "bytes": 5607,
+      "sha256": "b06167a990562efe9a2bb539891f09d2b5fb1862e6ec28259339345ab3c7052e"
+    },
+    "src/foscar_lidar/foscar_lidar/fragment_merge.py": {
+      "bytes": 2243,
+      "sha256": "75b11f65a044c6a644f0919e0c0391804ec1283a7d0840e0dd7157c8eb86739d"
+    },
+    "src/foscar_lidar/foscar_lidar/free_space.py": {
+      "bytes": 5649,
+      "sha256": "e70475091113c15086412c380b7fcebe3080a40756b82f40281949e74c6a8eb4"
+    },
+    "src/foscar_lidar/foscar_lidar/ground.py": {
+      "bytes": 2013,
+      "sha256": "d94d642ca1360b53e38a7e4f2dd6363d3ee225493587333d643ef8fe06a977a7"
+    },
+    "src/foscar_lidar/foscar_lidar/highway_visibility.py": {
+      "bytes": 1541,
+      "sha256": "787af48659080499939b5a90dc916b97c35e227710f37dec98f75201c54e62a0"
+    },
+    "src/foscar_lidar/foscar_lidar/lidar_bridge.py": {
+      "bytes": 9528,
+      "sha256": "e88e81e3833a919572fce46492a61dccea98bf55d529e6a8280ce7756022ec1d"
+    },
+    "src/foscar_lidar/foscar_lidar/lidar_monitor.py": {
+      "bytes": 9055,
+      "sha256": "a03242b01af899aadf77b24bc5e0cb8e41ca4c81d532be07b939890717141614"
+    },
+    "src/foscar_lidar/foscar_lidar/lidar_view.py": {
+      "bytes": 16025,
+      "sha256": "8e25adc2f4f60d7dbb9bf0fd7b53b5958dea506262deaaad0ec8de55e4a791b8"
+    },
+    "src/foscar_lidar/foscar_lidar/observed_footprint.py": {
+      "bytes": 1774,
+      "sha256": "ab02d532d3caea731dada1aded7fa6773da873ecb201653875557ecbf516b6e5"
+    },
+    "src/foscar_lidar/foscar_lidar/obstacle_node.py": {
+      "bytes": 120405,
+      "sha256": "793e0e3b1c01886ede0c41c01f94d659e4a2b07b8f2188da31239836b6cea550"
+    },
+    "src/foscar_lidar/foscar_lidar/road_mask.py": {
+      "bytes": 4915,
+      "sha256": "da44f01a93d4b227b606451cf8a6d6cf0004c5d110c42fd808d8155c611f4436"
+    },
+    "src/foscar_lidar/foscar_lidar/sight.py": {
+      "bytes": 2345,
+      "sha256": "dc47d2b15b4b1bbdd7cd7cbc21fd437a4fa695caf1748cade3710a7794a81541"
+    },
+    "src/foscar_lidar/foscar_lidar/tunnel_walls.py": {
+      "bytes": 1466,
+      "sha256": "b2f8c9ef5a7d9e52d6d2d3bd51bd0e6bd3d811607aeb226a368cf64ed39fd8dc"
+    },
+    "src/foscar_lidar/launch/drive.launch.py": {
+      "bytes": 6921,
+      "sha256": "99b43f3ec637ab31e3331aadccac7700cc55aea3274305317d9e23c8ae514407"
+    },
+    "src/foscar_lidar/launch/obstacle.launch.py": {
+      "bytes": 14404,
+      "sha256": "0014e6604545c0f319ea08db349f007c084187f33d8a06ad6227d7d164ab07bb"
+    },
+    "src/foscar_lidar/package.xml": {
+      "bytes": 933,
+      "sha256": "a689c994740b1e62ac41ef83d4471199716b2bb5290f1fa2c7e627befed5a640"
+    },
+    "src/foscar_lidar/README.md": {
+      "bytes": 27181,
+      "sha256": "7257bddaaf4271e28f04e963e925ebf75a58af19fce0df4c69b6bdb5f395c3ab"
+    },
+    "src/foscar_lidar/resource/foscar_lidar": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_lidar/rviz/obstacle.rviz": {
+      "bytes": 1584,
+      "sha256": "9fcadb53f2a160949b8b3366edcbaf61c34cbc2919afbcdcd3c466ea11895bc1"
+    },
+    "src/foscar_lidar/setup.cfg": {
+      "bytes": 97,
+      "sha256": "461ea836a7827e832ecb01c47c3867e133bf28bf4754fdb06a2d400a3e62d0b1"
+    },
+    "src/foscar_lidar/setup.py": {
+      "bytes": 837,
+      "sha256": "dc0e6c5a4be5f148b60320928b854265440facef6e24aad98117528ad80ed0aa"
+    },
+    "src/foscar_lidar/test/data/braking_ground_20260922.npz": {
+      "bytes": 163905,
+      "sha256": "9a9a63366414a524b49406f4e3c6c99bab821d39a2ee43ddee1ceebfe5841968"
+    },
+    "src/foscar_lidar/test/data/large_static_cluster_20261006.json": {
+      "bytes": 922,
+      "sha256": "5d13aea84bcd5ad4a422857746cbe8dd57f470026cf951f59d5ca6ce33f70b08"
+    },
+    "src/foscar_lidar/test/data/partial_vehicle_motion.json": {
+      "bytes": 771,
+      "sha256": "7d858ce08ac1928b04be945340552909854327c79704cbadca279fc8c44f7e8f"
+    },
+    "src/foscar_lidar/test/data/README.md": {
+      "bytes": 484,
+      "sha256": "f97d3b5dc112139d1cbabedec2ccf84d4428e696506195e1bf5d406f2efed3ca"
+    },
+    "src/foscar_lidar/test/test_dynamic_unknown.py": {
+      "bytes": 11086,
+      "sha256": "c54aec244ca3723c484bd0c38131cabc12d6c98fd4ddf772e09b7ceeb8a627a2"
+    },
+    "src/foscar_lidar/test/test_fragment_merge.py": {
+      "bytes": 1064,
+      "sha256": "4ec844e893de5217334ea39217576a02ac37257ff9ec52ba17357a43407587ed"
+    },
+    "src/foscar_lidar/test/test_free_space.py": {
+      "bytes": 5207,
+      "sha256": "92119cd96af8f31a95141c89783f9558ef87a5c26e4c973617361f5e4c185d1c"
+    },
+    "src/foscar_lidar/test/test_ground.py": {
+      "bytes": 1646,
+      "sha256": "748c9216bd234d4c29e021acc5949562b8982dcbd7b739902ef28fa0a4d90e63"
+    },
+    "src/foscar_lidar/test/test_highway_intensity.py": {
+      "bytes": 2636,
+      "sha256": "e4cd995315d8fdf466ad2d6ee352a45e7648b121d8c28435ffe92fef7bea5f4b"
+    },
+    "src/foscar_lidar/test/test_highway_visibility.py": {
+      "bytes": 1230,
+      "sha256": "2106f94857ece2337be7deccb9be9832987fe59f7ee2d97ce3b34c2779b51afe"
+    },
+    "src/foscar_lidar/test/test_observed_footprint.py": {
+      "bytes": 7942,
+      "sha256": "b7b99f07f5406e8c2d0e936c190670ef02791e2e86daa5c2304222e6ecfba7fa"
+    },
+    "src/foscar_lidar/test/test_obstacle_road_gate.py": {
+      "bytes": 16525,
+      "sha256": "03234aef38f08bacc609f47915b234f42be669d1046c4cbe55579a6f4e309ea5"
+    },
+    "src/foscar_lidar/test/test_road_mask.py": {
+      "bytes": 4020,
+      "sha256": "da1c107fd935ce4aaa4c3af349d88952288aad245739b2d6c82ed33ff196963e"
+    },
+    "src/foscar_lidar/test/test_roundabout_observation_roi.py": {
+      "bytes": 1623,
+      "sha256": "0b984e3d39136de7fa61ada119d5282a37a30fb5c7ed81f07b0d98990c87a710"
+    },
+    "src/foscar_lidar/test/test_sight.py": {
+      "bytes": 804,
+      "sha256": "6406545417509a506d45454e00804afd523e163b065efe3542f5694edace3b5b"
+    },
+    "src/foscar_lidar/test/test_tunnel_intensity.py": {
+      "bytes": 2457,
+      "sha256": "ae61e3970a2aef43b75420bface8a8522a1b36d1ece8aa3391cbecd739fcac1c"
+    },
+    "src/foscar_lidar/test/test_tunnel_walls.py": {
+      "bytes": 1045,
+      "sha256": "11840e3024b942018995fa822bce4fb976038028f372d3273d840f3bafd874c4"
+    },
+    "src/foscar_lidar/오탐분석.md": {
+      "bytes": 15989,
+      "sha256": "493f0806edf586ac03f868562ecf9d88e02d12f785bd055381c9c1c5d5326eed"
+    },
+    "src/foscar_planning/config/behavior.yaml": {
+      "bytes": 6403,
+      "sha256": "83d26bbe4e0b1185b710db72bdca9d9900b627d3fe3d5f01f7eede664b9bd48c"
+    },
+    "src/foscar_planning/config/highway.yaml": {
+      "bytes": 11539,
+      "sha256": "9416ba81f9cbfbf8a61c4df9c0e98b23a810317a2b08b0154eb73a308920e60a"
+    },
+    "src/foscar_planning/config/highway_kappa.npz": {
+      "bytes": 11146,
+      "sha256": "5b60ceb2aa4cac870f204fd4bea979eddfaf4cd070993c6c6f0b52fb22a6a477"
+    },
+    "src/foscar_planning/config/missions.yaml": {
+      "bytes": 3927,
+      "sha256": "c9723d6452a1a54b617214b5b6d83d569d27673d3e4b8afda2071a520be3b185"
+    },
+    "src/foscar_planning/config/roundabout_motion.json": {
+      "bytes": 30334,
+      "sha256": "4933ef9c60c1399313be2012f2abb6e8ece56527439968b10b45de3eb390eeb0"
+    },
+    "src/foscar_planning/foscar_planning/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_planning/foscar_planning/avoid_choice.py": {
+      "bytes": 3180,
+      "sha256": "6137604bff1a142e58072325e264651d45d8cd71de5aed01e6de9bbd44e0527c"
+    },
+    "src/foscar_planning/foscar_planning/avoid_planner.py": {
+      "bytes": 8300,
+      "sha256": "f25b236e53501b298c8567b51ac8b49c713ec63b69d3c51cea929826b61382de"
+    },
+    "src/foscar_planning/foscar_planning/behavior_node.py": {
+      "bytes": 109212,
+      "sha256": "aa5d6fc83147a44831f3c604b40014ed8c637cca7bd663ca85db1cb6b0315e68"
+    },
+    "src/foscar_planning/foscar_planning/bev_avoidance.py": {
+      "bytes": 22769,
+      "sha256": "0d0f927d0650bd046ce36f881b756e6e2bb3bd17eb23cf521b1628d733e2df7b"
+    },
+    "src/foscar_planning/foscar_planning/bev_motion.py": {
+      "bytes": 10197,
+      "sha256": "1de803bfffd2f2e7f8efd7bff891ccb20dd29a338338e3d931173999f76ef523"
+    },
+    "src/foscar_planning/foscar_planning/bev_node.py": {
+      "bytes": 9382,
+      "sha256": "78f89e24a3f5d227256e17b696a053293dbf16bca3c2f4b5ccad58c5260fe990"
+    },
+    "src/foscar_planning/foscar_planning/bev_occupancy.py": {
+      "bytes": 10864,
+      "sha256": "f9e44c28df5616834f5679be632625dec71f40decd927fa7ccd299bc1b47d154"
+    },
+    "src/foscar_planning/foscar_planning/boundary_motion.py": {
+      "bytes": 1942,
+      "sha256": "e057bd28eaa72080e4cc040f0cb081be462ddccf452c16f6475fa53464e843c4"
+    },
+    "src/foscar_planning/foscar_planning/brake_shaper.py": {
+      "bytes": 1309,
+      "sha256": "3e881d8202b5ff7f11a734c985df8b783906a9bc8a2911196c8dcc4e5b34c92a"
+    },
+    "src/foscar_planning/foscar_planning/circle_reference.py": {
+      "bytes": 1562,
+      "sha256": "c4a2f26eb63e299a52bc26c968d530cb3efe2e17584145264d9737d2761f23a5"
+    },
+    "src/foscar_planning/foscar_planning/circular_gap.py": {
+      "bytes": 53084,
+      "sha256": "0bdb3e2acc55b4378ac38d2a150a1263e82bef05d96fcaee6f6df23a7222321f"
+    },
+    "src/foscar_planning/foscar_planning/departure_profile.py": {
+      "bytes": 673,
+      "sha256": "92bf944f1604e1f4059a8236703023848d5d9e402e87d63031a167203e5b53bf"
+    },
+    "src/foscar_planning/foscar_planning/empty_entry.py": {
+      "bytes": 4594,
+      "sha256": "6a00d07d57bec0da66b819771b536bd86f7ddf1e49e503feb5347d350afbdfcd"
+    },
+    "src/foscar_planning/foscar_planning/entry_gate.py": {
+      "bytes": 12860,
+      "sha256": "35e78a308b16d6f8692a738b60b92efb44257a73518c8b2b0076849543e033dd"
+    },
+    "src/foscar_planning/foscar_planning/following_departure.py": {
+      "bytes": 7056,
+      "sha256": "9d4ccaf1870147e5cba1b4907289cfcfbfb482a377daecacaaf6f64bb37e6273"
+    },
+    "src/foscar_planning/foscar_planning/following_policy.py": {
+      "bytes": 564,
+      "sha256": "5668a7cdb3605af1365664e99b79d8ac0a053095dfdd4b222505ef4dab59fea1"
+    },
+    "src/foscar_planning/foscar_planning/frenet.py": {
+      "bytes": 2846,
+      "sha256": "68e34e0287d69d5a149c07c6ed75df1f4e36d8eb69cd59a35d94c7887852f598"
+    },
+    "src/foscar_planning/foscar_planning/highway_box_tracks.py": {
+      "bytes": 12209,
+      "sha256": "108d7a6d5d88986bbcc8573e836823a10c4d0980264603a5ff835a2b09e75f66"
+    },
+    "src/foscar_planning/foscar_planning/highway_boxes.py": {
+      "bytes": 10363,
+      "sha256": "577b3a31ebafdbc55e87a88834d153bcf9edbacd2fb48bd56f01c917a25a35e7"
+    },
+    "src/foscar_planning/foscar_planning/highway_config.py": {
+      "bytes": 9212,
+      "sha256": "5000fd5b6a848f9e5d03e49e0dbacac3aeaace976e23a345775ccdb02eb0c932"
+    },
+    "src/foscar_planning/foscar_planning/highway_maneuver.py": {
+      "bytes": 8164,
+      "sha256": "0b4a34dc0093a2591dbe0cebba4c868137149acdef83eae461ef0ffd3b1e9400"
+    },
+    "src/foscar_planning/foscar_planning/highway_markers.py": {
+      "bytes": 8102,
+      "sha256": "ab60a393fda422f01f6bb5454d1eae75d9c8543857715659c7499163255520d1"
+    },
+    "src/foscar_planning/foscar_planning/highway_observation.py": {
+      "bytes": 7995,
+      "sha256": "283cb8caa4b0df4163402d3281f9664bed28c546ef14d8986d18c9dfdf7ed2a6"
+    },
+    "src/foscar_planning/foscar_planning/highway_policy.py": {
+      "bytes": 97579,
+      "sha256": "f5552fb6d29bceb4df134bbc402af94fb79e052319399c4e4763c666d09869a4"
+    },
+    "src/foscar_planning/foscar_planning/highway_rejoin.py": {
+      "bytes": 2742,
+      "sha256": "ab6ccf900297fac554f38c0dca98d9ded6a2f7fbdd23e732f080d7a6fa0c7bea"
+    },
+    "src/foscar_planning/foscar_planning/highway_route.py": {
+      "bytes": 12548,
+      "sha256": "037aed60c44085cd160ed7bc13a81fefac054e726a8db56f5b8fbd360ed79627"
+    },
+    "src/foscar_planning/foscar_planning/highway_runtime.py": {
+      "bytes": 6592,
+      "sha256": "7575030ea0d0902a09e56ccdcc60dd7cf54532a6f0ac8b0673dc8cce2cbb2f27"
+    },
+    "src/foscar_planning/foscar_planning/highway_scene.py": {
+      "bytes": 5020,
+      "sha256": "832579b85250fcd5e0a78fec73f47d327b728c394caee9057a4d0c59f38320b7"
+    },
+    "src/foscar_planning/foscar_planning/highway_slot_planner.py": {
+      "bytes": 21119,
+      "sha256": "cba6a5b3fbcc6aaf932fe312a6f9447099305c989ca4f3d31f76a5f6123bd9a3"
+    },
+    "src/foscar_planning/foscar_planning/lane_prediction.py": {
+      "bytes": 17924,
+      "sha256": "d81308c1f7bfe085d495058e0e7e8befe59d9671ce88fc14136664e0b13701c3"
+    },
+    "src/foscar_planning/foscar_planning/local_following.py": {
+      "bytes": 9796,
+      "sha256": "b9c117e74e08212700458d09ef14fb1dcec91a7f447a91d807cc43fffe366cc9"
+    },
+    "src/foscar_planning/foscar_planning/mapped_avoidance.py": {
+      "bytes": 9035,
+      "sha256": "dab00dab90509759f33b7aa91c2d783e73edfc0b232f7d40f063e08b09b661d0"
+    },
+    "src/foscar_planning/foscar_planning/measured_corridor.py": {
+      "bytes": 3148,
+      "sha256": "36875f0553a601b1be7d6e419a4b4fa84bc043fef2564cc79ea5282947c35a7b"
+    },
+    "src/foscar_planning/foscar_planning/mission.py": {
+      "bytes": 11819,
+      "sha256": "8a030c9ed5bbbb5d1c57f931f268bb370aacab4150b7e90e55a24c1e36a07cfc"
+    },
+    "src/foscar_planning/foscar_planning/mission_markers.py": {
+      "bytes": 13481,
+      "sha256": "5074c44fda11d9ccc58b980910cd30479acbab14869458ee1ce56bc3db500f4f"
+    },
+    "src/foscar_planning/foscar_planning/observed_boundary.py": {
+      "bytes": 1654,
+      "sha256": "f0f2edc2f952c18fb9938016829a53d0e6821ab23e73082963cd26c6a3408a01"
+    },
+    "src/foscar_planning/foscar_planning/prediction.py": {
+      "bytes": 13510,
+      "sha256": "8c19a7a05b50af777f00c636d240766efa0d51b37b56d9e49544f3e6305f15a6"
+    },
+    "src/foscar_planning/foscar_planning/prediction_markers.py": {
+      "bytes": 22586,
+      "sha256": "cab4c7d005f0ac164cb857f508ba5fb48c6e2fbad40dad3d3681fabea34ef629"
+    },
+    "src/foscar_planning/foscar_planning/race_hud_node.py": {
+      "bytes": 6666,
+      "sha256": "30a542a5225ca6b665a7d5f6b234857dd574a709fe93041d38b904dab453293f"
+    },
+    "src/foscar_planning/foscar_planning/race_records.py": {
+      "bytes": 4996,
+      "sha256": "bd33059715ae882b19c8b06ad2e4210683790725e291fc6d32c5897e0bb5fe8d"
+    },
+    "src/foscar_planning/foscar_planning/rear_response.py": {
+      "bytes": 2072,
+      "sha256": "b2dfbdeee33cef424f94b544aa7ea243ae6194deb9215a8172c0a768ca0ab06c"
+    },
+    "src/foscar_planning/foscar_planning/ring_contact.py": {
+      "bytes": 1679,
+      "sha256": "a3969a431a6c773d9facc796be4ba896264a60f1655fcdaee02779deb5c51884"
+    },
+    "src/foscar_planning/foscar_planning/ring_merge.py": {
+      "bytes": 25101,
+      "sha256": "bf02dc7652a88191776aaab51bfa7f6b9907018fba6aceb6707623b2fa160ba1"
+    },
+    "src/foscar_planning/foscar_planning/roundabout_boxes.py": {
+      "bytes": 21036,
+      "sha256": "29fd4cf086646504bfb4a4cc409572071e4b07e32a1a135a5f41e1f9b201f86b"
+    },
+    "src/foscar_planning/foscar_planning/roundabout_markers.py": {
+      "bytes": 10925,
+      "sha256": "df72cac8e5746eae7086e80ef21aee2c72e59f29cd544b0f54cc36c5a69e1946"
+    },
+    "src/foscar_planning/foscar_planning/roundabout_planner.py": {
+      "bytes": 76053,
+      "sha256": "f7e1860944f190c8d8f9751b118d05d6234806f69fd2590fe7f58631668bc8ac"
+    },
+    "src/foscar_planning/foscar_planning/signal_stop.py": {
+      "bytes": 3113,
+      "sha256": "4569469443c18f591ec602e4c0ceab006ac01ac48666eb6b71fac26bf7589677"
+    },
+    "src/foscar_planning/foscar_planning/state.py": {
+      "bytes": 9890,
+      "sha256": "e2189c5311786c657866915a57f1341042b33ac823b4cc6ec087e0615bfc70e6"
+    },
+    "src/foscar_planning/foscar_planning/states/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_planning/foscar_planning/states/avoid.py": {
+      "bytes": 74436,
+      "sha256": "4de47a3353be8842f25bebedc3b931a7c37256c46a9c9904d22a2569c49548e5"
+    },
+    "src/foscar_planning/foscar_planning/states/cruise.py": {
+      "bytes": 1821,
+      "sha256": "340f5b2437cd4874148586e90466968b0ffb50e8cc00fad443bec2d34c7f3b17"
+    },
+    "src/foscar_planning/foscar_planning/states/tunnel.py": {
+      "bytes": 1069,
+      "sha256": "3e7168122ec7cc735aa53f99fd9eb96108411346473c8014e0ffd1772d78e089"
+    },
+    "src/foscar_planning/foscar_planning/states/yield_.py": {
+      "bytes": 28710,
+      "sha256": "a895acf1a400b6a88d9d80da2f41ccef53915a39af8e17e2758b26c6c25992a8"
+    },
+    "src/foscar_planning/foscar_planning/traffic_position.py": {
+      "bytes": 758,
+      "sha256": "ebf4cd377ad64036e47c9b61b523ad9e74eb8559290c32c67c88a0eb2fd2c021"
+    },
+    "src/foscar_planning/foscar_planning/tunnel_corridor.py": {
+      "bytes": 8131,
+      "sha256": "61bafb493bb3dad9d7082c9b373cf6289adc295261ea670897228d9d1f1af495"
+    },
+    "src/foscar_planning/foscar_planning/tunnel_simple.py": {
+      "bytes": 16503,
+      "sha256": "99c5e2d6fdbb17c41f42f41a6b0c1cc916c4652e018d4707b0f142af61f03944"
+    },
+    "src/foscar_planning/foscar_planning/tunnel_slalom.py": {
+      "bytes": 27423,
+      "sha256": "4eaaa2431e89b8263be78104a3620cf9b49c47c62f0874b9c98f2d2a1a35d841"
+    },
+    "src/foscar_planning/HIGHWAY.md": {
+      "bytes": 11619,
+      "sha256": "695b00d7d4e729cfc54c34e78fb4428b2b4d9673164acb73c30b189bf3815d82"
+    },
+    "src/foscar_planning/images/highway-map.svg": {
+      "bytes": 39302,
+      "sha256": "ab8a499b4981a3bf8ba548f186d276a67cabd519269ac72e1ed6803196b1d628"
+    },
+    "src/foscar_planning/images/roundabout_prediction_markers.png": {
+      "bytes": 544381,
+      "sha256": "a450ab5cb13a9e0c9ae06e02eaa6dd7ab9327599cc672539b164d6f94d367fc1"
+    },
+    "src/foscar_planning/package.xml": {
+      "bytes": 756,
+      "sha256": "7d50507c23169ba89c4109395f070a95d10cd78bf0c1cbf2da341089e04dd7c8"
+    },
+    "src/foscar_planning/README.md": {
+      "bytes": 22651,
+      "sha256": "20505066e91edb516cec07ca489d83dd303c16d31f7d865772f237a704ddf226"
+    },
+    "src/foscar_planning/resource/foscar_planning": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "src/foscar_planning/ROUNDABOUT.md": {
+      "bytes": 6663,
+      "sha256": "a185489ffa16406fcfab52009cae3d6ae7958fd3b977f89b628629f28c64b52a"
+    },
+    "src/foscar_planning/rviz/bev.rviz": {
+      "bytes": 4945,
+      "sha256": "00b9086e5d2edab09d8eabd695dd16b7fbb4a7c1d2e8bba2ec38e5d860c72aaa"
+    },
+    "src/foscar_planning/setup.cfg": {
+      "bytes": 103,
+      "sha256": "a8749f77a58d3fa16d8aef3c76c9f6e28ef3d6ef325bd56f5b0c0d1e46827fb7"
+    },
+    "src/foscar_planning/setup.py": {
+      "bytes": 778,
+      "sha256": "8f2782ad2560d6f0f1b0647e7bc880cb0305da55bb865bba0b239b5237992d70"
+    },
+    "src/foscar_planning/test/data/entry_acceleration_060_20260925.json": {
+      "bytes": 2917,
+      "sha256": "97da21eeae9179422f31f56306ac8208cef62591fbfef2b5063f1bb81f06a660"
+    },
+    "src/foscar_planning/test/data/entry_acceleration_20260925.json": {
+      "bytes": 11891,
+      "sha256": "c3b998c453ae189a68cf7b2d8cdf61642c88dbfd4626cab93a2bd68120ab1d3f"
+    },
+    "src/foscar_planning/test/data/highway_replay.jsonl": {
+      "bytes": 1591,
+      "sha256": "585c72168052c0df503ab14161ba0eaa956eb21ea9ca09da58f41568b63b51c3"
+    },
+    "src/foscar_planning/test/highway_fixtures.py": {
+      "bytes": 591,
+      "sha256": "8bb657266fafd74e013a9f7598c70e77e5d14d0b9031a5b6d2ac49a98bb7b453"
+    },
+    "src/foscar_planning/test/integration_competition.py": {
+      "bytes": 8476,
+      "sha256": "40d0ecf8db516e416b9178a4aa68fc382c905618ed2f9a83ec464ea0d35450ea"
+    },
+    "src/foscar_planning/test/test_avoid_choice.py": {
+      "bytes": 2150,
+      "sha256": "33020eebf793728564c6e7b24f45f3a51b543b72414d8a78611d1bb51d7adf34"
+    },
+    "src/foscar_planning/test/test_avoid_hold_ramp.py": {
+      "bytes": 916,
+      "sha256": "8c623a69d78b53a520adec7674a260632606bdfe7fd0e5e57184b4c311b0c2b5"
+    },
+    "src/foscar_planning/test/test_avoid_signal_hold.py": {
+      "bytes": 4805,
+      "sha256": "048ba49a5363e9457a60c3151a84b8025baf6f506f4e4a1920d70fee7c20de50"
+    },
+    "src/foscar_planning/test/test_bev_avoidance.py": {
+      "bytes": 11957,
+      "sha256": "40379a5be2b0e1e0fe4cf55e18f7673b87b544e5d114ee7b81e8054099136158"
+    },
+    "src/foscar_planning/test/test_bev_motion.py": {
+      "bytes": 6571,
+      "sha256": "881dad28a33c9dbba6b9716acace4b005b9113bf92dbc27513f7ecdf336e08e9"
+    },
+    "src/foscar_planning/test/test_bev_occupancy.py": {
+      "bytes": 5890,
+      "sha256": "af0cea58f4c5e48142db4b549e47ad5606b2ae1bdb6ae30a0aa7c7cca81d7369"
+    },
+    "src/foscar_planning/test/test_boundary_motion.py": {
+      "bytes": 1684,
+      "sha256": "bb2d42580c8afdd7cf5dce10f4d9b17ead5aadf1c33385edd92abc6cc3a151df"
+    },
+    "src/foscar_planning/test/test_checkpoint_markers.py": {
+      "bytes": 2831,
+      "sha256": "4de20bd954ea03397e8d6549a7476f4f456d34cdb1b6b105ec3152f3127acc03"
+    },
+    "src/foscar_planning/test/test_circular_gap.py": {
+      "bytes": 25736,
+      "sha256": "19d66bf048acc6c1e508bdc9525f0479757ea458885355928f5e73bcff5cc01d"
+    },
+    "src/foscar_planning/test/test_current_scan.py": {
+      "bytes": 2195,
+      "sha256": "9dfdfd6268e57975962c38613e2dab0e174a09b2763e93327127099c0de93c39"
+    },
+    "src/foscar_planning/test/test_dynamic_unknown_planning.py": {
+      "bytes": 2311,
+      "sha256": "86b35586ff112c3cdff84721dd78639a6ee7394f7e7cadd17744e40d063ae748"
+    },
+    "src/foscar_planning/test/test_empty_entry.py": {
+      "bytes": 7333,
+      "sha256": "f27a85acd4f2c7b1f1745cbca55e971ec030634e7a176097711cefbc494888f2"
+    },
+    "src/foscar_planning/test/test_entry_gate.py": {
+      "bytes": 14199,
+      "sha256": "6be712f2c671351bdbb1794d14391185690242fbaff74ed972845b694e854adc"
+    },
+    "src/foscar_planning/test/test_event_footprint.py": {
+      "bytes": 3155,
+      "sha256": "4c8387259580478dd0dee883f91275ae229113e126e6c4a8fe1859baac6d9716"
+    },
+    "src/foscar_planning/test/test_event_identity.py": {
+      "bytes": 1601,
+      "sha256": "44f5fb4b5ea729fc628116b4afa2ccc5f57047f320bccdd6eebaaa1c8b370377"
+    },
+    "src/foscar_planning/test/test_following_departure.py": {
+      "bytes": 9049,
+      "sha256": "31e5fc6a96d60cf9225cb40872cf774b48efca885e1a216162015e7d6aa37d41"
+    },
+    "src/foscar_planning/test/test_following_policy.py": {
+      "bytes": 444,
+      "sha256": "b6d8a865376994f834008bb1f933bfd7245fa884146e0f0f17ab8600023c840a"
+    },
+    "src/foscar_planning/test/test_gap_boundaries.py": {
+      "bytes": 14356,
+      "sha256": "8bb118553af37b98ab16a7dcbe0b1e71a6d8032ece6ca20cb4728f9c9dab4638"
+    },
+    "src/foscar_planning/test/test_highway_boxes.py": {
+      "bytes": 35422,
+      "sha256": "1d553909b0f4fa2ffd2b93baf7b7350e8c361ca4ac49c0a390845b4cdb124130"
+    },
+    "src/foscar_planning/test/test_highway_config.py": {
+      "bytes": 2250,
+      "sha256": "19360dc11a46eec0878ededc28e3088afb2b0667c52268999fd628e13171be19"
+    },
+    "src/foscar_planning/test/test_highway_curve_speed.py": {
+      "bytes": 5442,
+      "sha256": "6fbef6da5c08d2f4b69280fbf0b9d32a20452f752bed952d6bef094abe2a7c9d"
+    },
+    "src/foscar_planning/test/test_highway_lifecycle.py": {
+      "bytes": 4275,
+      "sha256": "5e8b23f2c72b1adf8bb4f56bb96e14d384ac940ee14718ca98f600c1bf2fde2c"
+    },
+    "src/foscar_planning/test/test_highway_maneuver.py": {
+      "bytes": 1089,
+      "sha256": "8ed7a58f2432fb13e8e3f1075bdcf98ededc9a997c8d46a096da682fc270bf46"
+    },
+    "src/foscar_planning/test/test_highway_measurement.py": {
+      "bytes": 849,
+      "sha256": "d72241d7c7df6a0b7a61edf93cfce6552bc49d7bff056ebec9547b11e0f62751"
+    },
+    "src/foscar_planning/test/test_highway_node.py": {
+      "bytes": 4342,
+      "sha256": "6bf417087db2594f19e853246453a65378be802962bb6b722a9b750bf889bea6"
+    },
+    "src/foscar_planning/test/test_highway_observation.py": {
+      "bytes": 5867,
+      "sha256": "dd97baff5affb9f1d18585775d709c4be134d5fdd342071dbd0ab58eb08ea06b"
+    },
+    "src/foscar_planning/test/test_highway_policy.py": {
+      "bytes": 29355,
+      "sha256": "ee7f9effa216342feb5bfdc9dfb901fd74cdfad2452550c43fcc3a5c5924821b"
+    },
+    "src/foscar_planning/test/test_highway_rejoin.py": {
+      "bytes": 2105,
+      "sha256": "c033c0878f3389589655655502d5c6e52a63db14c83e29a55009c2e219f23bb7"
+    },
+    "src/foscar_planning/test/test_highway_replay.py": {
+      "bytes": 1464,
+      "sha256": "7f98de77cd3534807f961b4126aeea5f73c5dc509fa5bd0d5e533727800a9b78"
+    },
+    "src/foscar_planning/test/test_highway_route.py": {
+      "bytes": 2754,
+      "sha256": "887c310c956ec4c81a85bb325f7fdb46227bb8df625c4537991d0a83ca35b6a2"
+    },
+    "src/foscar_planning/test/test_highway_runtime.py": {
+      "bytes": 2688,
+      "sha256": "243c00e6f671214c2522bcf37a2a5c42f539be43f7b97ecc47995b38de48b081"
+    },
+    "src/foscar_planning/test/test_highway_scene.py": {
+      "bytes": 1736,
+      "sha256": "b396fe61af35edd09735275efa7d2045d66b950337d2451cd492e7c99431422b"
+    },
+    "src/foscar_planning/test/test_highway_visualization.py": {
+      "bytes": 3751,
+      "sha256": "3f92035ce75381a48681d126d7bf37d2704f6b465edeb868897aeede740634e8"
+    },
+    "src/foscar_planning/test/test_lane_prediction.py": {
+      "bytes": 3174,
+      "sha256": "fd562eb5b6bcab570ad9d27f3c16a845853a60e4f6a05ee4595c97a3f65118ac"
+    },
+    "src/foscar_planning/test/test_local_following.py": {
+      "bytes": 7879,
+      "sha256": "721a8662642353c52015793c4964635d9ba162309fc3f98361ad7cdf5ae1bbb8"
+    },
+    "src/foscar_planning/test/test_map_seams.py": {
+      "bytes": 3905,
+      "sha256": "6e3ccb413211388644957c9a8351d7d177fefdc25b7fc8ea617455ac3e19b62c"
+    },
+    "src/foscar_planning/test/test_measured_corridor.py": {
+      "bytes": 1392,
+      "sha256": "a396add887c0b8371f2ab2222f84b007342885517a17a7a6d62e6fffd677f9e6"
+    },
+    "src/foscar_planning/test/test_mission.py": {
+      "bytes": 8756,
+      "sha256": "90f8a8d041a16f15de7441c5cb2562a34114c3037fa646a1d517b91aaec3e135"
+    },
+    "src/foscar_planning/test/test_mission_node.py": {
+      "bytes": 12677,
+      "sha256": "c1655ef6c420be405d7cefec753e62326d6bb7e9f7439d0bec7b447681541ce0"
+    },
+    "src/foscar_planning/test/test_mission_visualization.py": {
+      "bytes": 5553,
+      "sha256": "f54bfeed349f894245575144886435859fe036c29cfc9eb3530cba54efd4afe8"
+    },
+    "src/foscar_planning/test/test_obstacle_full_path.py": {
+      "bytes": 4429,
+      "sha256": "3123800bc69de1feb1c2a1014dca874c9c8c53a9569638964c0d6a694d48b27a"
+    },
+    "src/foscar_planning/test/test_planning.py": {
+      "bytes": 35343,
+      "sha256": "4e64c0160c0f82bc5ff173acf089b5d682d0b124471e03c9b7152851ee16a101"
+    },
+    "src/foscar_planning/test/test_polygon_sweep.py": {
+      "bytes": 6219,
+      "sha256": "79973c6df6f2d710ef642b51225e0ee35ead9b22142d9c7ee4a247cdb1bcc31e"
+    },
+    "src/foscar_planning/test/test_prediction.py": {
+      "bytes": 3756,
+      "sha256": "a5f9e1f6667bfd643b840176cbac6244fd082295118a47593fa3f9a200a9a87a"
+    },
+    "src/foscar_planning/test/test_prediction_visualization.py": {
+      "bytes": 7492,
+      "sha256": "b5041018ba0abe9697d421d79b9c57c32f53c85393de351fbbe3237cb0d04f86"
+    },
+    "src/foscar_planning/test/test_rear_response.py": {
+      "bytes": 2252,
+      "sha256": "7ff9dac8b1e25bbb6f2da28146c61d756f658d0b968130414d1100bda3c2b51f"
+    },
+    "src/foscar_planning/test/test_ring_contact.py": {
+      "bytes": 1764,
+      "sha256": "599239fce80b21e6d81ca832004fce2be20092635fa8e4efa5fbbc3e59bccdbc"
+    },
+    "src/foscar_planning/test/test_ring_merge.py": {
+      "bytes": 5425,
+      "sha256": "f27e57f9961b624abe6f01f207dcfad5988a3fae437e501cd04d7d3b401d9827"
+    },
+    "src/foscar_planning/test/test_roundabout_planner.py": {
+      "bytes": 7729,
+      "sha256": "26ec7b006c1f2209c077512b9ea183833e2f5a529c07e14e907cedea6d26e66c"
+    },
+    "src/foscar_planning/test/test_signal_stop.py": {
+      "bytes": 2912,
+      "sha256": "5beaa9df76a30792d6068afef9eec5f968c23af0201289d3257fd6e111de4091"
+    },
+    "src/foscar_planning/test/test_static_polygon_memory.py": {
+      "bytes": 2329,
+      "sha256": "65cfbc301e3007ce0fcf294a821c9312c79d55d9a311db46787cfcc3cbc83c89"
+    },
+    "src/foscar_planning/test/test_track_continuity.py": {
+      "bytes": 3481,
+      "sha256": "8c1340a3ae5983dbb09f6e3878667df3f9469a450c1ae6ec81764e477582f506"
+    },
+    "src/foscar_planning/test/test_tunnel_avoidance.py": {
+      "bytes": 10795,
+      "sha256": "362014ef4c0065775a8339e8096b1895f04546738e7b00b3e9992ea1bde06bbd"
+    },
+    "src/foscar_planning/test/test_tunnel_corridor.py": {
+      "bytes": 10542,
+      "sha256": "e3204dc6f672b4abaf1fc41571532218d0924bc47cadfc3f7afbc154ace6ae5f"
+    },
+    "src/foscar_planning/test/test_tunnel_dynamic.py": {
+      "bytes": 7302,
+      "sha256": "336d9b640c44d48e9e6b01aae784108f546ca7bad73f1a94bff179ecccf65587"
+    },
+    "src/foscar_planning/test/test_tunnel_simple.py": {
+      "bytes": 2168,
+      "sha256": "35bc78a997abdb022b4f544c3ac411298e24a2bf6f6d728adf6465a386ec8250"
+    },
+    "src/foscar_planning/test/test_tunnel_slalom.py": {
+      "bytes": 7508,
+      "sha256": "ba4ab66b4601ad86d7e2cd36a0f150b9de8a66f4f131a19d88d185c972c1190f"
+    },
+    "src/foscar_planning/test/test_yield_ownership.py": {
+      "bytes": 7708,
+      "sha256": "12cdc206cfd20217d7d0c314c5e637b9bf0a4d4c88313cb131864ef9b1880286"
+    },
+    "status.sh": {
+      "bytes": 981,
+      "sha256": "08972d2e47b90f681398275c41f57c4fdc7a2a727d80041c483790f37bdf6ea4"
+    },
+    "tools/analyze_pedestrian.py": {
+      "bytes": 5535,
+      "sha256": "f32bc9b7c25564d6484c1f8d735fca76bd3e1244dbf89ddad8cc9f662f945fc8"
+    },
+    "tools/audit_lidar_intensity.py": {
+      "bytes": 4613,
+      "sha256": "acf0834ce304af744078671517dba931aac937fdc5ef302982a7953b892d2235"
+    },
+    "tools/audit_lidar_road_gate.py": {
+      "bytes": 2856,
+      "sha256": "85d881a1f422167cab14fabc0ecc5145ba3a79fabebce9794cfc176093d8e072"
+    },
+    "tools/check_sim.py": {
+      "bytes": 2524,
+      "sha256": "4eb6c8b82dde909b883eb99c5b43df2ea8445ce1f49859d697e9f08098ea2da8"
+    },
+    "tools/collect_label.sh": {
+      "bytes": 826,
+      "sha256": "f36eba19016843fc7c69eca2611a1bca30486e100228be9f922b3b084d2d67dd"
+    },
+    "tools/evaluate_vehicle_prediction.py": {
+      "bytes": 5648,
+      "sha256": "951fe323edaa434a138588da2f546d6425f907f0da36f55e46d4cda9e182de0a"
+    },
+    "tools/fake_event.py": {
+      "bytes": 4511,
+      "sha256": "72c25dce95124c05e476a9a79cb61c16516f748cf5694f293f6ec8449ea32555"
+    },
+    "tools/fake_target.py": {
+      "bytes": 2301,
+      "sha256": "605f899ccb8d408985cda1476dd7d2689d3874d4a18b9656434e4cb5db885ce7"
+    },
+    "tools/inspect_highway_route.py": {
+      "bytes": 2045,
+      "sha256": "8b4c869226b2705fbcb743c602d24735ea659c5c2d56a30d9bc2d805669acfcf"
+    },
+    "tools/lidar_lane/lane_intensity_bag.py": {
+      "bytes": 3591,
+      "sha256": "1d02e98d75989d20cc745bade5ad25da96c13b7be64f345b4e369075bd80408c"
+    },
+    "tools/lidar_lane/lane_intensity_gui.py": {
+      "bytes": 15114,
+      "sha256": "6886a42c9c9cf2ee5d2e9f2a2a77a20f88ed25b61906704a7100fdbc2004afd8"
+    },
+    "tools/lidar_lane/lane_intensity_test.py": {
+      "bytes": 16681,
+      "sha256": "46e78bf12e12edd4cbd58d1d7aa708f7f189f721ef65e84dc7a17f1a0feacf16"
+    },
+    "tools/lidar_lane/morai_cam_udp.py": {
+      "bytes": 4080,
+      "sha256": "6bfd25d9f381aff217efb440cacf6e6e14ba3d3af8c8c0e56c0ee4560d6e5fc0"
+    },
+    "tools/lidar_lane/README.md": {
+      "bytes": 8273,
+      "sha256": "4f5be54d62c8259492126e49fbee95b23ae4ef5e0e365244bf9fa86e529b0633"
+    },
+    "tools/lidar_lane/tunnel_lane_vs_dr.py": {
+      "bytes": 4173,
+      "sha256": "850fd223dab5fd74616cf4368b7849e5a17502f5102586ca75d4055b2087d4ba"
+    },
+    "tools/lidar_lane/vlp16_udp.py": {
+      "bytes": 5308,
+      "sha256": "e738b57ef24c995061b3b43c2cb3de47c0689aaaa3127c38f0754eb05d6a8c81"
+    },
+    "tools/measure_highway.py": {
+      "bytes": 2822,
+      "sha256": "df5b7b2fba123abff15528997c63a993979c710f71cfe47c86f8e971825d81b1"
+    },
+    "tools/path_editor.py": {
+      "bytes": 18513,
+      "sha256": "2ffdf4d5bfb5483a67d2674d95d11297eedc54f0d158af42f8207f020025146f"
+    },
+    "tools/record_highway.py": {
+      "bytes": 1821,
+      "sha256": "17c700b7069dcacb03aacffdb5745194e447ae562810e9b12286ecbd56ee49d2"
+    },
+    "tools/replay_highway.py": {
+      "bytes": 1734,
+      "sha256": "8eea08236f1b51a0830cf42b038ec37b82d56445f21912c2dc16d7975cb354fe"
+    },
+    "tools/survey_points.sh": {
+      "bytes": 329,
+      "sha256": "bfeb7085bc8f966fdeb88e32a900c9194490cf498f6dc16e589707da2adecd13"
+    },
+    "tools/survey_view.py": {
+      "bytes": 1836,
+      "sha256": "1d4a5e3df5fd6f222fa3e032a47318da9b8fe267bc0982790bd7514fbbbcab1d"
+    },
+    "tools/tunnel_sweep.py": {
+      "bytes": 16658,
+      "sha256": "1c358edf104ac603fbee485a45d674415771f7659a464434225f0508245858cf"
+    },
+    "tools/위치기록_사용법.md": {
+      "bytes": 4606,
+      "sha256": "1bf0fc6b134b5b346cda5de56202b91556e9d38f63d9f06a8da0a8cf734915c7"
+    },
+    "YOLO_다른PC_인수인계.md": {
+      "bytes": 13403,
+      "sha256": "9554e468a0f744bb4150f9f8492ccc943e94039199c26d8c6f639a2d9648ad50"
+    }
+  }
+}

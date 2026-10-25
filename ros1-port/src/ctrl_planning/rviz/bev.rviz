@@ -1,0 +1,120 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: map
+    Background Color: 24; 24; 28
+  Displays:
+    - Class: rviz/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 5
+      Plane Cell Count: 60
+      Color: 60; 60; 70
+    - Class: rviz/MarkerArray
+      Name: Map (lanes)
+      Enabled: true
+      Topic: /bev/map
+      Queue Size: 1
+    - Class: rviz/Path
+      Name: Route
+      Enabled: true
+      Color: 30; 220; 80
+      Alpha: 0.5
+      Topic: /map/route
+      Queue Size: 1
+    - Class: rviz/Path
+      Name: Tracked Line (route + offset curve)
+      Enabled: true
+      Color: 30; 230; 60
+      Alpha: 0.95
+      Line Style: Billboards
+      Line Width: 0.18
+      Topic: /control/path
+      Queue Size: 1
+    - Class: rviz/MarkerArray
+      Name: Ego + s ticks
+      Enabled: true
+      Namespaces:
+        ticks: false
+      Topic: /bev/ego
+      Queue Size: 1
+    - Class: rviz/PointCloud2
+      Name: LiDAR (intensity)
+      Enabled: true
+      Style: Points
+      Size (Pixels): 2
+      Color Transformer: Intensity
+      Channel Name: intensity
+      Use rainbow: false
+      Autocompute Intensity Bounds: false
+      Min Intensity: 0
+      Max Intensity: 120
+      Min Color: 70; 70; 80
+      Max Color: 255; 255; 255
+      Decay Time: 0
+      Topic: /sensors/lidar/points
+      Queue Size: 5
+    - Class: rviz/MarkerArray
+      Name: LiDAR objects (orange obstacle, red cylinder person, purple caution, grey structure)
+      Enabled: true
+      Namespaces:
+        obstacle: true
+        obstacle_label: false
+      Topic: /perception/obstacle_markers
+      Queue Size: 1
+    - Class: rviz/MarkerArray
+      Name: Mission checkpoints + active control
+      Enabled: true
+      Namespaces:
+        mission_status: false
+        mission_checkpoint_labels: false
+        required_checkpoint_labels: false
+        bev_stop_reason: false
+        avoid_choice_text: false
+        text: false
+      Topic: /behavior/markers
+      Queue Size: 1
+    - Class: rviz/MarkerArray
+      Name: Roundabout - active entry or following evidence
+      Enabled: true
+      Topic: /behavior/prediction_markers
+      Queue Size: 1
+    - Class: rviz/MarkerArray
+      Name: Roundabout - ring boxes, runs, decision
+      Enabled: true
+      Topic: /behavior/roundabout_markers
+      Queue Size: 1
+    - Class: rviz/MarkerArray
+      Name: Highway - current hulls and visibility
+      Enabled: true
+      Topic: /behavior/highway_markers
+      Queue Size: 1
+    - Class: rviz/MarkerArray
+      Name: Race records + signal status
+      Enabled: false
+      Topic: /hud/markers
+      Queue Size: 1
+    - Class: rviz/PointStamped
+      Name: Pursuit Target
+      Enabled: true
+      Color: 255; 150; 0
+      Radius: 0.25
+      Topic: /control/target
+      Queue Size: 1
+    - Class: rviz/TF
+      Name: TF
+      Enabled: false
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Target Frame: base_link
+      Scale: 14
+      Angle: -1.5708
+      X: 0
+      Y: 0
+Window Geometry:
+  Width: 1400
+  Height: 900

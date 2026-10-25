@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="config" default="$(find ctrl_bringup)/config/low_speed.yaml" />
+  <arg name="drive" default="false" />
+  <arg name="speed_kmh" default="5.0" />
+  <arg name="distance_m" default="20.0" />
+  <arg name="continuous" default="false" />
+  <arg name="route" default="auto" />
+  <arg name="rviz" default="false" />
+  <node pkg="ctrl_control" type="ctrl_sensor_bridge" name="sensor_bridge" output="screen" required="true">
+    <param name="drive" value="$(arg drive)" type="bool" />
+    <param name="_ros2_parameter_files" value="$(arg config)" type="str" />
+  </node>
+  <node pkg="ctrl_control" type="ctrl_localization" name="localization" output="screen" required="true">
+    <param name="path_file" value="$(find ctrl_bringup)/routes/global_path.txt" type="str" />
+    <param name="spawn_file" value="$(find ctrl_bringup)/routes/spawn_path.txt" type="str" />
+    <param name="_ros2_parameter_files" value="$(arg config)" type="str" />
+  </node>
+  <node pkg="ctrl_control" type="ctrl_path_follower" name="path_follower" output="screen" required="true">
+    <param name="path_file" value="$(find ctrl_bringup)/routes/global_path.txt" type="str" />
+    <param name="spawn_file" value="$(find ctrl_bringup)/routes/spawn_path.txt" type="str" />
+    <param name="route" value="$(eval {'auto':'auto','spawn':'spawn','global':'global'}[arg('route')])" type="str" />
+    <param name="speed_kmh" value="$(arg speed_kmh)" type="double" />
+    <param name="continuous" value="$(arg continuous)" type="bool" />
+    <param name="test_distance_m" value="$(arg distance_m)" type="double" />
+    <param name="_ros2_parameter_files" value="$(arg config)" type="str" />
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz" output="screen" args="&quot;-d&quot; &quot;$(find ctrl_bringup)/rviz/low_speed.rviz&quot;" if="$(arg rviz)" />
+</launch>

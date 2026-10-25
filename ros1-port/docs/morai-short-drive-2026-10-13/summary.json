@@ -1,0 +1,114 @@
+{
+  "scope": "first short actual MORAI drive; not full-mission or sensor-extrinsic equivalence",
+  "start_time_kst": "2026-10-13T15:50:13.338823+09:00",
+  "image_used": "sha256:cb0e0d2d3937335e463bb4529ff8f195d866dcec2f1d40b743156dd10302c044",
+  "image_after_entrypoint_only_fix": "sha256:bfe22b1606d4a07f0625f20f85f8f9f763be4203be232e33fbc6402f160d6724",
+  "algorithm_mission_tuning_changed": false,
+  "remote_push": false,
+  "drive_true_runs": 1,
+  "control_udp": {
+    "destination": "127.0.0.1:9093",
+    "packets": 214,
+    "valid_55_byte_original_format": true,
+    "header_payload_length": 23,
+    "source_port": 40667,
+    "approx_hz": 49.56170976859173
+  },
+  "observed_initial_vehicle_mode_gear": [
+    2,
+    1
+  ],
+  "auto_d_feedback": {
+    "mode": 2,
+    "gear": 4,
+    "count": 180,
+    "first_request_to_feedback_s": 0.033317521999379096
+  },
+  "control_states_observed": {
+    "WAITING": 1,
+    "CRUISE": 56
+  },
+  "literal_HANDSHAKE_topic_state_observed": false,
+  "motion": {
+    "maximum_speed_mps": 9.23092418246799,
+    "maximum_speed_kmh": 33.231327056884766,
+    "initial_ros_s": 0.8690398676513491,
+    "last_ros_s": 9.378466247687422,
+    "ros_delta_s": 8.509426380036073,
+    "maximum_rounded_path_error_m": 0.08,
+    "post_shutdown_last_gps_global_route_projection_s": 16.590177242336704,
+    "gps_projected_total_progress_m": 15.721137374685355
+  },
+  "stop": {
+    "trigger": "trial_speed_stop_8mps",
+    "SIGINT_at_seconds": 4.801604462999421,
+    "first_full_brake_delay_s": 0.30258839599991916,
+    "last_control_mode_gear": [
+      1,
+      1
+    ],
+    "original_bridge_handoff_confirmed_in_log": true,
+    "original_observer_stop_verdict": false,
+    "separate_receive_only_5_second_confirmation": true,
+    "maximum_abs_speed_in_confirmation_mps": 4.2504547713583125e-06,
+    "confirmation_distinct_timestamps": 153,
+    "confirmed_mode_gear": [
+      1,
+      1
+    ]
+  },
+  "freshness": {
+    "gps": {
+      "maximum_receive_gap_s": 0.2296310440005982,
+      "maximum_header_age_s": 0.0005872249603271484
+    },
+    "imu": {
+      "maximum_receive_gap_s": 0.05801517599957151,
+      "maximum_header_age_s": 0.0005319118499755859
+    },
+    "status": {
+      "maximum_receive_gap_s": 0.04894598899954872,
+      "maximum_header_age_s": 0.000308990478515625
+    },
+    "odom": {
+      "maximum_receive_gap_s": 0.020934015000420914,
+      "maximum_header_age_s": 0.0007829666137695312
+    },
+    "request": {
+      "maximum_receive_gap_s": 0.09093382799983374,
+      "maximum_header_age_s": 0.0005939006805419922
+    }
+  },
+  "raw_parser_errors": {},
+  "first_trial_bag_persisted": false,
+  "first_trial_raw_observations": "ros1-port/docker/artifacts/drive-first-20261013/events.jsonl",
+  "raw_observation_sha256": "57d9c2adc5b7a5fa2992292f6320dc88b3b79eb6ed847a1954e66d00ed659f3b",
+  "stationary_bag_storage_check": {
+    "scope": "stationary logging check only; drive=false",
+    "launch_returncode": 0,
+    "bags": [
+      {
+        "path": "/workspace/ros1-port/docker/artifacts/drive-first-20261013/bag-stationary-check/bags/run_20261013_065843\n.bag",
+        "bytes": 300091,
+        "messages": 835,
+        "topics": [
+          "/control/request",
+          "/control/state",
+          "/control/telemetry",
+          "/events",
+          "/perception/footprints",
+          "/perception/obstacle_markers"
+        ]
+      }
+    ],
+    "passed": true
+  },
+  "followup_stationary_check_status_channel": "RX=0 in later drive=false bag check; reason not established; distinct from normal first-drive reception",
+  "limitations": [
+    "No literal HANDSHAKE topic sample; Auto/D packet feedback verified",
+    "Original bag not persisted; first-drive raw JSONL exists",
+    "Camera 5-second delay had not elapsed before early stop",
+    "Sensor coordinate/input differences unchanged",
+    "Full mission and transport equivalence not tested"
+  ]
+}

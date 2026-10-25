@@ -1,0 +1,9 @@
+# Host-only differential tests, not production camera/runtime pins.
+pytest
+numpy
+scipy
+PyYAML
+pyproj
+opencv-python-headless
+scikit-learn
+matplotlib

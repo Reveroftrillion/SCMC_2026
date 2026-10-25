@@ -1,0 +1,36 @@
+[
+  {
+    "run": 0,
+    "result": "PASS",
+    "s_start": 235.8861554651232,
+    "s_end": 400.2,
+    "drive_s": 61.9,
+    "full_stops": [
+      309.7
+    ],
+    "collisions": []
+  },
+  {
+    "run": 1,
+    "result": "PASS",
+    "s_start": 235.85499441945964,
+    "s_end": 400.2,
+    "drive_s": 63.3,
+    "full_stops": [
+      309.7
+    ],
+    "collisions": []
+  },
+  {
+    "run": 2,
+    "result": "PASS",
+    "s_start": 235.8685826120398,
+    "s_end": 400.1,
+    "drive_s": 64.8,
+    "full_stops": [
+      309.5,
+      309.7
+    ],
+    "collisions": []
+  }
+]

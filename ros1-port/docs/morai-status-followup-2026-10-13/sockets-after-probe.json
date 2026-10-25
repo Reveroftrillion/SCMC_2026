@@ -1,0 +1,24 @@
+{
+  "observed_at": "2026-10-13T16:13:05.804729+09:00",
+  "scope": "after receive-only probe completed; no ROS or container remains",
+  "udp_sockets": {
+    "exit_code": 0,
+    "stdout": "State    Recv-Q   Send-Q            Local Address:Port      Peer Address:Port   Process                                                                         \nUNCONN   0        0                       0.0.0.0:53916          0.0.0.0:*                                                                                      \nUNCONN   0        0                   224.0.0.251:5353           0.0.0.0:*       users:((\"chrome\",pid=5095,fd=59))                                              \nUNCONN   0        0                       0.0.0.0:5353           0.0.0.0:*                                                                                      \nUNCONN   0        0                     127.0.0.1:7605           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=105))                                   \nUNCONN   0        0                     127.0.0.1:7607           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=106))                                   \nUNCONN   0        0                     127.0.0.1:9090           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=116))                                   \nUNCONN   0        0                     127.0.0.1:9091           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=95))                                    \nUNCONN   0        0                     127.0.0.1:9093           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=109))                                   \nUNCONN   0        0                     127.0.0.1:9095           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=108))                                   \nUNCONN   0        0                     127.0.0.1:9097           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=107))                                   \nUNCONN   0        0                     127.0.0.1:9100           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=103))                                   \nUNCONN   0        0                     127.0.0.1:9290           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=98))                                    \nUNCONN   0        0                     127.0.0.1:9292           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=114))                                   \nUNCONN   0        0                     127.0.0.1:9294           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=115))                                   \nUNCONN   0        0                     127.0.0.1:10327          0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=59))                                    \nUNCONN   0        0                     127.0.0.1:10508          0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=58))                                    \nUNCONN   0        0                 127.0.0.53%lo:53             0.0.0.0:*                                                                                      \nESTAB    0        0          192.168.0.14%enp12s0:68         192.168.0.1:67                                                                                     \nUNCONN   0        0                       0.0.0.0:50001          0.0.0.0:*                                                                                      \nUNCONN   0        0                     127.0.0.1:1110           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=118))                                   \nUNCONN   0        0                     127.0.0.1:1113           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=119))                                   \nUNCONN   0        0                     127.0.0.1:2369           0.0.0.0:*       users:((\"Simulator.x86_6\",pid=15893,fd=117))                                   \nUNCONN   0        0                          [::]:5353              [::]:*                                                                                      \nUNCONN   0        0                          [::]:43906             [::]:*                                                                                      \n",
+    "stderr": ""
+  },
+  "containers": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "roslaunch": {
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "rosmaster": {
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": ""
+  }
+}

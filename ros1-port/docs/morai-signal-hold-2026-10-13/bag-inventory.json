@@ -1,0 +1,166 @@
+[
+  {
+    "path": "docker/artifacts/bags/run_20261013_073722\n.bag",
+    "bytes": 13769525,
+    "start": 1791877043.1056693,
+    "end": 1791877352.2555377,
+    "topics": {
+      "/control/request": {
+        "type": "foscar_interfaces/ControlCommand",
+        "count": 6184
+      },
+      "/control/state": {
+        "type": "std_msgs/String",
+        "count": 6184
+      },
+      "/control/telemetry": {
+        "type": "std_msgs/String",
+        "count": 6184
+      },
+      "/events": {
+        "type": "foscar_interfaces/Event",
+        "count": 16056
+      },
+      "/perception/footprints": {
+        "type": "std_msgs/String",
+        "count": 2677
+      },
+      "/perception/obstacle_markers": {
+        "type": "visualization_msgs/MarkerArray",
+        "count": 2677
+      }
+    }
+  },
+  {
+    "path": "docker/artifacts/bags/run_20261013_074312\n.bag",
+    "bytes": 5611103,
+    "start": 1791877393.8518808,
+    "end": 1791877519.651908,
+    "topics": {
+      "/control/request": {
+        "type": "foscar_interfaces/ControlCommand",
+        "count": 2517
+      },
+      "/control/state": {
+        "type": "std_msgs/String",
+        "count": 2517
+      },
+      "/control/telemetry": {
+        "type": "std_msgs/String",
+        "count": 2517
+      },
+      "/events": {
+        "type": "foscar_interfaces/Event",
+        "count": 6528
+      },
+      "/perception/footprints": {
+        "type": "std_msgs/String",
+        "count": 1088
+      },
+      "/perception/obstacle_markers": {
+        "type": "visualization_msgs/MarkerArray",
+        "count": 1088
+      }
+    }
+  },
+  {
+    "path": "docker/artifacts/bags/run_20261013_074921\n.bag",
+    "bytes": 78261352,
+    "start": 1791877762.183525,
+    "end": 1791877864.1008394,
+    "topics": {
+      "/behavior/highway_markers": {
+        "type": "visualization_msgs/MarkerArray",
+        "count": 1837
+      },
+      "/behavior/markers": {
+        "type": "visualization_msgs/MarkerArray",
+        "count": 2024
+      },
+      "/behavior/mission": {
+        "type": "std_msgs/String",
+        "count": 2024
+      },
+      "/behavior/prediction": {
+        "type": "std_msgs/String",
+        "count": 440
+      },
+      "/behavior/prediction_markers": {
+        "type": "visualization_msgs/MarkerArray",
+        "count": 440
+      },
+      "/behavior/signal_camera": {
+        "type": "std_msgs/Bool",
+        "count": 2028
+      },
+      "/behavior/signal_stop": {
+        "type": "std_msgs/String",
+        "count": 2028
+      },
+      "/behavior/state": {
+        "type": "std_msgs/String",
+        "count": 2024
+      },
+      "/behavior/target": {
+        "type": "foscar_interfaces/DrivingTarget",
+        "count": 2024
+      },
+      "/control/request": {
+        "type": "foscar_interfaces/ControlCommand",
+        "count": 2038
+      },
+      "/control/state": {
+        "type": "std_msgs/String",
+        "count": 2038
+      },
+      "/control/telemetry": {
+        "type": "std_msgs/String",
+        "count": 2038
+      },
+      "/events": {
+        "type": "foscar_interfaces/Event",
+        "count": 1266
+      },
+      "/localization/mode": {
+        "type": "std_msgs/String",
+        "count": 103
+      },
+      "/localization/odometry": {
+        "type": "nav_msgs/Odometry",
+        "count": 5096
+      },
+      "/localization/s": {
+        "type": "std_msgs/Float64",
+        "count": 5096
+      },
+      "/map/route": {
+        "type": "nav_msgs/Path",
+        "count": 1
+      },
+      "/perception/clearance_queries": {
+        "type": "std_msgs/String",
+        "count": 1432
+      },
+      "/perception/footprints": {
+        "type": "std_msgs/String",
+        "count": 919
+      },
+      "/perception/obstacle_markers": {
+        "type": "visualization_msgs/MarkerArray",
+        "count": 919
+      },
+      "/perception/road_users": {
+        "type": "foscar_interfaces/Event",
+        "count": 35
+      },
+      "/perception/traffic_signal": {
+        "type": "std_msgs/String",
+        "count": 437
+      },
+      "/vehicle/status": {
+        "type": "foscar_interfaces/VehicleStatus",
+        "count": 2383
+      }
+    }
+  }
+]

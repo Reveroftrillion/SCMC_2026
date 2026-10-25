@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="drive" default="true" />
+  <arg name="speed_kmh" default="20.0" />
+  <arg name="continuous" default="true" />
+  <arg name="route" default="auto" />
+  <arg name="rviz" default="false" />
+  <arg name="save_dir" default="$(env HOME)/foscar_logs" />
+  <include file="$(find ctrl_bringup)/launch/ctrl_low_speed.launch">
+    <arg name="drive" value="$(arg drive)" />
+    <arg name="speed_kmh" value="$(arg speed_kmh)" />
+    <arg name="continuous" value="$(arg continuous)" />
+    <arg name="route" value="$(arg route)" />
+    <arg name="rviz" value="$(arg rviz)" />
+  </include>
+  <node pkg="ctrl_camera" type="ctrl_gps_logger" name="gps_logger" output="screen" required="true">
+    <param name="save_dir" value="$(arg save_dir)" type="str" />
+  </node>
+</launch>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <node pkg="gps" type="gps_to_utm.py" name="gps_to_utm" output="screen">
+    </node>
+</launch>

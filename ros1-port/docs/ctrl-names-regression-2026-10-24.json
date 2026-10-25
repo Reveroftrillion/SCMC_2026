@@ -1,0 +1,12 @@
+{
+  "before": {
+    "passed": 975,
+    "failed": 4
+  },
+  "after": {
+    "passed": 975,
+    "failed": 4
+  },
+  "new_statuses": [],
+  "missing_statuses": []
+}

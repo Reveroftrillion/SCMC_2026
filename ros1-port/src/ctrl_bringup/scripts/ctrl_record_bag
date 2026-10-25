@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""Record exactly the original competition topic sets in ROS1's bag format."""
+import argparse
+import os
+from pathlib import Path
+import sys
+
+
+TOPICS = [
+    '/events', '/perception/road_users', '/perception/footprints',
+    '/perception/clearance_queries', '/behavior/target', '/behavior/state',
+    '/behavior/mission', '/behavior/markers', '/behavior/prediction',
+    '/behavior/prediction_markers', '/localization/odometry', '/localization/s',
+    '/localization/mode', '/behavior/highway', '/behavior/highway_markers',
+    '/behavior/signal_stop', '/behavior/signal_camera', '/perception/traffic_signal',
+    '/vehicle/status', '/control/request', '/control/state', '/control/telemetry',
+    '/perception/obstacle_markers', '/map/route',
+]
+POINT_TOPICS = ['/sensors/lidar/points', '/localization/odometry']
+
+
+def main():
+    import rosgraph
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--bag-dir', required=True)
+    parser.add_argument('--points', action='store_true')
+    args = parser.parse_args([arg for arg in sys.argv[1:] if not arg.startswith('__')])
+    name = rosgraph.Master('/ros1_port_bag').getParam('/ros1_port/competition/bag_name')
+    folder = Path(args.bag_dir)
+    folder.mkdir(parents=True, exist_ok=True)
+    output = str(folder / (name + ('_points' if args.points else '') + '.bag'))
+    topics = POINT_TOPICS if args.points else TOPICS
+    os.execvp('rosbag', ['rosbag', 'record', '-O', output] + topics)
+
+
+if __name__ == '__main__':
+    main()

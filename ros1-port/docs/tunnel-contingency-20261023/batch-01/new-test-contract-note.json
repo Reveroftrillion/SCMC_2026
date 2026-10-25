@@ -1,0 +1,7 @@
+{
+  "initial_new_test_assertion": "v_max may never rise vs prior tick",
+  "contradiction": "Existing held_speed intentionally allows +0.3m/s^2; continuous visible input also rises 5.0 to 5.03",
+  "corrected_new_contract": "dropout cap <= continuously visible control at same pose/time",
+  "unchanged_existing_tests": true,
+  "unchanged_production_speed_policy": true
+}

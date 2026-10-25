@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/ros2/common_interfaces",
+  "commit": "2de367120bab435a5874fc69b96b348687509405",
+  "path": "sensor_msgs_py/sensor_msgs_py/point_cloud2.py",
+  "blob_sha1": "a4fc2f734958681c88cdcd761e017a2cd802cf2e",
+  "sha256": "79582d403a689d88468e064dcfc39a4d6748de3459bc0492084a4abb0831e7eb",
+  "bytes": 13684,
+  "retrieved": "2026-10-13",
+  "source_deployment_sensor_msgs_py_version": "unknown; verify on original Ubuntu deployment"
+}

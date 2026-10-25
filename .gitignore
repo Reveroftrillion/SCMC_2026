@@ -30,3 +30,28 @@ models/
 # Keep traffic-light YOLO weight
 !src/camera/models/
 !src/camera/models/1027_40epoch.pt
+
+# CTRL ROS1 development and runtime outputs
+build/
+devel/
+install/
+log/
+logs/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.venv-yolo/
+.camera-venv/
+.camera-deps/
+.vscode/
+.env
+.env.*
+!.env.example
+*.log
+.deps/
+node_modules/
+
+# ROS bag outputs stay local, including recordings outside docker/artifacts.
+*.bag
+*.bag.active

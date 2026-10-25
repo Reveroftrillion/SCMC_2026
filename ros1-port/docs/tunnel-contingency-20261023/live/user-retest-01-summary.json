@@ -1,0 +1,140 @@
+{
+  "scope": "User-operated closed ctrl_start run; CSV/bag analysis and user visual report; no external collision packet audit",
+  "run": "ros1-port/docker/artifacts/ctrl_start_foscar_7_7691998378760118893",
+  "user_report": {
+    "scope": "user-confirmed stopped",
+    "run_dir": "/workspace/ros1-port/docker/artifacts/ctrl_start_foscar_7_7691998378760118893",
+    "manual_park_confirmed": true,
+    "reported_at": "2026-10-23T18:39:10.852270",
+    "user_report": "상자를 피했고 화면상 충돌 없었음; 완료·Ctrl+C 종료·정지·Manual/P 확인",
+    "external_collision_audit": false,
+    "scene_log": "CTRL_tunnel_left_box_registered16.json load complete in Player.log",
+    "source_manifest": "lidar-candidate2-source.json"
+  },
+  "recorded_finish": {
+    "elapsed_s": "282.3501240530022",
+    "state": "FINISH",
+    "reason": "route end reached; brake held",
+    "x": "-102.42768496600911",
+    "y": "-375.67597151361406",
+    "yaw_rad": "1.0735597512961323",
+    "speed_mps": "1.2224025643566467e-06",
+    "s_m": "2234.5517536449115",
+    "cross_track_m": "0.0",
+    "target_speed_mps": "0.0",
+    "accel": "0.0",
+    "brake": "1.0",
+    "steering_rad": "0.0"
+  },
+  "provided_checkpoints": {
+    "1": {
+      "min_distance_m": 0.4724138690959597,
+      "s": 72.5580822809869,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "2": {
+      "min_distance_m": 0.30140607999606106,
+      "s": 184.63292389912567,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "3": {
+      "min_distance_m": 0.400839992994152,
+      "s": 236.2170995100969,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "4": {
+      "min_distance_m": 0.10054605483017072,
+      "s": 345.2215554887576,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "5": {
+      "min_distance_m": 0.21716360398771492,
+      "s": 469.27486301178584,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "6": {
+      "min_distance_m": 0.2545431663813114,
+      "s": 576.5572980419008,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "7": {
+      "min_distance_m": 0.2748268446902639,
+      "s": 628.998347821915,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "8": {
+      "min_distance_m": 0.2661808121682688,
+      "s": 849.1693880643056,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "9": {
+      "min_distance_m": 0.3247996895575888,
+      "s": 920.8113526155937,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "10": {
+      "min_distance_m": 0.1838590011044988,
+      "s": 1108.892878507161,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "12": {
+      "min_distance_m": 0.6178070015831195,
+      "s": 1583.5377208330262,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "13": {
+      "min_distance_m": 0.05536494342943145,
+      "s": 1731.6066666572835,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "14": {
+      "min_distance_m": 0.14448774241662934,
+      "s": 1849.7242796896153,
+      "radius_m": 3.0,
+      "passed": true
+    },
+    "15": {
+      "min_distance_m": 0.06341834457752968,
+      "s": 1986.6124704586744,
+      "radius_m": 3.0,
+      "passed": true
+    }
+  },
+  "all_provided_cp_passed": true,
+  "end_point_min_distance_m": 0.32813851348446205,
+  "final_stop_confirmed_by_user": true,
+  "raw_manual_park_handoff_verified": false,
+  "collision_free_visual_report": true,
+  "collision_packet_zero_verified": false,
+  "artifact_files": {
+    "ros1-port/docker/artifacts/ctrl_start_foscar_7_7691998378760118893/raw.bag": {
+      "bytes": 839407323,
+      "sha256": "430a86a294dcc46c44e58b8d164046f117a50c41c4583dd633e6fd52aac3c458"
+    },
+    "ros1-port/docker/artifacts/ctrl_start_foscar_7_7691998378760118893/bags/run_20261023_093234.bag": {
+      "bytes": 222251161,
+      "sha256": "ed291d6a81d88fbbf5779f599cdbf427f35b7492be0fac099f3eb874654fd9da"
+    },
+    "ros1-port/docker/artifacts/ctrl_start_foscar_7_7691998378760118893/follower/follow_20261023_093235_309804.csv": {
+      "bytes": 1130661,
+      "sha256": "2907ba6ea0f73f2f1329d6f6f48367b03d1473d538b0baf879578d83e9cad999"
+    }
+  },
+  "checkpoint_geometry_sha256": "83f526989390173ec954121eb7f60fcc50feb5d9ea2323d4afe667ea6602329d",
+  "remaining": [
+    "Other static positions/continuous obstacles/pedestrian re-entry not validated by this run",
+    "Independent collision packet and full-body wall/hidden-edge clearance are not verified"
+  ]
+}

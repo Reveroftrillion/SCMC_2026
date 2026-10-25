@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scope": "Offline request lifecycle + conversion + progress + steering",
+  "selection_config": {
+    "request_max_age_s": 0.5,
+    "future_tolerance_s": 0.02,
+    "base_step_m": 0.25,
+    "max_offset_m": 4.0,
+    "max_points": 2000,
+    "max_reference_step_m": 1.0,
+    "max_reference_ids": 4
+  },
+  "dt_s": 0.02,
+  "heartbeat_steps": 5,
+  "tail_s": 2.0,
+  "scenarios": [
+    {"name": "offset_complete_to_global", "mode": "offset", "speed_mps": 2.0, "duration_s": 25.0, "initial_error_m": 0.4, "release_global_s": 540.0, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35},
+    {"name": "reference_hold_and_release", "mode": "reference", "speed_mps": 2.0, "duration_s": 25.0, "initial_error_m": 0.4, "release_global_s": 545.0, "max_error_m": 1.2, "tail_rms_m": 0.35, "final_error_m": 0.35}
+  ]
+}

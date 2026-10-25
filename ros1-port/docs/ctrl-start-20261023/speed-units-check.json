@@ -1,0 +1,28 @@
+{
+  "run-02": {
+    "peak_raw_status_speed_mps": 32.320308685302734,
+    "peak_raw_status_speed_kmh": 116.35311126708984,
+    "peak_time": 1792729216.690168,
+    "gps_window_s": 1.0246100425720215,
+    "gps_displacement_m": 32.38083111740376,
+    "gps_displacement_speed_kmh": 113.77108087876229,
+    "mean_raw_status_speed_kmh_in_gps_window": 114.3674939177757,
+    "limitations": [
+      "GPS header uses receive time; finite-rate measurements, not official speed judging",
+      "Straight-line GPS displacement over about one second, not a full trajectory or braking-distance audit"
+    ]
+  },
+  "run-04": {
+    "peak_raw_status_speed_mps": 23.424487643771702,
+    "peak_raw_status_speed_kmh": 84.32815551757812,
+    "peak_time": 1792731022.0441883,
+    "gps_window_s": 0.9887702465057373,
+    "gps_displacement_m": 23.130691082691513,
+    "gps_displacement_speed_kmh": 84.21621523499826,
+    "mean_raw_status_speed_kmh_in_gps_window": 83.37744462754993,
+    "limitations": [
+      "GPS header uses receive time; finite-rate measurements, not official speed judging",
+      "Straight-line GPS displacement over about one second, not a full trajectory or braking-distance audit"
+    ]
+  }
+}

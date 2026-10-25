@@ -1,0 +1,2 @@
+/comparison/2026foscar-competition: original model README hash mismatch
+/comparison/ros1-port: original model README hash mismatch

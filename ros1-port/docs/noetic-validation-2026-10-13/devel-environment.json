@@ -1,0 +1,61 @@
+{
+  "checks": [
+    {
+      "check": "python",
+      "status": "PASS",
+      "detail": "/usr/bin/python3 (3.10.12)"
+    },
+    {
+      "check": "ros_environment",
+      "status": "PASS",
+      "detail": "ROS1 Noetic tools are on PATH"
+    },
+    {
+      "check": "numpy_pin",
+      "status": "PASS",
+      "detail": "numpy 1.24.4; /usr/local/lib/python3.10/dist-packages/numpy/__init__.py"
+    },
+    {
+      "check": "onnxruntime_pin",
+      "status": "PASS",
+      "detail": "onnxruntime-gpu 1.23.2; /usr/local/lib/python3.10/dist-packages/onnxruntime/__init__.py; compiled providers=['TensorrtExecutionProvider', 'CUDAExecutionProvider', 'CPUExecutionProvider']"
+    },
+    {
+      "check": "native_libraries",
+      "status": "PASS",
+      "detail": "cv2=4.8.1; scipy=1.10.1; sklearn=1.3.2; pyproj=3.6.1; matplotlib=3.7.5"
+    },
+    {
+      "check": "ros_imports",
+      "status": "PASS",
+      "detail": "rospy, generated messages, catkin modules and native tf2 import under /usr/bin/python3"
+    },
+    {
+      "check": "entrypoints",
+      "status": "PASS",
+      "detail": "15 production/optional node modules and catkin executable paths/interpreters; no constructors invoked"
+    },
+    {
+      "check": "resources",
+      "status": "PASS",
+      "detail": "22 installed/source-share resources match the preserved original bytes"
+    },
+    {
+      "check": "messages",
+      "status": "PASS",
+      "detail": "4 generated interface contracts/constants, preserved Marker default and native PointCloud2/ControlCommand/Marker wire roundtrips"
+    },
+    {
+      "check": "catkin_topology",
+      "status": "PASS",
+      "detail": "8 catkin package manifests parse and topologically order"
+    },
+    {
+      "check": "source_model_readme",
+      "status": "KNOWN_SOURCE_ISSUE",
+      "detail": "best.onnx actual SHA256 d3c3939f51cc8cfa19d0eefc815c3bb9eaae6533e795f8ff87f347e9ed048b98; preserved README claims 04ab171d8a46b5576891a23034000fa34cc63bf63336c8edb67b9a3fee551b8b"
+    }
+  ],
+  "driving_started": false,
+  "ros_nodes_initialized": false
+}

@@ -1,0 +1,20 @@
+{
+  "exit_code": 1,
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "elapsed_s": 350.9302716320017,
+  "tests": 972,
+  "passed": 971,
+  "failed": [
+    {
+      "name": {
+        "classname": "verification..work.tunnel-lidar-suite-20261023-01.tree.src.foscar_lidar.test.test_tunnel_intensity.TunnelIntensityTest",
+        "name": "test_elevated_asphalt_reference_removes_paint_but_keeps_low_box",
+        "time": "0.191"
+      },
+      "detail": "self = <test_tunnel_intensity.TunnelIntensityTest testMethod=test_elevated_asphalt_reference_removes_paint_but_keeps_low_box>\n\n    def test_elevated_asphalt_reference_removes_paint_but_keeps_low_box(self):\n        x, y = np.meshgrid(np.linspace(3.1, 27.9, 80), np.linspace(-4.9, 4.9, 25))\n        floor = np.c_[x.ravel(), y.ravel(), np.full(x.size, .53), np.full(x.size, 10.)]\n        x, y = np.meshgrid(np.linspace(10., 10.2, 8), np.linspace(-1.5, -1.3, 8))\n        paint = np.c_[x.ravel(), y.ravel(), np.full(x.size, .53), np.full(x.size, 54.)]\n        x, y = np.meshgrid(np.linspace(15., 15.7, 12), np.linspace(-.4, .4, 12))\n        box = np.c_[x.ravel(), y.ravel(), np.full(x.size, 1.23), np.full(x.size, 127.)]\n        raw = np.vstack((floor, paint, box)).astype(np.float32)\n        raw[:, :3] -= [2., 0., 2.11]\n        fields = [PointField(name=k, offset=i*4, datatype=PointField.FLOAT32, count=1)\n                  for i, k in enumerate(('x', 'y', 'z', 'intensity'))]\n        msg = pc2.create_cloud(Header(frame_id='lidar'), fields, raw)\n        self.mission('TUNNEL')\n        dets = self.node.detect(msg, 1.)\n        self.assertTrue(any(abs(d['x']-15.35) < .1 and abs(d['z_max']-.7) < .01 for d in dets))\n        self.assertFalse(any(abs(d['x']-10.1) < .2 and abs(d['y']+1.4) < .2 for d in dets))\n        # Source cloud bytes are preserved; other mission policies and stale\n        # tunnel ownership must retain their existing fixed-height behavior.\n        np.testing.assert_array_equal(pc2.read_points_numpy(msg), raw)\n        for mission in ('CRUISE', 'HIGHWAY', 'ROUNDABOUT'):\n            self.mission(mission)\n            self.node.detect(msg, 1.)\n>           self.assertGreater(float(np.median(self.node.raw_clearance_points[:, 2])), .5)\nE           AssertionError: 0.0 not greater than 0.5\n\nverification/.work/tunnel-lidar-suite-20261023-01/tree/src/foscar_lidar/test/test_tunnel_intensity.py:75: AssertionError"
+    }
+  ],
+  "skipped": 0,
+  "source_changes": [],
+  "scope": "Isolated copy of production source; explicit ROS calculation doubles, no transport or driving"
+}

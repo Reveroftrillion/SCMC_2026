@@ -1,0 +1,404 @@
+{
+  "scope": "Same 64 raw frames, preceding pose/speed, offline detection/tracking with ROS doubles",
+  "frames": 64,
+  "input_manifest_sha256": "ab41ad2da6933f720120a132b5e676618266a0077b1e1ac0c5c6123324c5212b",
+  "before": {
+    "observed_frames": 3,
+    "published_frames": 0,
+    "source_sha256": "eaf92ef29af4c7b90fe6d72f2245b0585f72474ce3c112c48bca7b7f4fdada25"
+  },
+  "paint_only": {
+    "observed_frames": 4,
+    "published_frames": 0,
+    "source_sha256": "de9a8299456150060341e3e2bdec7c7fc9e37abfe4522c05f281fb448577435e"
+  },
+  "candidate": {
+    "observed_frames": 4,
+    "published_frames": 4,
+    "source_sha256": "c27fa25ccd2d9e98f5e997ae1c7c32e2dee506cdc0cff2d7db7a032ba8634a7f",
+    "first_published": {
+      "s": 1881.898263638458,
+      "stamp": 1792745546.0504322,
+      "record_time": 1792745546.0523608,
+      "plane": [
+        0.004512012577278757,
+        -0.012337295556415717,
+        0.46200262281549626
+      ],
+      "pitch_deg": -0.007719356626464619,
+      "elevated_near_actor": 30,
+      "elevated_paint_removed": 0,
+      "corrected_elevated_near_actor": 30,
+      "observed": [
+        {
+          "xy": [
+            -2.85155279751016,
+            -507.2104573902262
+          ],
+          "top": 0.4216502904891968,
+          "n": 30
+        }
+      ],
+      "published": [
+        {
+          "id": "lidar:df7cf5a16d4b4de88683d95c5ffbee55:54",
+          "xy": [
+            [
+              -3.3692808966982293,
+              -506.24576367180026
+            ],
+            [
+              -2.3862451233416833,
+              -508.2166363385847
+            ],
+            [
+              -2.4134449053786224,
+              -508.05234086387924
+            ],
+            [
+              -2.4315388215740654,
+              -507.973540731634
+            ],
+            [
+              -2.5394739386035527,
+              -507.7726108722449
+            ],
+            [
+              -2.6118862473129427,
+              -507.63920150172055
+            ]
+          ],
+          "center": [
+            -2.85155279751016,
+            -507.21045739022617
+          ],
+          "vx": 0.0,
+          "vy": 0.0,
+          "kind": "OBSTACLE",
+          "on_road": true,
+          "height": 0.4216502904891968,
+          "caution": false
+        }
+      ],
+      "all_published": [
+        {
+          "id": "lidar:df7cf5a16d4b4de88683d95c5ffbee55:54",
+          "xy": [
+            [
+              -3.3692808966982293,
+              -506.24576367180026
+            ],
+            [
+              -2.3862451233416833,
+              -508.2166363385847
+            ],
+            [
+              -2.4134449053786224,
+              -508.05234086387924
+            ],
+            [
+              -2.4315388215740654,
+              -507.973540731634
+            ],
+            [
+              -2.5394739386035527,
+              -507.7726108722449
+            ],
+            [
+              -2.6118862473129427,
+              -507.63920150172055
+            ]
+          ],
+          "center": [
+            -2.85155279751016,
+            -507.21045739022617
+          ],
+          "vx": 0.0,
+          "vy": 0.0,
+          "kind": "OBSTACLE",
+          "on_road": true,
+          "height": 0.4216502904891968,
+          "caution": false
+        }
+      ],
+      "tracks": [
+        {
+          "id": 54,
+          "hits": 1,
+          "misses": 0,
+          "kind": "OBSTACLE",
+          "structure": false,
+          "history": [
+            [
+              1792745546.0504322,
+              -2.85155279751016,
+              -507.21045739022617
+            ]
+          ],
+          "hold": false,
+          "held_near": false,
+          "on_road": true
+        }
+      ]
+    }
+  },
+  "pre_actor_plan_comparison": {
+    "before_actor_compared_frames": 51,
+    "before_actor_same_fields": [
+      "v_max",
+      "lat_offset",
+      "entry_s",
+      "entry_length_m",
+      "chain"
+    ],
+    "before_actor_state_stop_changes": [
+      {
+        "s": 1816.6117939068743,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1855.6117939068743,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      },
+      {
+        "s": 1818.081409536736,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1857.081409536736,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      },
+      {
+        "s": 1827.9343786143338,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1866.9343786143338,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      },
+      {
+        "s": 1832.6379890812398,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1871.3879890812398,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      },
+      {
+        "s": 1834.4424280077164,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1873.1924280077164,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      },
+      {
+        "s": 1836.2872364450698,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1875.0372364450698,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      },
+      {
+        "s": 1838.1955280498396,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1876.9455280498396,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      },
+      {
+        "s": 1839.6730286764953,
+        "before": {
+          "state": "TUNNEL",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": null,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        },
+        "after": {
+          "state": "AVOID",
+          "reference": null,
+          "reference_release": false,
+          "v_max": 13.88888888888889,
+          "stop_s": 1878.4230286764953,
+          "lat_offset": 0.0,
+          "return_s": null,
+          "return_length_m": 0.0,
+          "entry_s": null,
+          "entry_length_m": 0.0,
+          "chain": []
+        }
+      }
+    ],
+    "limitations": [
+      "8 earlier target state/stop_s changes; speed caps and lateral geometry unchanged on prescribed replay; controller/dynamics not replayed"
+    ]
+  },
+  "new_tests": {
+    "paint_before": "2 FAIL / 2 PASS",
+    "outline_before": "1 FAIL / 4 PASS",
+    "after": "9 PASS"
+  },
+  "limitations": [
+    "Bag record order, preceding mission/station; not native callback scheduling",
+    "No input older than the requested interval minus 3s is replayed",
+    "Parameter fallback transform [2,0,2.11]; native TF not replayed",
+    "Fresh recorded mission per scan; wall-clock transport freshness is not tested",
+    "Tracks warmed only from this short window; no planner or vehicle dynamics replay"
+  ]
+}

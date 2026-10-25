@@ -1,0 +1,74 @@
+{
+  "preflight-01": {
+    "scope": "real MORAI UDP and ROS1 TCPROS, drive=false; current camera differs from source conditions",
+    "errors": [],
+    "drive_parameter": false,
+    "control_udp_destination_9093": [],
+    "launch_returncode": 0,
+    "passed_receive_and_decisions": true,
+    "source_sensor_equivalence": "NOT VERIFIED: Camera-7 resolution/pitch differ; original camera position/FOV and MORAI vehicle-origin to base_link/rear-axle transform unknown; actual LiDAR/GPS mounts differ numerically",
+    "input_sha256": "b64aae22b5b657dd96b0f75455c2266125382cb7f0c5dcfef8522ab813bbba43",
+    "station": 2.1266761833868775,
+    "vehicle": {
+      "type": "foscar_interfaces/VehicleStatus",
+      "frame_id": "base_link",
+      "stamp_ns": 1792749269805265665,
+      "speed_mps": 1.786931736407698e-06,
+      "gear": 1
+    },
+    "sensor_rates": {
+      "/sensors/imu": 22.01122286634258,
+      "/vehicle/status": 23.75166584395884,
+      "/sensors/lidar/points": 7.297303252031022,
+      "/sensors/camera/traffic/compressed": 21.595727077975663
+    }
+  },
+  "preflight-02": {
+    "scope": "real MORAI UDP and ROS1 TCPROS, drive=false; current camera differs from source conditions",
+    "errors": [],
+    "drive_parameter": false,
+    "control_udp_destination_9093": [],
+    "launch_returncode": 0,
+    "passed_receive_and_decisions": true,
+    "source_sensor_equivalence": "NOT VERIFIED: Camera-7 resolution/pitch differ; original camera position/FOV and MORAI vehicle-origin to base_link/rear-axle transform unknown; actual LiDAR/GPS mounts differ numerically",
+    "input_sha256": "89b08967f59aa1f08f2bd8ca2de9bb04e89e53078d57b99b5195f9b3a4bbc980",
+    "station": 0.9369972782944224,
+    "vehicle": {
+      "type": "foscar_interfaces/VehicleStatus",
+      "frame_id": "base_link",
+      "stamp_ns": 1792749999634834289,
+      "speed_mps": -6.525268266462566e-07,
+      "gear": 1
+    },
+    "sensor_rates": {
+      "/sensors/imu": 24.173690160477957,
+      "/vehicle/status": 25.868644980873103,
+      "/sensors/lidar/points": 7.898881862872767,
+      "/sensors/camera/traffic/compressed": 23.214006458729017
+    }
+  },
+  "preflight-03": {
+    "scope": "real MORAI UDP and ROS1 TCPROS, drive=false; current camera differs from source conditions",
+    "errors": [],
+    "drive_parameter": false,
+    "control_udp_destination_9093": [],
+    "launch_returncode": 0,
+    "passed_receive_and_decisions": true,
+    "source_sensor_equivalence": "NOT VERIFIED: Camera-7 resolution/pitch differ; original camera position/FOV and MORAI vehicle-origin to base_link/rear-axle transform unknown; actual LiDAR/GPS mounts differ numerically",
+    "input_sha256": "a7482fd0d4c53de8e52346cefe4ea01b6ac3121772f598bbe043c7d015238da7",
+    "station": 0.0,
+    "vehicle": {
+      "type": "foscar_interfaces/VehicleStatus",
+      "frame_id": "base_link",
+      "stamp_ns": 1792751585895166635,
+      "speed_mps": 4.956180216848023e-06,
+      "gear": 1
+    },
+    "sensor_rates": {
+      "/sensors/imu": 24.48800435952403,
+      "/vehicle/status": 25.89225629773736,
+      "/sensors/lidar/points": 7.964328017377559,
+      "/sensors/camera/traffic/compressed": 23.652081641769573
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "source": "/home/foscar/\ub2e4\uc6b4\ub85c\ub4dc/MoraiLauncher_Lin/MoraiLauncher_Lin_Data/SaveFile/Scenario/R_KR_PR_K-city_2025/2026_molit_comp_sample_scene.json",
+  "source_sha256": "c9ab17cef9b07dd3a7d4a2f56c6cc39f89f07cadccce8edce3d579e891237c85",
+  "generated": "/home/foscar/RMT-ros1/ros1-port/docker/artifacts/tunnel-contingency-live-20261023-162509/scenes/CTRL_tunnel_left_box.json",
+  "generated_sha256": "a20b0eafe2b8d55bb25bde94415b71092709ba0c6307e59b5b8d40313e12719c",
+  "station": 1905.0,
+  "offset": 1.0,
+  "added_actor": {
+    "DataID": 40100001,
+    "UNIQUEID": 39,
+    "m_eobstacleObjType": 4,
+    "pos": {
+      "x": -2.3711730547994088,
+      "y": -506.93559575171656,
+      "z": 28.400100854380373,
+      "_x": "-2.371",
+      "_y": "-506.936",
+      "_z": "28.400"
+    },
+    "rot": {
+      "roll": "0.000",
+      "pitch": "0.000",
+      "yaw": "-151.547"
+    },
+    "scale": {
+      "x": 3.0,
+      "y": 1.0,
+      "z": 1.0,
+      "_x": "3.000",
+      "_y": "1.000",
+      "_z": "1.000"
+    },
+    "initPos": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "_x": "0.000",
+      "_y": "0.000",
+      "_z": "0.000"
+    },
+    "initRot": {
+      "roll": "0.000",
+      "pitch": "0.000",
+      "yaw": "0.000"
+    },
+    "isWaypointMode": true,
+    "moveSpeed": 0.0,
+    "activeDistance": 0.0,
+    "waypointEventList": []
+  },
+  "unchanged_existing_scene": true,
+  "route_sha256": "a7fa4a89ff3840c7cc1be9b3b971572a67eb514f3ebee5a4a00ef535b73c64c3",
+  "map_sha256": "5ce0fd57da07b83221c0a4d117b0606b2d9c094c8de476a7d1176c78a4dc5b0f",
+  "warnings": [
+    "Generated only, not loaded into MORAI",
+    "Scale factors are not measured physical dimensions",
+    "Surveyed ground Z, object seating and collision must be checked after loading",
+    "Found file content is not independent proof of the scene currently loaded in MORAI"
+  ]
+}
