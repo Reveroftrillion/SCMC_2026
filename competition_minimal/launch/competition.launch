@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="morai_ip" />
+  <arg name="bind_ip" default="0.0.0.0" />
+  <arg name="drive" default="false" />
+  <arg name="enable_control" default="$(arg drive)" />
+  <arg name="status_layout_confirmed" default="false" />
+  <arg name="start_lidar_driver" default="true" />
+  <arg name="gps_port" default="1111" />
+  <arg name="imu_port" default="1112" />
+  <arg name="status_port" default="909" />
+  <arg name="camera_port" default="9297" />
+  <arg name="lidar_port" default="2368" />
+  <arg name="command_port" default="9093" />
+  <arg name="command_source_port" default="9094" />
+  <arg name="path_file" default="$(find competition_minimal)/paths/global_path.txt" />
+  <arg name="sensor_config" default="$(find competition_minimal)/config/vehicle_sensor.yaml" />
+  <arg name="mission_config" default="$(find competition_minimal)/config/missions.yaml" />
+  <arg name="model_path" default="$(find competition_minimal)/weights/traffic.onnx" />
+  <arg name="pt_path" default="$(find competition_minimal)/weights/1027_40epoch.pt" />
+  <group if="$(arg start_lidar_driver)">
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch">
+      <arg name="device_ip" value="$(arg morai_ip)" />
+      <arg name="port" value="$(arg lidar_port)" />
+      <arg name="rpm" value="600" />
+    </include>
+  </group>
+  <node pkg="competition_minimal" type="udp_bridge.py" name="competition_udp_bridge" output="screen" required="true">
+    <param name="morai_ip" value="$(arg morai_ip)" />
+    <param name="bind_ip" value="$(arg bind_ip)" />
+    <param if="$(arg drive)" name="enable_control" value="$(arg enable_control)" />
+    <param unless="$(arg drive)" name="enable_control" value="false" />
+    <param name="status_layout_confirmed" value="$(arg status_layout_confirmed)" />
+    <param name="gps_port" value="$(arg gps_port)" />
+    <param name="imu_port" value="$(arg imu_port)" />
+    <param name="status_port" value="$(arg status_port)" />
+    <param name="camera_port" value="$(arg camera_port)" />
+    <param name="lidar_port" value="$(arg lidar_port)" />
+    <param name="command_port" value="$(arg command_port)" />
+    <param name="command_source_port" value="$(arg command_source_port)" />
+  </node>
+  <node pkg="competition_minimal" type="localization.py" name="competition_localization" output="screen" required="true">
+    <rosparam command="load" file="$(arg sensor_config)" />
+    <param name="path_file" value="$(arg path_file)" />
+  </node>
+  <node pkg="competition_minimal" type="traffic_node.py" name="competition_traffic" output="screen" required="true">
+    <rosparam command="load" file="$(arg mission_config)" />
+    <param name="model_path" value="$(arg model_path)" />
+    <param name="pt_path" value="$(arg pt_path)" />
+  </node>
+  <node pkg="competition_minimal" type="lidar_missions.py" name="lidar_missions" output="screen" required="true">
+    <rosparam command="load" file="$(arg mission_config)" />
+    <rosparam command="load" file="$(arg sensor_config)" />
+    <param name="path_file" value="$(arg path_file)" />
+  </node>
+  <node pkg="competition_minimal" type="controller.py" name="competition_controller" output="screen" required="true">
+    <rosparam command="load" file="$(arg mission_config)" />
+    <rosparam command="load" file="$(arg sensor_config)" />
+    <param name="path_file" value="$(arg path_file)" />
+  </node>
+</launch>

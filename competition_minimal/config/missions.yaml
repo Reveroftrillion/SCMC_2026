@@ -1,0 +1,26 @@
+# XY anchors projected onto the current 4430-point path, not distance-scaled.
+# Schema flags mean that gates below must be applied; they do not assert that
+# the reference route, camera ROI, sensor frame, or scenario is verified.
+mission_zones_verified: true
+positions_verified: true
+intersections:
+  - {start_s: 169.00779, stop_s: 204.08604, direction: straight, roi: [0.25, 0.0, 0.95, 1.0], verified: true}
+  - {start_s: 271.99081, stop_s: 311.47432, direction: straight, roi: [0.0, 0.0, 0.9, 0.9], verified: true}
+  - {start_s: 407.16028, stop_s: 432.51868, direction: straight, roi: [0.1, 0.0, 0.95, 1.0], verified: true}
+  - {start_s: 569.44579, stop_s: 605.32505, direction: left, roi: [0.1, 0.0, 0.95, 1.0], verified: false}
+zones:
+  static: [271.99081, 390.00089]     # User confirmed start coincides with projected traffic 2 start.
+  pedestrian: [404.77570, 495.00162] # Start uses approximate waypoint 823; XY not supplied.
+  roundabout: [809.98126, 918.46815] # Start/end residuals 1.216m / 0.758m.
+  highway: [1118.74178, 1741.72101] # CP10..CP13 XY projected.
+  tunnel: [1817.89027, 2000.38957]
+highway_prepare_s: 1110.38326
+highway_return_s: 1593.58643       # CP12 XY projected.
+# Mandatory conservative stop before each unverified section. It is unsafe to
+# interpret the candidate boundaries as scenario-confirmed mission locations.
+unverified_sections:
+  - {start_s: 404.77570, end_s: 495.00162, reason: 'Pedestrian start XY not provided; approximate waypoint 823'}
+  - {start_s: 569.44579, end_s: 605.32505, reason: 'Traffic 4 start/stop XY residuals 2.329m/0.296m'}
+  - {start_s: 809.98126, end_s: 918.46815, reason: 'Roundabout start/end XY residuals 1.216m/0.758m'}
+unverified_sections_required: true
+allow_avoidance: false

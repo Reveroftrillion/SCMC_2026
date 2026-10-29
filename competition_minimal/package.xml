@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>competition_minimal</name>
+  <version>0.1.0</version>
+  <description>Minimal MORAI competition driving prototype</description>
+  <maintainer email="maintainer@example.com">Competition team</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>simul_msgs</depend>
+  <depend>morai_msgs</depend>
+  <exec_depend>velodyne_pointcloud</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-scipy</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-pyproj</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+</package>

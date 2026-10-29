@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.0.2)
+project(competition_minimal)
+find_package(catkin REQUIRED COMPONENTS rospy std_msgs geometry_msgs sensor_msgs simul_msgs morai_msgs)
+catkin_package()
+catkin_install_python(PROGRAMS scripts/udp_bridge.py scripts/localization.py scripts/traffic_node.py scripts/lidar_missions.py scripts/controller.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+install(DIRECTORY scripts/ DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} FILES_MATCHING PATTERN "*.py")
+install(DIRECTORY launch config paths weights DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

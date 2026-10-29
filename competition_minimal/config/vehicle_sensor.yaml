@@ -1,0 +1,11 @@
+# These are initial values, not evidence of simulator calibration.
+sensor_reference_verified: false
+vehicle_length_m: 4.635
+vehicle_width_m: 1.892
+wheelbase_m: 3.0
+max_steering_deg: 40.0
+lidar_xyz: [2.0, 0.0, 2.11]
+lidar_frames: [velodyne, lidar]
+imu_yaw_offset_deg: 0.0
+imu_grid_convergence_deg: -1.35  # Historical setting; verify sign and whether IMU is already grid-aligned.
+max_speed_kmh: 40.0
