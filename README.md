@@ -52,7 +52,7 @@ rostopic echo -n 1 /competition/progress
 rostopic echo -n 1 /competition/control_cmd
 ```
 
-`live_status.py`에서 GPS·IMU·차속·카메라·LiDAR와 위치·진행거리·정지 판단이 `FRESH`인지 확인합니다. 실행 터미널의 `Competition status` 로그에서 181바이트 패킷의 속도·yaw·조향·Gear·Mode, `Traffic PyTorch`와 `Traffic detection`/`Traffic decision`에서 모델 로딩과 신호 인식을 확인하세요. 신호 구간 밖에서는 검출 로그가 없을 수 있습니다. `drive=false`의 제어 상태는 시작 로그 `UDP control sender configured: False`와 네트워크 캡처로 확인하세요. `/competition/control_cmd` 발행 자체는 UDP 송신을 뜻하지 않습니다.
+`live_status.py`에서 GPS·IMU·차속·카메라·LiDAR와 위치·진행거리·정지 판단이 `FRESH`인지 확인합니다. 실행 터미널의 `Competition status` 로그에서 181바이트 패킷의 속도·yaw·조향·Gear·Mode, `Traffic PyTorch`와 `Traffic detection`/`Traffic decision`에서 모델 로딩과 신호 인식을 확인하세요. 신호 구간 밖에서는 검출 로그가 없을 수 있습니다. `drive=false`의 제어 상태는 `live_status.py` 출력 `UDP control sender configured: False`와 네트워크 캡처로 확인하세요. `/competition/control_cmd` 발행 자체는 UDP 송신을 뜻하지 않습니다.
 
 `MISSING`/`STALE`이면 MORAI IP, 방화벽, 포트, 센서 설정과 `ss -lun`의 충돌을 확인합니다. `Rejected status packet`이면 181바이트 Competition Status와 시간값을 확인하고, YOLO가 실패하면 모델 경로와 Python 의존성을 확인하세요. 로그는 실행 터미널 및 `~/.ros/log/`에 있습니다. 모델 실패나 영상 누락은 UNKNOWN 정지입니다.
 
